@@ -21,35 +21,26 @@ export function narrarContexto(t) {
        const u = new SpeechSynthesisUtterance(textoLimpo);
         const vozes = window.speechSynthesis.getVoices();
         
-        // Filtro agressivo para achar vozes masculinas (Windows, Mac, iOS e Android)
         let masc = vozes.find(x => 
             x.lang.includes('pt-BR') && 
             (x.name.toLowerCase().includes('male') || 
              x.name.toLowerCase().includes('daniel') || 
-             x.name.toLowerCase().includes('antonio') ||
-             x.name.toLowerCase().includes('thiago') ||
-             x.name.toLowerCase().includes('pt-br-x-ptd')) // Tenta forçar a variante 2 do Android
+             x.name.toLowerCase().includes('antonio'))
         );
         
-        // Se o Android esconder o nome, pegamos a ÚLTIMA voz da lista em vez da primeira (GPS)
-        if (!masc) {
-            const vozesBR = vozes.filter(x => x.lang.includes('pt-BR'));
-            masc = vozesBR.length > 1 ? vozesBR[vozesBR.length - 1] : vozesBR[0];
-        }
-        
-        if (masc) u.voice = masc;
         u.lang = "pt-BR"; 
         u.rate = 0.93; 
-        u.pitch = 0.9; // Mantém o tom ligeiramente mais grave
         
-        u.onstart = () => { if (bgm && G.musica) bgm.volume = 0.02; };
-        u.onend = () => { if (bgm && G.musica) bgm.volume = 0.07; };
-        
-        window.speechSynthesis.speak(u);
-    } catch(e) {
-        console.log("Síntese de voz não suportada neste navegador.");
-    }
-}
+        if (masc) {
+            u.voice = masc;
+            u.pitch = 0.9; // Tom normal para vozes masculinas no Windows
+        } else {
+            // Se estiver no Android e só houver a "Senhora do GPS", engrossamos a voz!
+            const vozesBR = vozes.filter(x => x.lang.includes('pt-BR'));
+            if(vozesBR.length > 0) u.voice = vozesBR[vozesBR.length - 1];
+            
+            u.pitch = 0.6; // <-- O SEGREDO ESTÁ AQUI: Voz mais grave e robótica!
+        }
 
 if (typeof window !== 'undefined' && window.speechSynthesis) {
     window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
