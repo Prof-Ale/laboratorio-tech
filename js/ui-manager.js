@@ -18,14 +18,29 @@ export function narrarContexto(t) {
         window.speechSynthesis.cancel();
         const textoLimpo = t.replace(/<[^>]*>?/gm, ''); 
         
-        const u = new SpeechSynthesisUtterance(textoLimpo);
+       const u = new SpeechSynthesisUtterance(textoLimpo);
         const vozes = window.speechSynthesis.getVoices();
-        const masc = vozes.find(x => x.lang.includes('pt-BR') && (x.name.toLowerCase().includes('male') || x.name.toLowerCase().includes('daniel') || x.name.toLowerCase().includes('antonio'))) || vozes.find(x => x.lang.includes('pt-BR'));
+        
+        // Filtro agressivo para achar vozes masculinas (Windows, Mac, iOS e Android)
+        let masc = vozes.find(x => 
+            x.lang.includes('pt-BR') && 
+            (x.name.toLowerCase().includes('male') || 
+             x.name.toLowerCase().includes('daniel') || 
+             x.name.toLowerCase().includes('antonio') ||
+             x.name.toLowerCase().includes('thiago') ||
+             x.name.toLowerCase().includes('pt-br-x-ptd')) // Tenta forçar a variante 2 do Android
+        );
+        
+        // Se o Android esconder o nome, pegamos a ÚLTIMA voz da lista em vez da primeira (GPS)
+        if (!masc) {
+            const vozesBR = vozes.filter(x => x.lang.includes('pt-BR'));
+            masc = vozesBR.length > 1 ? vozesBR[vozesBR.length - 1] : vozesBR[0];
+        }
         
         if (masc) u.voice = masc;
         u.lang = "pt-BR"; 
         u.rate = 0.93; 
-        u.pitch = 0.9;
+        u.pitch = 0.9; // Mantém o tom ligeiramente mais grave
         
         u.onstart = () => { if (bgm && G.musica) bgm.volume = 0.02; };
         u.onend = () => { if (bgm && G.musica) bgm.volume = 0.07; };
@@ -41,7 +56,7 @@ if (typeof window !== 'undefined' && window.speechSynthesis) {
 }
 
 /* ========================================================
-   CONTROLO DE MÍDIA
+   CONTROLE DE MÍDIA
 ======================================================== */
 export function toggleSom() {
     G.musica = !G.musica;
