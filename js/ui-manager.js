@@ -11,41 +11,46 @@ const bgm = document.getElementById("bgm");
 /* ========================================================
    ACESSIBILIDADE: SÍNTESE DE VOZ (TEXT-TO-SPEECH)
 ======================================================== */
+// COMO DEVE FICAR
 export function narrarContexto(t) {
     try {
-        if (typeof window === 'undefined' || !window.speechSynthesis) return;
-        
+        if (!window.speechSynthesis) return;
         window.speechSynthesis.cancel();
-        const textoLimpo = t.replace(/<[^>]*>?/gm, ''); 
-        
-       const u = new SpeechSynthesisUtterance(textoLimpo);
+
+        const textoLimpo = t.replace(/<[^>]*>?/gm, '');
+        const u = new SpeechSynthesisUtterance(textoLimpo);
         const vozes = window.speechSynthesis.getVoices();
-        
-        let masc = vozes.find(x => 
-            x.lang.includes('pt-BR') && 
-            (x.name.toLowerCase().includes('male') || 
-             x.name.toLowerCase().includes('daniel') || 
+
+        let masc = vozes.find(x =>
+            x.lang.includes('pt-BR') &&
+            (x.name.toLowerCase().includes('male') ||
+             x.name.toLowerCase().includes('daniel') ||
              x.name.toLowerCase().includes('antonio'))
         );
-        
-        u.lang = "pt-BR"; 
-        u.rate = 0.93; 
-        
+
+        u.lang  = "pt-BR";
+        u.rate  = 0.93;
+
         if (masc) {
             u.voice = masc;
-            u.pitch = 0.9; // Tom normal para vozes masculinas no Windows
+            u.pitch = 0.9;
         } else {
-            // Se estiver no Android e só houver a "Senhora do GPS", engrossamos a voz!
             const vozesBR = vozes.filter(x => x.lang.includes('pt-BR'));
-            if(vozesBR.length > 0) u.voice = vozesBR[vozesBR.length - 1];
-            
-            u.pitch = 0.6; // <-- O SEGREDO ESTÁ AQUI: Voz mais grave e robótica!
+            if (vozesBR.length > 0) u.voice = vozesBR[vozesBR.length - 1];
+            u.pitch = 0.6;
         }
 
+        window.speechSynthesis.speak(u); // ← estava faltando
+
+    } catch(e) {
+        console.warn("TTS indisponível:", e);
+    }
+}
+
+// onvoiceschanged fica fora, no nível do módulo
 if (typeof window !== 'undefined' && window.speechSynthesis) {
     window.speechSynthesis.onvoiceschanged = () => { window.speechSynthesis.getVoices(); };
 }
-
 /* ========================================================
    CONTROLE DE MÍDIA
 ======================================================== */
