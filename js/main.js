@@ -3,7 +3,8 @@
  * Orquestrador com Persistência BNCC, Exportação CSV e Lógica de Múltiplas Respostas.
  */
 
-import { G, selQ } from './questions.js';
+import { G } from './engine/gameState.js';
+import { selQ } from './engine/selector.js';
 import { renderCv, animarArcos, setAnimando } from './game-engine.js';
 import { 
     updHUD, 
