@@ -4,9 +4,13 @@
  */
 
 export const G = {
-    vida: 100, energia: 60, combo: 0, nivel: 1, trilha: 1,
-    acertos: 0, erros: 0, consec_erros: 0,
-    historico: {}, respondeu: false, musica: true, nome: "Cientista"
+  vida: 100, energia: 60, combo: 0, nivel: 1,
+  acertos: 0, erros: 0, trilha: 1,
+  musica: true,
+  voz: true,      // ← novo flag, independente de musica
+  respondeu: false,
+  historico: {},
+  nome: "Cientista"
 };
 
 // Banco de Questões
