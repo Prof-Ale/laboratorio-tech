@@ -4,13 +4,11 @@
  */
 
 import { G, selQ } from './questions.js';
-import { renderCv, animarArcos, setAnimando } from './game-engine.js';
-// linha do import, adicionar toggleMusica e toggleVoz
-import { 
+iimport { 
     updHUD, 
     narrarContexto, 
-    toggleMusica,   // ← era toggleSom
-    toggleVoz,      // ← novo
+    toggleMusica, // <-- Novo
+    toggleVoz,    // <-- Novo
     tocarAv, 
     abrirM, 
     fecharM, 
@@ -246,12 +244,10 @@ window.iniciarJogo = iniciarJogo;
 window.voltarMenu = voltarMenu;
 window.proximaQ = proximaQ;
 window.reiniciar = reiniciar;
-window.toggleSom = toggleSom;
 window.abrirM = abrirM;
 window.fecharM = fecharM;
 window.verPerfilAluno = verPerfilAluno;
 window.exportarRelatorioCSV = exportarRelatorioCSV;
-// no bloco window.xxx = xxx lá embaixo, adicionar as duas linhas
-window.toggleMusica = toggleMusica;   // ← novo
-window.toggleVoz    = toggleVoz;      // ← novo
-window.toggleSom    = toggleMusica;   // mantém alias por segurança
+window.toggleMusica = toggleMusica;
+window.toggleVoz = toggleVoz;
+window.toggleSom = toggleMusica; // Mantém alias por segurança caso algum botão antigo tenha ficado no HTML
