@@ -8,25 +8,24 @@ import { renderCv, animarArcos, setAnimando } from './game-engine.js';
 import { 
     updHUD, 
     narrarContexto, 
-    toggleMusica, 
-    toggleVoz, 
+    toggleMusica,
+    toggleVoz,
     tocarAv, 
     abrirM, 
     fecharM, 
     exibirGameOver 
 } from './ui-manager.js';
+
 let qAtual = null;
 
 /* ========================================================
    PERSISTÊNCIA DE DADOS (LOCALSTORAGE)
 ======================================================== */
-// Inicializa o sistema carregando dados salvos do computador do professor/aluno
 function carregarDadosSalvos() {
     const backup = localStorage.getItem('laboratorio_ale_bncc');
     if (backup) {
         try {
             const dados = JSON.parse(backup);
-            // Mescla o histórico salvo com o objeto G
             G.historico = dados;
         } catch (e) {
             console.error("Erro ao carregar banco de dados local", e);
@@ -97,7 +96,6 @@ function voltarMenu() {
    MOTOR DE QUESTÕES E MÚLTIPLAS RESPOSTAS
 ======================================================== */
 function renderQ(q) {
-    // O span garante que a frase não quebre no Android/Chrome
     document.getElementById("conta-display").innerHTML = "<span>" + q.display + "</span>";
     document.getElementById("regra-box").innerHTML = q.dica;
     document.getElementById("fb").textContent = "";
@@ -110,7 +108,6 @@ function renderQ(q) {
     const g = document.getElementById("grid-botoes");
     g.innerHTML = "";
     
-    // Layout responsivo de botões
     g.style.gridTemplateColumns = q.botoes.length <= 3 ? `repeat(${q.botoes.length}, 1fr)` : "1fr 1fr";
     
     q.botoes.forEach(op => {
@@ -126,7 +123,6 @@ function responder(opcao, q) {
     if (G.respondeu) return;
     G.respondeu = true;
 
-    // LÓGICA DE MÚLTIPLAS RESPOSTAS: Aceita se 'res' for uma string igual ou se estiver dentro de um Array
     let ok = false;
     if (Array.isArray(q.res)) {
         ok = q.res.map(String).includes(String(opcao));
@@ -134,12 +130,10 @@ function responder(opcao, q) {
         ok = (String(opcao) === String(q.res));
     }
     
-    // Inicializa histórico BNCC se não existir para este código
     if (q.bncc && !G.historico[q.bncc]) {
         G.historico[q.bncc] = { desc: q.bncc_desc || "Habilidade BNCC", acertos: 0, erros_sinal: 0, erros_calculo: 0 };
     }
 
-    // Feedback Visual
     document.querySelectorAll(".ba").forEach(b => {
         b.classList.add("dis"); 
         if (Array.isArray(q.res)) {
@@ -166,7 +160,6 @@ function responder(opcao, q) {
         G.erros++; G.combo = 0; G.consec_erros++; 
         G.vida = Math.max(0, G.vida - 20); 
         
-        // Diagnóstico Clínico do Erro
         let erroDeSinal = false;
         if (!isNaN(opcao) && !isNaN(Array.isArray(q.res) ? q.res[0] : q.res)) {
             let resPrincipal = Array.isArray(q.res) ? Number(q.res[0]) : Number(q.res);
@@ -203,12 +196,10 @@ function proximaQ() {
    RELATÓRIOS E EXPORTAÇÃO (SISTEMA DO PROFESSOR)
 ======================================================== */
 function exportarRelatorioCSV() {
-    // Cabeçalho do CSV
     let csv = "Codigo_BNCC;Descricao;Acertos;Erros_Sinal;Erros_Calculo\n";
     
     for (let cod in G.historico) {
         let h = G.historico[cod];
-        // Limpa vírgulas da descrição para não quebrar o CSV
         let descLimpa = h.desc.replace(/;/g, ',');
         csv += `${cod};${descLimpa};${h.acertos};${h.erros_sinal};${h.erros_calculo}\n`;
     }
@@ -251,4 +242,3 @@ window.verPerfilAluno = verPerfilAluno;
 window.exportarRelatorioCSV = exportarRelatorioCSV;
 window.toggleMusica = toggleMusica;
 window.toggleVoz = toggleVoz;
-window.toggleSom = toggleMusica; // Mantém alias por segurança caso algum botão antigo tenha ficado no HTML
