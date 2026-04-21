@@ -5,18 +5,17 @@
 
 import { G, selQ } from './questions.js';
 import { renderCv, animarArcos, setAnimando } from './game-engine.js';
+// linha do import, adicionar toggleMusica e toggleVoz
 import { 
     updHUD, 
     narrarContexto, 
-    import { ..., toggleMusica, toggleVoz } from './ui-manager.js';
-// ...
-window.toggleVoz = toggleVoz;, 
+    toggleMusica,   // ← era toggleSom
+    toggleVoz,      // ← novo
     tocarAv, 
     abrirM, 
     fecharM, 
     exibirGameOver 
 } from './ui-manager.js';
-
 let qAtual = null;
 
 /* ========================================================
@@ -252,3 +251,7 @@ window.abrirM = abrirM;
 window.fecharM = fecharM;
 window.verPerfilAluno = verPerfilAluno;
 window.exportarRelatorioCSV = exportarRelatorioCSV;
+// no bloco window.xxx = xxx lá embaixo, adicionar as duas linhas
+window.toggleMusica = toggleMusica;   // ← novo
+window.toggleVoz    = toggleVoz;      // ← novo
+window.toggleSom    = toggleMusica;   // mantém alias por segurança
