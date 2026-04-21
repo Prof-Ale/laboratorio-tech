@@ -4,11 +4,12 @@
  */
 
 import { G, selQ } from './questions.js';
-iimport { 
+import { renderCv, animarArcos, setAnimando } from './game-engine.js';
+import { 
     updHUD, 
     narrarContexto, 
-    toggleMusica, // <-- Novo
-    toggleVoz,    // <-- Novo
+    toggleMusica, 
+    toggleVoz, 
     tocarAv, 
     abrirM, 
     fecharM, 
