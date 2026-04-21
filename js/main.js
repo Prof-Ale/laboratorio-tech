@@ -8,7 +8,9 @@ import { renderCv, animarArcos, setAnimando } from './game-engine.js';
 import { 
     updHUD, 
     narrarContexto, 
-    toggleSom, 
+    import { ..., toggleMusica, toggleVoz } from './ui-manager.js';
+// ...
+window.toggleVoz = toggleVoz;, 
     tocarAv, 
     abrirM, 
     fecharM, 
