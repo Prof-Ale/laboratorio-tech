@@ -158,14 +158,15 @@ function gerarDashboard() {
 
     let temDados = false;
 
-    for (let hab in BaseBNCC) {
+    // A MUDANÇA ESTÁ AQUI: Agora lemos o G.historico diretamente!
+    for (let hab in G.historico) {
         const hist = G.historico[hab];
         if (!hist) continue;
 
         const acertos  = hist.acertos       || 0;
         const errSinal = hist.erros_sinal   || 0;
         const errCalc  = hist.erros_calculo || 0;
-        const errGeral = hist.erros         || 0;
+        const errGeral = hist.erros         || 0; // Para retrocompatibilidade caso exista
 
         const total = acertos + errSinal + errCalc + errGeral;
         if (total === 0) continue;
@@ -194,6 +195,9 @@ function gerarDashboard() {
         }
 
         const corBorda = txAcerto >= 50 ? 'var(--neon-green)' : 'var(--neon-red)';
+        
+        // A OUTRA MUDANÇA ESTÁ AQUI: Lemos a descrição de hist.desc
+        const descricaoDaHabilidade = hist.desc || "Habilidade da BNCC";
 
         c.innerHTML += `
             <div class="dash-card" style="border-left-color:${corBorda}">
@@ -201,7 +205,7 @@ function gerarDashboard() {
                     ${hab}
                     <span style="font-size:12px;color:var(--text-muted)">Desempenho: ${txAcerto}%</span>
                 </h3>
-                <p style="font-size:12px">${BaseBNCC[hab].descricao}</p>
+                <p style="font-size:12px">${descricaoDaHabilidade}</p>
 
                 <div style="margin-top:10px;font-size:12px;display:flex;justify-content:space-between;">
                     <span style="color:var(--neon-green)">✓ Acertos: ${acertos}</span>
