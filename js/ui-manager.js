@@ -6,7 +6,7 @@
  * Música e voz agora são independentes.
  */
 
-import { G, BaseBNCC } from './questions.js';
+import { G } from './questions.js';
 
 const bgm = document.getElementById("bgm");
 
