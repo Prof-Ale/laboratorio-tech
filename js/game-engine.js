@@ -3,7 +3,7 @@
  * Módulo de Renderização e Animação no Canvas.
  */
 
-import { G } from './questions.js';
+import { G } from './engine/gameState.js';
 
 const cv = document.getElementById("canvas-game");
 const cx = cv ? cv.getContext("2d") : null;
