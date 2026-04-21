@@ -6,7 +6,7 @@
  * Música e voz agora são independentes.
  */
 
-import { G } from './questions.js';
+import { G } from './engine/gameState.js';
 
 const bgm = document.getElementById("bgm");
 
