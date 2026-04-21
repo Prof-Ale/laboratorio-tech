@@ -1,7 +1,6 @@
 /**
- * main.js
- * Orquestrador Principal do Jogo - Versão 3.1 (Identidade & Clínica do Erro)
- * Gere o Game Loop, Acessibilidade de Teclado, e a Categorização de Erros.
+ * main.js - Versão 4.0 "Cientista de Dados"
+ * Orquestrador com Persistência BNCC, Exportação CSV e Lógica de Múltiplas Respostas.
  */
 
 import { G, selQ } from './questions.js';
@@ -18,12 +17,31 @@ import {
 
 let qAtual = null;
 
-// Inicializa variáveis de controlo
-G.consec_erros = 0; 
-G.nome = "Cientista"; // Variável para guardar o nome do aluno
+/* ========================================================
+   PERSISTÊNCIA DE DADOS (LOCALSTORAGE)
+======================================================== */
+// Inicializa o sistema carregando dados salvos do computador do professor/aluno
+function carregarDadosSalvos() {
+    const backup = localStorage.getItem('laboratorio_ale_bncc');
+    if (backup) {
+        try {
+            const dados = JSON.parse(backup);
+            // Mescla o histórico salvo com o objeto G
+            G.historico = dados;
+        } catch (e) {
+            console.error("Erro ao carregar banco de dados local", e);
+        }
+    }
+}
+
+function salvarProgresso() {
+    localStorage.setItem('laboratorio_ale_bncc', JSON.stringify(G.historico));
+}
+
+carregarDadosSalvos();
 
 /* ========================================================
-   ACESSIBILIDADE POR TECLADO (DUA - AÇÃO E EXPRESSÃO)
+   ACESSIBILIDADE E TECLADO (DUA)
 ======================================================== */
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -36,25 +54,21 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ========================================================
-   NAVEGAÇÃO DO MENU (SPLASH SCREEN)
+   NAVEGAÇÃO E LOGIN
 ======================================================== */
 function selT(n) {
     document.querySelectorAll(".tb").forEach(b => b.classList.remove("sel"));
-    document.querySelector(`[data-t="${n}"]`).classList.add("sel");
+    const btn = document.querySelector(`[data-t="${n}"]`);
+    if(btn) btn.classList.add("sel");
     G.trilha = n;
     G.nivel = 1;
 }
 
 function iniciarJogo() {
-    if (!G.trilha) selT(1);
-    
-    // Capta o nome do utilizador
     const inputNome = document.getElementById("nome-cientista");
-    if (inputNome && inputNome.value.trim() !== "") {
-        G.nome = inputNome.value.trim();
-    } else {
-        G.nome = "Cientista";
-    }
+    G.nome = (inputNome && inputNome.value.trim() !== "") ? inputNome.value.trim() : "Cientista";
+    
+    if (!G.trilha) selT(1);
     
     document.getElementById("splash-screen").classList.add("hidden");
     document.getElementById("game-screen").classList.remove("hidden");
@@ -66,8 +80,7 @@ function iniciarJogo() {
     const bgm = document.getElementById("bgm");
     if (bgm) { bgm.volume = 0.07; if (G.musica) bgm.play().catch(() => {}); }
     
-    // Voz do Prof. Alê Chocolate a saudar o aluno pelo nome!
-    narrarContexto(`Sistema calibrado. Bem-vindo ao laboratório, ${G.nome}.`);
+    narrarContexto(`Bem-vindo ao laboratório, ${G.nome}. Sistema de diagnóstico ativado.`);
     updHUD();
     proximaQ();
 }
@@ -78,17 +91,13 @@ function voltarMenu() {
     document.getElementById("go").classList.remove("show");
     document.getElementById("av").classList.add("hidden");
     document.getElementById("splash-screen").classList.remove("hidden");
-    
-    document.querySelectorAll(".tb").forEach(b => b.classList.remove("sel"));
-    const btnAtivo = document.querySelector(`[data-t="${G.trilha}"]`);
-    if(btnAtivo) btnAtivo.classList.add("sel");
 }
 
 /* ========================================================
-   RENDERIZAÇÃO DA QUESTÃO E DISTRATORES (DOM)
+   MOTOR DE QUESTÕES E MÚLTIPLAS RESPOSTAS
 ======================================================== */
 function renderQ(q) {
-    // O <span> garante que a frase não quebre em palavras soltas!
+    // O span garante que a frase não quebre no Android/Chrome
     document.getElementById("conta-display").innerHTML = "<span>" + q.display + "</span>";
     document.getElementById("regra-box").innerHTML = q.dica;
     document.getElementById("fb").textContent = "";
@@ -96,143 +105,140 @@ function renderQ(q) {
     
     G.respondeu = false;
     setAnimando(false);
-    
     renderCv(q);
     
     const g = document.getElementById("grid-botoes");
     g.innerHTML = "";
-    g.style.gridTemplateColumns = q.botoes.length <= 2 ? "1fr 1fr" : q.botoes.length === 3 ? "1fr 1fr 1fr" : "1fr 1fr";
+    
+    // Layout responsivo de botões
+    g.style.gridTemplateColumns = q.botoes.length <= 3 ? `repeat(${q.botoes.length}, 1fr)` : "1fr 1fr";
     
     q.botoes.forEach(op => {
         const b = document.createElement("button");
         b.className = "ba";
         b.textContent = op;
-        b.setAttribute("tabindex", "0"); 
-        b.setAttribute("aria-label", `Opção de resposta: ${op}`);
         b.onclick = () => { if (!G.respondeu) responder(op, q); };
         g.appendChild(b);
     });
 }
 
-/* ========================================================
-   A CLÍNICA DO ERRO: DIAGNÓSTICO, TRI E SCAFFOLDING
-======================================================== */
 function responder(opcao, q) {
     if (G.respondeu) return;
     G.respondeu = true;
-    const ok = (opcao === q.res);
+
+    // LÓGICA DE MÚLTIPLAS RESPOSTAS: Aceita se 'res' for uma string igual ou se estiver dentro de um Array
+    let ok = false;
+    if (Array.isArray(q.res)) {
+        ok = q.res.map(String).includes(String(opcao));
+    } else {
+        ok = (String(opcao) === String(q.res));
+    }
     
-    if (q.bncc && G.historico[q.bncc]) {
-        if (G.historico[q.bncc].erros_sinal === undefined) {
-            G.historico[q.bncc].erros_sinal = 0;
-            G.historico[q.bncc].erros_calculo = 0;
-        }
+    // Inicializa histórico BNCC se não existir para este código
+    if (q.bncc && !G.historico[q.bncc]) {
+        G.historico[q.bncc] = { desc: q.bncc_desc || "Habilidade BNCC", acertos: 0, erros_sinal: 0, erros_calculo: 0 };
     }
 
+    // Feedback Visual
     document.querySelectorAll(".ba").forEach(b => {
         b.classList.add("dis"); 
-        if (b.textContent === q.res) b.classList.add("ok");
-        else if (b.textContent === opcao && !ok) b.classList.add("no");
+        if (Array.isArray(q.res)) {
+            if (q.res.map(String).includes(b.textContent)) b.classList.add("ok");
+        } else {
+            if (b.textContent === String(q.res)) b.classList.add("ok");
+        }
+        if (b.textContent === String(opcao) && !ok) b.classList.add("no");
     });
     
-    renderCv(q); 
     const fb = document.getElementById("fb");
     
     if (ok) {
         G.acertos++; G.combo++; G.consec_erros = 0; 
         G.energia = Math.min(100, G.energia + 10);
         if (G.combo % 5 === 0) G.nivel++;
-        if (q.bncc && G.historico[q.bncc]) G.historico[q.bncc].acertos++;
+        if (q.bncc) G.historico[q.bncc].acertos++;
         
         fb.style.color = "var(--neon-green)";
-        let extraFeedback = "";
-        
-        if (G.combo >= 4 && (q.tipo === "equacao" || q.tipo === "sinais")) {
-            extraFeedback = "<br><span style='color:var(--choco-gold)'>💡 Reflita: O que aconteceria matematicamente se nós invertêssemos todos os sinais ao mesmo tempo?</span>";
-        }
-        
-        fb.innerHTML = `✓ Exato, ${G.nome}! <span style="color:var(--text-muted);font-size:12px">${q.passo} ${extraFeedback}</span>`;
-        narrarContexto(`Perfeito, ${G.nome}! A lógica é: ${q.passo}`);
+        fb.innerHTML = `✓ Excelente, ${G.nome}! <br><small>${q.passo}</small>`;
+        narrarContexto(`Correto, ${G.nome}. ${q.passo}`);
         tocarAv("ok");
-        
-        const ce = document.getElementById("tcb");
-        ce.classList.remove("pop"); void ce.offsetWidth; ce.classList.add("pop");
-
     } else {
         G.erros++; G.combo = 0; G.consec_erros++; 
         G.vida = Math.max(0, G.vida - 20); 
-        G.energia = Math.max(0, G.energia - 5);
-        fb.style.color = "var(--choco-gold)"; 
         
-        let msgErro = "";
+        // Diagnóstico Clínico do Erro
         let erroDeSinal = false;
-        
-        if (!isNaN(opcao) && !isNaN(q.res) && Number(opcao) === (Number(q.res) * -1) && q.res !== "0") {
-            erroDeSinal = true;
+        if (!isNaN(opcao) && !isNaN(Array.isArray(q.res) ? q.res[0] : q.res)) {
+            let resPrincipal = Array.isArray(q.res) ? Number(q.res[0]) : Number(q.res);
+            if (Number(opcao) === (resPrincipal * -1)) erroDeSinal = true;
         }
 
         if (erroDeSinal) {
-            if (q.bncc && G.historico[q.bncc]) G.historico[q.bncc].erros_sinal++;
-            msgErro = `Análise Incompleta, ${G.nome}! Você acertou a quantidade, mas esqueceu da inversão geométrica. Lembre-se: o sinal negativo inverte a direção!`;
+            if (q.bncc) G.historico[q.bncc].erros_sinal++;
+            fb.innerHTML = `⚠️ Quase, ${G.nome}! Você acertou o valor, mas inverteu o sentido (sinal).`;
         } else {
-            if (q.bncc && G.historico[q.bncc]) G.historico[q.bncc].erros_calculo++;
-            msgErro = `Desvio detetado. Revise a sua tabuada ou as grandezas apresentadas.`;
-        }
-
-        let dicaAtiva = q.dica.replace(/<[^>]*>?/gm, '');
-        if (G.consec_erros >= 3) {
-            msgErro = `<strong>Pausa de Sistema:</strong> Percebi que este padrão está difícil. Vamos olhar para a regra base.`;
-            dicaAtiva = "Atenção especial à regra do laboratório: " + dicaAtiva;
+            if (q.bncc) G.historico[q.bncc].erros_calculo++;
+            fb.innerHTML = `⚠️ Erro de processamento. A resposta esperada era ${Array.isArray(q.res) ? q.res.join(' ou ') : q.res}.`;
         }
         
-        fb.innerHTML = `⚠️ ${msgErro} <br><span style="color:var(--text-muted);font-size:12px">— A resposta correta era <strong>${q.res}</strong> (${q.passo})</span>`;
-        narrarContexto(`${msgErro.replace(/<[^>]*>?/gm, '')} A resposta esperada era ${q.res}. ${dicaAtiva}`);
+        fb.style.color = "var(--choco-gold)";
+        narrarContexto(fb.innerText);
         tocarAv("no");
     }
     
+    salvarProgresso();
     updHUD();
     if (q.tipo === "reta") animarArcos(q);
-    
-    const btnProx = document.getElementById("btn-prox");
-    btnProx.style.display = "block";
-    btnProx.focus(); 
-    
+    document.getElementById("btn-prox").style.display = "block";
     if (G.vida <= 0) setTimeout(exibirGameOver, 1400);
 }
 
-/* ========================================================
-   CONTROLO DE FLUXO E MINI-DASHBOARD DO ALUNO
-======================================================== */
 function proximaQ() {
     setAnimando(false);
     qAtual = selQ();
     renderQ(qAtual);
 }
 
-function reiniciar() {
-    G.vida = 100; G.energia = 60; G.combo = 0; G.nivel = 1; 
-    G.acertos = 0; G.erros = 0; G.consec_erros = 0;
+/* ========================================================
+   RELATÓRIOS E EXPORTAÇÃO (SISTEMA DO PROFESSOR)
+======================================================== */
+function exportarRelatorioCSV() {
+    // Cabeçalho do CSV
+    let csv = "Codigo_BNCC;Descricao;Acertos;Erros_Sinal;Erros_Calculo\n";
     
-    document.getElementById("go").classList.remove("show");
-    updHUD(); 
-    proximaQ();
+    for (let cod in G.historico) {
+        let h = G.historico[cod];
+        // Limpa vírgulas da descrição para não quebrar o CSV
+        let descLimpa = h.desc.replace(/;/g, ',');
+        csv += `${cod};${descLimpa};${h.acertos};${h.erros_sinal};${h.erros_calculo}\n`;
+    }
+
+    const blob = new Blob(["\ufeff" + csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `Relatorio_LabTech_${G.nome.replace(/\s/g, '_')}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
 
-// Autorregulação do Aluno com o Nome!
 function verPerfilAluno() {
-    let titulo = "Cientista Iniciante";
-    if (G.nivel > 2 && G.nivel <= 5) titulo = "Operador de Sinais";
-    if (G.nivel > 5) titulo = "Mestre Algébrico";
-    
-    const faltamParaNivel = 5 - (G.combo % 5);
-    
-    const relatorio = `Cientista ${G.nome}. O seu Título Atual é: ${titulo}. Tem ${G.acertos} reatores estabilizados. Acerte mais ${faltamParaNivel} seguidas para subir de nível!`;
-    narrarContexto(relatorio);
-    alert(relatorio);
+    let titulo = G.nivel > 5 ? "Mestre Algébrico" : G.nivel > 2 ? "Explorador" : "Cientista Júnior";
+    let msg = `Perfil: ${G.nome}\nPatente: ${titulo}\nAcertos Totais: ${G.acertos}`;
+    narrarContexto(`Relatório de perfil: ${G.nome}, você é um ${titulo}.`);
+    alert(msg);
+}
+
+function reiniciar() {
+    G.vida = 100; G.energia = 60; G.combo = 0; G.nivel = 1; 
+    G.acertos = 0; G.erros = 0;
+    document.getElementById("go").classList.remove("show");
+    updHUD(); proximaQ();
 }
 
 /* ========================================================
-   EXPOSIÇÃO GLOBAL PARA O HTML
+   EXPOSIÇÃO GLOBAL
 ======================================================== */
 window.selT = selT;
 window.iniciarJogo = iniciarJogo;
@@ -243,3 +249,4 @@ window.toggleSom = toggleSom;
 window.abrirM = abrirM;
 window.fecharM = fecharM;
 window.verPerfilAluno = verPerfilAluno;
+window.exportarRelatorioCSV = exportarRelatorioCSV;
