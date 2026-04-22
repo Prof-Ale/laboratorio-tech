@@ -86,31 +86,28 @@ export function renderCv(q) {
 }
 
 /* ========================================================
-   FUNÇÕES DE DESENHO GEOMÉTRICO
+   FUNÇÕES DE DESENHO GEOMÉTRICO (ATUALIZADAS COM CORES HEX)
 ======================================================== */
 
-// Função que calcula a posição X no canvas com base no número matemático (-10 a 10)
 function getX(val, width) {
     const min = -10;
     const max = 10;
-    const margem = 30; // Margem nas bordas
+    const margem = 30; 
     const areaUtil = width - (margem * 2);
     const passo = areaUtil / (max - min);
     return margem + ((val - min) * passo);
 }
 
 function desenharReta(ctx, w, h) {
-    const yCenter = h - 30; // Posição vertical da reta
+    const yCenter = h - 30; 
 
-    // Desenha a linha principal
     ctx.beginPath();
     ctx.moveTo(10, yCenter);
     ctx.lineTo(w - 10, yCenter);
-    ctx.strokeStyle = "rgba(212, 160, 23, 0.6)"; // Cor choco-gold translúcida
+    ctx.strokeStyle = "rgba(212, 160, 23, 0.6)"; 
     ctx.lineWidth = 3;
     ctx.stroke();
 
-    // Desenha as marcações (ticks) e os números
     ctx.textAlign = "center";
     ctx.textBaseline = "top";
     ctx.font = "bold 12px Nunito";
@@ -118,18 +115,15 @@ function desenharReta(ctx, w, h) {
     for (let i = -10; i <= 10; i++) {
         const x = getX(i, w);
         
-        // Marcação na linha
         ctx.beginPath();
         ctx.moveTo(x, yCenter - 5);
         ctx.lineTo(x, yCenter + 5);
-        ctx.strokeStyle = i === 0 ? "var(--neon-cyan)" : "rgba(255, 255, 255, 0.4)";
+        // Usando o código HEX do Ciano direto aqui!
+        ctx.strokeStyle = i === 0 ? "#00e5ff" : "rgba(255, 255, 255, 0.4)";
         ctx.lineWidth = i === 0 ? 3 : 2;
         ctx.stroke();
 
-        // Número abaixo da marcação
-        ctx.fillStyle = i === 0 ? "var(--neon-cyan)" : "rgba(255, 255, 255, 0.7)";
-        
-        // Desenha apenas números pares e o zero para não poluir, ou todos se couber
+        ctx.fillStyle = i === 0 ? "#00e5ff" : "rgba(255, 255, 255, 0.7)";
         if (i % 2 === 0 || i === 5 || i === -5) {
             ctx.fillText(i, x, yCenter + 10);
         }
@@ -142,44 +136,46 @@ function desenharPontoPartida(ctx, w, h, a) {
 
     ctx.beginPath();
     ctx.arc(startX, yCenter, 6, 0, Math.PI * 2);
-    ctx.fillStyle = "var(--neon-cyan)";
+    ctx.fillStyle = "#00e5ff"; // Ciano puro (Garante que o navegador não esconde)
     ctx.fill();
+    
     ctx.shadowBlur = 10;
-    ctx.shadowColor = "var(--neon-cyan)";
+    ctx.shadowColor = "#00e5ff";
+    // Tira a sombra para o resto do canvas não bugar
+    ctx.shadowBlur = 0; 
 }
 
 function desenharArco(ctx, w, h, a, b, progresso) {
     const startX = getX(a, w);
     const endX = getX(a + b, w);
     const yCenter = h - 30;
-    const alturaArco = 50; // Quão alto o salto vai
+    const alturaArco = 50; 
+
+    // Se o valor de b for positivo, é Verde. Se for negativo, é Vermelho!
+    const corArco = b > 0 ? "#00ff88" : "#ff4444";
 
     ctx.save();
     ctx.beginPath();
     ctx.moveTo(startX, yCenter);
 
-    // Desenha a parábola progressivamente baseada no 'progresso' (0 a 1)
     for (let t = 0; t <= progresso; t += 0.02) {
         let cx = startX + (endX - startX) * t;
-        // Equação da parábola para fazer o arco subir e descer
         let cy = yCenter - alturaArco * (1 - Math.pow(2 * t - 1, 2));
         ctx.lineTo(cx, cy);
     }
 
-    // Estilo da linha do salto
-    ctx.strokeStyle = b > 0 ? "var(--neon-green)" : "var(--neon-red)";
+    ctx.strokeStyle = corArco;
     ctx.lineWidth = 4;
     ctx.lineCap = "round";
-    ctx.setLineDash([5, 5]); // Linha tracejada
+    ctx.setLineDash([5, 5]); 
     ctx.stroke();
 
-    // Desenha a "cabeça" da seta no final da animação atual
     let atualX = startX + (endX - startX) * progresso;
     let atualY = yCenter - alturaArco * (1 - Math.pow(2 * progresso - 1, 2));
 
     ctx.beginPath();
     ctx.arc(atualX, atualY, 6, 0, Math.PI * 2);
-    ctx.fillStyle = b > 0 ? "var(--neon-green)" : "var(--neon-red)";
+    ctx.fillStyle = corArco;
     ctx.fill();
 
     ctx.restore();
