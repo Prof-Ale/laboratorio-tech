@@ -153,9 +153,13 @@ function responder(opcao, q) {
         if (G.combo % 5 === 0) G.nivel++;
         if (q.bncc) G.historico[q.bncc].acertos++;
         
+        // Sorteador de elogios para não enjoar!
+        const elogios = ["Excelente", "Muito bem", "Correto", "Isso aí", "Na mosca", "Fantástico", "Perfeito"];
+        const elogio = elogios[Math.floor(Math.random() * elogios.length)];
+        
         fb.style.color = "var(--neon-green)";
-        fb.innerHTML = `✓ Excelente, ${G.nome}! <br><small>${q.passo}</small>`;
-        narrarContexto(`Correto, ${G.nome}. ${q.passo}`);
+        fb.innerHTML = `✓ ${elogio}! <br><small>${q.passo}</small>`;
+        narrarContexto(`${elogio}! ${q.passo}`);
         tocarAv("ok");
     } else {
         G.erros++; G.combo = 0; G.consec_erros++; 
@@ -169,10 +173,12 @@ function responder(opcao, q) {
 
         if (erroDeSinal) {
             if (q.bncc) G.historico[q.bncc].erros_sinal++;
-            fb.innerHTML = `⚠️ Quase, ${G.nome}! Você acertou o valor, mas inverteu o sentido (sinal).`;
+            // Removido o nome daqui também
+            fb.innerHTML = `⚠️ Quase lá! Você acertou o valor, mas inverteu o sentido (sinal).`;
         } else {
             if (q.bncc) G.historico[q.bncc].erros_calculo++;
-            fb.innerHTML = `⚠️ Erro de processamento. A resposta esperada era ${Array.isArray(q.res) ? q.res.join(' ou ') : q.res}.`;
+            // Mensagem mais natural e direta
+            fb.innerHTML = `⚠️ Ops, houve um desvio! A resposta esperada era ${Array.isArray(q.res) ? q.res.join(' ou ') : q.res}.`;
         }
         
         fb.style.color = "var(--choco-gold)";
@@ -186,7 +192,6 @@ function responder(opcao, q) {
     document.getElementById("btn-prox").style.display = "block";
     if (G.vida <= 0) setTimeout(exibirGameOver, 1400);
 }
-
 function proximaQ() {
     setAnimando(false);
     qAtual = selQ();
