@@ -115,26 +115,40 @@ window.voltarAoSplash = function() {
    MOTOR DE QUESTÕES E CLÍNICA DO ERRO
 ======================================================== */
 
-function renderQ(q) {
-    if (!q) {
-        console.error("Erro: Nenhuma questão encontrada para este bloco.");
-        return;
+// Função auxiliar para embaralhar arrays (Fisher-Yates)
+function shuffle(array) {
+    let m = array.length, t, i;
+    while (m) {
+        i = Math.floor(Math.random() * m--);
+        t = array[m];
+        array[m] = array[i];
+        array[i] = t;
     }
-    
+    return array;
+}
+
+function renderQ(q) {
+    if (!q) return;
+
     document.getElementById("conta-display").innerHTML = "<span>" + q.display + "</span>";
     document.getElementById("regra-box").innerHTML = q.dica || "";
     document.getElementById("fb").textContent = "";
     document.getElementById("btn-prox").classList.add("hidden");
-    
+
     G.respondeu = false;
     setAnimando(false);
-    renderCv(q); // Desenha a reta numérica/elementos no Canvas
-    
+    renderCv(q);
+
     const g = document.getElementById("grid-botoes");
     g.innerHTML = "";
-    g.style.gridTemplateColumns = q.botoes.length <= 3 ? `repeat(${q.botoes.length}, 1fr)` : "1fr 1fr";
-    
-    q.botoes.forEach(op => {
+
+    // --- O PULO DO GATO ---
+    // Criamos uma cópia dos botões para não alterar o banco de dados original
+    const botoesEmbaralhados = shuffle([...q.botoes]); 
+
+    g.style.gridTemplateColumns = botoesEmbaralhados.length <= 3 ? `repeat(${botoesEmbaralhados.length}, 1fr)` : "1fr 1fr";
+
+    botoesEmbaralhados.forEach(op => {
         const b = document.createElement("button");
         b.className = "ba";
         b.textContent = op;
