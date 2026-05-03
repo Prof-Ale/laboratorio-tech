@@ -1,6 +1,7 @@
 /**
- * main.js - Versão 6.1 "MathLab Estabilizado"
+ * main.js - Versão 6.2 "MathLab Estabilizado"
  * Orquestrador com Persistência, Seletor de Blocos e Clínica do Erro v3.
+ * Ajuste cirúrgico: Exposição de escopo global e diagnóstico de porcentagem.
  */
 
 import { G } from './engine/gameState.js';
@@ -18,6 +19,15 @@ import {
 } from './ui-manager.js';
 
 let qAtual = null;
+
+/* ========================================================
+   ESTABILIZAÇÃO DE ESCOPO (Ponte para o HTML)
+   Resolve os erros de 'ReferenceError' e 'abrirM is not defined'
+======================================================== */
+window.abrirM = abrirM;
+window.fecharM = fecharM;
+window.toggleMusica = toggleMusica;
+window.toggleVoz = toggleVoz;
 
 /* ========================================================
    PERSISTÊNCIA DE DADOS (LOCALSTORAGE)
@@ -68,8 +78,12 @@ window.mostrarSeletorBlocos = function() {
 
 window.iniciarBloco = function(id) {
     const blockNames = {
-        1: "Base Numérica", 2: "Números e Operações", 3: "Grandezas e Medidas",
-        4: "Álgebra e Padrão", 5: "Estatística e Dados"
+        1: "Base Numérica", 
+        2: "Números e Operações", 
+        3: "Grandezas e Medidas",
+        4: "Álgebra e Padrão", 
+        5: "Estatística e Dados",
+        6: "Porcentagem e Finanças" // Atualização cirúrgica: Novo Bloco
     };
 
     G.currentBlock = id;
@@ -128,7 +142,14 @@ function responder(opcao, q) {
         : String(opcao) === String(q.res);
 
     if (q.bncc && !G.historico[q.bncc]) {
-        G.historico[q.bncc] = { desc: q.bncc_desc || "Habilidade BNCC", acertos: 0, erros_conceito: 0, erros_calculo: 0, bloco: G.currentBlock };
+        G.historico[q.bncc] = { 
+            desc: q.bncc_desc || "Habilidade BNCC", 
+            acertos: 0, 
+            erros_conceito: 0, 
+            erros_calculo: 0, 
+            erros_porcentagem: 0, // Diagnóstico financeiro
+            bloco: G.currentBlock 
+        };
     }
 
     const fb = document.getElementById("fb");
@@ -160,12 +181,21 @@ function processarErro(opcao, q, fbEl) {
     G.vida = Math.max(0, G.vida - 20);
 
     const resEsperada = Array.isArray(q.res) ? Number(q.res[0]) : Number(q.res);
+    const opNum = Number(opcao.replace(/[^\d]/g, '')); // Extrai apenas números
+
     // Diagnóstico Automático (Sinal trocado)
-    if (!isNaN(opcao) && Number(opcao) === resEsperada * -1) {
+    if (!isNaN(opNum) && opNum === resEsperada * -1) {
         registrarHistoricoErro(q.bncc, "conceito");
         fbEl.innerHTML = "⚠️ Erro de Sinal detectado (Conceito). " + q.passo;
         document.getElementById("btn-prox").classList.remove("hidden");
-    } else {
+    } 
+    // Diagnóstico Automático (Porcentagem: somou em vez de subtrair desconto)
+    else if (q.tipo === "porcentagem" && opNum > resEsperada) {
+        registrarHistoricoErro(q.bncc, "porcentagem");
+        fbEl.innerHTML = "⚠️ Você somou o valor ao invés de subtrair o desconto! " + q.passo;
+        document.getElementById("btn-prox").classList.remove("hidden");
+    }
+    else {
         abrirClinicaManual(q);
     }
     tocarAv("no");
@@ -192,6 +222,7 @@ function abrirClinicaManual(q) {
 function registrarHistoricoErro(cod, tipo) {
     if (cod && G.historico[cod]) {
         if (tipo === "conceito") G.historico[cod].erros_conceito++;
+        else if (tipo === "porcentagem") G.historico[cod].erros_porcentagem++;
         else G.historico[cod].erros_calculo++;
     }
 }
@@ -212,17 +243,18 @@ window.proximaQ = function() {
 }
 
 /* ========================================================
-   RELATÓRIOS E ACESSIBILIDADE
+   RELATÓRIOS E REINICIALIZAÇÃO
 ======================================================== */
 window.exportarRelatorioCSV = function() {
     const agora = new Date().toLocaleDateString("pt-BR");
-    let csv = `Aluno;Turma;Data;Bloco;Codigo_BNCC;Descricao;Acertos;Erros_Conceito;Erros_Calculo;Total_Erros;Percentual_Acerto\n`;
+    let csv = `Aluno;Turma;Data;Bloco;Codigo_BNCC;Descricao;Acertos;Erros_Conceito;Erros_Calculo;Erros_Porcentagem;Total_Erros;Percentual_Acerto\n`;
 
     for (let cod in G.historico) {
         const h = G.historico[cod];
-        const total = h.acertos + h.erros_conceito + h.erros_calculo;
+        const errosT = (h.erros_conceito || 0) + (h.erros_calculo || 0) + (h.erros_porcentagem || 0);
+        const total = h.acertos + errosT;
         const pct = total > 0 ? Math.round((h.acertos / total) * 100) + "%" : "0%";
-        csv += `${G.nome};${G.turma};${agora};${h.bloco};${cod};${h.desc.replace(/;/g, ',')};${h.acertos};${h.erros_conceito};${h.erros_calculo};${h.erros_conceito+h.erros_calculo};${pct}\n`;
+        csv += `${G.nome};${G.turma};${agora};${h.bloco};${cod};${h.desc.replace(/;/g, ',')};${h.acertos};${h.erros_conceito};${h.erros_calculo};${h.erros_porcentagem || 0};${errosT};${pct}\n`;
     }
 
     const blob = new Blob(["\ufeff" + csv], { type: 'text/csv;charset=utf-8;' });
