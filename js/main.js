@@ -226,46 +226,82 @@ function processarErro(opcao, q, fbEl) {
     G.consec_erros++;
     G.vida = Math.max(0, G.vida - 20);
 
-    // ── CLÍNICA DO ERRO v2 ──────────────────────────────────────────────
-    // Prioridade 1: verifica se a questão define respostas de erro de conceito
-    // via campo `erroConceito: ["opcao1", "opcao2"]`
-    let tipoErro = "calculo"; // padrão
+   /* ========================================================
+   CLÍNICA DO ERRO v3 - DIAGNÓSTICO METACOGNITIVO
+======================================================== */
 
-    if (q.erroConceito && Array.isArray(q.erroConceito)) {
-        if (q.erroConceito.map(String).includes(String(opcao))) {
-            tipoErro = "conceito";
-        }
-    } else {
-        // Fallback legado: erro de sinal para questões numéricas
-        const resEsperada = Array.isArray(q.res) ? Number(q.res[0]) : Number(q.res);
-        if (!isNaN(opcao) && Number(opcao) === resEsperada * -1) {
-            tipoErro = "conceito"; // sinal errado = erro de conceito
-        }
+function processarErro(opcao, q, fbEl) {
+    G.erros++;
+    G.combo = 0;
+    G.consec_erros++;
+    G.vida = Math.max(0, G.vida - 20);
+
+    let tipoErroIdentificado = null;
+
+    // 1. Diagnóstico Automático (Sinal trocado)
+    const resEsperada = Array.isArray(q.res) ? Number(q.res[0]) : Number(q.res);
+    if (!isNaN(opcao) && Number(opcao) === resEsperada * -1) {
+        tipoErroIdentificado = "conceito";
+        registrarHistoricoErro(q.bncc, "conceito");
+        exibirFeedbackManual(fbEl, q, "conceito");
+    } 
+    // 2. Se não for óbvio, abrir Diagnóstico Manual para o aluno
+    else {
+        abrirClinicaManual(q, fbEl);
     }
 
-    if (q.bncc) {
-        if (tipoErro === "conceito") {
-            G.historico[q.bncc].erros_conceito++;
-        } else {
-            G.historico[q.bncc].erros_calculo++;
-        }
-    }
-
-    const msgConceito = `⚠️ Erro de conceito — reveja a ideia antes de calcular. ${q.passo}`;
-    const msgCalculo  = `⚠️ Erro de cálculo — o caminho estava certo, mas o resultado não. Resposta: ${Array.isArray(q.res) ? q.res[0] : q.res}.`;
-
-    fbEl.style.color = "var(--choco-gold)";
-    fbEl.innerHTML   = tipoErro === "conceito" ? msgConceito : msgCalculo;
-    narrarContexto(fbEl.innerText);
+    salvarProgresso();
+    updHUD();
     tocarAv("no");
 }
 
-window.proximaQ = function() {
-    setAnimando(false);
-    qAtual = selQ(G.currentBlock);
-    renderQ(qAtual);
+function abrirClinicaManual(q, fbEl) {
+    // Usamos o seu sistema de grid de botões para o diagnóstico
+    const g = document.getElementById("grid-botoes");
+    document.getElementById("conta-display").innerHTML = "<span style='color:var(--choco-gold)'>DIAGNÓSTICO NECESSÁRIO</span>";
+    document.getElementById("regra-box").innerHTML = "Cientista, analise seu erro:";
+
+    g.innerHTML = "";
+    
+    const btnConceito = document.createElement("button");
+    btnConceito.className = "ba b1"; // b1 para cor do bloco
+    btnConceito.textContent = "CONCEITO (Não entendi a regra)";
+    btnConceito.onclick = () => {
+        registrarHistoricoErro(q.bncc, "conceito");
+        fecharClinicaManual(q, "Erro de Conceito detectado. " + q.passo);
+    };
+
+    const btnCalculo = document.createElement("button");
+    btnCalculo.className = "ba b2"; 
+    btnCalculo.textContent = "CÁLCULO (Me distraí na conta)";
+    btnCalculo.onclick = () => {
+        registrarHistoricoErro(q.bncc, "calculo");
+        fecharClinicaManual(q, "Erro de Cálculo detectado. Atenção aos detalhes!");
+    };
+
+    g.appendChild(btnConceito);
+    g.appendChild(btnCalculo);
+    
+    narrarContexto("Cientista, identifique a origem da falha para prosseguirmos.");
 }
 
+function registrarHistoricoErro(cod, tipo) {
+    if (cod && G.historico[cod]) {
+        if (tipo === "conceito") G.historico[cod].erros_conceito++;
+        else G.historico[cod].erros_calculo++;
+    }
+}
+
+function fecharClinicaManual(q, mensagem) {
+    const fb = document.getElementById("fb");
+    fb.style.color = "var(--choco-gold)";
+    fb.innerHTML = mensagem;
+    narrarContexto(mensagem);
+    document.getElementById("btn-prox").classList.remove("hidden");
+    // Limpa o grid para não clicar de novo
+    document.getElementById("grid-botoes").innerHTML = "";
+}
+    
 /* ========================================================
    RELATÓRIOS E FERRAMENTAS DO PROFESSOR
 ======================================================== */
