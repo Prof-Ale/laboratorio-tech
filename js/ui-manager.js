@@ -1,6 +1,7 @@
 /**
- * ui-manager.js - Versão Estabilizada
+ * ui-manager.js - Versão 3.5 (Estabilizada)
  * DUA: Implementação de Acessibilidade Auditiva e Visual
+ * Correção de Escopo para Módulos ES6
  */
 
 import { G } from './engine/gameState.js';
@@ -14,23 +15,24 @@ if (typeof window !== 'undefined' && window.speechSynthesis) {
     carregarVozes();
 }
 
+/**
+ * SÍNTESE DE VOZ (DUA)
+ * Faz o "Ducking" da música para garantir clareza auditiva.
+ */
 export function narrarContexto(t) {
     try {
         if (typeof window === 'undefined' || !window.speechSynthesis || !G.voz) return;
 
-        window.speechSynthesis.cancel(); // Interrompe fala anterior
-        const textoLimpo = t.replace(/<[^>]*>?/gm, ''); // Remove HTML para o leitor
+        window.speechSynthesis.cancel();
+        const textoLimpo = t.replace(/<[^>]*>?/gm, '');
         const u = new SpeechSynthesisUtterance(textoLimpo);
         const vozes = window.speechSynthesis.getVoices();
 
-        // Filtro para voz pt-BR (Preferência por vozes naturais)
         const vozBR = vozes.find(x => x.lang.includes('pt-BR'));
-
         u.lang = "pt-BR";
         u.rate = 0.95; 
         if (vozBR) u.voice = vozBR;
 
-        // Efeito Ducking (DUA)
         u.onstart = () => { if (bgm && G.musica) bgm.volume = 0.02; };
         u.onend   = () => { if (bgm && G.musica) bgm.volume = 0.07; };
 
@@ -40,7 +42,77 @@ export function narrarContexto(t) {
     }
 }
 
-// ... (Funções de toggleMusica, toggleVoz, tocarAv e updHUD permanecem conforme seu código original)
+// === CONTROLES DE MÍDIA ===
+
+export function toggleMusica() {
+    G.musica = !G.musica;
+    const el = document.getElementById("tsom");
+    if (el) el.textContent = G.musica ? "ON" : "OFF";
+
+    if (G.musica && bgm) {
+        bgm.volume = 0.07;
+        bgm.play().catch(() => {});
+    } else if (bgm) {
+        bgm.pause();
+    }
+}
+
+export function toggleVoz() {
+    G.voz = !G.voz;
+    const el = document.getElementById("tvoz");
+    if (el) el.textContent = G.voz ? "ON" : "OFF";
+    if (!G.voz) window.speechSynthesis.cancel();
+}
+
+// === AVATAR E HUD ===
+
+export function tocarAv(tipo) {
+    const img = document.getElementById("av-img");
+    const vid = document.getElementById(tipo === "ok" ? "vid-ok" : "vid-no");
+    if (!img || !vid) return;
+
+    img.classList.add("avh");
+    vid.classList.remove("avh");
+    vid.currentTime = 0;
+    vid.play().catch(() => {
+        vid.classList.add("avh");
+        img.classList.remove("avh");
+    });
+
+    vid.onended = () => {
+        vid.classList.add("avh");
+        img.classList.remove("avh");
+    };
+}
+
+export function updHUD() {
+    const fv = document.getElementById("fv");
+    const fen = document.getElementById("fen");
+    if (fv) fv.style.width = G.vida + "%";
+    if (fen) fen.style.width = G.energia + "%";
+    
+    // Atualização de textos do HUD
+    ["tcb", "tnv"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = (id === "tcb") ? G.combo : G.nivel;
+    });
+}
+
+// === GESTÃO DE MODAIS (Correção do SyntaxError) ===
+
+export function abrirM(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.classList.add("show");
+    if (id === 'mdash') gerarDashboard();
+}
+
+export function fecharM(id) {
+    const modal = document.getElementById(id);
+    if (modal) modal.classList.remove("show");
+}
+
+// === DASHBOARD CLÍNICO ===
 
 function gerarDashboard() {
     const c = document.getElementById("dash-content");
@@ -53,29 +125,33 @@ function gerarDashboard() {
         const hist = G.historico[hab];
         if (!hist) continue;
 
-        const { acertos = 0, erros_sinal = 0, erros_calculo = 0, erros = 0 } = hist;
-        const total = acertos + erros_sinal + erros_calculo + erros;
+        const { acertos = 0, erros_sinal = 0, erros_calculo = 0, erros_porcentagem = 0, erros = 0 } = hist;
+        const total = acertos + erros_sinal + erros_calculo + erros_porcentagem + erros;
         if (total === 0) continue;
         temDados = true;
 
         const txAcerto = Math.round((acertos / total) * 100);
-        
-        // Lógica de Alerta Pedagógico (Clínica do Erro v3)
         let diagnostico = "";
-        if (erros_sinal > erros_calculo) {
-            diagnostico = `<div class="alerta-sinal"><strong>Barreira de Sinal:</strong> Reforçar regra de sinais.</div>`;
+
+        // Clínica do Erro v3 Expandida para Porcentagem
+        if (erros_porcentagem > acertos) {
+            diagnostico = `<div class="alerta-sinal"><strong>Barreira Financeira:</strong> Confusão no cálculo de descontos. Praticar conversão de % para decimal.</div>`;
+        } else if (erros_sinal > erros_calculo) {
+            diagnostico = `<div class="alerta-sinal"><strong>Barreira de Sinal:</strong> Falha na inversão de valores.</div>`;
         } else if (erros_calculo > erros_sinal) {
-            diagnostico = `<div class="alerta-calc"><strong>Barreira de Cálculo:</strong> Reforçar operações básicas.</div>`;
+            diagnostico = `<div class="alerta-calc"><strong>Barreira de Cálculo:</strong> Necessário reforço em aritmética básica.</div>`;
         }
 
         c.innerHTML += `
             <div class="dash-card">
                 <h3>${hab} (${txAcerto}%)</h3>
-                <p>${hist.desc || ""}</p>
+                <p>${hist.desc || "Habilidade BNCC"}</p>
                 <div class="progress-bar-container">
                     <div class="bar acerto" style="width:${txAcerto}%"></div>
                 </div>
                 ${diagnostico}
             </div>`;
     }
+
+    if (!temDados) c.innerHTML = "<p>Aguardando dados de telemetria...</p>";
 }
