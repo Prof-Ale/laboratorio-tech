@@ -1,79 +1,62 @@
 /**
  * js/engine/selector.js
- * Motor de Seleção Inteligente - Versão 5.0 (Multiblocos)
- * Responsável por filtrar e sortear questões sem repetição imediata.
+ * Motor de Seleção Inteligente - Versão 6.1 "MathLab Adaptativo"
+ * Responsável por alinhar a complexidade da questão ao desempenho do aluno.
  */
 
 import { G } from './gameState.js';
 import { pool } from '../data/questions/index.js';
 
-// Memória de sessão: guarda os IDs das perguntas já respondidas para evitar repetição
 let perguntasFeitas = [];
 
 /**
- * Seleciona uma questão baseada no bloco ativo
- * @param {number} blockId - O ID do bloco selecionado (1 a 5)
- * @returns {object} - O objeto da questão sorteada
+ * Seleciona uma questão baseada no bloco ativo e no desempenho (G.nivel/G.combo)
+ * @param {number} blockId - O ID do bloco (1 a 5)
+ * @returns {object} - Questão sorteada
  */
 export function selQ(blockId) {
-    // 1. Filtra o banco de dados pelo Bloco Ativo
-    // Nota: Certifique-se de que no seu banco de dados (trilha1.js, etc), 
-    // as questões tenham a propriedade "bloco: 1"
+    // 1. Filtra inicialmente por Bloco
     let disponiveis = pool.filter(q => q.bloco === blockId);
 
-    // 2. Trava de Segurança: Se não houver questões no bloco, tenta o Bloco 1 (Base)
-    if (disponiveis.length === 0) {
-        console.warn(`Aviso: Bloco ${blockId} está vazio ou não foi encontrado.`);
-        disponiveis = pool.filter(q => q.bloco === 1);
+    // 2. Determina a Trilha (Nível de Dificuldade) baseada no estado global G
+    // G.trilha pode ser 1 (Reconhecimento), 2 (Aplicação) ou 3 (Investigação)
+    // Ajuste dinâmico: Se combo > 3, tenta subir a trilha
+    let trilhaAlvo = G.trilha;
+    if (G.combo >= 3 && trilhaAlvo < 3) trilhaAlvo++;
+    
+    // 3. Filtra por Trilha e evita repetição
+    let candidatos = disponiveis.filter(q => 
+        q.trilha === trilhaAlvo && 
+        !perguntasFeitas.includes(q.id)
+    );
+
+    // 4. Fallback Pedagógico: Se não houver perguntas na trilha alvo (esgotadas),
+    // busca na trilha anterior para evitar interrupção.
+    if (candidatos.length === 0) {
+        candidatos = disponiveis.filter(q => !perguntasFeitas.includes(q.id));
     }
 
-    // 3. Caso crítico: Banco de dados totalmente vazio ou inacessível
-    if (disponiveis.length === 0) {
-        return {
-            id: "PLACEHOLDER",
-            bloco: blockId,
-            tipo: "aritmetica",
-            display: "Laboratório em Manutenção! 🚧",
-            botoes: ["Entendido", "Aguardar"],
-            res: "Entendido",
-            passo: "O sistema está carregando novos desafios.",
-            dica: "Ada está processando os dados do Bloco " + blockId
-        };
-    }
-
-    // 4. Filtra apenas as perguntas que ainda NÃO foram feitas nesta sessão
-    let naoFeitas = disponiveis.filter(q => !perguntasFeitas.includes(q.id));
-
-    // 5. Reinício de Ciclo (Lógica DUA): 
-    // Se o aluno esgotou o banco daquele bloco, limpamos o histórico DESTE BLOCO
-    // para que ele possa revisar as questões (recomposição por repetição).
-    if (naoFeitas.length === 0) {
-        console.log(`%c Ciclo do Bloco ${blockId} completo! Reiniciando embaralhamento...`, "color: #00cec9");
-        
-        // Remove do histórico global apenas as perguntas que pertencem a este bloco
+    // 5. Reinício de Ciclo (Lógica de Recomposição)
+    if (candidatos.length === 0) {
         const idsDesteBloco = disponiveis.map(q => q.id);
         perguntasFeitas = perguntasFeitas.filter(id => !idsDesteBloco.includes(id));
-        
-        naoFeitas = disponiveis; 
+        candidatos = disponiveis;
     }
 
-    // 6. Sorteio Aleatório dentro das opções restantes
-    const indiceAleatorio = Math.floor(Math.random() * naoFeitas.length);
-    const qSorteada = naoFeitas[indiceAleatorio];
-    
-    // 7. Registra no histórico para evitar repetição na próxima chamada
-    perguntasFeitas.push(qSorteada.id);
+    // 6. Sorteio Aleatório
+    const indice = Math.floor(Math.random() * candidatos.length);
+    const qSorteada = candidatos[indice];
 
-    // Debug pedagógico no console
-    console.log(`[LabTech] Bloco: ${blockId} | Questão: ${qSorteada.id} | Restantes: ${naoFeitas.length - 1}`);
+    // 7. Atualiza estado e histórico
+    perguntasFeitas.push(qSorteada.id);
+    
+    // Log de Diagnóstico para o Professor (Console)
+    console.log(`[LabTech] Aluno: ${G.nome} | Bloco: ${blockId} | Trilha: ${qSorteada.trilha} | ID: ${qSorteada.id}`);
 
     return qSorteada;
 }
 
-/**
- * Função para limpar todo o histórico (útil ao trocar de aluno ou reiniciar o lab)
- */
 export function limparHistoricoSessao() {
     perguntasFeitas = [];
-    console.log("Histórico de questões zerado.");
+    console.log("Histórico de questões zerado para novo diagnóstico.");
 }
