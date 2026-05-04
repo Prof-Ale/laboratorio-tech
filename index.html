@@ -4,10 +4,71 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
     <title>Laboratório Tech • Recomposição Matemática</title>
+
     <link rel="icon" href="assets/img/favicon.png" type="image/png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- 🔧 Correções estruturais leves -->
+    <style>
+        .hidden { display: none !important; }
+
+        /* garante que controles nunca sumam */
+        .controls-top {
+            position: relative;
+            z-index: 20;
+        }
+
+        .btn-top-group {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 9999;
+        }
+
+        /* modal funcional de verdade */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 9998;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        /* garante visibilidade do botão próximo */
+        #btn-prox {
+            display: block;
+            margin-top: 12px;
+        }
+
+        #btn-prox.hidden {
+            display: none;
+        }
+
+        /* fim de jogo tratado como modal */
+        #go {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 9998;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #go.active {
+            display: flex;
+        }
+    </style>
 </head>
+
 <body>
 
     <section id="splash-screen" class="screen">
@@ -97,6 +158,7 @@
                     <div class="tp"></div>
                     <span id="nome-bloco-display">Carregando...</span>
                 </div>
+
                 <div class="controls-top">
                     <button class="bc2" onclick="toggleMusica()">🎵 <span id="tsom">ON</span></button>
                     <button class="bc2" onclick="toggleVoz()">🔊 <span id="tvoz">ON</span></button>
@@ -110,28 +172,17 @@
                 <div class="hi"><div class="hl">Combo</div><div class="hv" id="tcb">0</div></div>
             </div>
 
-            <div id="boss-hud" class="hidden">
-                <div class="stability-label">ESTABILIDADE DO NÚCLEO: <span id="stability-percent">0%</span></div>
-                <div class="stability-bar-container"><div id="stability-fill"></div></div>
-            </div>
-            
             <canvas id="canvas-game" width="580" height="130"></canvas>
             
-            <div id="conta-display" aria-live="assertive"></div>
+            <div id="conta-display"></div>
             <div id="regra-box"></div>
             
             <div class="ag" id="grid-botoes"></div>
             
-            <div id="fb" aria-live="polite"></div>
+            <div id="fb"></div>
             <button id="btn-prox" class="hidden" onclick="proximaQ()">PRÓXIMO DESAFIO →</button>
         </div>
     </section>
-
-    <div id="av" class="hidden">
-        <img id="av-img" src="avatar_estatico.png">
-        <video id="vid-ok" class="avh" muted playsinline><source src="avatar_jump.mp4" type="video/mp4"></video>
-        <video id="vid-no" class="avh" muted playsinline><source src="avatar_chute.mp4" type="video/mp4"></video>
-    </div>
 
     <div class="btn-top-group">
         <button class="btn-round" onclick="verPerfilAluno()">👤</button>
@@ -153,11 +204,13 @@
             <h2 id="go-title">TERMINAL CRÍTICO</h2>
             <p id="go-txt"></p>
             <button class="btn-start" onclick="reiniciar()">REINICIAR</button>
-            <button class="bc2" onclick="irParaSeletor()" style="width:100%">TROCAR BLOCO</button>
+            <button class="bc2" onclick="irParaSeletor()">TROCAR BLOCO</button>
         </div>
     </div>
 
-    <audio id="bgm" loop><source src="trilha.mp3" type="audio/mpeg"></audio>
+    <audio id="bgm" preload="auto" loop>
+        <source src="trilha.mp3" type="audio/mpeg">
+    </audio>
 
     <script type="module" src="js/main.js"></script>
 
