@@ -1,38 +1,110 @@
 :root {
-  --choco-dark:#2b1608; --choco-gold:#d4a017; --choco-cream:#f5e6c8;
-  --neon-cyan:#00eaff; --neon-green:#00ff88; --neon-red:#ff4444; --neon-yellow:#ffe600;
+  --choco-dark:#2b1608; 
+  --choco-gold:#d4a017; 
+  --choco-cream:#f5e6c8;
+
+  --neon-cyan:#00eaff; 
+  --neon-green:#00ff88; 
+  --neon-red:#ff4444; 
+  --neon-yellow:#ffe600;
+
   --bg-dark:#060610;
-  --text-main:#f0f0f0; --text-soft:#c8cce0; --text-muted:#7a7e9a;
-  --radius-xl:26px; --radius-lg:18px;
-  --font-display:'Orbitron',sans-serif; --font-body:'Nunito',sans-serif;
+
+  --text-main:#f0f0f0; 
+  --text-soft:#c8cce0; 
+  --text-muted:#7a7e9a;
+
+  --radius-xl:26px; 
+  --radius-lg:18px;
+
+  --font-display:'Orbitron',sans-serif; 
+  --font-body:'Nunito',sans-serif;
+
   --safe-b:env(safe-area-inset-bottom,0px);
 }
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{width:100%;height:100%;overflow:hidden;background:var(--bg-dark);color:var(--text-main);font-family:var(--font-body)}
 
+/* RESET */
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  -webkit-tap-highlight-color:transparent
+}
+
+/* 🔧 CORREÇÃO PRINCIPAL AQUI */
+html,body{
+  width:100%;
+  min-height:100%;
+  overflow-x:hidden;
+  background:var(--bg-dark);
+  color:var(--text-main);
+  font-family:var(--font-body);
+}
+
+/* FOCO ACESSÍVEL */
 :focus-visible {
   outline: 3px solid var(--neon-cyan);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
+/* BACKGROUND */
 body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
   background:
     radial-gradient(ellipse at 10% 8%,rgba(212,160,23,0.14),transparent 22%),
     radial-gradient(ellipse at 90% 10%,rgba(0,234,255,0.07),transparent 20%),
     radial-gradient(ellipse at 50% 95%,rgba(122,74,46,0.12),transparent 25%),
     linear-gradient(170deg,#0a0a1c 0%,#060610 100%);
 }
+
 body::after{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
-  background:repeating-linear-gradient(90deg,transparent 0,transparent 59px,rgba(255,255,255,0.012) 60px,transparent 61px);
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background:repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 59px,
+    rgba(255,255,255,0.012) 60px,
+    transparent 61px
+  );
 }
 
-.screen{position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
-.hidden{display:none!important}
+/* 🔧 NOVO PADRÃO DE CONTAINER GLOBAL */
+.container{
+  width:100%;
+  max-width:480px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
 
-/* ===== AJUSTE CRÍTICO: BOTÃO PRÓXIMO ===== */
+/* 🔧 CORREÇÃO DA SCREEN */
+.screen{
+  position:relative; /* 🔥 antes era fixed */
+  width:100%;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+}
+
+/* VISIBILIDADE */
+.hidden{
+  display:none !important;
+}
+
+/* BOTÃO PRÓXIMO */
 #btn-prox{
   width:100%;
   padding:14px;
@@ -45,30 +117,43 @@ body::after{
   font-family:var(--font-body);
   cursor:pointer;
   transition:transform .12s;
-  display:block; /* 🔧 antes era none fixo */
+  display:block;
+}
+
+#btn-prox:active{
+  transform:scale(0.97);
 }
 
 #btn-prox.hidden{
-  display:none !important; /* 🔧 controle passa pro JS */
+  display:none !important;
 }
 
-/* ===== SPLASH ===== */
-#splash-screen{background:transparent}
-.splash-inner{display:flex;flex-direction:column;align-items:center;gap:0;width:min(100%,480px);text-align:center}
+/* SPLASH */
+#splash-screen{
+  background:transparent;
+}
 
-/* ... (mantido exatamente igual até modais) ... */
+.splash-inner{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+  width:100%;
+  max-width:480px; /* 🔧 padronizado */
+  text-align:center;
+}
 
-/* ===== BOTÕES FIXOS ===== */
+/* BOTÕES FIXOS (mantido) */
 .btn-top-group { 
   position:fixed; 
   top:12px; 
   right:12px; 
-  z-index:9999; /* 🔧 garantia máxima */
+  z-index:9999;
   display:flex; 
   gap:8px; 
 }
 
-/* ===== MODAIS ===== */
+/* MODAIS (corretos como fixed) */
 .modal{
   position:fixed;
   inset:0;
@@ -77,16 +162,16 @@ body::after{
   display:none;
   align-items:center;
   justify-content:center;
-  padding:18px
+  padding:18px;
 }
 
-/* 🔧 compatibilidade dupla */
+/* compatibilidade */
 .modal.show,
 .modal.active{
-  display:flex
+  display:flex;
 }
 
-/* ===== GAME OVER ===== */
+/* GAME OVER */
 #go{
   position:fixed;
   inset:0;
@@ -95,21 +180,43 @@ body::after{
   display:none;
   align-items:center;
   justify-content:center;
-  padding:18px
+  padding:18px;
 }
 
-/* 🔧 compatibilidade dupla */
 #go.show,
 #go.active{
-  display:flex
+  display:flex;
 }
 
-/* ===== RESTO DO CSS MANTIDO ===== */
+/* ANIMAÇÕES (inalteradas) */
+@keyframes fadeSlide{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:translateY(0)}
+}
 
-/* animações e media query mantidos exatamente iguais */
-@keyframes fadeSlide{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-@keyframes avatarPulse{0%,100%{box-shadow:0 0 0 rgba(212,160,23,0)}50%{box-shadow:0 0 22px rgba(212,160,23,.25)}}
-@keyframes ringPulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.04);opacity:1}}
-@keyframes popAnim{0%{transform:scale(1)}50%{transform:scale(1.35)}100%{transform:scale(1)}}
-.pop{animation:popAnim .35s ease}
-@media(min-width:640px){.trilhas{grid-template-columns:repeat(4,1fr)}}
+@keyframes avatarPulse{
+  0%,100%{box-shadow:0 0 0 rgba(212,160,23,0)}
+  50%{box-shadow:0 0 22px rgba(212,160,23,.25)}
+}
+
+@keyframes ringPulse{
+  0%,100%{transform:scale(1);opacity:.5}
+  50%{transform:scale(1.04);opacity:1}
+}
+
+@keyframes popAnim{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.35)}
+  100%{transform:scale(1)}
+}
+
+.pop{
+  animation:popAnim .35s ease;
+}
+
+/* RESPONSIVO */
+@media(min-width:640px){
+  .trilhas{
+    grid-template-columns:repeat(4,1fr);
+  }
+}
