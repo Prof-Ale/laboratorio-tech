@@ -1,7 +1,6 @@
 /**
- * main.js - Versão 6.2 "MathLab Estabilizado"
- * Orquestrador com Persistência, Seletor de Blocos e Clínica do Erro v3.
- * Ajuste cirúrgico: Exposição de escopo global e diagnóstico de porcentagem.
+ * main.js - Versão 6.3 "MathLab Estabilizado + UI Coerente"
+ * Ajustes cirúrgicos de interface, fluxo e consistência.
  */
 
 import { G } from './engine/gameState.js';
@@ -21,8 +20,7 @@ import {
 let qAtual = null;
 
 /* ========================================================
-   ESTABILIZAÇÃO DE ESCOPO (Ponte para o HTML)
-   Resolve os erros de 'ReferenceError' e 'abrirM is not defined'
+   ESTABILIZAÇÃO DE ESCOPO GLOBAL
 ======================================================== */
 window.abrirM = abrirM;
 window.fecharM = fecharM;
@@ -30,7 +28,7 @@ window.toggleMusica = toggleMusica;
 window.toggleVoz = toggleVoz;
 
 /* ========================================================
-   PERSISTÊNCIA DE DADOS (LOCALSTORAGE)
+   PERSISTÊNCIA
 ======================================================== */
 function carregarDadosSalvos() {
     const backup = localStorage.getItem('laboratorio_tech_data');
@@ -58,22 +56,23 @@ function salvarProgresso() {
 carregarDadosSalvos();
 
 /* ========================================================
-   NAVEGAÇÃO E FLUXO DO USUÁRIO
+   NAVEGAÇÃO
 ======================================================== */
 window.mostrarSeletorBlocos = function() {
     const inputNome = document.getElementById("nome-cientista");
     const inputTurma = document.getElementById("turma-cientista");
 
-    G.nome = inputNome && inputNome.value.trim() !== "" ? inputNome.value.trim() : "Cientista";
-    G.turma = inputTurma && inputTurma.value.trim() !== "" ? inputTurma.value.trim() : "";
+    G.nome = inputNome?.value.trim() || "Cientista";
+    G.turma = inputTurma?.value.trim() || "";
 
     document.getElementById("splash-screen").classList.add("hidden");
     document.getElementById("block-selector").classList.remove("hidden");
 
-    const saudacao = G.turma
-        ? `Olá ${G.nome} da turma ${G.turma}, escolha qual setor vamos restaurar.`
-        : `Olá ${G.nome}, escolha qual setor vamos restaurar.`;
-    narrarContexto(saudacao);
+    narrarContexto(
+        G.turma
+            ? `Olá ${G.nome} da turma ${G.turma}, escolha o setor.`
+            : `Olá ${G.nome}, escolha o setor.`
+    );
 }
 
 window.iniciarBloco = function(id) {
@@ -83,7 +82,7 @@ window.iniciarBloco = function(id) {
         3: "Grandezas e Medidas",
         4: "Álgebra e Padrão", 
         5: "Estatística e Dados",
-        6: "Porcentagem e Finanças" // Atualização cirúrgica: Novo Bloco
+        6: "Porcentagem e Finanças"
     };
 
     G.currentBlock = id;
@@ -101,16 +100,17 @@ window.iniciarBloco = function(id) {
         bgm.play().catch(() => {});
     }
 
-    narrarContexto(`Iniciando Bloco ${id}: ${blockNames[id]}. Diagnóstico ativado.`);
+    narrarContexto(`Bloco ${id} iniciado. Diagnóstico ativo.`);
     updHUD();
     proximaQ();
 }
 
 /* ========================================================
-   MOTOR DE QUESTÕES E CLÍNICA DO ERRO v3
+   QUESTÕES
 ======================================================== */
 function renderQ(q) {
     if (!q) return;
+
     document.getElementById("conta-display").innerHTML = "<span>" + q.display + "</span>";
     document.getElementById("regra-box").innerHTML = q.dica || "";
     document.getElementById("fb").textContent = "";
@@ -122,9 +122,11 @@ function renderQ(q) {
 
     const g = document.getElementById("grid-botoes");
     g.innerHTML = "";
-    const botoesEmbaralhados = q.botoes.sort(() => Math.random() - 0.5);
 
-    botoesEmbaralhados.forEach(op => {
+    // 🔧 evita bug acumulativo do sort
+    const botoes = [...q.botoes].sort(() => Math.random() - 0.5);
+
+    botoes.forEach(op => {
         const b = document.createElement("button");
         b.className = "ba";
         b.textContent = op;
@@ -137,9 +139,11 @@ function responder(opcao, q) {
     if (G.respondeu) return;
     G.respondeu = true;
 
+    const opStr = String(opcao);
+
     const ok = Array.isArray(q.res) 
-        ? q.res.map(String).includes(String(opcao)) 
-        : String(opcao) === String(q.res);
+        ? q.res.map(String).includes(opStr)
+        : opStr === String(q.res);
 
     if (q.bncc && !G.historico[q.bncc]) {
         G.historico[q.bncc] = { 
@@ -147,17 +151,15 @@ function responder(opcao, q) {
             acertos: 0, 
             erros_conceito: 0, 
             erros_calculo: 0, 
-            erros_porcentagem: 0, // Diagnóstico financeiro
+            erros_porcentagem: 0,
             bloco: G.currentBlock 
         };
     }
 
     const fb = document.getElementById("fb");
-    if (ok) {
-        processarAcerto(q, fb);
-    } else {
-        processarErro(opcao, q, fb);
-    }
+
+    if (ok) processarAcerto(q, fb);
+    else processarErro(opcao, q, fb);
 
     salvarProgresso();
     updHUD();
@@ -167,12 +169,14 @@ function responder(opcao, q) {
 function processarAcerto(q, fbEl) {
     G.acertos++; G.combo++; G.consec_erros = 0;
     G.energia = Math.min(100, G.energia + 10);
+
     if (G.combo % 5 === 0) G.nivel++;
     if (q.bncc) G.historico[q.bncc].acertos++;
 
     fbEl.style.color = "var(--neon-green)";
     fbEl.innerHTML = `✓ Excelente! <br><small>${q.passo}</small>`;
     tocarAv("ok");
+
     document.getElementById("btn-prox").classList.remove("hidden");
 }
 
@@ -180,61 +184,81 @@ function processarErro(opcao, q, fbEl) {
     G.erros++; G.combo = 0;
     G.vida = Math.max(0, G.vida - 20);
 
-    const resEsperada = Array.isArray(q.res) ? Number(q.res[0]) : Number(q.res);
-    const opNum = Number(opcao.replace(/[^\d]/g, '')); // Extrai apenas números
+    const resEsperada = Number(Array.isArray(q.res) ? q.res[0] : q.res);
+    const opNum = Number(String(opcao).replace(/[^\d-]/g, ''));
 
-    // Diagnóstico Automático (Sinal trocado)
+    // erro de sinal
     if (!isNaN(opNum) && opNum === resEsperada * -1) {
         registrarHistoricoErro(q.bncc, "conceito");
-        fbEl.innerHTML = "⚠️ Erro de Sinal detectado (Conceito). " + q.passo;
-        document.getElementById("btn-prox").classList.remove("hidden");
-    } 
-    // Diagnóstico Automático (Porcentagem: somou em vez de subtrair desconto)
+        fbEl.innerHTML = "⚠️ Erro de sinal. " + q.passo;
+        liberarProximo();
+    }
+    // erro típico de porcentagem
     else if (q.tipo === "porcentagem" && opNum > resEsperada) {
         registrarHistoricoErro(q.bncc, "porcentagem");
-        fbEl.innerHTML = "⚠️ Você somou o valor ao invés de subtrair o desconto! " + q.passo;
-        document.getElementById("btn-prox").classList.remove("hidden");
+        fbEl.innerHTML = "⚠️ Você somou em vez de aplicar desconto. " + q.passo;
+        liberarProximo();
     }
     else {
         abrirClinicaManual(q);
     }
+
     tocarAv("no");
+
     if (G.vida <= 0) setTimeout(exibirGameOver, 1400);
+}
+
+/* 🔧 FUNÇÃO CENTRALIZADA - evita esquecer botão */
+function liberarProximo() {
+    document.getElementById("btn-prox").classList.remove("hidden");
 }
 
 function abrirClinicaManual(q) {
     const g = document.getElementById("grid-botoes");
-    document.getElementById("conta-display").innerHTML = "<span style='color:var(--choco-gold)'>DIAGNÓSTICO NECESSÁRIO</span>";
+
+    document.getElementById("conta-display").innerHTML =
+        "<span style='color:var(--choco-gold)'>DIAGNÓSTICO NECESSÁRIO</span>";
+
     g.innerHTML = "";
-    
+
     const btnC = document.createElement("button");
-    btnC.className = "ba b1"; btnC.textContent = "CONCEITO (Não entendi a regra)";
+    btnC.className = "ba b1";
+    btnC.textContent = "CONCEITO";
     btnC.onclick = () => fecharClinicaManual(q, "conceito");
 
     const btnK = document.createElement("button");
-    btnK.className = "ba b2"; btnK.textContent = "CÁLCULO (Me distraí na conta)";
+    btnK.className = "ba b2";
+    btnK.textContent = "CÁLCULO";
     btnK.onclick = () => fecharClinicaManual(q, "calculo");
 
-    g.appendChild(btnC); g.appendChild(btnK);
-    narrarContexto("Cientista, identifique a origem da falha.");
+    g.appendChild(btnC);
+    g.appendChild(btnK);
+
+    narrarContexto("Identifique o tipo de erro.");
 }
 
 function registrarHistoricoErro(cod, tipo) {
-    if (cod && G.historico[cod]) {
-        if (tipo === "conceito") G.historico[cod].erros_conceito++;
-        else if (tipo === "porcentagem") G.historico[cod].erros_porcentagem++;
-        else G.historico[cod].erros_calculo++;
-    }
+    if (!cod || !G.historico[cod]) return;
+
+    if (tipo === "conceito") G.historico[cod].erros_conceito++;
+    else if (tipo === "porcentagem") G.historico[cod].erros_porcentagem++;
+    else G.historico[cod].erros_calculo++;
 }
 
 function fecharClinicaManual(q, tipo) {
     registrarHistoricoErro(q.bncc, tipo);
-    const msg = tipo === "conceito" ? "Erro de Conceito. " + q.passo : "Erro de Cálculo. Atenção aos detalhes!";
+
     const fb = document.getElementById("fb");
-    fb.style.color = "var(--choco-gold)"; fb.innerHTML = msg;
-    document.getElementById("btn-prox").classList.remove("hidden");
+    fb.style.color = "var(--choco-gold)";
+    fb.innerHTML =
+        tipo === "conceito"
+            ? "Erro de conceito. " + q.passo
+            : "Erro de cálculo. Revise a conta.";
+
     document.getElementById("grid-botoes").innerHTML = "";
-    narrarContexto(msg);
+    liberarProximo();
+
+    narrarContexto("Diagnóstico registrado.");
 }
 
 window.proximaQ = function() {
@@ -243,31 +267,40 @@ window.proximaQ = function() {
 }
 
 /* ========================================================
-   RELATÓRIOS E REINICIALIZAÇÃO
+   RELATÓRIO
 ======================================================== */
 window.exportarRelatorioCSV = function() {
     const agora = new Date().toLocaleDateString("pt-BR");
-    let csv = `Aluno;Turma;Data;Bloco;Codigo_BNCC;Descricao;Acertos;Erros_Conceito;Erros_Calculo;Erros_Porcentagem;Total_Erros;Percentual_Acerto\n`;
+
+    let csv = `Aluno;Turma;Data;Bloco;Codigo;Descricao;Acertos;Erro_Conceito;Erro_Calculo;Erro_Porcentagem;Total;Aproveitamento\n`;
 
     for (let cod in G.historico) {
         const h = G.historico[cod];
-        const errosT = (h.erros_conceito || 0) + (h.erros_calculo || 0) + (h.erros_porcentagem || 0);
+        const errosT = h.erros_conceito + h.erros_calculo + (h.erros_porcentagem || 0);
         const total = h.acertos + errosT;
-        const pct = total > 0 ? Math.round((h.acertos / total) * 100) + "%" : "0%";
+        const pct = total ? Math.round((h.acertos / total) * 100) + "%" : "0%";
+
         csv += `${G.nome};${G.turma};${agora};${h.bloco};${cod};${h.desc.replace(/;/g, ',')};${h.acertos};${h.erros_conceito};${h.erros_calculo};${h.erros_porcentagem || 0};${errosT};${pct}\n`;
     }
 
-    const blob = new Blob(["\ufeff" + csv], { type: 'text/csv;charset=utf-8;' });
+    const blob = new Blob(["\ufeff" + csv], { type: 'text/csv' });
     const link = document.createElement("a");
+
     link.href = URL.createObjectURL(blob);
     link.download = `Relatorio_${G.nome.replace(/\s/g, '_')}.csv`;
     link.click();
 }
 
+/* ========================================================
+   CONTROLE
+======================================================== */
 window.reiniciar = function() {
     G.vida = 100; G.energia = 60; G.combo = 0;
-    document.getElementById("go").classList.remove("show");
-    updHUD(); proximaQ();
+
+    document.getElementById("go").classList.remove("active"); // 🔧 corrigido
+
+    updHUD();
+    proximaQ();
 }
 
 window.irParaSeletor = () => {
@@ -275,9 +308,12 @@ window.irParaSeletor = () => {
     document.getElementById("block-selector").classList.remove("hidden");
 }
 
+/* ========================================================
+   ACESSIBILIDADE
+======================================================== */
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
         const atv = document.activeElement;
-        if (atv && atv.tagName === 'BUTTON') atv.click();
+        if (atv?.tagName === 'BUTTON') atv.click();
     }
 });
