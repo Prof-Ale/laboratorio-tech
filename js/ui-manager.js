@@ -1,7 +1,7 @@
 /**
- * ui-manager.js - Versão 3.5 (Estabilizada)
+ * ui-manager.js - Versão 3.6 (MathLab Estabilizado)
  * DUA: Implementação de Acessibilidade Auditiva e Visual
- * Correção de Escopo para Módulos ES6
+ * RESOLVIDO: Exportação de exibirGameOver e Gestão de Modais
  */
 
 import { G } from './engine/gameState.js';
@@ -15,19 +15,13 @@ if (typeof window !== 'undefined' && window.speechSynthesis) {
     carregarVozes();
 }
 
-/**
- * SÍNTESE DE VOZ (DUA)
- * Faz o "Ducking" da música para garantir clareza auditiva.
- */
 export function narrarContexto(t) {
     try {
         if (typeof window === 'undefined' || !window.speechSynthesis || !G.voz) return;
-
         window.speechSynthesis.cancel();
         const textoLimpo = t.replace(/<[^>]*>?/gm, '');
         const u = new SpeechSynthesisUtterance(textoLimpo);
         const vozes = window.speechSynthesis.getVoices();
-
         const vozBR = vozes.find(x => x.lang.includes('pt-BR'));
         u.lang = "pt-BR";
         u.rate = 0.95; 
@@ -48,7 +42,6 @@ export function toggleMusica() {
     G.musica = !G.musica;
     const el = document.getElementById("tsom");
     if (el) el.textContent = G.musica ? "ON" : "OFF";
-
     if (G.musica && bgm) {
         bgm.volume = 0.07;
         bgm.play().catch(() => {});
@@ -90,15 +83,13 @@ export function updHUD() {
     const fen = document.getElementById("fen");
     if (fv) fv.style.width = G.vida + "%";
     if (fen) fen.style.width = G.energia + "%";
-    
-    // Atualização de textos do HUD
     ["tcb", "tnv"].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.textContent = (id === "tcb") ? G.combo : G.nivel;
     });
 }
 
-// === GESTÃO DE MODAIS (Correção do SyntaxError) ===
+// === GESTÃO DE MODAIS ===
 
 export function abrirM(id) {
     const modal = document.getElementById(id);
@@ -112,19 +103,35 @@ export function fecharM(id) {
     if (modal) modal.classList.remove("show");
 }
 
-// === DASHBOARD CLÍNICO ===
+/**
+ * EXIBIÇÃO DE FIM DE JOGO (RESOLUÇÃO DO ERRO DE IMPORTAÇÃO)
+ */
+export function exibirGameOver() {
+    const total = G.acertos + G.erros;
+    const tx = total > 0 ? Math.round((G.acertos / total) * 100) : 0;
+
+    const goTxt = document.getElementById("go-txt");
+    const goSt = document.getElementById("go-st");
+    const goModal = document.getElementById("go");
+
+    if (goTxt) goTxt.innerHTML = "O terminal entrou em modo de segurança. Mas a ciência constrói-se com o erro.";
+    if (goSt) goSt.textContent = `Acertos: ${G.acertos} | Falhas Resgatadas: ${G.erros} | Taxa Lógica: ${tx}%`;
+    if (goModal) goModal.classList.add("show");
+
+    narrarContexto(`Laboratório pausado. Taxa lógica de ${tx} por cento. Solicite a análise do Professor para ver os detalhes.`);
+}
+
+// === DASHBOARD DO PROFESSOR ===
 
 function gerarDashboard() {
     const c = document.getElementById("dash-content");
     if (!c) return;
     c.innerHTML = "";
-
     let temDados = false;
 
     for (let hab in G.historico) {
         const hist = G.historico[hab];
         if (!hist) continue;
-
         const { acertos = 0, erros_sinal = 0, erros_calculo = 0, erros_porcentagem = 0, erros = 0 } = hist;
         const total = acertos + erros_sinal + erros_calculo + erros_porcentagem + erros;
         if (total === 0) continue;
@@ -133,7 +140,6 @@ function gerarDashboard() {
         const txAcerto = Math.round((acertos / total) * 100);
         let diagnostico = "";
 
-        // Clínica do Erro v3 Expandida para Porcentagem
         if (erros_porcentagem > acertos) {
             diagnostico = `<div class="alerta-sinal"><strong>Barreira Financeira:</strong> Confusão no cálculo de descontos. Praticar conversão de % para decimal.</div>`;
         } else if (erros_sinal > erros_calculo) {
@@ -152,6 +158,5 @@ function gerarDashboard() {
                 ${diagnostico}
             </div>`;
     }
-
     if (!temDados) c.innerHTML = "<p>Aguardando dados de telemetria...</p>";
 }
