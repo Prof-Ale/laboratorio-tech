@@ -1,218 +1,198 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-    <title>Laboratório Tech • Recomposição Matemática</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>Laboratório Tech • Recomposição Matemática</title>
 
-    <link rel="icon" href="assets/img/favicon.png" type="image/png">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
 
-    <!-- 🔧 Correções estruturais leves -->
-    <style>
-        .hidden { display: none !important; }
-
-        /* garante que controles nunca sumam */
-        .controls-top {
-            position: relative;
-            z-index: 20;
-        }
-
-        .btn-top-group {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 9999;
-        }
-
-        /* modal funcional de verdade */
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.7);
-            z-index: 9998;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        /* garante visibilidade do botão próximo */
-        #btn-prox {
-            display: block;
-            margin-top: 12px;
-        }
-
-        #btn-prox.hidden {
-            display: none;
-        }
-
-        /* fim de jogo tratado como modal */
-        #go {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.85);
-            z-index: 9998;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #go.active {
-            display: flex;
-        }
-    </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <section id="splash-screen" class="screen">
-        <div class="splash-inner">
-            <div class="splash-logo">LABORATÓRIO TECH</div>
-            <div class="splash-sub">Recomposição de Aprendizagem &nbsp;•&nbsp; MathLab</div>
-            
-            <div class="splash-badges">
-                <span class="badge bg">BNCC</span>
-                <span class="badge bc">Inclusão</span>
-                <span class="badge bv">Gamificado</span>
-                <span class="badge br">DUA</span>
-            </div>
+  <!-- ===== SPLASH ===== -->
+  <section id="splash-screen" class="screen">
+    <div class="container splash-inner">
 
-            <div class="splash-av">
-                <div class="ring"></div><div class="ring2"></div>
-                <img src="avatar_estatico.png" alt="Mestre Alê Chocolate">
-            </div>
+      <div class="splash-logo">LABORATÓRIO TECH</div>
+      <div class="splash-sub">Recomposição de Aprendizagem • MathLab</div>
 
-            <div class="splash-msg" id="spm">Sistema aguardando identificação...</div>
-            
-            <input type="text" id="nome-cientista" 
-                   placeholder="Seu nome, Cientista" 
-                   aria-label="Introduza o seu nome"
-                   autocomplete="name">
+      <div class="splash-badges">
+        <span class="badge bg">BNCC</span>
+        <span class="badge bc">Inclusão</span>
+        <span class="badge bv">Gamificado</span>
+        <span class="badge br">DUA</span>
+      </div>
 
-            <input type="text" id="turma-cientista" 
-                   placeholder="Sua turma (ex: 7A, 8B)" 
-                   aria-label="Sua turma"
-                   autocomplete="off">
-            
-            <button class="btn-start" onclick="mostrarSeletorBlocos()">ACESSAR SISTEMAS</button>
-            
-            <div class="splash-sig">Prof. Alessandro Barbosa &nbsp;•&nbsp; 2026</div>
-        </div>
-    </section>
+      <div class="splash-av">
+        <div class="ring"></div>
+        <div class="ring2"></div>
+        <img src="avatar_estatico.png" alt="Mestre Alê Chocolate">
+      </div>
 
-    <section id="block-selector" class="screen hidden">
-        <div class="selector-inner">
-            <h2 class="section-title">Central de Manutenção</h2>
-            <p class="section-desc">Selecione o bloco da sua apostila MathLab:</p>
-            
-            <div class="blocks-grid">
-                <button class="block-card b1" onclick="iniciarBloco(1)">
-                    <span class="block-icon">🔢</span>
-                    <span class="block-title">Bloco 1</span>
-                    <span class="block-name">Base Numérica</span>
-                    <small>Sistemas e Divisibilidade</small>
-                </button>
+      <div class="splash-msg" id="spm">Sistema aguardando identificação...</div>
 
-                <button class="block-card b2" onclick="iniciarBloco(2)">
-                    <span class="block-icon">⚖️</span>
-                    <span class="block-title">Bloco 2</span>
-                    <span class="block-name">Operações</span>
-                    <small>Inteiros e Racionais</small>
-                </button>
+      <input 
+        type="text" 
+        id="nome-cientista"
+        placeholder="Seu nome, Cientista"
+        autocomplete="name"
+      >
 
-                <button class="block-card b3" onclick="iniciarBloco(3)">
-                    <span class="block-icon">📏</span>
-                    <span class="block-title">Bloco 3</span>
-                    <span class="block-name">Medidas</span>
-                    <small>Geometria e Grandezas</small>
-                </button>
+      <input 
+        type="text" 
+        id="turma-cientista"
+        placeholder="Sua turma (ex: 7A, 8B)"
+        autocomplete="off"
+      >
 
-                <button class="block-card b4" onclick="iniciarBloco(4)">
-                    <span class="block-icon">🧩</span>
-                    <span class="block-title">Bloco 4</span>
-                    <span class="block-name">Álgebra</span>
-                    <small>Equações e Padrões</small>
-                </button>
+      <button class="btn-start" onclick="mostrarSeletorBlocos()">ACESSAR SISTEMAS</button>
 
-                <button class="block-card b5" onclick="iniciarBloco(5)">
-                    <span class="block-icon">📊</span>
-                    <span class="block-title">Bloco 5</span>
-                    <span class="block-name">Estatística</span>
-                    <small>Gráficos e Médias</small>
-                </button>
-            </div>
-            <button class="bc2" onclick="voltarAoSplash()">← Voltar</button>
-        </div>
-    </section>
+      <div class="splash-sig">Prof. Alessandro Barbosa • 2026</div>
 
-    <section id="game-screen" class="screen hidden">
-        <div class="gw">
-            <div class="top">
-                <div class="tc">
-                    <div class="tp"></div>
-                    <span id="nome-bloco-display">Carregando...</span>
-                </div>
-
-                <div class="controls-top">
-                    <button class="bc2" onclick="toggleMusica()">🎵 <span id="tsom">ON</span></button>
-                    <button class="bc2" onclick="toggleVoz()">🔊 <span id="tvoz">ON</span></button>
-                    <button class="bc2" onclick="irParaSeletor()">⚙️ Blocos</button>
-                </div>
-            </div>
-
-            <div class="hud">
-                <div class="hi"><div class="hl">Vida</div><div class="bh"><div id="fv" class="bf" style="width:100%"></div></div></div>
-                <div class="hi"><div class="hl">Energia</div><div class="bh"><div id="fen" class="bf" style="width:60%"></div></div></div>
-                <div class="hi"><div class="hl">Combo</div><div class="hv" id="tcb">0</div></div>
-            </div>
-
-            <canvas id="canvas-game" width="580" height="130"></canvas>
-            
-            <div id="conta-display"></div>
-            <div id="regra-box"></div>
-            
-            <div class="ag" id="grid-botoes"></div>
-            
-            <div id="fb"></div>
-            <button id="btn-prox" class="hidden" onclick="proximaQ()">PRÓXIMO DESAFIO →</button>
-        </div>
-    </section>
-
-    <div class="btn-top-group">
-        <button class="btn-round" onclick="verPerfilAluno()">👤</button>
-        <button class="btn-round" onclick="abrirM('mdash')">📊</button>
-        <button class="btn-round" onclick="abrirM('mcred')">i</button>
     </div>
+  </section>
 
-    <div id="mdash" class="modal">
-        <div class="mc">
-            <button class="mx" onclick="fecharM('mdash')">✕</button>
-            <h2>Painel BNCC</h2>
-            <div id="dash-content"></div>
-            <button class="btn-start" onclick="exportarRelatorioCSV()">📥 Exportar Relatório</button>
-        </div>
+  <!-- ===== SELETOR ===== -->
+  <section id="block-selector" class="screen hidden">
+    <div class="container selector-inner">
+
+      <h2 class="section-title">Central de Manutenção</h2>
+      <p class="section-desc">Selecione o bloco da sua apostila MathLab:</p>
+
+      <div class="blocks-grid">
+
+        <button class="block-card b1" onclick="iniciarBloco(1)">
+          <span class="block-icon">🔢</span>
+          <span class="block-title">Bloco 1</span>
+          <span class="block-name">Base Numérica</span>
+          <small>Sistemas e Divisibilidade</small>
+        </button>
+
+        <button class="block-card b2" onclick="iniciarBloco(2)">
+          <span class="block-icon">⚖️</span>
+          <span class="block-title">Bloco 2</span>
+          <span class="block-name">Operações</span>
+          <small>Inteiros e Racionais</small>
+        </button>
+
+        <button class="block-card b3" onclick="iniciarBloco(3)">
+          <span class="block-icon">📏</span>
+          <span class="block-title">Bloco 3</span>
+          <span class="block-name">Medidas</span>
+          <small>Geometria e Grandezas</small>
+        </button>
+
+        <button class="block-card b4" onclick="iniciarBloco(4)">
+          <span class="block-icon">🧩</span>
+          <span class="block-title">Bloco 4</span>
+          <span class="block-name">Álgebra</span>
+          <small>Equações e Padrões</small>
+        </button>
+
+        <button class="block-card b5" onclick="iniciarBloco(5)">
+          <span class="block-icon">📊</span>
+          <span class="block-title">Bloco 5</span>
+          <span class="block-name">Estatística</span>
+          <small>Gráficos e Médias</small>
+        </button>
+
+      </div>
+
+      <button class="bc2" onclick="voltarAoSplash()">← Voltar</button>
+
     </div>
+  </section>
 
-    <div id="go">
-        <div class="mc">
-            <h2 id="go-title">TERMINAL CRÍTICO</h2>
-            <p id="go-txt"></p>
-            <button class="btn-start" onclick="reiniciar()">REINICIAR</button>
-            <button class="bc2" onclick="irParaSeletor()">TROCAR BLOCO</button>
+  <!-- ===== GAME ===== -->
+  <section id="game-screen" class="screen hidden">
+    <div class="container gw">
+
+      <div class="top">
+
+        <div class="tc">
+          <div class="tp"></div>
+          <span id="nome-bloco-display">Carregando...</span>
         </div>
+
+        <div class="controls-top">
+          <button class="bc2" onclick="toggleMusica()">🎵 <span id="tsom">ON</span></button>
+          <button class="bc2" onclick="toggleVoz()">🔊 <span id="tvoz">ON</span></button>
+          <button class="bc2" onclick="irParaSeletor()">⚙️ Blocos</button>
+        </div>
+
+      </div>
+
+      <div class="hud">
+        <div class="hi">
+          <div class="hl">Vida</div>
+          <div class="bh"><div id="fv" class="bf" style="width:100%"></div></div>
+        </div>
+
+        <div class="hi">
+          <div class="hl">Energia</div>
+          <div class="bh"><div id="fen" class="bf" style="width:60%"></div></div>
+        </div>
+
+        <div class="hi">
+          <div class="hl">Combo</div>
+          <div class="hv" id="tcb">0</div>
+        </div>
+      </div>
+
+      <canvas id="canvas-game" width="580" height="130"></canvas>
+
+      <div id="conta-display"></div>
+      <div id="regra-box"></div>
+
+      <div class="ag" id="grid-botoes"></div>
+
+      <div id="fb"></div>
+
+      <button id="btn-prox" class="hidden" onclick="proximaQ()">
+        PRÓXIMO DESAFIO →
+      </button>
+
     </div>
+  </section>
 
-    <audio id="bgm" preload="auto" loop>
-        <source src="trilha.mp3" type="audio/mpeg">
-    </audio>
+  <!-- ===== BOTÕES FLUTUANTES ===== -->
+  <div class="btn-top-group">
+    <button class="btn-round" onclick="verPerfilAluno()">👤</button>
+    <button class="btn-round" onclick="abrirM('mdash')">📊</button>
+    <button class="btn-round" onclick="abrirM('mcred')">i</button>
+  </div>
 
-    <script type="module" src="js/main.js"></script>
+  <!-- ===== MODAL DASH ===== -->
+  <div id="mdash" class="modal">
+    <div class="mc container">
+      <button class="mx" onclick="fecharM('mdash')">✕</button>
+      <h2>Painel BNCC</h2>
+      <div id="dash-content"></div>
+      <button class="btn-start" onclick="exportarRelatorioCSV()">📥 Exportar Relatório</button>
+    </div>
+  </div>
+
+  <!-- ===== GAME OVER ===== -->
+  <div id="go">
+    <div class="mc container">
+      <h2 id="go-title">TERMINAL CRÍTICO</h2>
+      <p id="go-txt"></p>
+      <button class="btn-start" onclick="reiniciar()">REINICIAR</button>
+      <button class="bc2" onclick="irParaSeletor()">TROCAR BLOCO</button>
+    </div>
+  </div>
+
+  <!-- AUDIO -->
+  <audio id="bgm" preload="auto" loop>
+    <source src="trilha.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- JS -->
+  <script type="module" src="js/main.js"></script>
 
 </body>
 </html>
