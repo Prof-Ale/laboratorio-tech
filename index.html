@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>Laboratório Tech • Recomposição Matemática</title>
+
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ===== SPLASH ===== -->
+  <section id="splash-screen" class="screen">
+    <div class="container splash-inner">
+
+      <div class="splash-logo">LABORATÓRIO TECH</div>
+      <div class="splash-sub">Recomposição de Aprendizagem • MathLab</div>
+
+      <div class="splash-badges">
+        <span class="badge bg">BNCC</span>
+        <span class="badge bc">Inclusão</span>
+        <span class="badge bv">Gamificado</span>
+        <span class="badge br">DUA</span>
+      </div>
+
+      <div class="splash-av">
+        <div class="ring"></div>
+        <div class="ring2"></div>
+        <img src="avatar_estatico.png" alt="Mestre Alê Chocolate">
+      </div>
+
+      <div class="splash-msg" id="spm">Sistema aguardando identificação...</div>
+
+      <input 
+        type="text" 
+        id="nome-cientista"
+        placeholder="Seu nome, Cientista"
+        autocomplete="name"
+      >
+
+      <input 
+        type="text" 
+        id="turma-cientista"
+        placeholder="Sua turma (ex: 7A, 8B)"
+        autocomplete="off"
+      >
+
+      <button class="btn-start" id="btn-acessar">ACESSAR SISTEMAS</button>
+
+      <div class="splash-sig">Prof. Alessandro Barbosa • 2026</div>
+
+    </div>
+  </section>
+
+  <!-- ===== SELETOR ===== -->
+  <section id="block-selector" class="screen hidden">
+    <div class="container selector-inner">
+
+      <h2 class="section-title">Central de Manutenção</h2>
+      <p class="section-desc">Selecione o bloco da sua apostila MathLab:</p>
+
+      <div class="blocks-grid">
+
+        <button class="block-card b1" id="btn-bloco-1">
+          <span class="block-icon">🔢</span>
+          <span class="block-title">Bloco 1</span>
+          <span class="block-name">Base Numérica</span>
+          <small>Sistemas e Divisibilidade</small>
+        </button>
+
+        <button class="block-card b2" id="btn-bloco-2">
+          <span class="block-icon">⚖️</span>
+          <span class="block-title">Bloco 2</span>
+          <span class="block-name">Operações</span>
+          <small>Inteiros e Racionais</small>
+        </button>
+
+        <button class="block-card b3" id="btn-bloco-3">
+          <span class="block-icon">📏</span>
+          <span class="block-title">Bloco 3</span>
+          <span class="block-name">Medidas</span>
+          <small>Geometria e Grandezas</small>
+        </button>
+
+        <button class="block-card b4" id="btn-bloco-4">
+          <span class="block-icon">🧩</span>
+          <span class="block-title">Bloco 4</span>
+          <span class="block-name">Álgebra</span>
+          <small>Equações e Padrões</small>
+        </button>
+
+        <button class="block-card b5" id="btn-bloco-5">
+          <span class="block-icon">📊</span>
+          <span class="block-title">Bloco 5</span>
+          <span class="block-name">Estatística</span>
+          <small>Gráficos e Médias</small>
+        </button>
+
+      </div>
+
+      <button class="bc2" id="btn-voltar-splash">← Voltar</button>
+
+    </div>
+  </section>
+
+  <!-- ===== GAME ===== -->
+  <section id="game-screen" class="screen hidden">
+    <div class="container gw">
+
+      <div class="top">
+
+        <div class="tc">
+          <div class="tp"></div>
+          <span id="nome-bloco-display">Carregando...</span>
+        </div>
+
+        <div class="controls-top">
+          <button class="bc2" id="btn-musica">🎵 <span id="tsom">ON</span></button>
+          <button class="bc2" id="btn-voz">🔊 <span id="tvoz">ON</span></button>
+          <button class="bc2" data-action="seletor">⚙️ Blocos</button>
+        </div>
+
+      </div>
+
+      <div class="hud">
+        <div class="hi">
+          <div class="hl">Vida</div>
+          <div class="bh"><div id="fv" class="bf" style="width:100%"></div></div>
+        </div>
+
+        <div class="hi">
+          <div class="hl">Energia</div>
+          <div class="bh"><div id="fen" class="bf" style="width:60%"></div></div>
+        </div>
+
+        <div class="hi">
+          <div class="hl">Combo</div>
+          <div class="hv" id="tcb">0</div>
+        </div>
+      </div>
+
+      <canvas id="canvas-game" width="580" height="130"></canvas>
+
+      <div id="conta-display"></div>
+      <div id="regra-box"></div>
+
+      <div class="ag" id="grid-botoes"></div>
+
+      <div id="fb"></div>
+
+      <button id="btn-prox" class="hidden" >
+        PRÓXIMO DESAFIO →
+      </button>
+
+    </div>
+  </section>
+
+  <!-- ===== BOTÕES FLUTUANTES ===== -->
+  <div class="btn-top-group">
+    <button class="btn-round" id="btn-perfil">👤</button>
+    <button class="btn-round" id="btn-dash">📊</button>
+    <button class="btn-round" id="btn-cred">i</button>
+  </div>
+
+  <!-- ===== MODAL DASH ===== -->
+  <div id="mdash" class="modal">
+    <div class="mc container">
+      <button class="mx" id="btn-fecha-dash">✕</button>
+      <h2>Painel BNCC</h2>
+      <div id="dash-content"></div>
+      <button class="btn-start" id="btn-csv">📥 Exportar Relatório</button>
+    </div>
+  </div>
+
+  <!-- ===== GAME OVER ===== -->
+  <div id="go">
+    <div class="mc container">
+      <h2 id="go-title">TERMINAL CRÍTICO</h2>
+      <p id="go-txt"></p>
+      <button class="btn-start" id="btn-reiniciar">REINICIAR</button>
+      <button class="bc2" data-action="seletor">TROCAR BLOCO</button>
+    </div>
+  </div>
+
+
+  <!-- ===== MODAL CRÉDITOS ===== -->
+  <div id="mcred" class="modal">
+    <div class="mc">
+      <button class="mx" id="btn-fecha-cred">✕</button>
+      <h2>Sobre o LabTech</h2>
+      <p>
+        <strong>Laboratório Tech</strong> é o componente digital do projeto
+        <strong>MathLab</strong> — Recomposição e Nivelamento em Matemática.<br><br>
+        Desenvolvido por <strong>Prof. Alessandro B. dos Santos (Alê)</strong><br>
+        EE Prof. Milton de Tolosa — Campinas, SP<br>
+        SEDUC-SP / Programa Ensino Integral (PEI)<br><br>
+        Alinhado à BNCC e aos princípios do DUA.<br>
+        <a href="https://prof-ale.github.io/laboratorio-tech/" target="_blank">
+          prof-ale.github.io/laboratorio-tech
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <!-- AUDIO -->
+  <audio id="bgm" preload="auto" loop>
+    <source src="trilha.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- JS -->
+  <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
