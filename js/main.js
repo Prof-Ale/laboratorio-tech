@@ -24,7 +24,7 @@ function registrarErroDiagnostico(chave) {
 
 /**
  * Compatibilidade híbrida:
- * - Questões novas: alternativas[]
+ * - Questões novas: alternativas[] (Com taxonomia e peso)
  * - Questões antigas: botoes[]
  */
 function obterAlternativas(q) {
@@ -33,7 +33,7 @@ function obterAlternativas(q) {
         return q.alternativas;
     }
 
-    // FORMATO LEGADO
+    // FORMATO LEGADO (Adaptado para ter um peso padrão)
     return (q.botoes || []).map(valor => {
         const correta = Array.isArray(q.res)
             ? q.res.map(String).includes(String(valor))
@@ -57,7 +57,8 @@ function obterAlternativas(q) {
                 : 'erro_operacional_generico',
             descricao: ehConceito
                 ? 'Erro conceitual identificado'
-                : 'Erro operacional identificado'
+                : 'Erro operacional identificado',
+            peso: ehConceito ? 3 : 2 // Adicionado peso para o formato legado
         };
     });
 }
@@ -68,7 +69,8 @@ function analisarResposta(q, alternativaEscolhida) {
             correto: true,
             categoria: null,
             erro: null,
-            descricao: null
+            descricao: null,
+            peso: 0
         };
     }
 
@@ -76,7 +78,8 @@ function analisarResposta(q, alternativaEscolhida) {
         correto: false,
         categoria: alternativaEscolhida.categoria || 'calculo',
         erro: alternativaEscolhida.erro || 'erro_generico',
-        descricao: alternativaEscolhida.descricao || ''
+        descricao: alternativaEscolhida.descricao || 'Erro operacional identificado',
+        peso: alternativaEscolhida.peso || 2
     };
 }
 
@@ -214,8 +217,10 @@ function renderQ(q) {
     if (display) display.innerHTML = '<span>' + q.display + '</span>';
     if (regra)   regra.innerHTML   = q.dica || '';
 
+    // Limpa o feedback anterior
     if (fb) {
-        fb.textContent = '';
+        fb.innerHTML = '';
+        fb.className = ''; // Remove as classes fb-box erro/acerto
         fb.style.color = '';
     }
 
@@ -242,6 +247,7 @@ function renderQ(q) {
         b.textContent = String(alt.valor);
         b.addEventListener('click', () => {
             if (!G.respondeu) {
+                // Passa o objeto completo 'alt' em vez de apenas o valor
                 responder(alt, q);
             }
         });
@@ -253,6 +259,7 @@ function responder(alternativa, q) {
     if (G.respondeu) return;
     G.respondeu = true;
 
+    // Diagnóstico agora extrai os dados completos da alternativa clicada
     const diagnostico = analisarResposta(q, alternativa);
     const ok = diagnostico.correto;
     const opStr = String(alternativa.valor);
@@ -306,13 +313,21 @@ function processarAcerto(q, fbEl) {
     if (G.combo % 5 === 0) G.nivel++;
     if (q.bncc) G.historico[q.bncc].acertos++;
 
-    const elogios = ['Excelente!','Muito bem!','Perfeito!','Na mosca!','Fabuloso!'];
-    const msg = elogios[Math.floor(Math.random()*elogios.length)];
+    const elogios = ['Feitiço Conjurado!', 'Magia Perfeita!', 'Dano Crítico na Sombra!', 'Sincronia Exata!'];
+    const msg = elogios[Math.floor(Math.random() * elogios.length)];
 
     if (fbEl) {
-        fbEl.style.color = 'var(--neon-green)';
-        fbEl.innerHTML   = `✓ ${msg}<br><small>${q.passo}</small>`;
+        fbEl.className = 'fb-box acerto';
+        fbEl.innerHTML = `
+            <div class="fb-header text-green">
+                <h3>✨ ${msg} (+10 Energia)</h3>
+            </div>
+            <div class="fb-guardiao mt-2">
+                <p class="fb-passo">${q.passo}</p>
+            </div>
+        `;
     }
+    
     tocarAv('ok');
     narrarContexto(msg + ' ' + q.passo);
     liberarProximo();
@@ -322,7 +337,11 @@ function processarErro(alternativa, diagnostico, q, fbEl) {
     G.erros++;
     G.combo = 0;
     G.consec_erros++;
-    G.vida = Math.max(0, G.vida - 20);
+
+    // Cálculo do Dano baseado no peso do erro (Risco Cognitivo)
+    const pesoReal = diagnostico.peso || 2; 
+    const damage = 5 + (pesoReal * 5); 
+    G.vida = Math.max(0, G.vida - damage);
 
     const categoria = diagnostico.categoria || 'calculo';
     const erro = diagnostico.erro || 'erro_generico';
@@ -339,32 +358,31 @@ function processarErro(alternativa, diagnostico, q, fbEl) {
 
     const res = Array.isArray(q.res) ? q.res[0] : q.res;
 
-    const mensagens = {
-        conceito: `⚠️ Erro de conceito — reveja a ideia.<br><small>${q.passo}</small>`,
-        calculo:  `⚠️ Processo correto, mas houve erro operacional.<br><small>${q.passo}</small>`,
-        porcentagem: `⚠️ Atenção ao raciocínio percentual.<br><small>${q.passo}</small>`
-    };
-
-    const msg = mensagens[categoria] || mensagens.calculo;
-
     if (fbEl) {
-        fbEl.style.color = 'var(--choco-gold)';
-        fbEl.innerHTML = msg;
+        fbEl.className = 'fb-box erro'; 
+        fbEl.innerHTML = `
+            <div class="fb-header text-red">
+                <h3>💥 Sombra contra-atacou! (-${damage} HP)</h3>
+                <p class="fb-motivo">${diagnostico.descricao}</p>
+            </div>
+            <div class="fb-guardiao mt-2">
+                <p class="fb-tutor">🐾 <strong>Guardião Oreo diz:</strong></p>
+                <p class="fb-passo">${q.passo}</p>
+                <p class="fb-dica">💡 <em>Dica: ${q.dica || 'Revise com calma e tente usar uma tabela posicional.'}</em></p>
+            </div>
+        `;
     }
 
     tocarAv('no');
-    narrarContexto(categoria === 'conceito'
-            ? 'Erro de conceito. ' + q.passo
-            : 'Revise o cálculo. ' + q.passo
-    );
+    narrarContexto(diagnostico.descricao + ' Dica: ' + (q.dica || q.passo));
 
-    console.log('[DIAGNÓSTICO]', {
+    console.log('[TELEMETRIA CÓDEX]', {
         habilidade: q.bncc,
         categoria,
-        erro,
-        descricao: diagnostico.descricao,
-        respostaAluno: alternativa.valor,
-        respostaCorreta: res
+        erro_mapeado: erro,
+        peso_cognitivo: pesoReal,
+        resposta_aluno: alternativa.valor,
+        dano_recebido: damage
     });
 
     liberarProximo();
@@ -477,5 +495,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    console.log('[LabTech v10] Sistema diagnóstico híbrido ativo.');
+    console.log('[LabTech Códex] Sistema Batalha Matemática ativo com Motor de Risco Cognitivo.');
 });
