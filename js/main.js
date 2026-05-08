@@ -1,7 +1,7 @@
 /**
- * main.js — v9.0 "MathLab Estável"
+ * main.js — v10.0 "MathLab Diagnóstico"
  * Usa addEventListener em vez de onclick para compatibilidade com type="module".
- * Acentuação correta em todo o código.
+ * Sistema híbrido de diagnóstico pedagógico.
  */
 
 import { G } from './engine/gameState.js';
@@ -10,6 +10,75 @@ import { renderCv, animarArcos, setAnimando } from './game-engine.js';
 import { updHUD, narrarContexto, toggleMusica, toggleVoz, tocarAv, exibirGameOver } from './ui-manager.js';
 
 let qAtual = null;
+
+/* ============================================================
+   DIAGNÓSTICO PEDAGÓGICO
+============================================================ */
+
+if (!G.diagnostico) G.diagnostico = {};
+
+function registrarErroDiagnostico(chave) {
+    if (!chave) return;
+    G.diagnostico[chave] = (G.diagnostico[chave] || 0) + 1;
+}
+
+/**
+ * Compatibilidade híbrida:
+ * - Questões novas: alternativas[]
+ * - Questões antigas: botoes[]
+ */
+function obterAlternativas(q) {
+    // NOVO FORMATO
+    if (Array.isArray(q.alternativas)) {
+        return q.alternativas;
+    }
+
+    // FORMATO LEGADO
+    return (q.botoes || []).map(valor => {
+        const correta = Array.isArray(q.res)
+            ? q.res.map(String).includes(String(valor))
+            : String(valor) === String(q.res);
+
+        if (correta) {
+            return {
+                valor,
+                tipo: 'acerto'
+            };
+        }
+
+        const ehConceito = q.erroConceito?.map(String).includes(String(valor));
+
+        return {
+            valor,
+            tipo: 'erro',
+            categoria: ehConceito ? 'conceito' : 'calculo',
+            erro: ehConceito
+                ? 'erro_conceitual_generico'
+                : 'erro_operacional_generico',
+            descricao: ehConceito
+                ? 'Erro conceitual identificado'
+                : 'Erro operacional identificado'
+        };
+    });
+}
+
+function analisarResposta(q, alternativaEscolhida) {
+    if (alternativaEscolhida.tipo === 'acerto') {
+        return {
+            correto: true,
+            categoria: null,
+            erro: null,
+            descricao: null
+        };
+    }
+
+    return {
+        correto: false,
+        categoria: alternativaEscolhida.categoria || 'calculo',
+        erro: alternativaEscolhida.erro || 'erro_generico',
+        descricao: alternativaEscolhida.descricao || ''
+    };
+}
 
 /* ============================================================
    UTILITÁRIOS
@@ -39,6 +108,7 @@ function carregarDados() {
         G.historico = d.historico || {};
         G.nome      = d.nome      || "";
         G.turma     = d.turma     || "";
+        if (d.diagnostico) G.diagnostico = d.diagnostico;
     } catch(e) { console.warn("Erro ao carregar dados:", e); }
 }
 
@@ -47,6 +117,7 @@ function salvarProgresso() {
         historico: G.historico,
         nome:      G.nome,
         turma:     G.turma,
+        diagnostico: G.diagnostico
     }));
 }
 
@@ -104,8 +175,6 @@ function irParaSeletor() {
 function abrirModal(id) {
     const m = $(id);
     if (m) { m.style.display = 'flex'; }
-
-    // Preenche dashboard quando abre
     if (id === 'mdash') preencherDashboard();
 }
 
@@ -132,7 +201,10 @@ function liberarProximo() {
 }
 
 function renderQ(q) {
-    if (!q) { console.warn("Nenhuma questão disponível."); return; }
+    if (!q) {
+        console.warn("Nenhuma questão disponível.");
+        return;
+    }
 
     const display = $('conta-display');
     const regra   = $('regra-box');
@@ -141,8 +213,13 @@ function renderQ(q) {
 
     if (display) display.innerHTML = '<span>' + q.display + '</span>';
     if (regra)   regra.innerHTML   = q.dica || '';
-    if (fb)      { fb.textContent = ''; fb.style.color = ''; }
-    if (btnP)    btnP.classList.add('hidden');
+
+    if (fb) {
+        fb.textContent = '';
+        fb.style.color = '';
+    }
+
+    if (btnP) btnP.classList.add('hidden');
 
     G.respondeu = false;
     setAnimando(false);
@@ -152,31 +229,40 @@ function renderQ(q) {
     if (!grid) return;
     grid.innerHTML = '';
 
-    const botoes = shuffle(q.botoes);
-    grid.style.gridTemplateColumns = botoes.length <= 3 ? `repeat(${botoes.length},1fr)` : '1fr 1fr';
+    const alternativas = shuffle(obterAlternativas(q));
 
-    botoes.forEach(op => {
+    grid.style.gridTemplateColumns =
+        alternativas.length <= 3
+            ? `repeat(${alternativas.length},1fr)`
+            : '1fr 1fr';
+
+    alternativas.forEach(alt => {
         const b = document.createElement('button');
         b.className = 'ba';
-        b.textContent = String(op);
-        b.addEventListener('click', () => { if (!G.respondeu) responder(op, q); });
+        b.textContent = String(alt.valor);
+        b.addEventListener('click', () => {
+            if (!G.respondeu) {
+                responder(alt, q);
+            }
+        });
         grid.appendChild(b);
     });
 }
 
-function responder(opcao, q) {
+function responder(alternativa, q) {
     if (G.respondeu) return;
     G.respondeu = true;
 
-    const opStr = String(opcao);
-    const ok = Array.isArray(q.res)
-        ? q.res.map(String).includes(opStr)
-        : opStr === String(q.res);
+    const diagnostico = analisarResposta(q, alternativa);
+    const ok = diagnostico.correto;
+    const opStr = String(alternativa.valor);
 
     if (q.bncc && !G.historico[q.bncc]) {
         G.historico[q.bncc] = {
             desc: q.bncc_desc || 'Habilidade BNCC',
-            acertos: 0, erros_conceito: 0, erros_calculo: 0,
+            acertos: 0,
+            erros_conceito: 0,
+            erros_calculo: 0,
             bloco: G.currentBlock
         };
     }
@@ -184,20 +270,32 @@ function responder(opcao, q) {
     document.querySelectorAll('.ba').forEach(b => {
         b.classList.add('dis');
         const isCorreta = Array.isArray(q.res)
-            ? q.res.map(String).includes(b.textContent)
-            : b.textContent === String(q.res);
+                ? q.res.map(String).includes(b.textContent)
+                : b.textContent === String(q.res);
+
         if (isCorreta) b.classList.add('ok');
-        if (b.textContent === opStr && !ok) b.classList.add('no');
+        if (b.textContent === opStr && !ok) {
+            b.classList.add('no');
+        }
     });
 
     const fb = $('fb');
-    if (ok) processarAcerto(q, fb);
-    else    processarErro(opcao, q, fb);
+    if (ok) {
+        processarAcerto(q, fb);
+    } else {
+        processarErro(alternativa, diagnostico, q, fb);
+    }
 
     salvarProgresso();
     updHUD();
-    if (q.tipo === 'reta' || q.tipo === 'sinais') animarArcos(q);
-    if (G.vida <= 0) setTimeout(exibirGameOver, 1400);
+
+    if (q.tipo === 'reta' || q.tipo === 'sinais') {
+        animarArcos(q);
+    }
+
+    if (G.vida <= 0) {
+        setTimeout(exibirGameOver, 1400);
+    }
 }
 
 function processarAcerto(q, fbEl) {
@@ -220,36 +318,55 @@ function processarAcerto(q, fbEl) {
     liberarProximo();
 }
 
-function processarErro(opcao, q, fbEl) {
+function processarErro(alternativa, diagnostico, q, fbEl) {
     G.erros++;
     G.combo = 0;
     G.consec_erros++;
     G.vida = Math.max(0, G.vida - 20);
 
-    // Clínica do Erro: conceito vs cálculo
-    let tipo = 'calculo';
-    if (q.erroConceito?.map(String).includes(String(opcao))) tipo = 'conceito';
+    const categoria = diagnostico.categoria || 'calculo';
+    const erro = diagnostico.erro || 'erro_generico';
+
+    registrarErroDiagnostico(erro);
 
     if (q.bncc) {
-        if (tipo === 'conceito') G.historico[q.bncc].erros_conceito++;
-        else                     G.historico[q.bncc].erros_calculo++;
+        if (categoria === 'conceito') {
+            G.historico[q.bncc].erros_conceito++;
+        } else {
+            G.historico[q.bncc].erros_calculo++;
+        }
     }
 
     const res = Array.isArray(q.res) ? q.res[0] : q.res;
-    const msgs = {
+
+    const mensagens = {
         conceito: `⚠️ Erro de conceito — reveja a ideia.<br><small>${q.passo}</small>`,
-        calculo:  `⚠️ Processo certo, conta errada. Resposta: <strong>${res}</strong><br><small>${q.passo}</small>`
+        calculo:  `⚠️ Processo correto, mas houve erro operacional.<br><small>${q.passo}</small>`,
+        porcentagem: `⚠️ Atenção ao raciocínio percentual.<br><small>${q.passo}</small>`
     };
+
+    const msg = mensagens[categoria] || mensagens.calculo;
 
     if (fbEl) {
         fbEl.style.color = 'var(--choco-gold)';
-        fbEl.innerHTML   = msgs[tipo];
+        fbEl.innerHTML = msg;
     }
+
     tocarAv('no');
-    narrarContexto(tipo === 'conceito'
-        ? 'Erro de conceito. ' + q.passo
-        : `A resposta certa era ${res}. ${q.passo}`
+    narrarContexto(categoria === 'conceito'
+            ? 'Erro de conceito. ' + q.passo
+            : 'Revise o cálculo. ' + q.passo
     );
+
+    console.log('[DIAGNÓSTICO]', {
+        habilidade: q.bncc,
+        categoria,
+        erro,
+        descricao: diagnostico.descricao,
+        respostaAluno: alternativa.valor,
+        respostaCorreta: res
+    });
+
     liberarProximo();
 }
 
@@ -326,31 +443,24 @@ function verPerfilAluno() {
 }
 
 /* ============================================================
-   BIND DE EVENTOS — substitui todos os onclick do HTML
+   BIND DE EVENTOS
 ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
-
-    // Splash → Seletor de Blocos
     on('btn-acessar', mostrarSeletorBlocos);
-    // Permite Enter no input de nome
     $('nome-cientista')?.addEventListener('keydown', e => {
         if (e.key === 'Enter') mostrarSeletorBlocos();
     });
 
-    // Seletor de Blocos → Splash
     on('btn-voltar-splash', voltarAoSplash);
 
-    // Cards de Blocos
     [1,2,3,4,5].forEach(i => on(`btn-bloco-${i}`, () => iniciarBloco(i)));
 
-    // Botões com data-action="seletor" (podem ser mais de um)
     document.querySelectorAll('[data-action="seletor"]').forEach(el =>
         el.addEventListener('click', irParaSeletor)
     );
 
-    // Controles de jogo
     on('btn-musica',  () => { toggleMusica(); });
-    on('btn-voz',     () => { toggleVoz();    });
+    on('btn-voz',      () => { toggleVoz();    });
     on('btn-perfil',  verPerfilAluno);
     on('btn-dash',    () => abrirModal('mdash'));
     on('btn-cred',    () => abrirModal('mcred'));
@@ -358,11 +468,8 @@ document.addEventListener('DOMContentLoaded', () => {
     on('btn-fecha-cred', () => fecharModal('mcred'));
     on('btn-csv',     exportarRelatorioCSV);
     on('btn-reiniciar', reiniciar);
-
-    // Próximo desafio
     on('btn-prox', proximaQ);
 
-    // Teclado
     document.addEventListener('keydown', e => {
         if ((e.key==='Enter'||e.key===' ') && document.activeElement?.classList.contains('ba')) {
             document.activeElement.click();
@@ -370,5 +477,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    console.log('[LabTech v9] Pronto. Blocos 1 e 2 ativos.');
+    console.log('[LabTech v10] Sistema diagnóstico híbrido ativo.');
 });
