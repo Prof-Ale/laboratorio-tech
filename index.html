@@ -193,5 +193,24 @@
 
   <script type="module" src="js/main.js"></script>
 
+  <div id="debug-panel" style="position:fixed; bottom:10px; left:10px; background:rgba(0,0,0,0.8); color:#00ff88; font-family:monospace; font-size:10px; padding:10px; border:1px solid #00e5ff; z-index:9999; pointer-events:none; border-radius:8px;">
+    <div>ID: <span id="db-id">-</span></div>
+    <div>COMBO: <span id="db-combo">0</span></div>
+    <div>VIDA: <span id="db-vida">100</span></div>
+    <div>ERRO DOMINANTE: <span id="db-erro">-</span></div>
+</div>
+
+<script>
+    // Função para atualizar o painel de debug a cada segundo
+    setInterval(() => {
+        const G = window.G || {}; // Tenta acessar o estado global
+        if(document.getElementById('db-id')) {
+            document.getElementById('db-id').textContent = window.qAtual?.id || '---';
+            document.getElementById('db-combo').textContent = G.combo || 0;
+            document.getElementById('db-vida').textContent = G.vida || 0;
+        }
+    }, 1000);
+</script>
+  
 </body>
 </html>
