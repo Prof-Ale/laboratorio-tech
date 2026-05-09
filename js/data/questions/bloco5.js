@@ -1,163 +1,110 @@
-// js/data/questions/bloco5.js
-// Bloco 5 — Estatística e Dados
-// EF08MA22, EF09MA20 — Gráficos, Média, Mediana, Moda, Probabilidade
-// Clusters: ESTATISTICA_DESCRITIVA, ANALISE_GRAFICA, PROBABILIDADE, PENSAMENTO_CRITICO
+/**
+ * bloco5.js — Estatística e Dados
+ * Foco: Medidas Centrais, Probabilidade e Análise Crítica
+ * Clusters: ESTATISTICA_DESCRITIVA, ANALISE_GRAFICA, PENSAMENTO_CRITICO
+ */
 
 export const bloco5 = [
 
-    // ── MÉDIA ARITMÉTICA (ESTATISTICA_DESCRITIVA) ─────────────────────────
+    // ── AULA 1: MÉDIA ARITMÉTICA (ESTATISTICA_DESCRITIVA) ─────────────────
+
     {
         id: "B5Q01", bloco: 5, aula: 1, tipo: "aritmetica",
         bncc: "EF08MA22", bncc_desc: "Média Aritmética",
-        display: "Notas de um aluno: 6, 8, 7, 9 e 5. Qual é a média final?",
+        display: "As notas de um aluno foram: 6, 8, 7, 9 e 5. Qual é a média final?",
         res: "7",
         alternativas: [
             { valor: "7", tipo: "acerto" },
-            { valor: "7,5", tipo: "erro", categoria: "calculo", erro: "media_erro_divisao", descricao: "Realizou a soma corretamente (35), mas falhou na divisão pelo número de termos.", peso: 1 },
-            { valor: "35", tipo: "erro", categoria: "conceito", erro: "media_apenas_soma", descricao: "Apresentou a soma total dos valores, ignorando a etapa de divisão pela quantidade de elementos.", peso: 3 },
-            { valor: "8", tipo: "erro", categoria: "estrategia", erro: "media_elege_valor_maximo", descricao: "Selecionou um valor alto do conjunto sem realizar o cálculo de equilíbrio.", peso: 2 }
+            { valor: "35", tipo: "erro", categoria: "conceito", erro: "media_apenas_soma", descricao: "Apresentou a soma total, esquecendo de dividir pela quantidade de termos.", peso: 3 },
+            { valor: "7,5", tipo: "erro", categoria: "calculo", erro: "media_erro_divisao", descricao: "Somou corretamente (35), mas falhou na divisão por 5.", peso: 1 },
+            { valor: "8", tipo: "erro", categoria: "estrategia", erro: "media_elege_valor_maximo", descricao: "Selecionou um valor alto do conjunto sem realizar o cálculo.", peso: 2 }
         ],
-        passo: "Média = (6+8+7+9+5) ÷ 5 = 35 ÷ 5 = 7.",
-        dica: "A média é o valor de equilíbrio: some tudo e divida pela quantidade de notas."
-    },
-    {
-        id: "B5Q02", bloco: 5, aula: 1, tipo: "aritmetica",
-        bncc: "EF08MA22", bncc_desc: "Média — Valor Desconhecido",
-        display: "Em três provas, um aluno tirou 7 e 8. Para ter média 8, que nota ele precisa tirar na terceira prova?",
-        res: "9",
-        alternativas: [
-            { valor: "9", tipo: "acerto" },
-            { valor: "8", tipo: "erro", categoria: "conceito", erro: "media_desconhecida_replica_objetivo", descricao: "Presumiu que a nota faltante deve ser igual à média desejada, ignorando o déficit das notas anteriores.", peso: 3 },
-            { valor: "10", tipo: "erro", categoria: "calculo", erro: "media_desconhecida_erro_diferenca", descricao: "Identificou a necessidade de uma nota superior, mas errou o cálculo da soma necessária (24 - 15).", peso: 1 },
-            { valor: "7", tipo: "erro", categoria: "interpretacao", erro: "media_desconhecida_escolha_aleatoria", descricao: "Selecionou a menor nota já obtida, o que reduziria a média em vez de elevar.", peso: 2 }
-        ],
-        passo: "Se a média de 3 provas deve ser 8, a soma total deve ser 24 (8×3). Como ele já tem 15 (7+8), falta tirar 9 (24-15).",
-        dica: "Pense no total de pontos: 3 provas com média 8 precisam somar 24 pontos no total."
-    },
-
-    // ── MEDIANA (ESTATISTICA_DESCRITIVA) ──────────────────────────────────
-    {
-        id: "B5Q04", bloco: 5, aula: 2, tipo: "aritmetica",
-        bncc: "EF08MA22", bncc_desc: "Mediana",
-        display: "Conjunto de dados: 3, 7, 2, 9, 5, 8, 4. Qual é a mediana?",
-        res: "5",
-        alternativas: [
-            { valor: "5", tipo: "acerto" },
-            { valor: "9", tipo: "erro", categoria: "conceito", erro: "mediana_sem_ordenacao", descricao: "Selecionou o termo central da lista original sem realizar o ordenamento (rol).", peso: 3 },
-            { valor: "5,4", tipo: "erro", categoria: "conceito", erro: "mediana_confunde_com_media", descricao: "Calculou a média aritmética em vez de identificar o valor central.", peso: 3 },
-            { valor: "4", tipo: "erro", categoria: "procedimento", erro: "mediana_erro_posicional", descricao: "Ordenou os dados corretamente, mas identificou a posição central de forma equivocada.", peso: 2 }
-        ],
-        passo: "Primeiro coloque em ordem: 2, 3, 4, 5, 7, 8, 9. O valor que fica exatamente no meio é o 5.",
-        dica: "Importante: coloque os números em ordem (do menor para o maior) antes de pegar o do meio."
+        passo: "Soma das notas: 6 + 8 + 7 + 9 + 5 = 35. Média: 35 ÷ 5 = 7.",
+        dica: "A média é o 'ponto de equilíbrio'. Some tudo e divida o resultado pela quantidade de notas!"
     },
     
-    {
-        id: "B5Q05", bloco: 5, aula: 2, tipo: "aritmetica",
-        bncc: "EF08MA22", bncc_desc: "Mediana — Quantidade Par",
-        display: "Qual a mediana dos dados: 4, 8, 3, 7, 6, 5?",
-        res: "5,5",
-        alternativas: [
-            { valor: "5,5", tipo: "acerto" },
-            { valor: "6", tipo: "erro", categoria: "procedimento", erro: "mediana_par_elege_um_central", descricao: "Em um conjunto par, selecionou um dos valores centrais em vez de realizar a média entre eles.", peso: 2 },
-            { valor: "5", tipo: "erro", categoria: "procedimento", erro: "mediana_par_erro_ordenacao", descricao: "Falhou no ordenamento ou na identificação do par central.", peso: 2 },
-            { valor: "7", tipo: "erro", categoria: "atencao", erro: "mediana_par_valor_externo", descricao: "Selecionou um valor das extremidades do conjunto ordenado.", peso: 1 }
-        ],
-        passo: "Ordem: 3, 4, 5, 6, 7, 8. Como há 6 números, pegamos os dois do meio (5 e 6) e tiramos a média: (5+6) ÷ 2 = 5,5.",
-        dica: "Quando não há um único número no meio, some os dois centrais e divida por 2."
-    },
 
-    // ── MODA (ESTATISTICA_DESCRITIVA) ─────────────────────────────────────
+    // ── AULA 2: MEDIANA E MODA (ESTATISTICA_DESCRITIVA) ───────────────────
+
     {
-        id: "B5Q06", bloco: 5, aula: 2, tipo: "aritmetica",
-        bncc: "EF08MA22", bncc_desc: "Moda",
-        display: "Dados coletados: 2, 5, 3, 5, 7, 2, 5, 8. Qual é a moda desse conjunto?",
+        id: "B5Q04", bloco: 5, aula: 2, tipo: "aritmetica",
+        bncc: "EF08MA22", bncc_desc: "Mediana — Conceito",
+        display: "Qual é a mediana do conjunto de dados: 3, 7, 2, 9, 5, 8, 4?",
         res: "5",
         alternativas: [
             { valor: "5", tipo: "acerto" },
-            { valor: "2", tipo: "erro", categoria: "atencao", erro: "moda_frequencia_secundaria", descricao: "Identificou um valor que se repete, mas não o de maior frequência absoluta.", peso: 1 },
-            { valor: "7", tipo: "erro", categoria: "interpretacao", erro: "moda_confunde_com_maximo", descricao: "Confundiu moda com o valor máximo do conjunto.", peso: 2 },
-            { valor: "4,6", tipo: "erro", categoria: "conceito", erro: "moda_confunde_com_media", descricao: "Calculou a média aritmética em vez de observar a repetição.", peso: 3 }
+            { valor: "9", tipo: "erro", categoria: "conceito", erro: "mediana_sem_ordenacao", descricao: "Pegou o número do meio da lista original sem colocá-la em ordem crescente.", peso: 3 },
+            { valor: "5,4", tipo: "erro", categoria: "conceito", erro: "mediana_confunde_com_media", descricao: "Calculou a média aritmética em vez de achar o valor central.", peso: 3 },
+            { valor: "4", tipo: "erro", categoria: "procedimento", erro: "mediana_erro_posicional", descricao: "Ordenou os dados, mas contou a posição central de forma errada.", peso: 2 }
         ],
-        passo: "A moda é o valor que mais se repete. O 5 aparece 3 vezes, enquanto os outros aparecem menos.",
-        dica: "Moda lembra 'o que está na moda' (o que mais aparece nas ruas/dados)."
+        passo: "1º passo (Rol): 2, 3, 4, 5, 7, 8, 9. O número que está exatamente no meio é o 5.",
+        dica: "Dica de Ouro: Mediana exige ordem! Coloque os números na fila (do menor para o maior) antes de achar o centro."
     },
+    
 
-    // ── PENSAMENTO CRÍTICO (ESTATISTICA_DESCRITIVA) ────────────────────────
     {
-        id: "B5Q07", bloco: 5, aula: 2, tipo: "aritmetica",
-        bncc: "EF08MA22", bncc_desc: "Média, Mediana e Moda — Diferenças",
-        display: "Salários: R$ 1.000; R$ 1.000; R$ 1.200; R$ 1.500; R$ 10.000. Qual medida representa melhor a maioria desse grupo?",
+        id: "B5Q07", bloco: 5, aula: 2, tipo: "critica",
+        bncc: "EF08MA22", bncc_desc: "Análise de Outliers",
+        display: "Salários de uma pequena empresa: R$ 1.000, R$ 1.000, R$ 1.200, R$ 1.500 e R$ 10.000. Qual medida melhor representa o 'salário comum' desse grupo?",
         res: "Mediana (R$ 1.200)",
         alternativas: [
             { valor: "Mediana (R$ 1.200)", tipo: "acerto" },
-            { valor: "Média (R$ 2.940)", tipo: "erro", categoria: "conceito", erro: "critica_ignora_outlier_na_media", descricao: "Não percebeu que o valor extremo (10.000) distorce a média para cima, tornando-a pouco representativa.", peso: 3 },
-            { valor: "Moda (R$ 1.000)", tipo: "erro", categoria: "interpretacao", erro: "critica_moda_subestima_grupo", descricao: "Escolheu o valor mais baixo por ser frequente, ignorando que a mediana reflete melhor a distribuição central.", peso: 2 },
-            { valor: "Todas são iguais", tipo: "erro", categoria: "atencao", erro: "critica_falta_analise_dados", descricao: "Não realizou a comparação entre as medidas de tendência central.", peso: 1 }
+            { valor: "Média (R$ 2.940)", tipo: "erro", categoria: "conceito", erro: "critica_ignora_outlier", descricao: "Não percebeu que o valor de 10 mil 'puxa' a média para cima, distorcendo a realidade.", peso: 3 },
+            { valor: "Moda (R$ 1.000)", tipo: "erro", categoria: "interpretacao", erro: "critica_moda_subestima", descricao: "Escolheu o valor mais baixo por ser frequente, mas ele não representa bem o centro do grupo.", peso: 2 },
+            { valor: "R$ 10.000", tipo: "erro", categoria: "atencao", erro: "critica_elege_valor_extremo", descricao: "Elegeu o maior valor, ignorando todos os outros funcionários.", peso: 1 }
         ],
-        passo: "A média (2.940) é alta demais por causa do salário de 10 mil. A mediana (1.200) mostra melhor o que a maioria ganha.",
-        dica: "Quando um valor é muito diferente dos outros (muito alto ou muito baixo), a mediana é mais confiável que a média."
+        passo: "O salário de 10 mil é um 'outlier' (ponto fora da curva). Ele faz a média subir muito. A mediana (1.200) ignora os extremos e mostra o meio real.",
+        dica: "ADA explica: Se o Bill Gates entrar em um bar, a 'média' de dinheiro de todos sobe para milhões, mas ninguém ficou rico. Use a mediana nesses casos!"
     },
 
-    // ── LEITURA DE GRÁFICOS (ANALISE_GRAFICA) ─────────────────────────────
+    // ── AULA 3: ANÁLISE GRÁFICA (ANALISE_GRAFICA) ─────────────────────────
+
     {
-        id: "B5Q09", bloco: 5, aula: 3, tipo: "aritmetica",
-        bncc: "EF09MA20", bncc_desc: "Interpretação de Gráfico",
-        display: "Em uma turma de 40 alunos, 45% preferem futebol. Quantos alunos isso representa?",
-        res: "18 alunos",
+        id: "B5Q20", bloco: 5, aula: 9, tipo: "critica",
+        bncc: "EF09MA20", bncc_desc: "Gráficos Enganosos",
+        display: "Um gráfico de barras que compara vendas começa o eixo vertical no número 98 em vez de 0. Qual o efeito visual disso?",
+        res: "Exagera pequenas diferenças entre as barras",
         alternativas: [
-            { valor: "18 alunos", tipo: "acerto" },
-            { valor: "45 alunos", tipo: "erro", categoria: "conceito", erro: "grafico_confunde_percentual_absoluto", descricao: "Tratou o valor percentual (45) como se fosse a quantidade absoluta de alunos, excedendo o total da turma.", peso: 3 },
-            { valor: "22 alunos", tipo: "erro", categoria: "calculo", erro: "grafico_erro_multiplicacao_percentual", descricao: "Realizou a operação 0,45 × 40 mas cometeu erro aritmético no produto.", peso: 1 },
-            { valor: "9 alunos", tipo: "erro", categoria: "procedimento", erro: "grafico_erro_escala_percentual", descricao: "Dividiu o total por um fator arbitrário sem aplicar a taxa de 45%.", peso: 2 }
+            { valor: "Exagera pequenas diferenças entre as barras", tipo: "acerto" },
+            { valor: "Não causa nenhum efeito", tipo: "erro", categoria: "interpretacao", erro: "grafico_leitura_passiva", descricao: "Não percebeu que o truncamento do eixo é uma armadilha visual.", peso: 3 },
+            { valor: "Torna os números mentirosos", tipo: "erro", categoria: "conceito", erro: "grafico_confunde_visual_com_dado", descricao: "Achou que os números mudaram, quando na verdade apenas o desenho mudou.", peso: 2 },
+            { valor: "Inverte as barras", tipo: "erro", categoria: "atencao", erro: "grafico_erro_visual_basico", descricao: "Confundiu a posição das barras no gráfico.", peso: 1 }
         ],
-        passo: "Cálculo: 45% de 40 = 0,45 × 40 = 18 alunos.",
-        dica: "Para saber a quantidade real, multiplique o total de alunos pela porcentagem (ex: 40 × 0,45)."
+        passo: "Se o eixo começa no 98, uma diferença de 1 (de 98 para 99) parece enorme, pois a barra do 99 parecerá o dobro do tamanho da barra do 98,5.",
+        dica: "Olho vivo! Se o gráfico não começar do ZERO, ele pode estar tentando transformar uma faísca em um incêndio!"
     },
+    
 
-    // ── PROBABILIDADE (PROBABILIDADE) ─────────────────────────────────────
+    // ── AULA 4: PROBABILIDADE (PROBABILIDADE) ─────────────────────────────
+
     {
         id: "B5Q11", bloco: 5, aula: 4, tipo: "aritmetica",
         bncc: "EF09MA20", bncc_desc: "Probabilidade Clássica",
-        display: "Ao lançar um dado comum (6 faces), qual a probabilidade de sair um número PAR?",
+        display: "Ao lançar um dado de 6 faces, qual a probabilidade de sair um número PAR?",
         res: "1/2",
         alternativas: [
             { valor: "1/2", tipo: "acerto" },
-            { valor: "1/3", tipo: "erro", categoria: "procedimento", erro: "prob_contagem_favoraveis_errada", descricao: "Identificou incorretamente a quantidade de números pares no dado (ex: apenas dois).", peso: 2 },
-            { valor: "1/6", tipo: "erro", categoria: "conceito", erro: "prob_foco_numeral_unico", descricao: "Calculou a probabilidade de sair um número específico em vez de atender ao critério 'par'.", peso: 3 },
-            { valor: "3", tipo: "erro", categoria: "conceito", erro: "prob_apresenta_inteiro", descricao: "Respondeu com a quantidade de casos favoráveis em vez da razão de probabilidade.", peso: 3 }
+            { valor: "1/6", tipo: "erro", categoria: "conceito", erro: "prob_foco_numeral_unico", descricao: "Calculou a chance de sair UM número específico, ignorando o critério 'par'.", peso: 3 },
+            { valor: "3", tipo: "erro", categoria: "conceito", erro: "prob_apresenta_inteiro", descricao: "Respondeu com a contagem de casos (3 pares) e não com a probabilidade (razão).", peso: 3 },
+            { valor: "1/3", tipo: "erro", categoria: "procedimento", erro: "prob_contagem_errada", descricao: "Identificou a quantidade errada de números pares no dado.", peso: 2 }
         ],
-        passo: "Casos favoráveis (par): 2, 4, 6 (são 3). Total de casos: 6. Probabilidade = 3/6 = 1/2.",
-        dica: "Probabilidade é: o que eu quero (3 números pares) dividido pelo total que existe (6 números)."
+        passo: "Pares: {2, 4, 6} (são 3). Total: {1, 2, 3, 4, 5, 6} (são 6). Probabilidade = 3/6, que simplificado dá 1/2.",
+        dica: "A fórmula é simples: o que eu quero (3 números) dividido pelo que pode acontecer (6 números)."
     },
     
-    {
-        id: "B5Q15", bloco: 5, aula: 5, tipo: "aritmetica",
-        bncc: "EF09MA20", bncc_desc: "Interpretação Crítica de Dados",
-        display: "Uma empresa diz: '90% dos clientes aprovam nosso produto!', mas a pesquisa ouviu apenas 10 pessoas. Essa afirmação é confiável?",
-        res: "Não — amostra muito pequena",
-        alternativas: [
-            { valor: "Não — amostra muito pequena", tipo: "acerto" },
-            { valor: "Sim — 90% é um valor alto", tipo: "erro", categoria: "interpretacao", erro: "critica_foco_apenas_no_percentual", descricao: "Valorizou apenas a taxa de sucesso, ignorando que a base (amostra) não tem relevância estatística.", peso: 3 },
-            { valor: "Sim, pois porcentagem não mente", tipo: "erro", categoria: "conceito", erro: "critica_dogmatismo_matematico", descricao: "Acredita que resultados matemáticos são isentos de manipulação contextual.", peso: 3 },
-            { valor: "Depende do produto", tipo: "erro", categoria: "estrategia", erro: "critica_desvia_foco_estatistico", descricao: "Atribuiu a validade a fatores externos em vez de analisar a metodologia da pesquisa.", peso: 2 }
-        ],
-        passo: "Estatisticamente, 10 pessoas não representam o público geral. Uma única pessoa mudando de ideia alteraria o resultado drasticamente (10%).",
-        dica: "Para uma pesquisa ser boa, ela precisa ouvir muita gente de diferentes tipos, não apenas 10 pessoas."
-    },
 
-    // ── ANÁLISE CRÍTICA (ANALISE_GRAFICA) ─────────────────────────────────
     {
-        id: "B5Q20", bloco: 5, aula: 9, tipo: "aritmetica",
-        bncc: "EF09MA20", bncc_desc: "Análise Crítica — Gráfico Enganoso",
-        display: "Um gráfico de barras começa o eixo vertical no número 98 em vez de 0. O que isso causa visualmente?",
-        res: "O gráfico amplifica visualmente pequenas diferenças",
+        id: "B5Q15", bloco: 5, aula: 5, tipo: "critica",
+        bncc: "EF09MA20", bncc_desc: "Interpretação de Amostras",
+        display: "Um comercial diz: '90% dos usuários aprovam o produto!', mas a pesquisa ouviu apenas 10 pessoas. Essa afirmação é confiável?",
+        res: "Não — a amostra é muito pequena",
         alternativas: [
-            { valor: "O gráfico amplifica visualmente pequenas diferenças", tipo: "acerto" },
-            { valor: "Nada, é um gráfico normal", tipo: "erro", categoria: "interpretacao", erro: "grafico_leitura_passiva", descricao: "Não percebeu que o truncamento do eixo y é uma técnica de manipulação visual.", peso: 3 },
-            { valor: "Os dados tornam-se mentirosos", tipo: "erro", categoria: "conceito", erro: "grafico_confunde_visual_com_dado", descricao: "Acreditou que o erro está nos números, quando na verdade está na representação geométrica deles.", peso: 2 },
-            { valor: "O eixo x está invertido", tipo: "erro", categoria: "atencao", erro: "grafico_erro_identificacao_eixo", descricao: "Confundiu os eixos horizontal e vertical durante a análise.", peso: 1 }
+            { valor: "Não — a amostra é muito pequena", tipo: "acerto" },
+            { valor: "Sim — 90% é um número muito alto", tipo: "erro", categoria: "interpretacao", erro: "critica_foco_no_percentual", descricao: "Deixou-se levar pelo número alto sem checar a base de dados.", peso: 3 },
+            { valor: "Sim — a matemática não mente", tipo: "erro", categoria: "conceito", erro: "critica_dogmatismo", descricao: "Acredita que qualquer porcentagem é uma verdade absoluta.", peso: 3 },
+            { valor: "Depende do preço do produto", tipo: "erro", categoria: "estrategia", erro: "critica_desvia_foco", descricao: "Trouxe fatores externos para uma análise que deveria ser estatística.", peso: 2 }
         ],
-        passo: "Se o eixo começa no 98, um dado de 99 parece o dobro de um dado de 98,5, embora a diferença real seja mínima.",
-        dica: "Fique de olho: se o gráfico não começar do zero, ele pode estar tentando 'aumentar' uma diferença pequena."
+        passo: "Em uma amostra de 10 pessoas, se apenas uma mudar de opinião, o resultado cai 10%. É uma base instável demais para representar milhares de usuários.",
+        dica: "Estatística séria precisa de uma amostra grande e diversa. Cuidado com o 'Poder dos Pequenos Números'!"
     }
 ];
