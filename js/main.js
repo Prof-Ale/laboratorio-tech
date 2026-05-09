@@ -1,27 +1,25 @@
 /**
- * main.js — v10.1 "MathLab Diagnóstico & Inclusão"
- * Core de Orquestração do LabTech
+ * main.js — v10.2 "MathLab QA & Debug"
+ * Core de Orquestração com Validação e Telemetria
  */
 
 import { G } from './engine/gameState.js';
 import { selQ, limparHistoricoSessao } from './engine/selector.js';
 import { analisarAlternativa, registrarErro } from './engine/diagnostic-engine.js';
 import { renderCv, animarArcos, setAnimando } from './game-engine.js';
-import { updHUD, narrarContexto, toggleMusica, toggleVoz, tocarAv, exibirGameOver } from './ui-manager.js';
+import { updHUD, narrarContexto, toggleMusica, toggleVoz, tocarAv, exibirGameOver, abrirM, fecharM } from './ui-manager.js';
 
+// Variáveis de controle global para Debug
 let qAtual = null;
+window.G = G; // Exposto para o console F12
 
 /* ============================================================
    LÓGICA HÍBRIDA DE QUESTÕES
    ============================================================ */
 
-/**
- * Normaliza alternativas para suportar formatos legados e novos.
- */
 function obterAlternativas(q) {
     if (Array.isArray(q.alternativas)) return q.alternativas;
 
-    // Adaptador para questões legadas (converte botoes[] para o novo padrão)
     return (q.botoes || []).map(valor => {
         const correta = Array.isArray(q.res)
             ? q.res.map(String).includes(String(valor))
@@ -42,7 +40,7 @@ function obterAlternativas(q) {
 }
 
 /* ============================================================
-   UTILITÁRIOS DE DOM
+   UTILITÁRIOS DE DOM E DEBUG
    ============================================================ */
 function $(id) { return document.getElementById(id); }
 
@@ -57,15 +55,27 @@ function ocultarTodas() {
     });
 }
 
+/**
+ * Atualiza o painel de debug na tela
+ */
+function updateDebug() {
+    if (!$('debug-panel')) return;
+    $('db-q-id').textContent = qAtual ? qAtual.id : '---';
+    $('db-q-tipo').textContent = qAtual ? qAtual.tipo : '---';
+    $('db-combo').textContent = G.combo;
+    $('db-vida').textContent = G.vida;
+    $('db-engine-status').textContent = G.respondeu ? "BLOQUEADO (Aguardando Prox)" : "PRONTO";
+}
+
 /* ============================================================
-   PERSISTÊNCIA E DADOS
+   PERSISTÊNCIA E NAVEGAÇÃO
    ============================================================ */
 function carregarDados() {
     const raw = localStorage.getItem('laboratorio_tech_data');
     if (!raw) return;
     try {
         const d = JSON.parse(raw);
-        Object.assign(G, d); // Mescla dados salvos no Estado Global
+        Object.assign(G, d);
     } catch(e) { console.warn("[LabTech] Erro ao carregar dados salvos."); }
 }
 
@@ -73,24 +83,19 @@ function salvarProgresso() {
     localStorage.setItem('laboratorio_tech_data', JSON.stringify(G));
 }
 
-carregarDados();
-
-/* ============================================================
-   NAVEGAÇÃO E FLUXO
-   ============================================================ */
 function mostrarSeletorBlocos() {
     G.nome = $('nome-cientista')?.value.trim() || 'Cientista';
     G.turma = $('turma-cientista')?.value.trim() || '';
     ocultarTodas();
     $('block-selector')?.classList.remove('hidden');
     narrarContexto(`Olá ${G.nome}, selecione o setor de análise.`);
+    salvarProgresso();
 }
 
 function iniciarBloco(id) {
     const nomes = { 
-        1:"A Base Numérica", 2:"Números e Operações",
-        3:"Grandezas e Medidas", 4:"Álgebra e Padrão", 
-        5:"Estatística e Dados", 6:"Geometria e Espaço" 
+        1:"A Base Numérica", 2:"Números e Operações", 3:"Grandezas e Medidas", 
+        4:"Álgebra e Padrão", 5:"Estatística e Dados", 6:"Geometria e Espaço" 
     };
     
     G.currentBlock = id;
@@ -113,7 +118,10 @@ function iniciarBloco(id) {
    SISTEMA DE RESPOSTA E DIAGNÓSTICO
    ============================================================ */
 function renderQ(q) {
-    if (!q) return;
+    if (!q) {
+        console.error("[LabTech] Erro: Tentativa de renderizar questão nula.");
+        return;
+    }
 
     const display = $('conta-display');
     const fb = $('fb');
@@ -131,7 +139,6 @@ function renderQ(q) {
     grid.innerHTML = '';
 
     const alternativas = [...obterAlternativas(q)].sort(() => Math.random() - 0.5);
-
     grid.style.gridTemplateColumns = alternativas.length <= 3 ? `repeat(${alternativas.length}, 1fr)` : '1fr 1fr';
 
     alternativas.forEach(alt => {
@@ -147,95 +154,108 @@ function processarResposta(alternativa, q) {
     if (G.respondeu) return;
     G.respondeu = true;
 
-    const analise = analisarAlternativa(alternativa);
-    const feedbackEl = $('fb');
+    try {
+        const analise = analisarAlternativa(alternativa);
+        const feedbackEl = $('fb');
 
-    // Inicializa histórico da habilidade se não existir
-    if (q.bncc && !G.historico[q.bncc]) {
-        G.historico[q.bncc] = { desc: q.bncc_desc, acertos: 0, erros_conceito: 0, erros_calculo: 0, bloco: G.currentBlock };
-    }
-
-    // Feedback Visual nos Botões
-    document.querySelectorAll('.ba').forEach(b => {
-        b.classList.add('dis');
-        const ehCorreta = Array.isArray(q.res) ? q.res.map(String).includes(b.textContent) : b.textContent === String(q.res);
-        if (ehCorreta) b.classList.add('ok');
-        if (b.textContent === String(alternativa.valor) && !analise.correto) b.classList.add('no');
-    });
-
-    if (analise.correto) {
-        G.acertos++; G.combo++; G.energia = Math.min(100, G.energia + 10);
-        if (q.bncc) G.historico[q.bncc].acertos++;
-        
-        feedbackEl.className = 'fb-box acerto';
-        feedbackEl.innerHTML = `<h3>[✓] Algoritmo Validado!</h3><p>${q.passo}</p>`;
-        tocarAv('ok');
-    } else {
-        G.erros++; G.combo = 0;
-        
-        // Registrar erro no Engine Diagnóstico
-        registrarErro(G, analise);
-
-        // Cálculo de Dano (Peso 3: 20hp | Peso 2: 15hp | Peso 1: 10hp)
-        const dano = 5 + (analise.peso * 5);
-        G.vida = Math.max(0, G.vida - dano);
-
-        if (q.bncc) {
-            if (analise.categoria === 'conceito') G.historico[q.bncc].erros_conceito++;
-            else G.historico[q.bncc].erros_calculo++;
+        if (q.bncc && !G.historico[q.bncc]) {
+            G.historico[q.bncc] = { desc: q.bncc_desc, acertos: 0, erros_conceito: 0, erros_calculo: 0, bloco: G.currentBlock };
         }
 
-        feedbackEl.className = 'fb-box erro';
-        feedbackEl.innerHTML = `
-            <h3>[!] Anomalia: ${analise.categoria.toUpperCase()}</h3>
-            <p><strong>Diagnóstico:</strong> ${analise.descricao}</p>
-            <p class="mt-2" style="font-size:0.9em; opacity:0.8">${q.passo}</p>
-        `;
-        tocarAv('no');
+        // Feedback Visual
+        document.querySelectorAll('.ba').forEach(b => {
+            b.classList.add('dis');
+            const ehCorreta = Array.isArray(q.res) ? q.res.map(String).includes(b.textContent) : b.textContent === String(q.res);
+            if (ehCorreta) b.classList.add('ok');
+            if (b.textContent === String(alternativa.valor) && !analise.correto) b.classList.add('no');
+        });
+
+        if (analise.correto) {
+            G.acertos++; G.combo++; G.energia = Math.min(100, G.energia + 10);
+            if (q.bncc) G.historico[q.bncc].acertos++;
+            
+            feedbackEl.className = 'fb-box acerto';
+            feedbackEl.innerHTML = `<h3>[✓] Algoritmo Validado!</h3><p>${q.passo}</p>`;
+            tocarAv('ok');
+        } else {
+            G.erros++; G.combo = 0;
+            registrarErro(G, analise);
+
+            const dano = 5 + (analise.peso * 5);
+            G.vida = Math.max(0, G.vida - dano);
+            if ($('db-last-err')) $('db-last-err').textContent = analise.erro;
+
+            if (q.bncc) {
+                if (analise.categoria === 'conceito') G.historico[q.bncc].erros_conceito++;
+                else G.historico[q.bncc].erros_calculo++;
+            }
+
+            feedbackEl.className = 'fb-box erro';
+            feedbackEl.innerHTML = `<h3>[!] Anomalia: ${analise.categoria.toUpperCase()}</h3><p>${analise.descricao}</p>`;
+            tocarAv('no');
+        }
+
+        if (q.tipo === 'reta' || q.tipo === 'sinais') {
+            setTimeout(() => animarArcos(q), 100);
+        }
+        
+        updHUD();
+        salvarProgresso();
+        $('btn-prox')?.classList.remove('hidden');
+
+        if (G.vida <= 0) setTimeout(exibirGameOver, 1200);
+
+    } catch (e) {
+        console.error("[LabTech] Falha Crítica no Processamento:", e);
+        $('btn-prox')?.classList.remove('hidden'); // Destrava o jogo em caso de erro
     }
-
-    if (q.tipo === 'reta' || q.tipo === 'sinais') animarArcos(q);
-    
-    updHUD();
-    salvarProgresso();
-    $('btn-prox')?.classList.remove('hidden');
-
-    if (G.vida <= 0) setTimeout(exibirGameOver, 1200);
 }
 
 function proximaQ() {
+    setAnimando(false);
     qAtual = selQ(G.currentBlock);
+    window.qAtual = qAtual; // Para o Debug
     renderQ(qAtual);
 }
 
-/* ============================================================
-   DASHBOARD E RELATÓRIOS
-   ============================================================ */
-function exportarCSV() {
-    let csv = 'Habilidade;Descricao;Acertos;Erros_Conceito;Erros_Calculo\n';
-    for (const [cod, h] of Object.entries(G.historico)) {
-        csv += `${cod};${h.desc};${h.acertos};${h.erros_conceito};${h.erros_calculo}\n`;
-    }
-    const blob = new Blob([csv], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.setAttribute('href', url);
-    a.setAttribute('download', `Relatorio_${G.nome}.csv`);
-    a.click();
+function reiniciar() {
+    G.vida = 100;
+    G.energia = 60;
+    fecharM('go');
+    updHUD();
+    proximaQ();
 }
 
 /* ============================================================
    INICIALIZAÇÃO
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
+    carregarDados();
+
     on('btn-acessar', mostrarSeletorBlocos);
     [1,2,3,4,5,6].forEach(i => on(`btn-bloco-${i}`, () => iniciarBloco(i)));
     
     on('btn-prox', proximaQ);
-    on('btn-csv', exportarCSV);
+    on('btn-csv', () => { /* Chamar função de CSV */ });
     on('btn-musica', toggleMusica);
     on('btn-voz', toggleVoz);
-    on('btn-reiniciar', () => { G.vida = 100; reiniciar(); });
+    on('btn-reiniciar', reiniciar);
+    
+    // Modais
+    on('btn-dash', () => abrirM('mdash'));
+    on('btn-fecha-dash', () => fecharM('mdash'));
+    on('btn-cred', () => abrirM('mcred'));
+    on('btn-fecha-cred', () => fecharM('mcred'));
 
-    console.log(`[LabTech] Engine v10.1 Ativo. Usuário: ${G.nome}`);
+    // Delegação para botões de "Voltar ao Seletor"
+    document.querySelectorAll('[data-action="seletor"]').forEach(el => {
+        el.addEventListener('click', () => {
+            fecharM('go');
+            ocultarTodas();
+            $('block-selector').classList.remove('hidden');
+        });
+    });
+
+    setInterval(updateDebug, 500);
+    console.log(`[LabTech] Engine v10.2 Online.`);
 });
