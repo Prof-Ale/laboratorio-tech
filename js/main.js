@@ -313,17 +313,17 @@ function processarAcerto(q, fbEl) {
     if (G.combo % 5 === 0) G.nivel++;
     if (q.bncc) G.historico[q.bncc].acertos++;
 
-    const elogios = ['Feitiço Conjurado!', 'Magia Perfeita!', 'Dano Crítico na Sombra!', 'Sincronia Exata!'];
+    const elogios = ['Algoritmo Validado!', 'Cálculo Preciso!', 'Sincronização Perfeita!', 'Parâmetro Correto!'];
     const msg = elogios[Math.floor(Math.random() * elogios.length)];
 
     if (fbEl) {
         fbEl.className = 'fb-box acerto';
         fbEl.innerHTML = `
             <div class="fb-header text-green">
-                <h3>✨ ${msg} (+10 Energia)</h3>
+                <h3>[✓] ${msg} (+10 Energia)</h3>
             </div>
             <div class="fb-guardiao mt-2">
-                <p class="fb-passo">${q.passo}</p>
+                <p class="fb-passo">> ${q.passo}</p>
             </div>
         `;
     }
@@ -362,13 +362,13 @@ function processarErro(alternativa, diagnostico, q, fbEl) {
         fbEl.className = 'fb-box erro'; 
         fbEl.innerHTML = `
             <div class="fb-header text-red">
-                <h3>💥 Sombra contra-atacou! (-${damage} HP)</h3>
-                <p class="fb-motivo">${diagnostico.descricao}</p>
+                <h3>[!] ANOMALIA DETECTADA (-${damage} Integridade)</h3>
+                <p class="fb-motivo">Falha Cognitiva: ${diagnostico.descricao}</p>
             </div>
             <div class="fb-guardiao mt-2">
-                <p class="fb-tutor">🐾 <strong>Guardião Oreo diz:</strong></p>
+                <p class="fb-tutor">I.A. DIAGNÓSTICA INFORMA:</p>
                 <p class="fb-passo">${q.passo}</p>
-                <p class="fb-dica">💡 <em>Dica: ${q.dica || 'Revise com calma e tente usar uma tabela posicional.'}</em></p>
+                <p class="fb-dica">> Procedimento sugerido: ${q.dica || 'Revise o alinhamento posicional e recalcule.'}</p>
             </div>
         `;
     }
@@ -376,7 +376,7 @@ function processarErro(alternativa, diagnostico, q, fbEl) {
     tocarAv('no');
     narrarContexto(diagnostico.descricao + ' Dica: ' + (q.dica || q.passo));
 
-    console.log('[TELEMETRIA CÓDEX]', {
+    console.log('[TELEMETRIA MATHLAB]', {
         habilidade: q.bncc,
         categoria,
         erro_mapeado: erro,
@@ -495,5 +495,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    console.log('[LabTech Códex] Sistema Batalha Matemática ativo com Motor de Risco Cognitivo.');
+    console.log('[LabTech] Sistema de Diagnóstico Ativo com Motor de Risco Cognitivo.');
 });
