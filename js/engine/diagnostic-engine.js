@@ -57,24 +57,23 @@ export function analisarAlternativa(alternativa) {
         return { correto: true };
     }
 
-    // Retorna o DNA completo do erro
     return {
         correto: false,
         categoria: alternativa.categoria || 'calculo',
         erro: alternativa.erro || 'erro_generico',
         descricao: alternativa.descricao || 'Erro identificado.',
-        peso: alternativa.peso || 1 // O peso (1 a 3) define a gravidade
+        peso: alternativa.peso || 1 
     };
 }
 
 /* ============================================================
-   REGISTRO E CÁLCULO DE PERFIL (Analytics do Prof. Alê)
+   REGISTRO E CÁLCULO (Estado do Jogo G)
+   AQUI ESTÁ A CORREÇÃO DO NOME DA FUNÇÃO!
 ============================================================ */
 
 export function registrarErro(G, analise) {
     if (!G.diagnostico) G.diagnostico = { logs: [], scores: {} };
 
-    // Registra o log detalhado
     G.diagnostico.logs.push({
         erro: analise.erro,
         categoria: analise.categoria,
@@ -82,7 +81,6 @@ export function registrarErro(G, analise) {
         timestamp: Date.now()
     });
 
-    // Atualiza o score acumulado por cluster
     for (const [cluster, erros] of Object.entries(CLUSTERS)) {
         if (erros.includes(analise.erro)) {
             G.diagnostico.scores[cluster] = (G.diagnostico.scores[cluster] || 0) + analise.peso;
@@ -90,12 +88,8 @@ export function registrarErro(G, analise) {
     }
 }
 
-/**
- * Detecta a "Dificuldade Persistente Estrutural"
- * Se um cluster acumula score > 6 (ex: 2 erros de conceito peso 3), ADA dispara alerta.
- */
 export function detectarAlertaCritico(G) {
-    if (!G.diagnostico) return null;
+    if (!G.diagnostico || !G.diagnostico.scores) return null;
 
     const alertas = Object.entries(G.diagnostico.scores)
         .filter(([cluster, score]) => score >= 6)
