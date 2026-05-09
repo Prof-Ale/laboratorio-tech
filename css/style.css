@@ -409,7 +409,7 @@ body::after {
   transition: width .4s ease;
 }
 
-#fv  { background: linear-gradient(90deg, #ff4444, #ff8844); }
+#fv  { background: linear-gradient(90deg, var(--neon-red), #ff8844); }
 #fen { background: linear-gradient(90deg, var(--neon-cyan), var(--choco-gold)); }
 
 .hv {
@@ -687,8 +687,9 @@ body::after {
   .ba { font-size: 14px; padding: 12px 8px; min-height: 50px; }
   .hud { gap: 6px; }
 }
+
 /* ============================================================
-   ESTILOS DO BATTLE ENGINE (GUARDIÃO OREO)
+   ESTILOS DO MOTOR DIAGNÓSTICO (I.A. TECH)
 ============================================================ */
 .fb-box {
     margin-top: 20px;
@@ -700,12 +701,12 @@ body::after {
 
 .fb-box.erro {
     background-color: rgba(60, 10, 10, 0.8);
-    border: 2px solid #ff4d4d;
+    border: 2px solid var(--neon-red);
 }
 
 .fb-box.acerto {
     background-color: rgba(10, 60, 20, 0.8);
-    border: 2px solid #4dff4d;
+    border: 2px solid var(--neon-green);
 }
 
 .fb-header h3 {
@@ -713,40 +714,43 @@ body::after {
     font-size: 1.2rem;
 }
 
-.text-red h3 { color: #ff6666; }
-.text-green h3 { color: #66ff66; }
+.text-red h3 { color: var(--neon-red); }
+.text-green h3 { color: var(--neon-green); }
 
 .fb-motivo {
     font-size: 1rem;
-    color: #e0e0e0;
+    color: var(--text-main);
     margin-bottom: 10px;
 }
 
 .fb-guardiao {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
-    border-left: 4px solid #ffd700;
+    border-left: 4px solid var(--neon-cyan);
     border-radius: 4px;
 }
 
+/* Estilo Hacker / Terminal para a I.A. */
 .fb-tutor {
-    color: #ffd700;
-    font-size: 0.9rem;
+    color: var(--neon-cyan);
+    font-size: 0.85rem;
     margin: 0 0 5px 0;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    font-family: var(--font-display);
 }
 
 .fb-passo {
-    color: #ffffff;
+    color: var(--text-main);
     font-size: 0.95rem;
     margin: 0 0 8px 0;
 }
 
 .fb-dica {
-    color: #88ccff;
+    color: var(--choco-gold);
     font-size: 0.9rem;
     margin: 0;
+    font-family: monospace;
 }
 
 @keyframes fadeIn {
