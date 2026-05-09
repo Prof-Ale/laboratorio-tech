@@ -1,5 +1,5 @@
 /**
- * ui-manager.js - Versão 3.8 (MathLab Estabilizado)
+ * ui-manager.js - Versão 3.9 (QA & Estabilizado)
  * Núcleo de Interface, Acessibilidade (DUA) e Telemetria Visual
  */
 
@@ -22,31 +22,27 @@ export function narrarContexto(t) {
     try {
         if (typeof window === 'undefined' || !window.speechSynthesis || !G.voz) return;
 
-        // Cancela narrações em fila para priorizar a atual
         window.speechSynthesis.cancel();
 
-        // Limpeza de texto (Remover HTML e caracteres especiais que travam o TTS)
         const textoLimpo = t.replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, ' ');
         const u = new SpeechSynthesisUtterance(textoLimpo);
 
         const vozes = window.speechSynthesis.getVoices();
-        // Busca voz brasileira masculina ou feminina (prioridade para 'Google' ou 'Luciana/Daniel')
         const vozBR = vozes.find(x => x.lang.includes('pt-BR') && x.name.includes('Google')) || 
                       vozes.find(x => x.lang.includes('pt-BR'));
 
         u.lang = "pt-BR";
-        u.rate = 1.0;  // Velocidade natural
-        u.pitch = 1.1; // Tom levemente tecnológico
+        u.rate = 1.0; 
+        u.pitch = 1.1;
         if (vozBR) u.voice = vozBR;
 
-        // Efeito 'Ducking': abaixa a música para a voz passar
         u.onstart = () => { if (bgm && G.musica) bgm.volume = 0.02; };
         u.onend   = () => { if (bgm && G.musica) bgm.volume = 0.07; };
 
         window.speechSynthesis.speak(u);
 
     } catch (e) {
-        console.warn("[MathLab] Falha na síntese de voz:", e);
+        console.warn("[MathLab] Falha no TTS:", e);
     }
 }
 
@@ -60,7 +56,7 @@ export function toggleMusica() {
     if (!bgm) return;
     if (G.musica) {
         bgm.volume = 0.07;
-        bgm.play().catch(() => console.log("Interação necessária para tocar som."));
+        bgm.play().catch(() => console.log("Aguardando interação para áudio."));
     } else {
         bgm.pause();
     }
@@ -76,29 +72,44 @@ export function toggleVoz() {
     }
 }
 
-// === AVATAR E FEEDBACK VISUAL ===
+// === AVATAR E FEEDBACK VISUAL (ESTABILIZADO) ===
 
+/**
+ * Gerencia a animação da ADA com proteção contra travamentos de vídeo
+ */
 export function tocarAv(tipo) {
     const img = document.getElementById("av-img");
     const vid = document.getElementById(tipo === "ok" ? "vid-ok" : "vid-no");
 
-    if (!img || !vid) return;
+    // Proteção: Se a imagem base não existir, aborta para não quebrar o JS
+    if (!img) return;
 
-    // Alterna visibilidade
-    img.classList.add("avh");
-    vid.classList.remove("avh");
+    // Se o vídeo não existir no DOM, apenas sai (mantém a imagem estática)
+    if (!vid) {
+        console.warn(`[ADA] Elemento de vídeo para ${tipo} não encontrado.`);
+        return;
+    }
 
-    vid.currentTime = 0;
-    vid.play().catch(() => {
-        // Fallback se o vídeo falhar (ex: modo economia de bateria)
-        vid.classList.add("avh");
-        img.classList.remove("avh");
-    });
-
-    vid.onended = () => {
+    // Reset de visibilidade seguro
+    const resetAv = () => {
         vid.classList.add("avh");
         img.classList.remove("avh");
     };
+
+    // Alterna para o vídeo
+    img.classList.add("avh");
+    vid.classList.remove("avh");
+    vid.currentTime = 0;
+
+    // Execução com tratamento de Promessa (Crucial para não travar o main.js)
+    vid.play()
+        .then(() => {
+            vid.onended = resetAv;
+        })
+        .catch(err => {
+            console.warn("[MathLab] Bloqueio de autoplay ou vídeo ausente:", err);
+            resetAv();
+        });
 }
 
 /**
@@ -111,7 +122,6 @@ export function updHUD() {
     if (fv) fv.style.width = G.vida + "%";
     if (fen) fen.style.width = G.energia + "%";
 
-    // Efeito de cor na barra de vida
     if (fv) {
         if (G.vida < 30) fv.style.backgroundColor = "#ff4444";
         else if (G.vida < 60) fv.style.backgroundColor = "#ffbb33";
@@ -156,7 +166,11 @@ export function exibirGameOver() {
         `;
     }
 
-    if (goModal) goModal.classList.add("show", "active");
+    if (goModal) {
+        goModal.classList.add("show", "active");
+        // Garante que o modal de Game Over sobreponha tudo
+        goModal.style.zIndex = "10000";
+    }
 
     narrarContexto(`Integridade do sistema comprometida. Taxa de sincronia final: ${tx} por cento. Reinicie para nova análise.`);
 }
@@ -170,8 +184,11 @@ function gerarDashboard() {
     c.innerHTML = "";
     let temDados = false;
 
-    for (let hab in G.historico) {
-        const hist = G.historico[hab];
+    // Garante que G.historico existe para não quebrar o loop
+    const historico = G.historico || {};
+
+    for (let hab in historico) {
+        const hist = historico[hab];
         const total = (hist.acertos || 0) + (hist.erros_conceito || 0) + (hist.erros_calculo || 0);
         
         if (total === 0) continue;
@@ -180,7 +197,6 @@ function gerarDashboard() {
         const txAcerto = Math.round((hist.acertos / total) * 100);
         let diagnostico = "";
 
-        // Lógica de Alerta ADA
         if (hist.erros_conceito > hist.acertos) {
             diagnostico = `<div class="alerta-sinal">⚠️ <strong>Bloqueio Conceitual:</strong> O aluno não domina a regra base desta habilidade.</div>`;
         } else if (hist.erros_calculo > 0) {
@@ -204,6 +220,6 @@ function gerarDashboard() {
     }
 
     if (!temDados) {
-        c.innerHTML = "<p class='text-center'>Aguardando telemetria de campo para gerar relatório...</p>";
+        c.innerHTML = "<p class='text-center' style='color:var(--text-muted); padding:20px;'>Aguardando telemetria de campo para gerar relatório...</p>";
     }
 }
