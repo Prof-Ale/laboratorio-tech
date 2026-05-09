@@ -17,9 +17,12 @@ export const G = {
     consec_erros: 0,
     
     // Diagnóstico Pedagógico (Clínica do Erro)
-    // Armazena o mapeamento por habilidade BNCC
-    // Estrutura esperada em cada entrada: { acertos: 0, erros_conceito: 0, erros_calculo: 0, desc: "" }
     historico: {}, 
+    diagnostico: {
+        errosAcumulados: {},
+        clusterScores: {},
+        historicoErros: [] // Para o log temporal da ADA
+    },
     
     // Configurações e Preferências (DUA)
     musica: true,
