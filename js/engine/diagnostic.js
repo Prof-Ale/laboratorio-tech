@@ -2,7 +2,11 @@
  * diagnostic-engine.js v2.0 — "ADA & Gemini Edition"
  * Núcleo de Inteligência Pedagógica do LabTech
  */
-
+export function obterResumoADA(G) {
+    if (!G.diagnostico || G.diagnostico.historico.length === 0) {
+        return { status: "Excelente", precisaIntervencao: false };
+    }
+ 
 /* ============================================================
    CLUSTERS OFICIAIS (A Inteligência do Bloco 1 ao 6)
 ============================================================ */
