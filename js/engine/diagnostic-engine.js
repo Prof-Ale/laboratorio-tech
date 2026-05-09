@@ -71,7 +71,7 @@ export function analisarAlternativa(alternativa) {
    REGISTRO E CÁLCULO DE PERFIL (Analytics do Prof. Alê)
 ============================================================ */
 
-export function registrarNoHistorico(G, analise) {
+export function registrarErro(G, analise) {
     if (!G.diagnostico) G.diagnostico = { logs: [], scores: {} };
 
     // Registra o log detalhado
