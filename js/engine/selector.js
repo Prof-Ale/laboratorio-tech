@@ -6,6 +6,10 @@
 import { G } from './gameState.js';
 
 // === 1. IMPORTAÇÃO DOS BANCOS DE QUESTÕES (A Fiação) ===
+import { bloco1_trilha1 } from '../data/questions/bloco1_trilha1.js';
+import { bloco1_trilha2 } from '../data/questions/bloco1_trilha2.js';
+import { bloco1_trilha3 } from '../data/questions/bloco1_trilha3.js';
+import { bloco1_trilha4 } from '../data/questions/bloco1_trilha4.js';
 import { bloco2_trilha1 } from '../data/questions/bloco2_trilha1.js';
 import { bloco2_trilha2 } from '../data/questions/bloco2_trilha2.js';
 import { bloco2_trilha3 } from '../data/questions/bloco2_trilha3.js';
