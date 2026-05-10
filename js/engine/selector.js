@@ -1,17 +1,14 @@
 /**
- * selector.js — Versão 5.3 "ADA Heuristics AI (Unified Architecture)"
+ * selector.js — Versão 5.4 "ADA Heuristics AI (Full Unified)"
  * Seletor Híbrido: Espinha Dorsal Curricular + Desvio Adaptativo Pedagógico
+ * * ATUALIZAÇÃO: Arquitetura 100% consolidada para Blocos 1 a 6.
  */
 
 import { G } from './gameState.js';
 
-// === 1. IMPORTAÇÃO DOS BANCOS DE QUESTÕES (A Fiação) ===
-// 🚨 Arquitetura Unificada: Um arquivo por bloco!
+// === 1. IMPORTAÇÃO DOS BANCOS DE QUESTÕES (Fiação Unificada) ===
 import { bloco1 } from '../data/questions/bloco1.js'; 
-import { bloco2_trilha1 } from '../data/questions/bloco2_trilha1.js';
-import { bloco2_trilha2 } from '../data/questions/bloco2_trilha2.js';
-import { bloco2_trilha3 } from '../data/questions/bloco2_trilha3.js';
-import { bloco2_trilha4 } from '../data/questions/bloco2_trilha4.js';
+import { bloco2 } from '../data/questions/bloco2.js'; 
 import { bloco3 } from '../data/questions/bloco3.js'; 
 import { bloco4 } from '../data/questions/bloco4.js'; 
 import { bloco5 } from '../data/questions/bloco5.js'; 
@@ -19,68 +16,70 @@ import { bloco6 } from '../data/questions/bloco6.js';
 
 // === 2. CONSOLIDAÇÃO DO BANCO GERAL (As Gavetas) ===
 const BANCO = {
-    1: [ 
-        ...bloco1 // Puxando tudo do novo arquivo unificado!
-    ],
-    2: [
-        ...bloco2_trilha1,
-        ...bloco2_trilha2,
-        ...bloco2_trilha3,
-        ...bloco2_trilha4
-    ],
-    3: [ ...bloco3 ],
-    4: [ ...bloco4 ],
-    5: [ ...bloco5 ],
-    6: [ ...bloco6 ]
+    1: [...bloco1],
+    2: [...bloco2],
+    3: [...bloco3],
+    4: [...bloco4],
+    5: [...bloco5],
+    6: [...bloco6]
 };
 
-// Histórico de IDs já mostrados na sessão atual
+// Histórico de IDs já mostrados na sessão atual (evita repetição)
 let respondedInSession = new Set();
 
 export function limparHistoricoSessao() {
     respondedInSession.clear();
-    console.log("[LabTech AI] Memória de questões da sessão reiniciada.");
+    console.log("🧠 [LabTech AI] Memória de curto prazo da ADA resetada.");
 }
 
 /**
  * MOTOR DE HEURÍSTICA PEDAGÓGICA (O cérebro da ADA)
+ * Decide se o aluno precisa de um desafio (Investigação) ou de um resgate (Recomposição).
  */
 function avaliarNecessidadeIntervencao(blocoId) {
     const qDisp = BANCO[blocoId] || [];
     if (qDisp.length === 0) return null;
 
     // 1. ANÁLISE DE EXCELÊNCIA (Tédio Cognitivo)
+    // Se o combo estiver alto, a ADA lança um desafio de Investigação.
     if (G.combo >= 4) {
-        console.log("🌟 [ADA Triage] Combo alto detectado. Procurando desafio de Investigação.");
         const desafio = qDisp.find(q => 
             !respondedInSession.has(q.id) && 
-            (q.tipo === "investigacao" || q.tipoPedagogico === "investigacao" || q.dificuldade === 3)
+            (q.tipoPedagogico === "investigacao" || q.dificuldade === 3)
         );
-        if (desafio) return desafio;
+        if (desafio) {
+            console.log("🌟 [ADA Triage] Aluno em estado de Flow. Aplicando Investigação.");
+            return desafio;
+        }
     }
 
     // 2. ANÁLISE DE QUEDA CRÍTICA (Intervenção de Emergência)
+    // Se a vida baixar de 35%, a ADA foca em salvar a base com Recomposição.
     if (G.vida > 0 && G.vida < 35) {
-        console.log("🚑 [ADA Triage] Vida crítica! Buscando questão de Recomposição.");
-        const salvação = qDisp.find(q => 
+        const salvacao = qDisp.find(q => 
             !respondedInSession.has(q.id) && 
             (q.tipoPedagogico === "recomposicao" || q.dificuldade === 1)
         );
-        if (salvação) return salvação;
+        if (salvacao) {
+            console.log("🚑 [ADA Triage] Risco de Game Over. Aplicando Recomposição.");
+            return salvacao;
+        }
     }
 
-    // 3. ANÁLISE DE BLOQUEIO DE HABILIDADE (BNCC Tracker)
+    // 3. ANÁLISE DE BLOQUEIO POR HABILIDADE (BNCC Tracker)
     if (G.historico) {
         for (const [bncc, hist] of Object.entries(G.historico)) {
             const totalErros = hist.erros_conceito + hist.erros_calculo;
             if (totalErros >= 2 && hist.erros_conceito > hist.acertos) {
-                console.log(`⚠️ [ADA Triage] Bloqueio estrutural em ${bncc}. Desviando para base visual/conceitual.`);
                 const reforco = qDisp.find(q => 
                     !respondedInSession.has(q.id) && 
                     q.bncc === bncc && 
                     (q.tipoPedagogico === "recomposicao" || q.dificuldade === 1)
                 );
-                if (reforco) return reforco;
+                if (reforco) {
+                    console.log(`⚠️ [ADA Triage] Bloqueio em ${bncc}. Desviando para base.`);
+                    return reforco;
+                }
             }
         }
     }
@@ -90,38 +89,52 @@ function avaliarNecessidadeIntervencao(blocoId) {
 
 /**
  * SELETOR PRINCIPAL (Híbrido)
+ * Escolhe a próxima questão baseada na Aula atual ou na necessidade da IA.
  */
 export function selQ(blocoId) {
     const questoesDoBloco = BANCO[blocoId] || [];
 
     if (questoesDoBloco.length === 0) {
-        return { display: "Banco de Dados Vazio", res: "0", passo: "Contate a Engenharia para injetar as questões deste módulo." };
+        return { 
+            display: "Banco de Dados Vazio", 
+            res: "0", 
+            passo: "A gaveta deste bloco está vazia no selector.js." 
+        };
     }
 
+    // Primeiro, verifica se a IA quer intervir
     const intervencao = avaliarNecessidadeIntervencao(blocoId);
     
     if (intervencao) {
         respondedInSession.add(intervencao.id);
-        console.log(`[SELETOR ADAPTATIVO ADA] -> INTERVENÇÃO APLICADA: ${intervencao.id}`);
         return intervencao;
     }
 
+    // Se não houver intervenção, segue a Trilha Principal (Aulas 1, 2, 3...)
     let trilhaPrincipal = questoesDoBloco.filter(q => 
         !respondedInSession.has(q.id) && 
         q.tipoPedagogico !== "recomposicao"
     );
 
+    // Se a trilha principal acabar, tenta qualquer uma não respondida (incluindo recomposição)
     if (trilhaPrincipal.length === 0) {
         trilhaPrincipal = questoesDoBloco.filter(q => !respondedInSession.has(q.id));
     }
 
+    // Fim de jogo para este bloco
     if (trilhaPrincipal.length === 0) {
-        console.warn("[SELETOR] Banco Esgotado. Finalizando.");
+        console.warn("[SELETOR] Módulo esgotado.");
         G.vida = 0; 
-        return { id: "END", tipo: "conceito", display: "Processamento Concluído", res: "OK", alternativas: [{valor: "OK"}], passo: "Módulo finalizado." };
+        return { 
+            id: "END", 
+            display: "Módulo Concluído!", 
+            res: "OK", 
+            alternativas: [{valor: "Sair"}], 
+            passo: "Você percorreu todos os desafios deste bloco." 
+        };
     }
 
-    // Garante que não quebre se a questão não tiver a tag "aula" ainda
+    // Ordenação por Aula (sempre foca na aula mais baixa disponível)
     const aulasDisponiveis = [...new Set(trilhaPrincipal.map(q => q.aula || 1))].sort((a,b) => a - b);
     const aulaAtual = aulasDisponiveis[0];
     const questoesDaAula = trilhaPrincipal.filter(q => (q.aula || 1) === aulaAtual);
@@ -131,13 +144,7 @@ export function selQ(blocoId) {
 
     respondedInSession.add(qSorteada.id);
 
-    console.log(`
-        [SELETOR TRILHA PRINCIPAL]
-        Estudante: ${G.nome || "Anônimo"}
-        Aula Foco: ${aulaAtual}
-        Questão Sorteada: ${qSorteada.id}
-        Progresso no Bloco: ${respondedInSession.size}/${questoesDoBloco.length}
-    `);
+    console.log(`[ADA] Bloco ${blocoId} | Aula ${aulaAtual} | Questão: ${qSorteada.id}`);
 
     return qSorteada;
 }
