@@ -1,6 +1,6 @@
 /* ============================================================
-    LABORATÓRIO TECH — CSS v10.7 "MathLab Protocol"
-    Estabilização de Layout, DUA e Posto de Comando ADA
+    LABORATÓRIO TECH — CSS v10.8 "Chrome & Chocolate"
+    Personalidade Splash, Modais Ativos e DUA
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Nunito:ital,wght@0,400;0,700;0,900;1,400&display=swap');
@@ -12,107 +12,85 @@
     --neon-cyan:     #00eaff;
     --neon-green:    #00ff88;
     --neon-red:      #ff4444;
-    --neon-yellow:   #ffe600;
     --bg-dark:       #060610;
     --text-main:     #f0f0f0;
-    --text-soft:     #c8cce0;
-    --text-muted:    #7a7e9a;
-    --radius-xl:     26px;
-    --radius-lg:     18px;
+    --radius-xl:     30px;
     --font-display: 'Orbitron', sans-serif;
     --font-body:    'Nunito', sans-serif;
-    --safe-t:        env(safe-area-inset-top, 0px);
-    --safe-b:        env(safe-area-inset-bottom, 0px);
 }
 
-/* RESET & BASE */
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    -webkit-tap-highlight-color: transparent;
-}
+/* RESET */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: var(--bg-dark);
-    color: var(--text-main);
-    font-family: var(--font-body);
-}
-
-/* FUNDO ATMOSFÉRICO */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-    background:
-        radial-gradient(ellipse at 10% 8%,  rgba(212,160,23,.14), transparent 22%),
-        radial-gradient(ellipse at 90% 10%, rgba(0,234,255,.07),  transparent 20%),
-        radial-gradient(ellipse at 50% 95%, rgba(122,74,46,.12),  transparent 25%),
-        linear-gradient(170deg, #0a0a1c 0%, #060610 100%);
-}
-
+/* TELAS */
 .screen {
     position: fixed;
     inset: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    overflow-y: auto;
-    padding: calc(20px + var(--safe-t)) 16px 120px;
+    padding: 40px 20px 120px;
     z-index: 10;
     transition: opacity 0.4s ease;
+    overflow-y: auto;
 }
-
 .hidden { display: none !important; }
 
 /* ============================================================
-    SPLASH & LOGIN (Avatar Pequeno)
+    SPLASH SCREEN (Recuperando a Personalidade)
    ============================================================ */
 .splash-inner {
     width: 100%;
-    max-width: 420px;
+    max-width: 450px;
     text-align: center;
-    padding-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .splash-logo {
     font-family: var(--font-display);
-    font-size: clamp(24px, 8vw, 36px);
+    font-size: clamp(28px, 10vw, 42px);
+    font-weight: 900;
     color: var(--choco-gold);
-    text-shadow: 0 0 20px rgba(212,160,23,0.4);
-    margin-bottom: 5px;
+    text-shadow: 0 0 30px rgba(212,160,23,0.5);
+    letter-spacing: -1px;
 }
 
-.splash-av {
-    width: 150px;
-    height: 150px;
-    margin: 20px auto;
-    position: relative;
-}
+.splash-sub { color: var(--choco-cream); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; }
 
-.av-box {
+.input-group input {
     width: 100%;
-    height: 100%;
-    border-radius: 30px;
-    border: 3px solid var(--choco-gold);
-    overflow: hidden;
-    background: #000;
+    padding: 18px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border: 2px solid var(--choco-gold);
+    background: rgba(0,0,0,0.6);
+    color: var(--neon-cyan);
+    font-size: 18px;
+    text-align: center;
+    font-family: var(--font-body);
 }
 
-.ada-avatar-asset {
+.btn-start {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    padding: 22px; /* Botão GRANDE */
+    border: none;
+    border-radius: 20px;
+    background: var(--choco-gold);
+    color: var(--choco-dark);
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(212,160,23,0.4);
+    transition: 0.2s;
 }
+.btn-start:active { transform: scale(0.96); }
 
 /* ============================================================
-    POSTO DE COMANDO ADA (Avatar Gigante no Jogo)
+    ADA COMMAND POST (Gameplay)
    ============================================================ */
 #ada-command-post {
     position: fixed;
@@ -121,130 +99,52 @@ body::before {
     width: 250px;
     height: 250px;
     z-index: 9999;
-    pointer-events: none;
-    display: none; /* Escondido por padrão para não bugar a Splash */
+    display: none;
 }
-
-#ada-command-post.active {
-    display: block !important;
-    animation: slideInAda 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-@keyframes slideInAda {
-    from { transform: translateX(300px) scale(0.5); opacity: 0; }
-    to { transform: translateX(0) scale(1); opacity: 1; }
-}
-
-.ada-box {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 4px solid var(--neon-cyan);
-    background: #000;
-    box-shadow: 0 0 30px rgba(0, 234, 255, 0.4);
-}
-
-.ada-asset {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.avh { opacity: 0 !important; z-index: 1; } /* Esconde vídeos inativos */
-
-.ada-halo {
-    position: absolute;
-    inset: -10px;
-    border: 2px dashed var(--neon-cyan);
-    border-radius: 50%;
-    animation: rotate 15s linear infinite;
-    opacity: 0.3;
-}
-
-@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+#ada-command-post.active { display: block !important; }
+.ada-box { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; border: 4px solid var(--neon-cyan); background: #000; box-shadow: 0 0 40px rgba(0,229,255,0.3); position: relative; }
+.ada-asset { position: absolute; width: 100%; height: 100%; object-fit: cover; }
+.avh { opacity: 0 !important; }
 
 /* ============================================================
-    GAMEPLAY & HUD
+    MODAIS (Correção de Funcionamento)
    ============================================================ */
-.gw { width: 100%; max-width: 580px; }
-
-.hud { 
-    display: flex; gap: 10px; padding: 12px; 
-    background: rgba(0,0,0,0.3); border-radius: 15px;
-    margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05);
-}
-
-#canvas-game {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 580/130;
-    background: rgba(14,14,32,0.4);
-    border-radius: 12px;
-    margin-bottom: 15px;
-}
-
-#conta-display {
-    font-size: clamp(20px, 6vw, 26px);
-    font-weight: 800;
-    text-align: center;
-    padding: 20px;
-    background: rgba(14,14,32,0.8);
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(0,234,255,0.2);
-    margin-bottom: 10px;
-}
-
-/* BOTÕES DE RESPOSTA (Feedback Ativo) */
-.ag { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-.ba {
-    padding: 18px 10px;
-    border-radius: 15px;
-    background: rgba(14,14,32,0.9);
-    color: var(--neon-cyan);
-    border: 2px solid rgba(0,234,255,0.3);
-    font-size: 20px;
-    font-weight: 900;
-    font-family: var(--font-display);
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.ba:hover:not(.dis) { border-color: var(--neon-cyan); background: rgba(0,234,255,0.1); }
-.ba.dis { opacity: 0.4; cursor: not-allowed; }
-.ba.ok { background: rgba(0,255,136,0.2) !important; border-color: var(--neon-green) !important; color: var(--neon-green); }
-.ba.no { background: rgba(255,68,68,0.2) !important; border-color: var(--neon-red) !important; color: var(--neon-red); }
-
-/* FEEDBACK BOX */
-.fb-box {
-    margin-top: 15px;
-    padding: 15px;
-    border-radius: 12px;
-    background: rgba(14,14,32,0.8);
-    border-left: 5px solid transparent;
-}
-.fb-box.acerto { border-color: var(--neon-green); }
-.fb-box.erro { border-color: var(--neon-red); }
-
-/* CONTROLES SUPERIORES */
-.btn-top-group {
+.modal {
     position: fixed;
-    top: 20px; right: 20px;
-    display: flex; gap: 8px; z-index: 10000;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    display: none !important; /* Escondido por padrão */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-.btn-round {
-    width: 42px; height: 42px; border-radius: 12px;
-    background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1);
-    color: white; cursor: pointer; font-size: 18px;
+.modal.active { display: flex !important; } /* Classe que o JS ativa */
+
+.mc {
+    background: var(--bg-dark);
+    border: 2px solid var(--choco-gold);
+    border-radius: var(--radius-xl);
+    width: 100%;
+    max-width: 450px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 0 50px rgba(0,0,0,1);
 }
 
-/* RESPONSIVIDADE */
-@media (max-width: 600px) {
-    #ada-command-post { width: 130px; height: 130px; bottom: 20px; right: 20px; }
-    .ba { font-size: 18px; padding: 15px 5px; }
-    .screen { padding-bottom: 160px; }
-}
+.mx { position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--neon-red); font-size: 24px; cursor: pointer; }
+
+/* HUD & GAMEPLAY */
+.ag { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.ba { padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.05); border: 2px solid var(--neon-cyan); color: var(--neon-cyan); font-family: var(--font-display); font-size: 18px; cursor: pointer; }
+.ba.ok { background: var(--neon-green); color: var(--choco-dark); }
+.ba.no { background: var(--neon-red); color: white; }
+
+/* BOTÕES SUPERIORES */
+.btn-top-group { position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 500; }
+.btn-round { width: 45px; height: 45px; border-radius: 12px; background: rgba(0,0,0,0.8); border: 1px solid var(--choco-gold); color: white; cursor: pointer; font-size: 20px; }
+
+/* REMOVER DEBUG PANEL DO CSS */
+#debug-panel { display: none !important; }
