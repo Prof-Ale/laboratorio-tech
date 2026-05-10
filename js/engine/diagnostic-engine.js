@@ -97,5 +97,31 @@ export function registrarErro(G, analise) {
         }
     } catch(e) {
         console.warn("[Diagnóstico] Falha ao processar cluster, mas o jogo segue.", e);
+    }
+}
+
+/* ============================================================
+   FUNÇÕES DE RELATÓRIO E ALERTA DA ADA
+============================================================ */
+
+export function detectarAlertaCritico(G) {
+    if (!G.diagnostico || !G.diagnostico.scores) return null;
+
+    const alertas = Object.entries(G.diagnostico.scores)
+        .filter(([cluster, score]) => score >= 6) // Peso de atenção crítica
+        .map(([cluster]) => cluster);
+
+    return alertas.length > 0 ? alertas : null;
+}
+
+export function gerarResumoGeral(G) {
+    const scores = G.diagnostico?.scores || {};
+    const dominante = Object.entries(scores).sort((a, b) => b[1] - a[1])[0];
+
+    return {
+        perfil: scores,
+        clusterDominante: dominante ? dominante[0] : "Estável",
+        nivelDificuldade: dominante ? (dominante[1] > 10 ? "Crítico" : "Em evolução") : "Iniciante",
+        alertas: detectarAlertaCritico(G)
     };
 }
