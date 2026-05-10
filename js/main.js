@@ -1,6 +1,6 @@
 /**
- * main.js — v10.3 "MathLab QA, Debug & Voice Active"
- * Core de Orquestração com Validação, Telemetria e DUA Sonoro
+ * main.js — v10.4 "MathLab Adaptive Ready"
+ * Core de Orquestração com Validação, Telemetria, DUA Sonoro e Perfil
  */
 
 import { G } from './engine/gameState.js';
@@ -255,6 +255,21 @@ document.addEventListener('DOMContentLoaded', () => {
     on('btn-cred', () => abrirM('mcred'));
     on('btn-fecha-cred', () => fecharM('mcred'));
 
+    // NOVO: Integração do Modal de Perfil do Estudante
+    on('btn-perfil', () => {
+        const modal = $('mperfil');
+        if (!modal) return;
+        
+        // Puxa os dados atuais de G (GameState) e atualiza o HTML
+        if ($('perfil-nome-display')) $('perfil-nome-display').textContent = G.nome || "Cientista";
+        if ($('perfil-turma-display')) $('perfil-turma-display').textContent = G.turma || "Turma Indefinida";
+        if ($('perfil-vida-display')) $('perfil-vida-display').textContent = Math.round(G.vida);
+        if ($('perfil-acertos-display')) $('perfil-acertos-display').textContent = G.acertos;
+        if ($('perfil-erros-display')) $('perfil-erros-display').textContent = G.erros;
+        
+        abrirM('mperfil');
+    });
+
     // Delegação para botões de "Voltar ao Seletor"
     document.querySelectorAll('[data-action="seletor"]').forEach(el => {
         el.addEventListener('click', () => {
@@ -265,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     setInterval(updateDebug, 500);
-    console.log(`[LabTech] Engine v10.3 Online.`);
+    console.log(`[LabTech] Engine v10.4 Online (Adaptive Ready).`);
 });
 
 // === FIM DO ARQUIVO ===
