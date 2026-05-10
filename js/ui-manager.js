@@ -20,34 +20,46 @@ if (typeof window !== 'undefined' && window.speechSynthesis) {
  */
 export function narrarContexto(t) {
     try {
-        if (!window.speechSynthesis) return;
+        if (!window.speechSynthesis) {
+            console.warn("[ADA-Voz] API de voz não suportada neste navegador.");
+            return;
+        }
         
-        // Verifica se a voz está ligada no estado global
-        if (!G.voz) {
-            console.log("[ADA-Voz] Silenciada pelo usuário.");
+        // Se G.voz for estritamente false, não fala. Se for undefined (início do jogo), fala!
+        if (G.voz === false) {
+            console.log("[ADA-Voz] Silenciada no botão superior.");
             return;
         }
 
-        // A CURA DO CHROME: O comando window.speechSynthesis.cancel() e o setTimeout 
-        // foram removidos daqui, pois causavam o "mute permanente" no navegador.
-
         const textoLimpo = t.replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, ' ');
-        console.log(`[ADA-Voz] Disparado para o navegador: "${textoLimpo}"`); // Log para o Painel de Debug
+        console.log(`[ADA-Voz] 1. Preparando para falar: "${textoLimpo}"`);
 
         const u = new SpeechSynthesisUtterance(textoLimpo);
+        
+        // 🚨 A MÁGICA CONTRA O BUG DO CHROME (Garbage Collection) 🚨
+        // Prender a variável no "window" impede o navegador de apagar o áudio da memória
+        window.adaUtterance = u; 
+
         u.lang = "pt-BR";
         u.volume = 1;
-        u.rate = 1.1; // Fala um pouco mais ágil
+        u.rate = 1.1; 
 
         const vozes = window.speechSynthesis.getVoices();
-        // Busca agressiva: qualquer voz que contenha 'pt' no idioma
         const vozBR = vozes.find(x => x.lang.includes('pt'));
         if (vozBR) u.voice = vozBR;
 
-        // Efeito 'Ducking': abaixa a música para a voz passar
-        u.onstart = () => { if (bgm && G.musica) bgm.volume = 0.02; };
-        u.onend   = () => { if (bgm && G.musica) bgm.volume = 0.07; };
-        u.onerror = (e) => { console.warn("[ADA-Voz] Navegador bloqueou o áudio:", e); };
+        // Rastreadores de evento
+        u.onstart = () => { 
+            console.log("[ADA-Voz] 2. Áudio começou a tocar fisicamente!");
+            if (bgm && G.musica) bgm.volume = 0.02; 
+        };
+        u.onend   = () => { 
+            console.log("[ADA-Voz] 3. Áudio terminou.");
+            if (bgm && G.musica) bgm.volume = 0.07; 
+        };
+        u.onerror = (e) => { 
+            console.error("[ADA-Voz] ERRO: Navegador bloqueou ou abortou o áudio:", e.error); 
+        };
 
         window.speechSynthesis.speak(u);
 
@@ -55,7 +67,6 @@ export function narrarContexto(t) {
         console.error("[MathLab] Falha na síntese de voz:", e);
     }
 }
-
 // === CONTROLES DE MÍDIA ===
 
 export function toggleMusica() {
