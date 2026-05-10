@@ -1,6 +1,6 @@
 /* ============================================================
-    LABORATÓRIO TECH — CSS v11.5 "Golden Identity"
-    Intervenções: Restauração do Seletor, Feedback Box e Botão BC2
+    LABORATÓRIO TECH — CSS v11.6 "Golden Engine"
+    Intervenções: Motor Gráfico (Canvas), Splash Avatar e Seletor
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Nunito:ital,wght@0,400;0,700;0,900;1,400&display=swap');
@@ -8,6 +8,7 @@
 :root {
     --choco-dark:    #2b1608;
     --choco-gold:    #d4a017;
+    --choco-cream:   #f5e6c8; /* Restaurada variável de suporte */
     --neon-cyan:     #00eaff;
     --neon-green:    #00ff88;
     --neon-red:      #ff4444;
@@ -34,7 +35,7 @@ html, body {
 .hidden { display: none !important; }
 
 /* ============================================================
-    SPLASH & INPUTS (Preservado)
+    SPLASH & AVATAR (Correção de Visibilidade)
    ============================================================ */
 .splash-inner, .selector-inner { 
     width: 100%; max-width: 450px; text-align: center; 
@@ -45,6 +46,14 @@ html, body {
 .splash-av { width: 150px; height: 150px; margin: 20px auto; }
 .av-box { width: 100%; height: 100%; border-radius: 30px; border: 4px solid var(--choco-gold); overflow: hidden; background: #000; box-shadow: 0 0 25px var(--neon-cyan); }
 
+/* Intervenção: Garantir que a imagem do avatar apareça */
+.ada-avatar-asset { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block; 
+}
+
 .input-group { width: 100%; max-width: 380px; margin: 0 auto; }
 .input-group input { 
     width: 100%; padding: 20px; margin-bottom: 15px;
@@ -53,7 +62,6 @@ html, body {
     font-size: 18px; text-align: center; font-family: var(--font-body);
     transition: 0.3s;
 }
-.input-group input:focus { outline: none; border-color: var(--neon-cyan); box-shadow: 0 0 15px var(--neon-cyan); }
 
 .btn-start { 
     background: var(--choco-gold); padding: 20px; border: none; border-radius: 15px; 
@@ -62,86 +70,80 @@ html, body {
 }
 
 /* ============================================================
-    SELETOR DE BLOCOS (Restauração da Identidade)
+    SELETOR DE BLOCOS (Restauração do Prestígio)
    ============================================================ */
 .blocks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; margin-top: 20px; }
 
 .block-card { 
-    background: rgba(14,14,32,0.9); 
-    border: 2px solid var(--choco-gold); /* Volta da borda de destaque */
+    background: linear-gradient(145deg, #121228, #060610);
+    border: 2px solid var(--choco-gold);
     padding: 25px 15px; border-radius: 18px; 
     display: flex; flex-direction: column; align-items: center; 
     color: #fff; cursor: pointer; transition: 0.3s;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.6);
 }
 
 .block-card:hover { 
     transform: translateY(-5px); 
     border-color: var(--neon-cyan); 
-    box-shadow: 0 0 20px rgba(0, 234, 255, 0.3); 
+    box-shadow: 0 0 25px rgba(0, 234, 255, 0.4); 
 }
 
-.block-icon { font-size: 36px; margin-bottom: 8px; }
-.block-name { font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.block-icon { font-size: 36px; margin-bottom: 8px; filter: drop-shadow(0 0 10px rgba(212,160,23,0.5)); }
+.block-name { font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-shadow: 0 2px 4px #000; }
 
-/* Botão Alterar Usuário (BC2) com Identidade Própria */
 .bc2 {
     background: none; border: 1.5px solid var(--choco-gold);
     color: var(--choco-gold); padding: 12px 25px; border-radius: 10px;
     font-family: var(--font-display); font-size: 11px; font-weight: 700;
     text-transform: uppercase; letter-spacing: 2px; transition: 0.3s;
 }
-.bc2:hover { background: var(--choco-gold); color: var(--choco-dark); }
 
 /* ============================================================
-    GAMEPLAY & FEEDBACK (Invenção Cirúrgica)
+    GAME ENGINE VISUAL (Canvas & Feedback)
    ============================================================ */
 .gw { width: 100%; max-width: 580px; margin: auto; }
 
-.game-header {
-    width: 100%; display: flex; justify-content: space-between; align-items: center;
-    background: rgba(255,255,255,0.05); padding: 15px;
-    border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 20px;
+/* Intervenção: Estilização do Canvas da Reta Numérica */
+#canvas-game {
+    width: 100%;
+    height: 180px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 20px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(212, 160, 23, 0.2);
 }
 
-/* Caixa de Feedback (Passo a Passo) */
 .fb-box {
     width: 100%; min-height: 80px; margin: 15px 0;
     padding: 15px 20px; border-radius: 15px;
-    background: rgba(212, 160, 23, 0.05); /* Sutil dourado */
+    background: rgba(212, 160, 23, 0.08);
     border-left: 4px solid var(--choco-gold);
-    color: var(--choco-cream); font-size: 14px; line-height: 1.5;
-    text-align: left; display: none; /* Só aparece quando tem conteúdo */
+    color: var(--choco-cream); font-size: 15px; line-height: 1.5;
+    text-align: left; display: none;
 }
 
 /* HUD & BOTÕES */
+.game-header { width: 100%; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; margin-bottom: 20px; }
 .bar { width: 120px; height: 12px; background: #222; border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,255,255,0.2); }
-.fill { height: 100%; background: var(--neon-green); width: 100%; transition: 0.5s; box-shadow: 0 0 10px var(--neon-green); }
-
-.game-controls { display: flex; gap: 8px; }
-.mini-btn {
-    background: rgba(0,0,0,0.6); border: 1px solid var(--choco-gold);
-    color: #fff; padding: 8px 12px; border-radius: 8px;
-    cursor: pointer; font-family: var(--font-display); font-size: 10px;
-    display: flex; align-items: center; gap: 5px; transition: 0.2s;
-}
+.fill { height: 100%; background: var(--neon-green); width: 100%; transition: 0.5s; }
 
 #conta-display {
-    font-size: clamp(20px, 6vw, 26px); font-weight: 800; text-align: center;
-    padding: 30px 20px; background: rgba(14,14,32,0.9);
+    font-size: clamp(22px, 6vw, 28px); font-weight: 800; text-align: center;
+    padding: 25px; background: rgba(14,14,32,0.9);
     border-radius: 20px; border: 2px solid var(--neon-cyan);
-    margin-bottom: 20px; box-shadow: 0 0 20px rgba(0, 234, 255, 0.2);
+    margin-bottom: 20px; color: #fff;
 }
 
-.ag { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; position: relative; z-index: 20; }
+.ag { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .ba {
     padding: 22px 10px; border-radius: 16px; background: #000;
     border: 2px solid var(--neon-cyan); color: var(--neon-cyan);
     font-family: var(--font-display); font-size: 20px; font-weight: 900;
     cursor: pointer; transition: 0.2s;
 }
-.ba.ok { background: var(--neon-green) !important; color: #000 !important; border-color: #fff !important; }
-.ba.no { background: var(--neon-red) !important; color: #fff !important; border-color: #fff !important; }
+.ba.ok { background: var(--neon-green) !important; color: #000 !important; }
+.ba.no { background: var(--neon-red) !important; color: #fff !important; }
 
 /* ============================================================
     ADA & MODAIS
@@ -152,16 +154,10 @@ html, body {
 .ada-asset { position: absolute; width: 100%; height: 100%; object-fit: cover; }
 .avh { opacity: 0 !important; }
 
-.side-controls { position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 500; }
-.btn-round { width: 45px; height: 45px; border-radius: 12px; background: #000; border: 2px solid var(--choco-gold); color: #fff; cursor: pointer; }
-
-.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 10000; display: none !important; align-items: center; justify-content: center; padding: 20px; }
 .modal.active { display: flex !important; }
 .mc { background: var(--bg-dark); border: 2px solid var(--choco-gold); border-radius: 25px; padding: 30px; position: relative; width: 100%; max-width: 450px; text-align: center; }
-.mx { position: absolute; top: 10px; right: 15px; background: none; border: none; color: var(--neon-red); font-size: 28px; cursor: pointer; }
 
-/* RESPONSIVIDADE */
 @media (max-width: 600px) {
-    #ada-command-post { width: 140px; height: 140px; bottom: 10px; right: 10px; }
-    .ag { grid-template-columns: 1fr; }
+    #ada-command-post { width: 140px; height: 140px; }
+    #canvas-game { height: 120px; }
 }
