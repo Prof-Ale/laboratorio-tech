@@ -1,15 +1,13 @@
 /**
- * selector.js — Versão 5.2 "ADA Heuristics AI (All Blocks Connected)"
+ * selector.js — Versão 5.3 "ADA Heuristics AI (Unified Architecture)"
  * Seletor Híbrido: Espinha Dorsal Curricular + Desvio Adaptativo Pedagógico
  */
 
 import { G } from './gameState.js';
 
 // === 1. IMPORTAÇÃO DOS BANCOS DE QUESTÕES (A Fiação) ===
-import { bloco1_trilha1 } from '../data/questions/bloco1_trilha1.js';
-import { bloco1_trilha2 } from '../data/questions/bloco1_trilha2.js';
-import { bloco1_trilha3 } from '../data/questions/bloco1_trilha3.js';
-import { bloco1_trilha4 } from '../data/questions/bloco1_trilha4.js';
+// 🚨 Arquitetura Unificada: Um arquivo por bloco!
+import { bloco1 } from '../data/questions/bloco1.js'; 
 import { bloco2_trilha1 } from '../data/questions/bloco2_trilha1.js';
 import { bloco2_trilha2 } from '../data/questions/bloco2_trilha2.js';
 import { bloco2_trilha3 } from '../data/questions/bloco2_trilha3.js';
@@ -22,10 +20,7 @@ import { bloco6 } from '../data/questions/bloco6.js';
 // === 2. CONSOLIDAÇÃO DO BANCO GERAL (As Gavetas) ===
 const BANCO = {
     1: [ 
-        ...bloco1_trilha1,
-        ...bloco1_trilha2,
-        ...bloco1_trilha3,
-        ...bloco1_trilha4
+        ...bloco1 // Puxando tudo do novo arquivo unificado!
     ],
     2: [
         ...bloco2_trilha1,
@@ -49,7 +44,6 @@ export function limparHistoricoSessao() {
 
 /**
  * MOTOR DE HEURÍSTICA PEDAGÓGICA (O cérebro da ADA)
- * Avalia persistência, combo, vida e clusters para decidir a próxima questão.
  */
 function avaliarNecessidadeIntervencao(blocoId) {
     const qDisp = BANCO[blocoId] || [];
@@ -100,7 +94,6 @@ function avaliarNecessidadeIntervencao(blocoId) {
 export function selQ(blocoId) {
     const questoesDoBloco = BANCO[blocoId] || [];
 
-    // Se a gaveta estiver vazia, ele avisa!
     if (questoesDoBloco.length === 0) {
         return { display: "Banco de Dados Vazio", res: "0", passo: "Contate a Engenharia para injetar as questões deste módulo." };
     }
@@ -128,9 +121,10 @@ export function selQ(blocoId) {
         return { id: "END", tipo: "conceito", display: "Processamento Concluído", res: "OK", alternativas: [{valor: "OK"}], passo: "Módulo finalizado." };
     }
 
-    const aulasDisponiveis = [...new Set(trilhaPrincipal.map(q => q.aula))].sort((a,b) => a - b);
+    // Garante que não quebre se a questão não tiver a tag "aula" ainda
+    const aulasDisponiveis = [...new Set(trilhaPrincipal.map(q => q.aula || 1))].sort((a,b) => a - b);
     const aulaAtual = aulasDisponiveis[0];
-    const questoesDaAula = trilhaPrincipal.filter(q => q.aula === aulaAtual);
+    const questoesDaAula = trilhaPrincipal.filter(q => (q.aula || 1) === aulaAtual);
     
     const indiceSorteado = Math.floor(Math.random() * questoesDaAula.length);
     const qSorteada = questoesDaAula[indiceSorteado];
@@ -147,4 +141,3 @@ export function selQ(blocoId) {
 
     return qSorteada;
 }
-// === FIM DO ARQUIVO ===
