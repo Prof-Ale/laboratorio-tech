@@ -165,6 +165,31 @@
     <button class="btn-round" id="btn-cred" title="Créditos">i</button>
   </div>
 
+  <div id="mperfil" class="modal">
+    <div class="mc">
+      <button class="mx" onclick="document.getElementById('mperfil').classList.remove('active', 'show')">✕</button>
+      <h2>PERFIL DO CIENTISTA</h2>
+      <div style="text-align: center; margin-top: 15px;">
+          <p style="color: var(--choco-cream); font-size: 18px;" id="perfil-nome-display">Cientista</p>
+          <p style="color: var(--neon-cyan); font-size: 14px; margin-bottom: 20px;" id="perfil-turma-display">Turma Indefinida</p>
+          <div style="display: flex; justify-content: space-around; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+              <div>
+                  <div style="font-size: 10px; color: var(--text-muted);">VIDA</div>
+                  <div style="font-family: var(--font-display); color: var(--neon-green);" id="perfil-vida-display">100</div>
+              </div>
+              <div>
+                  <div style="font-size: 10px; color: var(--text-muted);">ACERTOS</div>
+                  <div style="font-family: var(--font-display); color: var(--neon-cyan);" id="perfil-acertos-display">0</div>
+              </div>
+              <div>
+                  <div style="font-size: 10px; color: var(--text-muted);">ANOMALIAS</div>
+                  <div style="font-family: var(--font-display); color: var(--neon-red);" id="perfil-erros-display">0</div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
   <div id="mdash" class="modal">
     <div class="mc container">
       <button class="mx" id="btn-fecha-dash">✕</button>
