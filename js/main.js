@@ -1,6 +1,6 @@
 /**
- * main.js — v11.6 "LabTech Stable Protocol"
- * Refatoração de precisão: Sincronização de dados e reatividade de botões.
+ * main.js — v11.7 "LabTech Golden Stable"
+ * Intervenções: Sincronização de Voz (UI), Dados de Perfil e Reatividade.
  */
 import { G } from './engine/gameState.js';
 import { selQ, limparHistoricoSessao } from './engine/selector.js';
@@ -38,7 +38,7 @@ function animarAda(estado) {
 }
 
 /* ============================================================
-   TELEMETRIA E DADOS (Dashboard e Perfil)
+   TELEMETRIA E DADOS
    ============================================================ */
 function atualizarDashboard() {
     const content = $('dash-content');
@@ -49,9 +49,11 @@ function atualizarDashboard() {
         html = "<p style='text-align:center; opacity:0.5;'>Nenhum dado coletado nesta sessão.</p>";
     } else {
         Object.entries(G.historico).forEach(([hab, dados]) => {
-            html += `<div class="dash-card" style="border-bottom:1px solid rgba(255,255,255,0.1); padding:8px 0;">
-                <div style="color:var(--choco-gold); font-weight:bold;">${hab}</div>
-                <div style="font-size:11px; color:var(--neon-cyan);">Acertos: ${dados.acertos} | Erros: ${dados.erros_conceito + dados.erros_calculo}</div>
+            html += `<div class="dash-card">
+                <div style="color:var(--choco-gold); font-weight:bold; font-size:12px;">${hab}</div>
+                <div style="font-size:11px; color:var(--neon-cyan); margin-top:4px;">
+                    Acertos: ${dados.acertos} | Erros: ${dados.erros_conceito + dados.erros_calculo}
+                </div>
             </div>`;
         });
     }
@@ -62,8 +64,9 @@ function atualizarDashboard() {
    NAVEGAÇÃO E FLUXO
    ============================================================ */
 function mostrarSeletorBlocos() {
-    G.nome = $('nome-cientista')?.value || 'Cientista';
-    G.turma = $('turma-cientista')?.value || '7ºA';
+    // Captura os dados da Splash
+    G.nome = $('nome-cientista')?.value.trim() || 'Cientista';
+    G.turma = $('turma-cientista')?.value.trim() || '7ºA';
     
     AudioCtrl.init();
     AudioCtrl.play();
@@ -77,7 +80,6 @@ function iniciarBloco(id) {
     G.currentBlock = id;
     G.vida = 100;
     G.acertos = 0;
-    G.erros = 0;
     G.combo = 0;
     limparHistoricoSessao();
 
@@ -120,7 +122,7 @@ function processarResposta(alt, q) {
         animarAda('ok');
         narrarContexto(q.passo);
     } else {
-        G.erros++; G.combo = 0;
+        G.combo = 0;
         registrarErro(G, analise);
         const dano = 10 + (analise.peso || 1) * 5;
         G.vida = Math.max(0, G.vida - dano);
@@ -137,7 +139,7 @@ function processarResposta(alt, q) {
 }
 
 function proximaQ() {
-    G.respondeu = false; // Reset essencial para os botões voltarem a funcionar
+    G.respondeu = false;
     animarAda('idle');
     const q = selQ(G.currentBlock);
     if (!q) return;
@@ -171,13 +173,20 @@ function renderQ(q) {
 document.addEventListener('DOMContentLoaded', () => {
     on('btn-acessar', mostrarSeletorBlocos);
     [1,2,3,4,5,6].forEach(i => on(`btn-bloco-${i}`, () => iniciarBloco(i)));
+    
     on('btn-prox', proximaQ);
+    
+    // Controles de áudio com atualização de texto ON/OFF
     on('btn-musica', () => AudioCtrl.toggle('btn-musica', 'tsom'));
-    on('btn-voz', toggleVoz);
+    
+    on('btn-voz', () => {
+        toggleVoz();
+        if ($('tvoz')) $('tvoz').textContent = G.voz ? "ON" : "OFF";
+    });
 
-    // Modais com preenchimento de dados
+    // Modais
     on('btn-perfil', () => {
-        if ($('perfil-nome-display')) $('perfil-nome-display').textContent = `${G.nome} (${G.turma})`;
+        if ($('perfil-nome-display')) $('perfil-nome-display').textContent = `${G.nome} | ${G.turma}`;
         if ($('perfil-acertos-display')) $('perfil-acertos-display').textContent = G.acertos;
         if ($('perfil-vida-display')) $('perfil-vida-display').textContent = Math.round(G.vida);
         abrirM('mperfil');
@@ -190,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     on('btn-cred', () => abrirM('mcred'));
     
-    // Fechamento universal
+    // Fechamento e Navegação
     document.querySelectorAll('.mx').forEach(btn => {
         btn.onclick = (e) => e.target.closest('.modal').classList.remove('active');
     });
@@ -205,5 +214,5 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     });
 
-    console.log("LabTech 11.6: Sistema Blindado e Telemetria Restaurada.");
+    console.log("LabTech 11.7: Golden Stable Online.");
 });
