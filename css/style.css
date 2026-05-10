@@ -1,460 +1,271 @@
 /* ============================================================
-   LABORATÓRIO TECH — CSS v7.4 "MathLab Stabilized & DUA"
-   Correção de Visibilidade, Proporções e Avatar ADA
+    LABORATÓRIO TECH — CSS v10.0 "ADA COMMAND CENTER"
+    Foco: Visibilidade Expandida, HUD Futurista e DUA
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Nunito:ital,wght@0,400;0,700;0,900;1,400&display=swap');
 
 :root {
-  --choco-dark:    #2b1608;
-  --choco-gold:    #d4a017;
-  --choco-cream:   #f5e6c8;
-  --neon-cyan:     #00eaff;
-  --neon-green:    #00ff88;
-  --neon-red:      #ff4444;
-  --neon-yellow:   #ffe600;
-  --bg-dark:       #060610;
-  --text-main:     #f0f0f0;
-  --text-soft:     #c8cce0;
-  --text-muted:    #7a7e9a;
-  --radius-xl:     26px;
-  --radius-lg:     18px;
-  --font-display: 'Orbitron', sans-serif;
-  --font-body:    'Nunito', sans-serif;
-  --safe-t:        env(safe-area-inset-top, 0px);
-  --safe-b:        env(safe-area-inset-bottom, 0px);
+    --choco-dark:    #2b1608;
+    --choco-gold:    #d4a017;
+    --choco-cream:   #f5e6c8;
+    --neon-cyan:     #00eaff;
+    --neon-green:    #00ff88;
+    --neon-red:      #ff4444;
+    --neon-yellow:   #ffe600;
+    --bg-dark:       #060610;
+    --text-main:     #f0f0f0;
+    --text-soft:     #c8cce0;
+    --text-muted:    #7a7e9a;
+    --radius-xl:     26px;
+    --radius-lg:     18px;
+    --font-display: 'Orbitron', sans-serif;
+    --font-body:    'Nunito', sans-serif;
+    --safe-t:        env(safe-area-inset-top, 0px);
+    --safe-b:        env(safe-area-inset-bottom, 0px);
 }
 
 /* RESET & BASE */
 *, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html, body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: var(--bg-dark);
-  color: var(--text-main);
-  font-family: var(--font-body);
-  user-select: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    user-select: none;
 }
 
 /* FUNDO ATMOSFÉRICO */
 body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-  background:
-    radial-gradient(ellipse at 10% 8%,  rgba(212,160,23,.14), transparent 22%),
-    radial-gradient(ellipse at 90% 10%, rgba(0,234,255,.07),  transparent 20%),
-    radial-gradient(ellipse at 50% 95%, rgba(122,74,46,.12),  transparent 25%),
-    linear-gradient(170deg, #0a0a1c 0%, #060610 100%);
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+        radial-gradient(ellipse at 10% 8%,  rgba(212,160,23,.14), transparent 22%),
+        radial-gradient(ellipse at 90% 10%, rgba(0,234,255,.07),  transparent 20%),
+        radial-gradient(ellipse at 50% 95%, rgba(122,74,46,.12),  transparent 25%),
+        linear-gradient(170deg, #0a0a1c 0%, #060610 100%);
 }
 
-/* SCREENS PRINCIPAIS */
 .screen {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  overflow-y: auto;
-  padding: calc(20px + var(--safe-t)) 16px calc(20px + var(--safe-b));
-  z-index: 10;
-  transition: opacity 0.3s ease;
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+    padding: calc(20px + var(--safe-t)) 16px calc(100px + var(--safe-b)); /* Espaço extra embaixo para ADA */
+    z-index: 10;
+    transition: opacity 0.4s ease;
 }
 
 .hidden { display: none !important; }
 
 /* ============================================================
-   SPLASH SCREEN E IDENTIFICAÇÃO DO CIENTISTA
+    POSTO DE COMANDO DA ADA (FIXO)
    ============================================================ */
-.splash-inner {
-  width: 100%;
-  max-width: 420px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  text-align: center;
-  padding-top: 5vh;
+#ada-command-post {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 250px; /* Tamanho Poderoso */
+    height: 250px;
+    z-index: 9999;
+    pointer-events: none; /* Não bloqueia cliques no jogo */
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.splash-logo {
-  font-family: var(--font-display);
-  font-size: clamp(22px, 6vw, 32px);
-  font-weight: 900;
-  color: var(--choco-gold);
-  text-shadow: 0 0 15px rgba(212,160,23,0.4);
+#ada-command-post.hidden {
+    transform: translateY(100px) scale(0.5);
+    opacity: 0;
 }
 
-.splash-sub {
-  font-size: 14px;
-  color: var(--choco-cream);
-  opacity: 0.8;
-}
-
-.splash-badges {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin: 5px 0;
-}
-
-.badge {
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 700;
-  background: rgba(0,234,255,0.1);
-  color: var(--neon-cyan);
-  border: 1px solid rgba(0,234,255,0.3);
-}
-
-/* --- A MÁGICA DO AVATAR DA ADA --- */
-.splash-av {
-  position: relative;
-  width: 150px; /* Tamanho base controlado */
-  height: 150px;
-  margin: 10px auto;
-}
-
-.av-box {
-  width: 100%;
-  height: 100%;
-  border-radius: 30px;
-  border: 4px solid var(--choco-gold);
-  overflow: hidden;
-  background: #000;
-  box-shadow: 0 0 25px rgba(0, 234, 255, 0.3);
-  position: relative;
-  z-index: 5;
-  /* Garante que os filhos (vídeo/img) ocupem o mesmo espaço um sobre o outro */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ada-avatar-asset {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  transition: opacity 0.3s ease;
-  z-index: 2;
-}
-
-/* Classe utilitária suprema para esconder a ADA inativa sem quebrar o HTML */
-.avh { 
-  opacity: 0 !important;
-  pointer-events: none !important;
-  z-index: 1 !important; /* Joga pra trás para não interceptar cliques */
-}
-
-/* Anéis de brilho ao redor da ADA */
-.ring, .ring2 {
-  position: absolute;
-  inset: -10px;
-  border-radius: 50%;
-  border: 2px solid rgba(212,160,23,0.2);
-  animation: ringPulse 3s infinite;
-}
-.ring2 { inset: -25px; animation-delay: 0.5s; }
-
-.splash-msg {
-  font-size: 16px;
-  color: var(--neon-cyan);
-  min-height: 24px;
-}
-
-/* Input de Nome (Terminal Style) */
-.input-group {
+.ada-box {
+    position: relative;
     width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--neon-cyan);
+    background: radial-gradient(circle, #000 30%, rgba(0, 234, 255, 0.15) 100%);
+    box-shadow: 0 0 40px rgba(0, 234, 255, 0.3), inset 0 0 20px rgba(0, 234, 255, 0.2);
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
 }
 
-.splash-inner input {
-  width: 100%;
-  padding: 14px;
-  border-radius: 12px;
-  border: 2px solid rgba(0,234,255,0.4);
-  background: rgba(14,14,32,0.9);
-  color: var(--neon-cyan) !important;
-  font-size: 16px;
-  font-family: var(--font-body);
-  text-align: center;
-  user-select: text;
+.ada-asset {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.4s ease;
 }
 
-.splash-inner input:focus {
-  border-color: var(--neon-cyan);
-  box-shadow: 0 0 15px rgba(0,234,255,0.2);
-  outline: none;
+.avh { opacity: 0 !important; z-index: 1; }
+
+/* Anel Externo Giratório da ADA */
+.ada-halo {
+    position: absolute;
+    inset: -15px;
+    border: 2px dashed var(--neon-cyan);
+    border-radius: 50%;
+    animation: rotateHalo 12s linear infinite;
+    opacity: 0.4;
 }
 
-.btn-start {
-  width: 100%;
-  padding: 16px;
-  border: none;
-  border-radius: 16px;
-  background: var(--choco-gold);
-  color: var(--choco-dark);
-  font-size: 18px;
-  font-weight: 900;
-  font-family: var(--font-display);
-  letter-spacing: 1px;
-  cursor: pointer;
-  box-shadow: 0 5px 15px rgba(212,160,23,0.3);
-  transition: transform 0.1s, box-shadow 0.1s;
-}
-
-.btn-start:active { transform: scale(0.98); box-shadow: 0 2px 5px rgba(212,160,23,0.2); }
-
-.splash-sig { font-size: 11px; color: var(--text-muted); margin-top: 10px; }
+@keyframes rotateHalo { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
 /* ============================================================
-   SELETOR DE BLOCOS (CENTRAL DE MANUTENÇÃO)
-   ============================================================ */
-.selector-inner {
-  width: 100%;
-  max-width: 500px;
-  padding-top: 20px;
-}
-
-.section-title { font-family: var(--font-display); font-size: 20px; color: var(--choco-gold); margin-bottom: 10px; text-align: center; }
-.section-desc { font-size: 14px; color: var(--text-soft); text-align: center; margin-bottom: 20px; }
-
-.blocks-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  width: 100%;
-}
-
-.block-card {
-  background: rgba(14,14,32,0.7);
-  border: 2px solid rgba(255,255,255,0.08);
-  border-radius: 18px;
-  padding: 15px;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 5px;
-}
-
-.block-card:hover { border-color: var(--neon-cyan); transform: translateY(-3px); background: rgba(14,14,32,0.9); }
-.block-card.b1 { border-color: rgba(0,234,255,0.2); }
-.block-card.b2 { border-color: rgba(0,255,136,0.2); }
-.block-card.b3 { border-color: rgba(212,160,23,0.2); }
-.block-card.b4 { border-color: rgba(255,68,68,0.2); }
-.block-card.b5 { border-color: rgba(180,100,255,0.2); }
-
-.block-icon { font-size: 24px; margin-bottom: 5px; }
-.block-name { font-size: 16px; font-weight: 900; color: var(--text-main); }
-.block-card small { font-size: 11px; color: var(--text-muted); }
-
-.bc2 {
-  padding: 10px 20px;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: var(--text-soft);
-  font-size: 13px;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: background 0.2s;
-}
-.bc2:hover { background: rgba(255,255,255,0.1); }
-
-/* ============================================================
-   GAME SCREEN E MOTOR GRÁFICO
+    GAMEPLAY: ÁREA DE QUESTÃO
    ============================================================ */
 .gw {
-  width: 100%;
-  max-width: 580px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.top { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; }
-.tc { display: flex; align-items: center; gap: 8px; }
-.tp { width: 10px; height: 10px; border-radius: 50%; background: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); }
-#nome-bloco-display { font-family: var(--font-display); font-size: 14px; color: var(--choco-gold); }
-.controls-top { display: flex; gap: 8px; }
-
-/* HUD (Barras de Vida e Energia) */
-.hud { display: flex; gap: 10px; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 12px; }
-.hi { flex: 1; display: flex; flex-direction: column; gap: 3px; }
-.hl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-.bh { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; }
-.bf { height: 100%; background: var(--neon-cyan); width: 0%; transition: width 0.3s ease, background 0.3s ease; }
-.hv { font-family: var(--font-display); font-size: 18px; color: var(--neon-yellow); text-align: center; font-weight: 900; }
-
-/* Canvas e Display de Questão */
-#canvas-game {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 580/130;
-  background: rgba(14,14,32,0.3);
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.05);
+    width: 100%;
+    max-width: 580px;
+    padding-bottom: 20px;
 }
 
 #conta-display {
-  font-size: clamp(18px, 5vw, 24px);
-  font-weight: 700;
-  text-align: center;
-  padding: 15px;
-  background: rgba(14,14,32,0.6);
-  border-radius: var(--radius-lg);
-  color: var(--text-main);
+    font-size: clamp(20px, 6vw, 28px);
+    font-weight: 800;
+    text-align: center;
+    padding: 25px 15px;
+    background: linear-gradient(135deg, rgba(14,14,32,0.9), rgba(14,14,32,0.6));
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(0,234,255,0.15);
+    color: var(--text-main);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
 }
 
-#regra-box { 
-    font-size: 13px; 
-    color: var(--choco-cream); 
-    background: rgba(212,160,23,0.1); 
-    padding: 10px; 
-    border-radius: 8px; 
-    border-left: 3px solid var(--choco-gold); 
-    min-height: 30px; 
+#regra-box {
+    font-size: 14px;
+    color: var(--choco-cream);
+    background: rgba(212,160,23,0.12);
+    padding: 12px 15px;
+    border-radius: 12px;
+    border-left: 5px solid var(--choco-gold);
+    margin-bottom: 15px;
 }
 
-/* Grid de Respostas (Botões de Alternativas) */
+/* GRID DE RESPOSTAS */
 .ag {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
 .ba {
-  padding: 15px;
-  border-radius: 14px;
-  background: rgba(14,14,32,0.9);
-  color: var(--neon-cyan);
-  border: 2px solid rgba(0,234,255,0.3);
-  font-size: 18px;
-  font-weight: 700;
-  font-family: var(--font-body);
-  cursor: pointer;
-  transition: all 0.1s;
+    padding: 20px 10px;
+    border-radius: 16px;
+    background: rgba(14,14,32,0.85);
+    color: var(--neon-cyan);
+    border: 2px solid rgba(0,234,255,0.25);
+    font-size: 20px;
+    font-weight: 900;
+    font-family: var(--font-display);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-shadow: 0 0 10px rgba(0,234,255,0.3);
 }
 
-.ba:hover:not(.dis) { background: rgba(0,234,255,0.1); border-color: var(--neon-cyan); }
-.ba.dis { opacity: 0.3; cursor: not-allowed; }
-.ba.ok { background: rgba(0,255,136,0.15) !important; border-color: var(--neon-green) !important; color: var(--neon-green) !important; opacity: 1 !important;}
-.ba.no { background: rgba(255,68,68,0.15) !important; border-color: var(--neon-red) !important; color: var(--neon-red) !important; opacity: 1 !important;}
-
-/* Feedback e Botão Próximo */
-.fb-box {
-    width: 100%;
-    margin-top: 10px;
-    padding: 15px;
-    border-radius: 10px;
-    background: rgba(14,14,32,0.8);
-    border-left: 4px solid transparent;
-}
-.fb-box.acerto { border-color: var(--neon-green); color: #fff; }
-.fb-box.erro { border-color: var(--neon-red); color: #fff; }
-
-#btn-prox {
-  width: 100%;
-  padding: 16px;
-  border: none;
-  border-radius: 14px;
-  background: var(--choco-gold);
-  color: var(--choco-dark);
-  font-size: 18px;
-  font-weight: 900;
-  font-family: var(--font-display);
-  cursor: pointer;
-  margin-top: 10px;
+.ba:hover:not(.dis) { 
+    background: rgba(0,234,255,0.1); 
+    border-color: var(--neon-cyan);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,234,255,0.2);
 }
 
 /* ============================================================
-   MODAIS, GAME OVER E PAINÉIS FLUTUANTES
+    HUD E TELEMETRIA
    ============================================================ */
-.modal, #go {
-  position: fixed;
-  inset: 0;
-  z-index: 200; 
-  background: rgba(6,6,16,0.90);
-  backdrop-filter: blur(5px); /* Efeito de vidro borrado no fundo */
-  display: none !important; 
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+.hud { 
+    display: flex; 
+    gap: 15px; 
+    background: rgba(14,14,32,0.6); 
+    padding: 12px; 
+    border-radius: 15px; 
+    border: 1px solid rgba(255,255,255,0.05);
+    margin-bottom: 15px;
 }
 
-/* Força o display flex quando ativo pelo JS */
-.modal.active, .modal.show, #go.active, #go.show {
-  display: flex !important;
+.bf { 
+    height: 100%; 
+    background: var(--neon-cyan); 
+    width: 0%; 
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+    box-shadow: 0 0 10px var(--neon-cyan);
 }
 
-.mc {
-  background: rgba(14,14,32,0.95);
-  border: 1px solid rgba(0,234,255,0.2);
-  border-radius: var(--radius-xl);
-  width: 100%;
-  max-width: 450px;
-  padding: 25px;
-  position: relative;
-  max-height: 85vh;
-  overflow-y: auto;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+#fv { background: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); }
+
+/* ============================================================
+    SPLASH E LOGIN
+   ============================================================ */
+.splash-av {
+    width: 160px;
+    height: 160px;
+    margin: 20px auto;
 }
 
-.mx { position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; }
-.mx:hover { color: var(--neon-red); }
-.mc h2 { font-family: var(--font-display); color: var(--choco-gold); font-size: 18px; margin-bottom: 15px; text-align: center; }
+.badge {
+    background: rgba(212,160,23,0.1);
+    color: var(--choco-gold);
+    border: 1px solid rgba(212,160,23,0.3);
+}
 
-/* Botões Superiores Flutuantes (Som, Dashboard) */
+/* ============================================================
+    BOTÕES DE CONTROLE SUPERIOR
+   ============================================================ */
 .btn-top-group {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  z-index: 300; 
-  display: flex;
-  gap: 8px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 10000;
 }
 
 .btn-round {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.2);
-  background: rgba(0,0,0,0.5);
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background 0.2s, border 0.2s;
-}
-.btn-round:hover { background: rgba(0,234,255,0.2); border-color: var(--neon-cyan); }
-
-/* ANIMAÇÕES */
-@keyframes ringPulse {
-  0% { transform: scale(1); opacity: 0.2; }
-  50% { transform: scale(1.05); opacity: 0.5; }
-  100% { transform: scale(1); opacity: 0.2; }
+    width: 44px;
+    height: 44px;
+    border-radius: 12px; /* Estilo mais industrial que círculo */
+    background: rgba(14,14,32,0.8);
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
 }
 
-/* RESPONSIVO MÓVEL */
-@media (max-width: 480px) {
-    .ba { font-size: 16px; padding: 12px 5px; }
-    .blocks-grid { grid-template-columns: 1fr 1fr; }
-    .splash-logo { font-size: 24px; }
-    .splash-av { width: 130px; height: 130px; }
+/* RESPONSIVIDADE ADAPTATIVA */
+@media (max-width: 600px) {
+    #ada-command-post {
+        width: 120px; /* Reduz no celular para não atrapalhar */
+        height: 120px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .ag { grid-template-columns: 1fr 1fr; }
+    .screen { padding-bottom: 150px; } /* Garante que o scroll passe da ADA */
+}
+
+@media (max-height: 700px) {
+    #conta-display { padding: 15px; }
+    .ba { padding: 12px; }
 }
