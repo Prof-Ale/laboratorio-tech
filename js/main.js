@@ -1,6 +1,6 @@
 /**
- * main.js — v11.9 "LabTech Arcs & Engine"
- * Intervenções: Religamento do motor gráfico (Canvas), arcos de animação e reta numérica.
+ * main.js — v12.0 "LabTech Quantum Logic"
+ * Intervenções: Ativação de saltos dinâmicos e restauração do shuffle de questões.
  */
 import { G } from './engine/gameState.js';
 import { selQ, limparHistoricoSessao } from './engine/selector.js';
@@ -79,7 +79,10 @@ function iniciarBloco(id) {
     G.currentBlock = id;
     G.vida = 100;
     G.acertos = 0;
+    G.erros = 0; // Reset de erros adicionado para v12
     G.combo = 0;
+    
+    // INTERVENÇÃO: Força o reset do seletor para garantir novo shuffle
     limparHistoricoSessao();
 
     document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
@@ -108,8 +111,9 @@ function processarResposta(alt, q) {
     if (G.respondeu) return;
     G.respondeu = true;
 
-    // GATILHO: Inicia animação de arcos no motor gráfico
+    // INTERVENÇÃO CIRÚRGICA: Dispara o motor de animação com o valor do salto
     setAnimando(true);
+    renderCv(q, alt.valor); 
 
     const analise = analisarAlternativa(alt);
     const feedbackTexto = analise.correto ? q.passo : (q.dica || analise.descricao);
@@ -132,6 +136,7 @@ function processarResposta(alt, q) {
         narrarContexto(feedbackTexto);
     } else {
         G.combo = 0;
+        G.erros++;
         registrarErro(G, analise);
         const dano = 10 + (analise.peso || 1) * 5;
         G.vida = Math.max(0, G.vida - dano);
@@ -151,7 +156,6 @@ function proximaQ() {
     G.respondeu = false;
     animarAda('idle');
     
-    // Reseta estado de animação para a nova questão
     setAnimando(false);
 
     const fbContainer = $('fb');
@@ -171,7 +175,7 @@ function renderQ(q) {
     if (grid) grid.innerHTML = '';
     $('btn-prox')?.classList.add('hidden');
     
-    // GATILHO: Renderiza a reta numérica e elementos estáticos do Canvas
+    // Renderiza a base (reta numérica) sem saltos ainda
     renderCv(q);
 
     const alternativas = [...(q.alternativas || [])];
@@ -231,5 +235,5 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     });
 
-    console.log("LabTech 11.9: Arcs & Engine Estabilizados.");
+    console.log("LabTech 12.0: Quantum Logic Online.");
 });
