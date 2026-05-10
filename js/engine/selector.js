@@ -21,7 +21,12 @@ import { bloco6 } from '../data/questions/bloco6.js';
 
 // === 2. CONSOLIDAÇÃO DO BANCO GERAL (As Gavetas) ===
 const BANCO = {
-    1: [], // Ainda vazio (Faremos em breve!)
+    1: [ 
+        ...bloco1_trilha1,
+        ...bloco1_trilha2,
+        ...bloco1_trilha3,
+        ...bloco1_trilha4
+    ],
     2: [
         ...bloco2_trilha1,
         ...bloco2_trilha2,
