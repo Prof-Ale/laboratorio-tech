@@ -1,5 +1,5 @@
 /* ============================================================
-    LABORATÓRIO TECH — CSS v10.9 "Golden Tech"
+    LABORATÓRIO TECH — CSS v11.0 "Stable Command"
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Nunito:ital,wght@0,400;0,700;0,900;1,400&display=swap');
@@ -20,7 +20,6 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg-dark); color: #f0f0f0; font-family: var(--font-body); }
 
-/* TELAS */
 .screen {
     position: fixed; inset: 0;
     display: flex; flex-direction: column; align-items: center;
@@ -30,16 +29,15 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg-d
 .hidden { display: none !important; }
 
 /* ============================================================
-    SPLASH SCREEN (Recuperando a Identidade)
+    SPLASH SCREEN
    ============================================================ */
 .splash-inner { width: 100%; max-width: 450px; text-align: center; display: flex; flex-direction: column; gap: 20px; }
 
 .splash-logo {
     font-family: var(--font-display);
-    font-size: clamp(32px, 12vw, 48px);
+    font-size: clamp(32px, 10vw, 48px);
     font-weight: 900; color: var(--choco-gold);
     text-shadow: 0 0 30px rgba(212,160,23,0.6);
-    line-height: 1;
 }
 
 .splash-av { width: 150px; height: 150px; margin: 10px auto; position: relative; }
@@ -47,63 +45,88 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg-d
 .ada-avatar-asset { width: 100%; height: 100%; object-fit: cover; }
 
 .input-group input {
-    width: 100%; padding: 20px; margin-bottom: 12px;
-    border-radius: 15px; border: 2px solid var(--choco-gold);
-    background: rgba(0,0,0,0.7); color: var(--neon-cyan);
+    width: 100%; padding: 18px; margin-bottom: 12px;
+    border-radius: 12px; border: 2px solid var(--choco-gold);
+    background: rgba(0,0,0,0.8); color: var(--neon-cyan);
     font-size: 18px; text-align: center;
 }
 
 .btn-start {
-    width: 100%; padding: 24px; border: none; border-radius: 20px;
+    width: 100%; padding: 22px; border: none; border-radius: 16px;
     background: var(--choco-gold); color: var(--choco-dark);
-    font-family: var(--font-display); font-size: 22px; font-weight: 900;
-    cursor: pointer; box-shadow: 0 0 25px rgba(212,160,23,0.5);
+    font-family: var(--font-display); font-size: 20px; font-weight: 900;
+    cursor: pointer; box-shadow: 0 5px 15px rgba(212,160,23,0.4);
 }
 
 /* ============================================================
-    SELETOR DE BLOCOS (Estilização dos Cards)
+    SELETOR DE BLOCOS (Ajuste de Visibilidade dos Cards)
    ============================================================ */
 .blocks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; max-width: 500px; }
+
 .block-card {
-    background: rgba(255,255,255,0.05); border: 2px solid rgba(255,255,255,0.1);
-    border-radius: 20px; padding: 20px; cursor: pointer;
+    background: rgba(14,14,32,0.9); /* Mais sólido para aparecer no fundo escuro */
+    border: 2px solid rgba(212,160,23,0.3);
+    border-radius: 20px; padding: 25px 15px; cursor: pointer;
     display: flex; flex-direction: column; align-items: center; gap: 10px;
+    transition: 0.3s;
 }
-.block-card:hover { border-color: var(--neon-cyan); background: rgba(0,234,255,0.1); }
-.block-card.b1 { border-color: var(--choco-gold); }
+.block-card:hover { border-color: var(--neon-cyan); background: rgba(0,234,255,0.15); transform: translateY(-3px); }
 .block-icon { font-size: 32px; }
-.block-name { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: #fff; }
+.block-name { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: #fff; text-transform: uppercase; }
 
 /* ============================================================
-    ADA COMMAND POST (Jogo)
+    ADA COMMAND POST (Z-Index e Posicionamento)
    ============================================================ */
-#ada-command-post { position: fixed; bottom: 30px; right: 30px; width: 250px; height: 250px; z-index: 999; display: none; }
+#ada-command-post { 
+    position: fixed; bottom: 20px; right: 20px; 
+    width: 220px; height: 220px; z-index: 5; /* Z-index menor que a screen para não travar botões */
+    display: none; pointer-events: none; 
+}
 #ada-command-post.active { display: block !important; }
+.ada-box { width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--neon-cyan); overflow: hidden; background: #000; box-shadow: 0 0 30px rgba(0, 229, 255, 0.4); }
 .ada-asset { position: absolute; width: 100%; height: 100%; object-fit: cover; }
 .avh { opacity: 0 !important; }
 
 /* ============================================================
-    MODAIS (Conserto dos Botões Superiores)
+    HUD & GAMEPLAY (Organização da Interface Superior)
    ============================================================ */
-.modal {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.95);
-    z-index: 10000; display: none !important; align-items: center; justify-content: center; padding: 20px;
+.game-header { 
+    width: 100%; display: flex; justify-content: space-between; 
+    align-items: center; margin-bottom: 20px; padding: 10px;
+    background: rgba(255,255,255,0.05); border-radius: 12px;
 }
+
+.hud-group { display: flex; gap: 20px; }
+.hud-item { display: flex; flex-direction: column; align-items: flex-start; }
+.hud-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; }
+.hud-value { font-family: var(--font-display); font-size: 16px; color: var(--neon-cyan); }
+
+.ag { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
+.ba { 
+    padding: 20px; border-radius: 15px; background: rgba(14,14,32,0.9); 
+    border: 2px solid var(--neon-cyan); color: var(--neon-cyan); 
+    font-family: var(--font-display); font-size: 20px; cursor: pointer;
+    transition: 0.2s;
+}
+.ba:hover { background: rgba(0,234,255,0.1); }
+.ba.ok { background: var(--neon-green) !important; color: #000 !important; border-color: var(--neon-green); }
+.ba.no { background: var(--neon-red) !important; color: #fff !important; border-color: var(--neon-red); }
+
+/* MODAIS */
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 10000; display: none !important; align-items: center; justify-content: center; }
 .modal.active { display: flex !important; }
-.mc { background: var(--bg-dark); border: 2px solid var(--choco-gold); border-radius: 30px; width: 100%; max-width: 450px; padding: 30px; position: relative; }
-.mx { position: absolute; top: 15px; right: 20px; background: none; border: none; color: var(--neon-red); font-size: 28px; cursor: pointer; }
+.mc { background: var(--bg-dark); border: 2px solid var(--choco-gold); border-radius: 25px; width: 100%; max-width: 400px; padding: 30px; position: relative; }
+.mx { position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--neon-red); font-size: 24px; cursor: pointer; }
 
-/* HUD & GAMEPLAY */
-.ag { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.ba { padding: 18px; border-radius: 15px; background: #000; border: 2px solid var(--neon-cyan); color: var(--neon-cyan); font-family: var(--font-display); font-size: 20px; cursor: pointer; }
-.ba.ok { background: var(--neon-green) !important; color: #000 !important; }
-.ba.no { background: var(--neon-red) !important; color: #fff !important; }
-
-/* BOTÕES SUPERIORES */
-.btn-top-group { position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 500; }
-.btn-round { width: 48px; height: 48px; border-radius: 12px; background: rgba(0,0,0,0.8); border: 2px solid var(--choco-gold); color: white; cursor: pointer; font-size: 20px; box-shadow: 0 0 10px rgba(212,160,23,0.3); }
+/* BOTÕES DE CONTROLE */
+.btn-top-group { position: fixed; top: 15px; right: 15px; display: flex; gap: 8px; z-index: 500; }
+.btn-round { width: 42px; height: 42px; border-radius: 10px; background: #000; border: 1.5px solid var(--choco-gold); color: white; cursor: pointer; font-size: 16px; }
 
 /* REMOVER DEBUG */
 #debug-panel { display: none !important; }
 
-@media (max-width: 600px) { #ada-command-post { width: 130px; height: 130px; } .ag { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { 
+    .blocks-grid { grid-template-columns: 1fr; }
+    #ada-command-post { width: 140px; height: 140px; }
+    .ag { grid-template-columns: 1fr; }
+}
