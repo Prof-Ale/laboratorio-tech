@@ -1,6 +1,6 @@
 /**
- * main.js — v11.7 "LabTech Golden Stable"
- * Intervenções: Sincronização de Voz (UI), Dados de Perfil e Reatividade.
+ * main.js — v11.8 "LabTech Vision & Voice"
+ * Intervenções: Religamento do Feedback Escrito (#fb) e limpeza de rastro.
  */
 import { G } from './engine/gameState.js';
 import { selQ, limparHistoricoSessao } from './engine/selector.js';
@@ -64,7 +64,6 @@ function atualizarDashboard() {
    NAVEGAÇÃO E FLUXO
    ============================================================ */
 function mostrarSeletorBlocos() {
-    // Captura os dados da Splash
     G.nome = $('nome-cientista')?.value.trim() || 'Cientista';
     G.turma = $('turma-cientista')?.value.trim() || '7ºA';
     
@@ -110,7 +109,15 @@ function processarResposta(alt, q) {
     G.respondeu = true;
 
     const analise = analisarAlternativa(alt);
+    const feedbackTexto = analise.correto ? q.passo : (q.dica || analise.descricao);
     
+    // INTERVENÇÃO: Exibir feedback escrito
+    const fbContainer = $('fb');
+    if (fbContainer) {
+        fbContainer.textContent = feedbackTexto;
+        fbContainer.style.display = 'block';
+    }
+
     document.querySelectorAll('.ba').forEach(b => {
         b.classList.add('dis');
         if (String(b.textContent) === String(q.res)) b.classList.add('ok');
@@ -120,14 +127,14 @@ function processarResposta(alt, q) {
     if (analise.correto) {
         G.acertos++; G.combo++;
         animarAda('ok');
-        narrarContexto(q.passo);
+        narrarContexto(feedbackTexto);
     } else {
         G.combo = 0;
         registrarErro(G, analise);
         const dano = 10 + (analise.peso || 1) * 5;
         G.vida = Math.max(0, G.vida - dano);
         animarAda('no');
-        narrarContexto(q.dica || analise.descricao);
+        narrarContexto(feedbackTexto);
     }
     
     atualizarHudVisual();
@@ -141,6 +148,14 @@ function processarResposta(alt, q) {
 function proximaQ() {
     G.respondeu = false;
     animarAda('idle');
+    
+    // INTERVENÇÃO: Limpar feedback escrito para a nova questão
+    const fbContainer = $('fb');
+    if (fbContainer) {
+        fbContainer.textContent = '';
+        fbContainer.style.display = 'none';
+    }
+
     const q = selQ(G.currentBlock);
     if (!q) return;
     renderQ(q);
@@ -176,7 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     on('btn-prox', proximaQ);
     
-    // Controles de áudio com atualização de texto ON/OFF
     on('btn-musica', () => AudioCtrl.toggle('btn-musica', 'tsom'));
     
     on('btn-voz', () => {
@@ -184,7 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if ($('tvoz')) $('tvoz').textContent = G.voz ? "ON" : "OFF";
     });
 
-    // Modais
     on('btn-perfil', () => {
         if ($('perfil-nome-display')) $('perfil-nome-display').textContent = `${G.nome} | ${G.turma}`;
         if ($('perfil-acertos-display')) $('perfil-acertos-display').textContent = G.acertos;
@@ -199,7 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     on('btn-cred', () => abrirM('mcred'));
     
-    // Fechamento e Navegação
     document.querySelectorAll('.mx').forEach(btn => {
         btn.onclick = (e) => e.target.closest('.modal').classList.remove('active');
     });
@@ -214,5 +226,5 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     });
 
-    console.log("LabTech 11.7: Golden Stable Online.");
+    console.log("LabTech 11.8: Vision & Voice Online.");
 });
