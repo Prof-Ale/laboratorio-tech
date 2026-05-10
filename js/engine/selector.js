@@ -1,24 +1,32 @@
 /**
- * selector.js — Versão 5.0 "ADA Heuristics AI"
+ * selector.js — Versão 5.1 "ADA Heuristics AI (Multi-Block Ready)"
  * Seletor Híbrido: Espinha Dorsal Curricular + Desvio Adaptativo Pedagógico
  */
 
 import { G } from './gameState.js';
-// IMPORTAÇÃO DOS BANCOS (Adicione os próximos blocos aqui conforme for criando)
+
+// === IMPORTAÇÃO DOS BANCOS ===
 import { bloco2_trilha1 } from '../data/questions/bloco2_trilha1.js';
 import { bloco2_trilha2 } from '../data/questions/bloco2_trilha2.js';
 import { bloco2_trilha3 } from '../data/questions/bloco2_trilha3.js';
 import { bloco2_trilha4 } from '../data/questions/bloco2_trilha4.js';
+import { bloco3 } from '../data/questions/bloco3.js'; // Ligando o Bloco 3!
 
 // === CONSOLIDAÇÃO DO BANCO GERAL ===
 const BANCO = {
+    1: [], // Vazio por enquanto
     2: [
         ...bloco2_trilha1,
         ...bloco2_trilha2,
         ...bloco2_trilha3,
         ...bloco2_trilha4
-    ]
-    // Adicione os outros blocos aqui depois
+    ],
+    3: [
+        ...bloco3
+    ],
+    4: [], // Vazio por enquanto
+    5: [], // Vazio por enquanto
+    6: []  // Vazio por enquanto
 };
 
 // Histórico de IDs já mostrados na sessão atual
@@ -38,7 +46,6 @@ function avaliarNecessidadeIntervencao(blocoId) {
     if (qDisp.length === 0) return null;
 
     // 1. ANÁLISE DE EXCELÊNCIA (Tédio Cognitivo)
-    // Se o aluno acerta muito rápido, injetamos uma investigação.
     if (G.combo >= 4) {
         console.log("🌟 [ADA Triage] Combo alto detectado. Procurando desafio de Investigação.");
         const desafio = qDisp.find(q => 
@@ -49,7 +56,6 @@ function avaliarNecessidadeIntervencao(blocoId) {
     }
 
     // 2. ANÁLISE DE QUEDA CRÍTICA (Intervenção de Emergência)
-    // Vida muito baixa = precisa recuperar a moral e a base antes de perder
     if (G.vida > 0 && G.vida < 35) {
         console.log("🚑 [ADA Triage] Vida crítica! Buscando questão de Recomposição.");
         const salvação = qDisp.find(q => 
@@ -60,14 +66,11 @@ function avaliarNecessidadeIntervencao(blocoId) {
     }
 
     // 3. ANÁLISE DE BLOQUEIO DE HABILIDADE (BNCC Tracker)
-    // Se a taxa de erros de CONCEITO for dominante numa habilidade, frear progressão.
     if (G.historico) {
         for (const [bncc, hist] of Object.entries(G.historico)) {
             const totalErros = hist.erros_conceito + hist.erros_calculo;
-            // Se errou mais de 2 vezes e a maioria foi CONCEITO
             if (totalErros >= 2 && hist.erros_conceito > hist.acertos) {
                 console.log(`⚠️ [ADA Triage] Bloqueio estrutural em ${bncc}. Desviando para base visual/conceitual.`);
-                // Procura questão fácil da MESMA habilidade
                 const reforco = qDisp.find(q => 
                     !respondedInSession.has(q.id) && 
                     q.bncc === bncc && 
@@ -78,7 +81,7 @@ function avaliarNecessidadeIntervencao(blocoId) {
         }
     }
 
-    return null; // Nenhuma intervenção necessária, segue o jogo.
+    return null; 
 }
 
 /**
@@ -88,10 +91,9 @@ export function selQ(blocoId) {
     const questoesDoBloco = BANCO[blocoId] || [];
 
     if (questoesDoBloco.length === 0) {
-        return { display: "Banco de Dados Vazio", res: "0", passo: "Contate a Engenharia." };
+        return { display: "Banco de Dados Vazio", res: "0", passo: "Contate a Engenharia para injetar as questões deste módulo." };
     }
 
-    // 1. ADA AVALIA A SITUAÇÃO CLÍNICA PRIMEIRO (O Desvio Adaptativo)
     const intervencao = avaliarNecessidadeIntervencao(blocoId);
     
     if (intervencao) {
@@ -100,33 +102,25 @@ export function selQ(blocoId) {
         return intervencao;
     }
 
-    // 2. RETORNO À ESPINHA DORSAL CURRICULAR (Progressão Lógica)
-    // Filtra apenas questões que não são puramente de reforço (para não travar o avanço)
     let trilhaPrincipal = questoesDoBloco.filter(q => 
         !respondedInSession.has(q.id) && 
         q.tipoPedagogico !== "recomposicao"
     );
 
-    // Se acabou a trilha principal, tenta puxar qualquer uma que sobrou (mesmo de reforço)
     if (trilhaPrincipal.length === 0) {
         trilhaPrincipal = questoesDoBloco.filter(q => !respondedInSession.has(q.id));
     }
 
-    // Esgotamento do Bloco (Fim do Jogo)
     if (trilhaPrincipal.length === 0) {
         console.warn("[SELETOR] Banco Esgotado. Finalizando.");
-        G.vida = 0; // Força fim do jogo para mostrar tela de resultados
+        G.vida = 0; 
         return { id: "END", tipo: "conceito", display: "Processamento Concluído", res: "OK", alternativas: [{valor: "OK"}], passo: "Módulo finalizado." };
     }
 
-    // 3. SELEÇÃO SEQUENCIAL EMBARALHADA DENTRO DA AULA
-    // Pegamos a aula mais baixa disponível que ainda tem questões
     const aulasDisponiveis = [...new Set(trilhaPrincipal.map(q => q.aula))].sort((a,b) => a - b);
     const aulaAtual = aulasDisponiveis[0];
-
     const questoesDaAula = trilhaPrincipal.filter(q => q.aula === aulaAtual);
     
-    // Puxa uma questão aleatória dentro dessa aula (Evita a Decoreba de Ordem!)
     const indiceSorteado = Math.floor(Math.random() * questoesDaAula.length);
     const qSorteada = questoesDaAula[indiceSorteado];
 
@@ -142,3 +136,4 @@ export function selQ(blocoId) {
 
     return qSorteada;
 }
+// === FIM DO ARQUIVO ===
