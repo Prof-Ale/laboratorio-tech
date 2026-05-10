@@ -1,6 +1,6 @@
 /**
- * js/game-engine.js — Versão 7.2 "MathLab Render Responsivo"
- * Motor de Renderização de Alta Performance para Reta Numérica e Animações
+ * js/game-engine.js — Versão 7.3 "MathLab Render Ultimate"
+ * Motor de Renderização de Alta Performance (Reta Numérica, Sinais e Animações)
  */
 
 let animState = 0;
@@ -23,7 +23,8 @@ export function setAnimando(val) {
  * Inicia a animação de salto na reta numérica
  */
 export function animarArcos(q) {
-    if (q.tipo !== "reta") return;
+    // CORREÇÃO 1: Agora aceita "reta" E "sinais"
+    if (q.tipo !== "reta" && q.tipo !== "sinais") return;
     
     // Reset de segurança
     if (animId) cancelAnimationFrame(animId);
@@ -35,7 +36,7 @@ export function animarArcos(q) {
 }
 
 function loopAnimacao() {
-    if (!isAnimating) return;
+    if (!isAnimating || !currentQ) return;
     
     animState += 0.025; // Velocidade suave
     
@@ -58,14 +59,17 @@ export function renderCv(q) {
     if (!cv) return;
     const ctx = cv.getContext("2d");
 
-    // A MÁGICA DO TAMANHO (Resolve o bug do Canvas invisível e deixa responsivo)
-    // Pega a largura do pai (container), se existir, ou usa 580 como fallback.
+    // Prevenção de corrida (Race Condition)
+    if (isAnimating && currentQ && q.id !== currentQ.id) {
+        setAnimando(false);
+    }
+
+    // A MÁGICA DO TAMANHO (Responsividade)
     const parentWidth = cv.parentElement ? cv.parentElement.clientWidth : 580;
-    // Limita o tamanho máximo a 580px para não deformar em monitores grandes
     const cssWidth = Math.min(parentWidth, 580) || 580;
     const cssHeight = 130;
     
-    // Ajuste de DPI para nitidez máxima (Evita serrilhado em telas Retina/Celular)
+    // Ajuste de DPI para nitidez máxima
     const dpr = window.devicePixelRatio || 1;
     
     cv.width = cssWidth * dpr;
@@ -73,7 +77,9 @@ export function renderCv(q) {
     cv.style.width = cssWidth + "px";
     cv.style.height = cssHeight + "px";
     
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    // CORREÇÃO 6: Reset absoluto da matriz antes do scale para evitar distorções
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
     ctx.clearRect(0, 0, cssWidth, cssHeight);
 
     // Gerenciamento da imagem de regras de sinais (DOM)
@@ -82,14 +88,19 @@ export function renderCv(q) {
         imgRegras.style.display = (q.tipo === "sinais") ? "block" : "none";
     }
 
-    if (q && q.tipo === "reta") {
+    // CORREÇÃO 2: Renderiza a reta tanto para "reta" quanto para "sinais"
+    if (q && (q.tipo === "reta" || q.tipo === "sinais")) {
         desenharReta(ctx, cssWidth, cssHeight);
         
+        // CORREÇÃO 3: O Normalizador Implícito (Lida com JSONs antigos e novos)
+        const a = q.a ?? q.inicio ?? q.valorInicial;
+        const b = q.b ?? q.salto ?? q.valor;
+        
         // Renderização baseada no estado da questão
-        if (q.a !== undefined && q.b !== undefined && (isAnimating || animState > 0)) {
-            desenharArco(ctx, cssWidth, cssHeight, q.a, q.b, animState);
-        } else if (q.a !== undefined) {
-            desenharPontoPartida(ctx, cssWidth, cssHeight, q.a);
+        if (a !== undefined && b !== undefined && (isAnimating || animState > 0)) {
+            desenharArco(ctx, cssWidth, cssHeight, a, b, animState);
+        } else if (a !== undefined) {
+            desenharPontoPartida(ctx, cssWidth, cssHeight, a);
         }
     } else {
         desenharFundoLogico(ctx, cssWidth, cssHeight);
@@ -135,10 +146,8 @@ function desenharReta(ctx, w, h) {
         ctx.lineWidth = isDestaque ? 3 : 1.5;
         ctx.stroke();
 
-        // Números (Oculta alguns números em telas pequenas para não encavalar)
+        // Números (Respiro para Mobile)
         ctx.fillStyle = isDestaque ? "#00e5ff" : "rgba(255, 255, 255, 0.8)";
-        
-        // Lógica de respiro visual: se a tela for menor que 400px, desenha a cada 4 números
         const saltoTextos = w < 400 ? 4 : 2;
         
         if (i % saltoTextos === 0 || i === 0) {
@@ -167,11 +176,11 @@ function desenharArco(ctx, w, h, a, b, progresso) {
     const yCenter = h - 40;
     const alturaArco = 60; 
 
-    const corArco = b >= 0 ? "#00ff88" : "#ff4444"; // Verde para avanço, Vermelho para recuo
+    const corArco = b >= 0 ? "#00ff88" : "#ff4444"; 
 
     ctx.save();
     
-    // Desenha a "sombra" do arco completo (estilo tracejado)
+    // Desenha a "sombra" do arco completo
     ctx.beginPath();
     ctx.setLineDash([4, 4]);
     ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
@@ -217,7 +226,7 @@ function desenharArco(ctx, w, h, a, b, progresso) {
 function desenharFundoLogico(ctx, w, h) {
     ctx.save();
     ctx.fillStyle = "rgba(0, 229, 255, 0.03)";
-    ctx.fillRect(10, h/2 - 20, w - 20, 40); // Ajustado para não cortar no mobile
+    ctx.fillRect(10, h/2 - 20, w - 20, 40);
     ctx.textAlign = "center";
     ctx.font = "italic 13px 'Nunito'";
     ctx.fillStyle = "rgba(0, 229, 255, 0.5)";
