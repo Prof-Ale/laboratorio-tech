@@ -1,46 +1,24 @@
 /**
- * main.js — v10.4 "MathLab Adaptive Ready"
- * Core de Orquestração com Validação, Telemetria, DUA Sonoro e Perfil
+ * main.js — v10.5 "LabTech Command Center"
+ * Core de Orquestração com ADA Command Post, AudioController e Adaptive Engine
  */
 
 import { G } from './engine/gameState.js';
 import { selQ, limparHistoricoSessao } from './engine/selector.js';
 import { analisarAlternativa, registrarErro } from './engine/diagnostic-engine.js';
 import { renderCv, animarArcos, setAnimando } from './game-engine.js';
-import { updHUD, narrarContexto, toggleMusica, toggleVoz, tocarAv, exibirGameOver, abrirM, fecharM } from './ui-manager.js';
+import { AudioCtrl } from './engine/audioController.js'; // Novo controlador
+import { 
+    updHUD, narrarContexto, toggleMusica, toggleVoz, 
+    exibirGameOver, abrirM, fecharM 
+} from './ui-manager.js';
 
-// Variáveis de controle global para Debug
+// Variáveis de controle
 let qAtual = null;
-window.G = G; // Exposto para o console F12
+window.G = G; 
 
 /* ============================================================
-   LÓGICA HÍBRIDA DE QUESTÕES
-   ============================================================ */
-
-function obterAlternativas(q) {
-    if (Array.isArray(q.alternativas)) return q.alternativas;
-
-    return (q.botoes || []).map(valor => {
-        const correta = Array.isArray(q.res)
-            ? q.res.map(String).includes(String(valor))
-            : String(valor) === String(q.res);
-
-        if (correta) return { valor, tipo: 'acerto' };
-
-        const ehConceito = q.erroConceito?.map(String).includes(String(valor));
-        return {
-            valor,
-            tipo: 'erro',
-            categoria: ehConceito ? 'conceito' : 'calculo',
-            erro: ehConceito ? 'erro_conceitual_generico' : 'erro_operacional_generico',
-            descricao: ehConceito ? 'Falha na compreensão do conceito base.' : 'Equívoco no processo de execução.',
-            peso: ehConceito ? 3 : 2
-        };
-    });
-}
-
-/* ============================================================
-   UTILITÁRIOS DE DOM E DEBUG
+   UTILITÁRIOS DE UI & AVATAR
    ============================================================ */
 function $(id) { return document.getElementById(id); }
 
@@ -49,103 +27,116 @@ function on(id, fn) {
     if (el) el.addEventListener('click', fn);
 }
 
+/**
+ * Controla o Posto de Comando da ADA (Canto Inferior Direito)
+ * @param {string} estado - 'idle', 'ok', 'no'
+ */
+function animarAda(estado) {
+    const img = $('av-img');
+    const vOk = $('vid-ok');
+    const vNo = $('vid-no');
+    const container = $('ada-command-post');
+
+    if (!container) return;
+    container.classList.remove('hidden');
+
+    // Reset geral
+    [img, vOk, vNo].forEach(el => el.classList.add('avh'));
+
+    if (estado === 'ok') {
+        vOk.classList.remove('avh');
+        vOk.currentTime = 0;
+        vOk.play();
+    } else if (estado === 'no') {
+        vNo.classList.remove('avh');
+        vNo.currentTime = 0;
+        vNo.play();
+    } else {
+        img.classList.remove('avh');
+    }
+}
+
 function ocultarTodas() {
     ['splash-screen','block-selector','game-screen'].forEach(id => {
         $(id)?.classList.add('hidden');
     });
 }
 
-/**
- * Atualiza o painel de debug na tela
- */
-function updateDebug() {
-    if (!$('debug-panel')) return;
-    $('db-q-id').textContent = qAtual ? qAtual.id : '---';
-    $('db-q-tipo').textContent = qAtual ? qAtual.tipo : '---';
-    $('db-combo').textContent = G.combo;
-    $('db-vida').textContent = G.vida;
-    $('db-engine-status').textContent = G.respondeu ? "BLOQUEADO (Aguardando Prox)" : "PRONTO";
-}
-
 /* ============================================================
-   PERSISTÊNCIA E NAVEGAÇÃO
+   FLUXO DE NAVEGAÇÃO
    ============================================================ */
-function carregarDados() {
-    const raw = localStorage.getItem('laboratorio_tech_data');
-    if (!raw) return;
-    try {
-        const d = JSON.parse(raw);
-        Object.assign(G, d);
-    } catch(e) { console.warn("[LabTech] Erro ao carregar dados salvos."); }
-}
-
-function salvarProgresso() {
-    localStorage.setItem('laboratorio_tech_data', JSON.stringify(G));
-}
 
 function mostrarSeletorBlocos() {
     G.nome = $('nome-cientista')?.value.trim() || 'Cientista';
     G.turma = $('turma-cientista')?.value.trim() || '';
+    
+    // Inicia áudio na primeira interação
+    AudioCtrl.play(); 
+
     ocultarTodas();
     $('block-selector')?.classList.remove('hidden');
+    $('ada-command-post')?.classList.add('hidden'); // Esconde ADA no menu
+    
     narrarContexto(`Olá ${G.nome}, selecione o setor de análise.`);
-    salvarProgresso();
+    localStorage.setItem('laboratorio_tech_data', JSON.stringify(G));
 }
 
 function iniciarBloco(id) {
     const nomes = { 
-        1:"A Base Numérica", 2:"Números e Operações", 3:"Grandezas e Medidas", 
-        4:"Álgebra e Padrão", 5:"Estatística e Dados", 6:"Geometria e Espaço" 
+        1:"Base Numérica", 2:"Operações", 3:"Medidas", 
+        4:"Álgebra", 5:"Estatística", 6:"Geometria II" 
     };
     
     G.currentBlock = id;
-    G.vida = 100; G.energia = 60; G.combo = 0;
+    G.vida = 100; G.combo = 0;
     G.acertos = 0; G.erros = 0;
     limparHistoricoSessao();
 
     ocultarTodas();
     $('game-screen')?.classList.remove('hidden');
-    if ($('nome-bloco-display')) $('nome-bloco-display').textContent = nomes[id];
+    animarAda('idle'); // Mostra a ADA grande no canto
 
-    const bgm = $('bgm');
-    if (bgm && G.musica) { bgm.volume = 0.05; bgm.play().catch(()=>{}); }
+    if ($('nome-bloco-display')) $('nome-bloco-display').textContent = nomes[id];
 
     updHUD();
     proximaQ();
 }
 
 /* ============================================================
-   SISTEMA DE RESPOSTA E DIAGNÓSTICO
+   SISTEMA DE QUESTÕES ADAPTATIVAS
    ============================================================ */
+
+function proximaQ() {
+    setAnimando(false);
+    animarAda('idle'); // Volta ADA para modo estático
+    qAtual = selQ(G.currentBlock);
+    renderQ(qAtual);
+}
+
 function renderQ(q) {
-    if (!q) {
-        console.error("[LabTech] Erro: Tentativa de renderizar questão nula.");
-        return;
-    }
+    if (!q) return;
 
     const display = $('conta-display');
     const fb = $('fb');
+    const grid = $('grid-botoes');
     
     if (display) display.innerHTML = `<span>${q.display}</span>`;
     if (fb) { fb.innerHTML = ''; fb.className = 'fb-box'; }
-    
+    if (grid) grid.innerHTML = '';
+
     $('btn-prox')?.classList.add('hidden');
     G.respondeu = false;
     setAnimando(false);
-    renderCv(q);
+    renderCv(q); // Renderiza elementos gráficos (ex: reta numérica)
 
-    const grid = $('grid-botoes');
-    if (!grid) return;
-    grid.innerHTML = '';
-
-    const alternativas = [...obterAlternativas(q)].sort(() => Math.random() - 0.5);
-    grid.style.gridTemplateColumns = alternativas.length <= 3 ? `repeat(${alternativas.length}, 1fr)` : '1fr 1fr';
+    // Lógica de alternativas
+    const alternativas = [...(q.alternativas || [])].sort(() => Math.random() - 0.5);
 
     alternativas.forEach(alt => {
         const b = document.createElement('button');
         b.className = 'ba';
         b.textContent = String(alt.valor);
-        b.addEventListener('click', () => processarResposta(alt, q));
+        b.onclick = () => processarResposta(alt, q);
         grid.appendChild(b);
     });
 }
@@ -154,133 +145,93 @@ function processarResposta(alternativa, q) {
     if (G.respondeu) return;
     G.respondeu = true;
 
-    try {
-        const analise = analisarAlternativa(alternativa);
-        const feedbackEl = $('fb');
+    const analise = analisarAlternativa(alternativa);
+    const feedbackEl = $('fb');
 
-        if (q.bncc && !G.historico[q.bncc]) {
-            G.historico[q.bncc] = { desc: q.bncc_desc, acertos: 0, erros_conceito: 0, erros_calculo: 0, bloco: G.currentBlock };
-        }
+    // Feedback Visual nos Botões
+    document.querySelectorAll('.ba').forEach(b => {
+        b.classList.add('dis');
+        if (b.textContent === String(q.res)) b.classList.add('ok');
+        if (b.textContent === String(alternativa.valor) && !analise.correto) b.classList.add('no');
+    });
 
-        // Feedback Visual
-        document.querySelectorAll('.ba').forEach(b => {
-            b.classList.add('dis');
-            const ehCorreta = Array.isArray(q.res) ? q.res.map(String).includes(b.textContent) : b.textContent === String(q.res);
-            if (ehCorreta) b.classList.add('ok');
-            if (b.textContent === String(alternativa.valor) && !analise.correto) b.classList.add('no');
-        });
-
-        if (analise.correto) {
-            G.acertos++; G.combo++; G.energia = Math.min(100, G.energia + 10);
-            if (q.bncc) G.historico[q.bncc].acertos++;
-            
-            feedbackEl.className = 'fb-box acerto';
-            feedbackEl.innerHTML = `<h3>[✓] Algoritmo Validado!</h3><p>${q.passo}</p>`;
-            tocarAv('ok');
-            
-            // DUA SONORO: Narra o passo a passo da vitória!
-            narrarContexto(q.passo);
-            
-        } else {
-            G.erros++; G.combo = 0;
-            registrarErro(G, analise);
-
-            const dano = 5 + (analise.peso * 5);
-            G.vida = Math.max(0, G.vida - dano);
-            if ($('db-last-err')) $('db-last-err').textContent = analise.erro;
-
-            if (q.bncc) {
-                if (analise.categoria === 'conceito') G.historico[q.bncc].erros_conceito++;
-                else G.historico[q.bncc].erros_calculo++;
-            }
-
-            feedbackEl.className = 'fb-box erro';
-            feedbackEl.innerHTML = `<h3>[!] Anomalia: ${analise.categoria.toUpperCase()}</h3><p>${analise.descricao}</p>`;
-            tocarAv('no');
-            
-            // DUA SONORO: Narra a descrição do erro e acopla a dica inteligente da ADA!
-            const textoErro = q.dica ? `${analise.descricao} Dica da ADA: ${q.dica}` : analise.descricao;
-            narrarContexto(textoErro);
-        }
-
-        if (q.tipo === 'reta' || q.tipo === 'sinais') {
-            setTimeout(() => animarArcos(q), 100);
-        }
+    if (analise.correto) {
+        G.acertos++; G.combo++;
+        feedbackEl.className = 'fb-box acerto';
+        feedbackEl.innerHTML = `<h3>[✓] SUCESSO</h3><p>${q.passo}</p>`;
         
-        updHUD();
-        salvarProgresso();
-        $('btn-prox')?.classList.remove('hidden');
+        animarAda('ok'); // ADA comemora!
+        narrarContexto(q.passo);
+        
+        // Ajusta intensidade da trilha se o combo estiver alto
+        if (G.combo >= 4) AudioCtrl.setIntensity(true);
 
-        if (G.vida <= 0) setTimeout(exibirGameOver, 1200);
+    } else {
+        G.erros++; G.combo = 0;
+        registrarErro(G, analise);
+        AudioCtrl.setIntensity(false);
 
-    } catch (e) {
-        console.error("[LabTech] Falha Crítica no Processamento:", e);
-        $('btn-prox')?.classList.remove('hidden'); // Destrava o jogo em caso de erro
+        const dano = 5 + (analise.peso * 5);
+        G.vida = Math.max(0, G.vida - dano);
+
+        feedbackEl.className = 'fb-box erro';
+        feedbackEl.innerHTML = `<h3>[!] FALHA</h3><p>${analise.descricao}</p>`;
+        
+        animarAda('no'); // ADA alerta!
+        const textoErro = q.dica ? `${analise.descricao}. Dica: ${q.dica}` : analise.descricao;
+        narrarContexto(textoErro);
     }
-}
 
-function proximaQ() {
-    setAnimando(false);
-    qAtual = selQ(G.currentBlock);
-    window.qAtual = qAtual; // Para o Debug
-    renderQ(qAtual);
-}
-
-function reiniciar() {
-    G.vida = 100;
-    G.energia = 60;
-    fecharM('go');
+    if (q.tipo === 'reta' || q.tipo === 'sinais') setTimeout(() => animarArcos(q), 100);
+    
     updHUD();
-    proximaQ();
+    $('btn-prox')?.classList.remove('hidden');
+    if (G.vida <= 0) setTimeout(exibirGameOver, 1200);
 }
 
 /* ============================================================
-   INICIALIZAÇÃO
+   INICIALIZAÇÃO E EVENTOS
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
-    carregarDados();
+    // Inicializa sons
+    AudioCtrl.init();
 
+    // Navegação base
     on('btn-acessar', mostrarSeletorBlocos);
     [1,2,3,4,5,6].forEach(i => on(`btn-bloco-${i}`, () => iniciarBloco(i)));
-    
     on('btn-prox', proximaQ);
-    on('btn-csv', () => { /* Chamar função de CSV */ });
-    on('btn-musica', toggleMusica);
+
+    // Controles de Áudio/Voz
+    on('btn-musica', () => AudioCtrl.toggle('btn-musica', 'tsom'));
     on('btn-voz', toggleVoz);
-    on('btn-reiniciar', reiniciar);
-    
+
     // Modais
+    on('btn-perfil', () => {
+        $('perfil-nome-display').textContent = G.nome;
+        $('perfil-vida-display').textContent = Math.round(G.vida);
+        $('perfil-acertos-display').textContent = G.acertos;
+        abrirM('mperfil');
+    });
+
     on('btn-dash', () => abrirM('mdash'));
     on('btn-fecha-dash', () => fecharM('mdash'));
     on('btn-cred', () => abrirM('mcred'));
     on('btn-fecha-cred', () => fecharM('mcred'));
-
-    // NOVO: Integração do Modal de Perfil do Estudante
-    on('btn-perfil', () => {
-        const modal = $('mperfil');
-        if (!modal) return;
-        
-        // Puxa os dados atuais de G (GameState) e atualiza o HTML
-        if ($('perfil-nome-display')) $('perfil-nome-display').textContent = G.nome || "Cientista";
-        if ($('perfil-turma-display')) $('perfil-turma-display').textContent = G.turma || "Turma Indefinida";
-        if ($('perfil-vida-display')) $('perfil-vida-display').textContent = Math.round(G.vida);
-        if ($('perfil-acertos-display')) $('perfil-acertos-display').textContent = G.acertos;
-        if ($('perfil-erros-display')) $('perfil-erros-display').textContent = G.erros;
-        
-        abrirM('mperfil');
+    on('btn-reiniciar', () => {
+        G.vida = 100;
+        fecharM('go');
+        iniciarBloco(G.currentBlock);
     });
 
-    // Delegação para botões de "Voltar ao Seletor"
+    // Delegar botões de voltar ao menu
     document.querySelectorAll('[data-action="seletor"]').forEach(el => {
-        el.addEventListener('click', () => {
+        el.onclick = () => {
             fecharM('go');
             ocultarTodas();
             $('block-selector').classList.remove('hidden');
-        });
+            $('ada-command-post').classList.add('hidden');
+        };
     });
 
-    setInterval(updateDebug, 500);
-    console.log(`[LabTech] Engine v10.4 Online (Adaptive Ready).`);
+    console.log(`[LabTech] Engine v10.5 Online. ADA Command Center Ativo.`);
 });
-
-// === FIM DO ARQUIVO ===
