@@ -2,8 +2,9 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Laboratório Tech • MathLab 2026</title>
+  <link rel="icon" href="assets/img/favicon.png">
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet"/>
 </head>
@@ -13,13 +14,9 @@
     <div class="splash-inner">
       <h1 class="splash-logo">LABORATÓRIO TECH</h1>
       <p class="splash-sub">Recomposição de Aprendizagem • Módulos 1-6</p>
-      
       <div class="splash-av">
-        <div class="av-box">
-          <img src="assets/img/avatar_estatico.png" class="ada-avatar-asset" alt="ADA">
-        </div>
+        <div class="av-box"><img src="assets/img/avatar_estatico.png" class="ada-avatar-asset"></div>
       </div>
-
       <div class="input-group">
         <input type="text" id="nome-cientista" placeholder="Nome do Cientista">
         <input type="text" id="turma-cientista" placeholder="Turma (ex: 7ºA)">
@@ -39,27 +36,37 @@
         <button class="block-card b5" id="btn-bloco-5"><span class="block-icon">📊</span><span class="block-name">Estatística</span></button>
         <button class="block-card b6" id="btn-bloco-6"><span class="block-icon">📐</span><span class="block-name">Geometria II</span></button>
       </div>
+      <button class="bc2" onclick="location.reload()">← Alterar Usuário</button>
     </div>
   </section>
 
   <section id="game-screen" class="screen hidden">
     <div class="gw">
       <header class="game-header">
-        <div class="hud-item"><span>Integridade:</span> <div class="bar"><div id="fv" class="fill"></div></div></div>
-        <div class="hud-item"><span>Nível:</span> <span id="tnv">1</span></div>
+        <div class="hud-item">
+          <span class="hud-label">INTEGRIDADE</span>
+          <div class="bar"><div id="fv" class="fill"></div></div>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">NÍVEL</span>
+          <span id="tnv" class="hud-value">1</span>
+        </div>
         <div class="game-controls">
           <button class="mini-btn" id="btn-musica">🎵 <span id="tsom">OFF</span></button>
           <button class="mini-btn" data-action="seletor">⚙️ Blocos</button>
         </div>
       </header>
 
-      <div id="conta-display"></div>
-      <div id="grid-botoes" class="ag"></div>
-      <button id="btn-prox" class="hidden btn-next">PRÓXIMO DESAFIO →</button>
+      <main class="question-container">
+        <div id="conta-display"></div>
+        <div id="grid-botoes" class="ag"></div>
+        <button id="btn-prox" class="hidden btn-next">PRÓXIMO DESAFIO →</button>
+      </main>
     </div>
   </section>
 
   <div id="ada-command-post">
+    <div class="ada-halo"></div>
     <div class="ada-box">
       <img src="assets/img/avatar_estatico.png" id="av-img" class="ada-asset">
       <video id="vid-ok" class="ada-asset avh" playsinline muted><source src="assets/vid/ada_sucesso.mp4" type="video/mp4"></video>
@@ -73,17 +80,8 @@
     <button class="btn-round" id="btn-cred">i</button>
   </div>
 
-  <div id="mperfil" class="modal">
-    <div class="mc">
-      <button class="mx">✕</button>
-      <h2>PERFIL DO CIENTISTA</h2>
-      <p id="perfil-nome-display"></p>
-      <div class="stats-row">
-        <div>Vida: <span id="perfil-vida-display"></span></div>
-        <div>Acertos: <span id="perfil-acertos-display"></span></div>
-      </div>
-    </div>
-  </div>
+  <div id="mperfil" class="modal"><div class="mc"><button class="mx">✕</button><h2>PERFIL</h2><p id="perfil-nome-display"></p></div></div>
+  <div id="mcred" class="modal"><div class="mc"><button class="mx">✕</button><h2>CRÉDITOS</h2><p>Prof. Alê Chocolate</p></div></div>
 
   <audio id="bgm" loop><source src="assets/snd/trilha.mp3" type="audio/mpeg"></audio>
   <script type="module" src="js/main.js"></script>
