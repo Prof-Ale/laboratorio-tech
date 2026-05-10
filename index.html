@@ -36,11 +36,13 @@
         <div class="ring"></div>
         <div class="ring2"></div>
         <div class="av-box">
-            <img src="assets/img/avatar_estatico.png" id="av-img" alt="ADA - Inteligência Pedagógica">
-            <video id="vid-ok" class="av-vid avh" playsinline muted>
+            <img src="assets/img/avatar_estatico.png" id="av-img" class="ada-avatar-asset" alt="ADA - Inteligência Pedagógica">
+            
+            <video id="vid-ok" class="ada-avatar-asset avh" playsinline muted preload="auto">
                 <source src="assets/vid/ada_sucesso.mp4" type="video/mp4">
             </video>
-            <video id="vid-no" class="av-vid avh" playsinline muted>
+            
+            <video id="vid-no" class="ada-avatar-asset avh" playsinline muted preload="auto">
                 <source src="assets/vid/ada_alerta.mp4" type="video/mp4">
             </video>
         </div>
@@ -102,7 +104,7 @@
         </button>
       </div>
 
-      <button class="bc2" id="btn-voltar-splash">← Alterar Usuário</button>
+      <button class="bc2" onclick="location.reload()">← Alterar Usuário</button>
     </div>
   </section>
 
