@@ -1,6 +1,6 @@
 /* ============================================================
-   LABORATÓRIO TECH — CSS v7.3 "MathLab Stabilized"
-   Correção de Visibilidade, Proporções e DUA
+   LABORATÓRIO TECH — CSS v7.4 "MathLab Stabilized & DUA"
+   Correção de Visibilidade, Proporções e Avatar ADA
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Nunito:ital,wght@0,400;0,700;0,900;1,400&display=swap');
@@ -74,7 +74,7 @@ body::before {
 .hidden { display: none !important; }
 
 /* ============================================================
-   SPLASH SCREEN (IDENTIFICAÇÃO)
+   SPLASH SCREEN E IDENTIFICAÇÃO DO CIENTISTA
    ============================================================ */
 .splash-inner {
   width: 100%;
@@ -118,10 +118,10 @@ body::before {
   border: 1px solid rgba(0,234,255,0.3);
 }
 
-/* --- O CONSURTO DA ADA (TAMANHO CONTROLADO) --- */
+/* --- A MÁGICA DO AVATAR DA ADA --- */
 .splash-av {
   position: relative;
-  width: 150px; /* Domando o tamanho gigante */
+  width: 150px; /* Tamanho base controlado */
   height: 150px;
   margin: 10px auto;
 }
@@ -136,23 +136,29 @@ body::before {
   box-shadow: 0 0 25px rgba(0, 234, 255, 0.3);
   position: relative;
   z-index: 5;
+  /* Garante que os filhos (vídeo/img) ocupem o mesmo espaço um sobre o outro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.av-img, .av-vid {
+.ada-avatar-asset {
+  position: absolute;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Não deixa esticar */
+  object-fit: cover; 
   transition: opacity 0.3s ease;
+  z-index: 2;
 }
 
-/* Classe para esconder vídeos da ADA no ui-manager */
+/* Classe utilitária suprema para esconder a ADA inativa sem quebrar o HTML */
 .avh { 
-  position: absolute;
   opacity: 0 !important;
-  pointer-events: none;
+  pointer-events: none !important;
+  z-index: 1 !important; /* Joga pra trás para não interceptar cliques */
 }
 
-/* Anéis de brilho ao redor */
+/* Anéis de brilho ao redor da ADA */
 .ring, .ring2 {
   position: absolute;
   inset: -10px;
@@ -168,7 +174,7 @@ body::before {
   min-height: 24px;
 }
 
-/* --- CONSERTO DOS INPUTS (NOME FICAR VISÍVEL) --- */
+/* Input de Nome (Terminal Style) */
 .input-group {
     width: 100%;
     display: flex;
@@ -181,12 +187,12 @@ body::before {
   padding: 14px;
   border-radius: 12px;
   border: 2px solid rgba(0,234,255,0.4);
-  background: rgba(14,14,32,0.9); /* Fundo escuro */
-  color: var(--neon-cyan) !important; /* TEXTO CIANO BRILHANTE */
+  background: rgba(14,14,32,0.9);
+  color: var(--neon-cyan) !important;
   font-size: 16px;
   font-family: var(--font-body);
   text-align: center;
-  user-select: text; /* Permite selecionar o texto */
+  user-select: text;
 }
 
 .splash-inner input:focus {
@@ -259,7 +265,6 @@ body::before {
 .block-name { font-size: 16px; font-weight: 900; color: var(--text-main); }
 .block-card small { font-size: 11px; color: var(--text-muted); }
 
-/* Botão secundário */
 .bc2 {
   padding: 10px 20px;
   border-radius: 10px;
@@ -269,10 +274,12 @@ body::before {
   font-size: 13px;
   cursor: pointer;
   margin-top: 20px;
+  transition: background 0.2s;
 }
+.bc2:hover { background: rgba(255,255,255,0.1); }
 
 /* ============================================================
-   GAME SCREEN
+   GAME SCREEN E MOTOR GRÁFICO
    ============================================================ */
 .gw {
   width: 100%;
@@ -288,7 +295,7 @@ body::before {
 #nome-bloco-display { font-family: var(--font-display); font-size: 14px; color: var(--choco-gold); }
 .controls-top { display: flex; gap: 8px; }
 
-/* HUD */
+/* HUD (Barras de Vida e Energia) */
 .hud { display: flex; gap: 10px; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 12px; }
 .hi { flex: 1; display: flex; flex-direction: column; gap: 3px; }
 .hl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
@@ -296,7 +303,7 @@ body::before {
 .bf { height: 100%; background: var(--neon-cyan); width: 0%; transition: width 0.3s ease, background 0.3s ease; }
 .hv { font-family: var(--font-display); font-size: 18px; color: var(--neon-yellow); text-align: center; font-weight: 900; }
 
-/* Canvas e Questão */
+/* Canvas e Display de Questão */
 #canvas-game {
   width: 100%;
   height: auto;
@@ -316,9 +323,17 @@ body::before {
   color: var(--text-main);
 }
 
-#regra-box { font-size: 13px; color: var(--choco-cream); background: rgba(212,160,23,0.1); padding: 10px; border-radius: 8px; border-left: 3px solid var(--choco-gold); min-height: 30px; }
+#regra-box { 
+    font-size: 13px; 
+    color: var(--choco-cream); 
+    background: rgba(212,160,23,0.1); 
+    padding: 10px; 
+    border-radius: 8px; 
+    border-left: 3px solid var(--choco-gold); 
+    min-height: 30px; 
+}
 
-/* Grid de Respostas */
+/* Grid de Respostas (Botões de Alternativas) */
 .ag {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -352,8 +367,8 @@ body::before {
     background: rgba(14,14,32,0.8);
     border-left: 4px solid transparent;
 }
-.fb-box.acerto { border-color: var(--neon-green); color: # white; }
-.fb-box.erro { border-color: var(--neon-red); color: # white; }
+.fb-box.acerto { border-color: var(--neon-green); color: #fff; }
+.fb-box.erro { border-color: var(--neon-red); color: #fff; }
 
 #btn-prox {
   width: 100%;
@@ -370,20 +385,21 @@ body::before {
 }
 
 /* ============================================================
-   MODAIS E GAME OVER (CORREÇÃO DE VISIBILIDADE)
+   MODAIS, GAME OVER E PAINÉIS FLUTUANTES
    ============================================================ */
 .modal, #go {
   position: fixed;
   inset: 0;
-  z-index: 200; /* Acima das screens, abaixo dos botões flutuantes */
-  background: rgba(6,6,16,0.98);
-  display: none !important; /* Esconde por padrão */
+  z-index: 200; 
+  background: rgba(6,6,16,0.90);
+  backdrop-filter: blur(5px); /* Efeito de vidro borrado no fundo */
+  display: none !important; 
   align-items: center;
   justify-content: center;
   padding: 20px;
 }
 
-/* Força o display flex quando ativo */
+/* Força o display flex quando ativo pelo JS */
 .modal.active, .modal.show, #go.active, #go.show {
   display: flex !important;
 }
@@ -398,17 +414,19 @@ body::before {
   position: relative;
   max-height: 85vh;
   overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
 .mx { position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; }
+.mx:hover { color: var(--neon-red); }
 .mc h2 { font-family: var(--font-display); color: var(--choco-gold); font-size: 18px; margin-bottom: 15px; text-align: center; }
 
-/* Botões Flutuantes */
+/* Botões Superiores Flutuantes (Som, Dashboard) */
 .btn-top-group {
   position: fixed;
   top: 15px;
   right: 15px;
-  z-index: 300; /* Acima de tudo */
+  z-index: 300; 
   display: flex;
   gap: 8px;
 }
@@ -422,7 +440,9 @@ body::before {
   color: white;
   cursor: pointer;
   font-size: 16px;
+  transition: background 0.2s, border 0.2s;
 }
+.btn-round:hover { background: rgba(0,234,255,0.2); border-color: var(--neon-cyan); }
 
 /* ANIMAÇÕES */
 @keyframes ringPulse {
