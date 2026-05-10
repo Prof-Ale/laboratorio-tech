@@ -2,122 +2,90 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Laboratório Tech • MathLab 2026</title>
-
-  <link rel="icon" href="assets/img/favicon.png" type="image/png">
-  <meta name="theme-color" content="#060610">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Nunito:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet"/>
-  
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet"/>
 </head>
-
 <body>
 
   <section id="splash-screen" class="screen">
-    <div class="container splash-inner">
-      <header>
-        <h1 class="splash-logo">LABORATÓRIO TECH</h1>
-        <p class="splash-sub">Recomposição de Aprendizagem • Módulos 1-6</p>
-      </header>
-
-      <div class="splash-badges">
-        <span class="badge bg">BNCC</span>
-        <span class="badge bc">Inclusão</span>
-        <span class="badge bv">Gamificado</span>
-        <span class="badge br">I.A. ADA</span>
-      </div>
-
+    <div class="splash-inner">
+      <h1 class="splash-logo">LABORATÓRIO TECH</h1>
+      <p class="splash-sub">Recomposição de Aprendizagem • Módulos 1-6</p>
+      
       <div class="splash-av">
-        <div class="ring"></div>
-        <div class="ring2"></div>
         <div class="av-box">
-            <img src="assets/img/avatar_estatico.png" class="ada-avatar-asset" alt="ADA">
+          <img src="assets/img/avatar_estatico.png" class="ada-avatar-asset" alt="ADA">
         </div>
       </div>
 
-      <div class="splash-msg" id="spm">Aguardando login do Cientista...</div>
-
       <div class="input-group">
-          <input type="text" id="nome-cientista" placeholder="Nome do Cientista">
-          <input type="text" id="turma-cientista" placeholder="Turma (ex: 7ºA)">
+        <input type="text" id="nome-cientista" placeholder="Nome do Cientista">
+        <input type="text" id="turma-cientista" placeholder="Turma (ex: 7ºA)">
       </div>
-
       <button class="btn-start" id="btn-acessar">INICIALIZAR SISTEMA</button>
-      <footer class="splash-sig">Prof. Alê Chocolate • LabTech 2026</footer>
     </div>
   </section>
 
   <section id="block-selector" class="screen hidden">
-    <div class="container selector-inner">
+    <div class="selector-inner">
       <h2 class="section-title">SETOR DE DIAGNÓSTICO</h2>
       <div class="blocks-grid">
-        <button class="block-card b1" id="btn-bloco-1"><span>🔢</span><b>Base Numérica</b></button>
-        <button class="block-card b2" id="btn-bloco-2"><span>⚖️</span><b>Operações</b></button>
-        <button class="block-card b3" id="btn-bloco-3"><span>📏</span><b>Medidas</b></button>
-        <button class="block-card b4" id="btn-bloco-4"><span>🧩</span><b>Álgebra</b></button>
-        <button class="block-card b5" id="btn-bloco-5"><span>📊</span><b>Estatística</b></button>
-        <button class="block-card b6" id="btn-bloco-6"><span>📐</span><b>Geometria II</b></button>
+        <button class="block-card b1" id="btn-bloco-1"><span class="block-icon">🔢</span><span class="block-name">Base Numérica</span></button>
+        <button class="block-card b2" id="btn-bloco-2"><span class="block-icon">⚖️</span><span class="block-name">Operações</span></button>
+        <button class="block-card b3" id="btn-bloco-3"><span class="block-icon">📏</span><span class="block-name">Medidas</span></button>
+        <button class="block-card b4" id="btn-bloco-4"><span class="block-icon">🧩</span><span class="block-name">Álgebra</span></button>
+        <button class="block-card b5" id="btn-bloco-5"><span class="block-icon">📊</span><span class="block-name">Estatística</span></button>
+        <button class="block-card b6" id="btn-bloco-6"><span class="block-icon">📐</span><span class="block-name">Geometria II</span></button>
       </div>
-      <button class="bc2" onclick="location.reload()">← Alterar Usuário</button>
     </div>
   </section>
 
   <section id="game-screen" class="screen hidden">
-    <div class="container gw">
-      <header class="top">
-        <div class="tc"><div class="tp"></div><span id="nome-bloco-display">MathLab Ativo</span></div>
-        <div class="controls-top">
-          <button class="bc2" id="btn-musica">🎵 <span id="tsom">ON</span></button>
-          <button class="bc2" id="btn-voz">🔊 <span id="tvoz">ON</span></button>
-          <button class="bc2" data-action="seletor">⚙️ Blocos</button>
+    <div class="gw">
+      <header class="game-header">
+        <div class="hud-item"><span>Integridade:</span> <div class="bar"><div id="fv" class="fill"></div></div></div>
+        <div class="hud-item"><span>Nível:</span> <span id="tnv">1</span></div>
+        <div class="game-controls">
+          <button class="mini-btn" id="btn-musica">🎵 <span id="tsom">OFF</span></button>
+          <button class="mini-btn" data-action="seletor">⚙️ Blocos</button>
         </div>
       </header>
 
-      <div class="hud">
-        <div class="hi"><div class="hl">Integridade</div><div class="bh"><div id="fv" class="bf"></div></div></div>
-        <div class="hi"><div class="hl">Energia</div><div class="bh"><div id="fen" class="bf"></div></div></div>
-        <div class="hi"><div class="hl">Nível</div><div class="hv" id="tnv">1</div></div>
-      </div>
-
-      <canvas id="canvas-game"></canvas>
-
-      <main class="question-area">
-          <div id="conta-display"></div>
-          <div id="regra-box"></div>
-          <div class="ag" id="grid-botoes"></div>
-          <div id="fb" class="fb-box"></div>
-      </main>
-
-      <button id="btn-prox" class="hidden">PRÓXIMO DESAFIO →</button>
+      <div id="conta-display"></div>
+      <div id="grid-botoes" class="ag"></div>
+      <button id="btn-prox" class="hidden btn-next">PRÓXIMO DESAFIO →</button>
     </div>
   </section>
 
-  <div id="ada-command-post" class="hidden">
-      <div class="ada-halo"></div>
-      <div class="ada-box">
-          <img src="assets/img/avatar_estatico.png" id="av-img" class="ada-asset">
-          <video id="vid-ok" class="ada-asset avh" playsinline muted>
-              <source src="assets/vid/ada_sucesso.mp4" type="video/mp4">
-          </video>
-          <video id="vid-no" class="ada-asset avh" playsinline muted>
-              <source src="assets/vid/ada_alerta.mp4" type="video/mp4">
-          </video>
-      </div>
+  <div id="ada-command-post">
+    <div class="ada-box">
+      <img src="assets/img/avatar_estatico.png" id="av-img" class="ada-asset">
+      <video id="vid-ok" class="ada-asset avh" playsinline muted><source src="assets/vid/ada_sucesso.mp4" type="video/mp4"></video>
+      <video id="vid-no" class="ada-asset avh" playsinline muted><source src="assets/vid/ada_alerta.mp4" type="video/mp4"></video>
+    </div>
   </div>
 
-  <div class="btn-top-group">
+  <div class="side-controls">
     <button class="btn-round" id="btn-perfil">👤</button>
     <button class="btn-round" id="btn-dash">📊</button>
     <button class="btn-round" id="btn-cred">i</button>
   </div>
 
+  <div id="mperfil" class="modal">
+    <div class="mc">
+      <button class="mx">✕</button>
+      <h2>PERFIL DO CIENTISTA</h2>
+      <p id="perfil-nome-display"></p>
+      <div class="stats-row">
+        <div>Vida: <span id="perfil-vida-display"></span></div>
+        <div>Acertos: <span id="perfil-acertos-display"></span></div>
+      </div>
+    </div>
+  </div>
+
   <audio id="bgm" loop><source src="assets/snd/trilha.mp3" type="audio/mpeg"></audio>
-
   <script type="module" src="js/main.js"></script>
-
 </body>
 </html>
