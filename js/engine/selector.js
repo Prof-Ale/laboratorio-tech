@@ -1,32 +1,33 @@
 /**
- * selector.js — Versão 5.1 "ADA Heuristics AI (Multi-Block Ready)"
+ * selector.js — Versão 5.2 "ADA Heuristics AI (All Blocks Connected)"
  * Seletor Híbrido: Espinha Dorsal Curricular + Desvio Adaptativo Pedagógico
  */
 
 import { G } from './gameState.js';
 
-// === IMPORTAÇÃO DOS BANCOS ===
+// === 1. IMPORTAÇÃO DOS BANCOS DE QUESTÕES (A Fiação) ===
 import { bloco2_trilha1 } from '../data/questions/bloco2_trilha1.js';
 import { bloco2_trilha2 } from '../data/questions/bloco2_trilha2.js';
 import { bloco2_trilha3 } from '../data/questions/bloco2_trilha3.js';
 import { bloco2_trilha4 } from '../data/questions/bloco2_trilha4.js';
-import { bloco3 } from '../data/questions/bloco3.js'; // Ligando o Bloco 3!
+import { bloco3 } from '../data/questions/bloco3.js'; 
+import { bloco4 } from '../data/questions/bloco4.js'; 
+import { bloco5 } from '../data/questions/bloco5.js'; 
+import { bloco6 } from '../data/questions/bloco6.js'; 
 
-// === CONSOLIDAÇÃO DO BANCO GERAL ===
+// === 2. CONSOLIDAÇÃO DO BANCO GERAL (As Gavetas) ===
 const BANCO = {
-    1: [], // Vazio por enquanto
+    1: [], // Ainda vazio (Faremos em breve!)
     2: [
         ...bloco2_trilha1,
         ...bloco2_trilha2,
         ...bloco2_trilha3,
         ...bloco2_trilha4
     ],
-    3: [
-        ...bloco3
-    ],
-    4: [], // Vazio por enquanto
-    5: [], // Vazio por enquanto
-    6: []  // Vazio por enquanto
+    3: [ ...bloco3 ],
+    4: [ ...bloco4 ],
+    5: [ ...bloco5 ],
+    6: [ ...bloco6 ]
 };
 
 // Histórico de IDs já mostrados na sessão atual
@@ -90,6 +91,7 @@ function avaliarNecessidadeIntervencao(blocoId) {
 export function selQ(blocoId) {
     const questoesDoBloco = BANCO[blocoId] || [];
 
+    // Se a gaveta estiver vazia, ele avisa!
     if (questoesDoBloco.length === 0) {
         return { display: "Banco de Dados Vazio", res: "0", passo: "Contate a Engenharia para injetar as questões deste módulo." };
     }
