@@ -8,7 +8,7 @@ export const bloco2_trilha2 = [
     // ── AULA 4: MULTIPLICAÇÃO E DIVISÃO DE INTEIROS (SISTEMA_NUMERICO) ──
 
     {
-        id: "B2T2Q01", bloco: 2, aula: 4, tipo: "sinais",
+        id: "B2T2Q01", bloco: 2, aula: 4, tipo: "aritmetica", // Mudado de 'sinais' para evitar crash no canvas (multiplicação não usa arco simples)
         bncc: "EF07MA02", bncc_desc: "Multiplicação de Inteiros — Regra dos Sinais",
         display: "Qual o resultado da operação: (+6) × (-4)?",
         res: "-24",
@@ -23,7 +23,7 @@ export const bloco2_trilha2 = [
     },
     
     {
-        id: "B2T2Q02", bloco: 2, aula: 4, tipo: "sinais",
+        id: "B2T2Q02", bloco: 2, aula: 4, tipo: "aritmetica", // Mudado de 'sinais'
         bncc: "EF07MA02", bncc_desc: "Multiplicação de Inteiros — Regra dos Sinais",
         display: "Calcule o produto: (-3) × (-9) = ?",
         res: "+27",
@@ -37,7 +37,7 @@ export const bloco2_trilha2 = [
         dica: "Menos com Menos na multiplicação vira MAIS. Pense que os dois tracinhos se cruzam e formam uma cruz de positivo!"
     },
     {
-        id: "B2T2Q05", bloco: 2, aula: 4, tipo: "sinais",
+        id: "B2T2Q05", bloco: 2, aula: 4, tipo: "aritmetica", // Mudado de 'sinais'
         bncc: "EF07MA02", bncc_desc: "Produto com Três Fatores — Sinal",
         display: "Qual o valor de (-2) × (-3) × (-4)?",
         res: "-24",
