@@ -1,5 +1,5 @@
 /**
- * ui-manager.js - Versão 4.0 (MathLab Audio & Visual Stabilized)
+ * ui-manager.js - Versão 4.1 (MathLab Audio & Visual Stabilized)
  * Núcleo de Interface, Acessibilidade (DUA) e Telemetria Visual
  */
 
@@ -28,27 +28,31 @@ export function narrarContexto(t) {
             return;
         }
 
-        window.speechSynthesis.cancel(); // Para o áudio anterior
+        // 1. Cancela o áudio anterior
+        window.speechSynthesis.cancel(); 
 
-        const textoLimpo = t.replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, ' ');
-        console.log(`[ADA-Voz] Falando: "${textoLimpo}"`); // Log para o Painel de Debug
+        // 2. Timeout mágico: dá 50ms para o navegador "respirar" e limpar o buffer
+        setTimeout(() => {
+            const textoLimpo = t.replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, ' ');
+            console.log(`[ADA-Voz] Falando: "${textoLimpo}"`); // Log para o Painel de Debug
 
-        const u = new SpeechSynthesisUtterance(textoLimpo);
-        u.lang = "pt-BR";
-        u.volume = 1;
-        u.rate = 1.1; // Fala um pouco mais ágil
+            const u = new SpeechSynthesisUtterance(textoLimpo);
+            u.lang = "pt-BR";
+            u.volume = 1;
+            u.rate = 1.1; // Fala um pouco mais ágil
 
-        const vozes = window.speechSynthesis.getVoices();
-        // Busca voz em PT-BR (mais abrangente para não falhar em celulares)
-        const vozBR = vozes.find(x => x.lang === 'pt-BR' || x.lang === 'pt_BR' || x.lang.includes('pt-BR'));
-        if (vozBR) u.voice = vozBR;
+            const vozes = window.speechSynthesis.getVoices();
+            // Busca voz em PT-BR (mais abrangente para não falhar em celulares)
+            const vozBR = vozes.find(x => x.lang === 'pt-BR' || x.lang === 'pt_BR' || x.lang.includes('pt-BR'));
+            if (vozBR) u.voice = vozBR;
 
-        // Efeito 'Ducking': abaixa a música para a voz passar
-        u.onstart = () => { if (bgm && G.musica) bgm.volume = 0.02; };
-        u.onend   = () => { if (bgm && G.musica) bgm.volume = 0.07; };
-        u.onerror = (e) => { console.warn("[ADA-Voz] Navegador bloqueou o áudio:", e); };
+            // Efeito 'Ducking': abaixa a música para a voz passar
+            u.onstart = () => { if (bgm && G.musica) bgm.volume = 0.02; };
+            u.onend   = () => { if (bgm && G.musica) bgm.volume = 0.07; };
+            u.onerror = (e) => { console.warn("[ADA-Voz] Navegador bloqueou o áudio:", e); };
 
-        window.speechSynthesis.speak(u);
+            window.speechSynthesis.speak(u);
+        }, 50);
 
     } catch (e) {
         console.error("[MathLab] Falha na síntese de voz:", e);
