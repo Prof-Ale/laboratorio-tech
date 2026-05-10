@@ -1,6 +1,6 @@
 /**
- * main.js — v10.2 "MathLab QA & Debug"
- * Core de Orquestração com Validação e Telemetria
+ * main.js — v10.3 "MathLab QA, Debug & Voice Active"
+ * Core de Orquestração com Validação, Telemetria e DUA Sonoro
  */
 
 import { G } from './engine/gameState.js';
@@ -177,6 +177,10 @@ function processarResposta(alternativa, q) {
             feedbackEl.className = 'fb-box acerto';
             feedbackEl.innerHTML = `<h3>[✓] Algoritmo Validado!</h3><p>${q.passo}</p>`;
             tocarAv('ok');
+            
+            // DUA SONORO: Narra o passo a passo da vitória!
+            narrarContexto(q.passo);
+            
         } else {
             G.erros++; G.combo = 0;
             registrarErro(G, analise);
@@ -184,78 +188,3 @@ function processarResposta(alternativa, q) {
             const dano = 5 + (analise.peso * 5);
             G.vida = Math.max(0, G.vida - dano);
             if ($('db-last-err')) $('db-last-err').textContent = analise.erro;
-
-            if (q.bncc) {
-                if (analise.categoria === 'conceito') G.historico[q.bncc].erros_conceito++;
-                else G.historico[q.bncc].erros_calculo++;
-            }
-
-            feedbackEl.className = 'fb-box erro';
-            feedbackEl.innerHTML = `<h3>[!] Anomalia: ${analise.categoria.toUpperCase()}</h3><p>${analise.descricao}</p>`;
-            tocarAv('no');
-        }
-
-        if (q.tipo === 'reta' || q.tipo === 'sinais') {
-            setTimeout(() => animarArcos(q), 100);
-        }
-        
-        updHUD();
-        salvarProgresso();
-        $('btn-prox')?.classList.remove('hidden');
-
-        if (G.vida <= 0) setTimeout(exibirGameOver, 1200);
-
-    } catch (e) {
-        console.error("[LabTech] Falha Crítica no Processamento:", e);
-        $('btn-prox')?.classList.remove('hidden'); // Destrava o jogo em caso de erro
-    }
-}
-
-function proximaQ() {
-    setAnimando(false);
-    qAtual = selQ(G.currentBlock);
-    window.qAtual = qAtual; // Para o Debug
-    renderQ(qAtual);
-}
-
-function reiniciar() {
-    G.vida = 100;
-    G.energia = 60;
-    fecharM('go');
-    updHUD();
-    proximaQ();
-}
-
-/* ============================================================
-   INICIALIZAÇÃO
-   ============================================================ */
-document.addEventListener('DOMContentLoaded', () => {
-    carregarDados();
-
-    on('btn-acessar', mostrarSeletorBlocos);
-    [1,2,3,4,5,6].forEach(i => on(`btn-bloco-${i}`, () => iniciarBloco(i)));
-    
-    on('btn-prox', proximaQ);
-    on('btn-csv', () => { /* Chamar função de CSV */ });
-    on('btn-musica', toggleMusica);
-    on('btn-voz', toggleVoz);
-    on('btn-reiniciar', reiniciar);
-    
-    // Modais
-    on('btn-dash', () => abrirM('mdash'));
-    on('btn-fecha-dash', () => fecharM('mdash'));
-    on('btn-cred', () => abrirM('mcred'));
-    on('btn-fecha-cred', () => fecharM('mcred'));
-
-    // Delegação para botões de "Voltar ao Seletor"
-    document.querySelectorAll('[data-action="seletor"]').forEach(el => {
-        el.addEventListener('click', () => {
-            fecharM('go');
-            ocultarTodas();
-            $('block-selector').classList.remove('hidden');
-        });
-    });
-
-    setInterval(updateDebug, 500);
-    console.log(`[LabTech] Engine v10.2 Online.`);
-});
