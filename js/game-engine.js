@@ -1,5 +1,5 @@
 /**
- * js/game-engine.js — Versão 7.1 "MathLab Render"
+ * js/game-engine.js — Versão 7.2 "MathLab Render Responsivo"
  * Motor de Renderização de Alta Performance para Reta Numérica e Animações
  */
 
@@ -58,10 +58,15 @@ export function renderCv(q) {
     if (!cv) return;
     const ctx = cv.getContext("2d");
 
-    // Ajuste de DPI para nitidez máxima
-    const dpr = window.devicePixelRatio || 1;
-    const cssWidth = 580;
+    // A MÁGICA DO TAMANHO (Resolve o bug do Canvas invisível e deixa responsivo)
+    // Pega a largura do pai (container), se existir, ou usa 580 como fallback.
+    const parentWidth = cv.parentElement ? cv.parentElement.clientWidth : 580;
+    // Limita o tamanho máximo a 580px para não deformar em monitores grandes
+    const cssWidth = Math.min(parentWidth, 580) || 580;
     const cssHeight = 130;
+    
+    // Ajuste de DPI para nitidez máxima (Evita serrilhado em telas Retina/Celular)
+    const dpr = window.devicePixelRatio || 1;
     
     cv.width = cssWidth * dpr;
     cv.height = cssHeight * dpr;
@@ -77,7 +82,7 @@ export function renderCv(q) {
         imgRegras.style.display = (q.tipo === "sinais") ? "block" : "none";
     }
 
-    if (q.tipo === "reta") {
+    if (q && q.tipo === "reta") {
         desenharReta(ctx, cssWidth, cssHeight);
         
         // Renderização baseada no estado da questão
@@ -130,9 +135,13 @@ function desenharReta(ctx, w, h) {
         ctx.lineWidth = isDestaque ? 3 : 1.5;
         ctx.stroke();
 
-        // Números
+        // Números (Oculta alguns números em telas pequenas para não encavalar)
         ctx.fillStyle = isDestaque ? "#00e5ff" : "rgba(255, 255, 255, 0.8)";
-        if (i % 2 === 0 || i === 0) {
+        
+        // Lógica de respiro visual: se a tela for menor que 400px, desenha a cada 4 números
+        const saltoTextos = w < 400 ? 4 : 2;
+        
+        if (i % saltoTextos === 0 || i === 0) {
             ctx.fillText(i, x, yCenter + 22);
         }
     }
@@ -208,7 +217,7 @@ function desenharArco(ctx, w, h, a, b, progresso) {
 function desenharFundoLogico(ctx, w, h) {
     ctx.save();
     ctx.fillStyle = "rgba(0, 229, 255, 0.03)";
-    ctx.fillRect(50, h/2 - 20, w - 100, 40);
+    ctx.fillRect(10, h/2 - 20, w - 20, 40); // Ajustado para não cortar no mobile
     ctx.textAlign = "center";
     ctx.font = "italic 13px 'Nunito'";
     ctx.fillStyle = "rgba(0, 229, 255, 0.5)";
