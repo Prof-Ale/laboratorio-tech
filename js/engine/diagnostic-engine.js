@@ -68,12 +68,16 @@ export function analisarAlternativa(alternativa) {
 
 /* ============================================================
    REGISTRO E CÁLCULO (Estado do Jogo G)
-   AQUI ESTÁ A CORREÇÃO DO NOME DA FUNÇÃO!
 ============================================================ */
 
 export function registrarErro(G, analise) {
-    if (!G.diagnostico) G.diagnostico = { logs: [], scores: {} };
+    // 1. Blindagem profunda: Garante que TODA a estrutura exista, 
+    // mesmo se vier de um save antigo corrompido.
+    if (!G.diagnostico) G.diagnostico = {};
+    if (!G.diagnostico.logs) G.diagnostico.logs = [];
+    if (!G.diagnostico.scores) G.diagnostico.scores = {};
 
+    // 2. Agora o push funciona sempre!
     G.diagnostico.logs.push({
         erro: analise.erro,
         categoria: analise.categoria,
@@ -81,31 +85,17 @@ export function registrarErro(G, analise) {
         timestamp: Date.now()
     });
 
-    for (const [cluster, erros] of Object.entries(CLUSTERS)) {
-        if (erros.includes(analise.erro)) {
-            G.diagnostico.scores[cluster] = (G.diagnostico.scores[cluster] || 0) + analise.peso;
+    // 3. Atualiza os Clusters (usando o try/catch para segurança extra)
+    try {
+        for (const [cluster, erros] of Object.entries(CLUSTERS)) {
+            // Verifica se o cluster no constants é objeto (novo padrão QA) ou array (padrão antigo)
+            const listaErros = Array.isArray(erros) ? erros : (erros.lista || []);
+            
+            if (listaErros.includes(analise.erro)) {
+                G.diagnostico.scores[cluster] = (G.diagnostico.scores[cluster] || 0) + analise.peso;
+            }
         }
-    }
-}
-
-export function detectarAlertaCritico(G) {
-    if (!G.diagnostico || !G.diagnostico.scores) return null;
-
-    const alertas = Object.entries(G.diagnostico.scores)
-        .filter(([cluster, score]) => score >= 6)
-        .map(([cluster]) => cluster);
-
-    return alertas.length > 0 ? alertas : null;
-}
-
-export function gerarResumoGeral(G) {
-    const scores = G.diagnostico?.scores || {};
-    const dominante = Object.entries(scores).sort((a, b) => b[1] - a[1])[0];
-
-    return {
-        perfil: scores,
-        clusterDominante: dominante ? dominante[0] : "Estável",
-        nivelDificuldade: dominante ? (dominante[1] > 10 ? "Crítico" : "Em evolução") : "Iniciante",
-        alertas: detectarAlertaCritico(G)
+    } catch(e) {
+        console.warn("[Diagnóstico] Falha ao processar cluster, mas o jogo segue.", e);
     };
 }
