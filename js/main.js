@@ -1,16 +1,19 @@
 /**
  * main.js — v10.7 "Final Stable"
  */
-
 import { G } from './engine/gameState.js';
 import { selQ, limparHistoricoSessao } from './engine/selector.js';
 import { analisarAlternativa, registrarErro } from './engine/diagnostic-engine.js';
-import { renderCv, animarArcos, setAnimando } from './game-engine.js';
+import { renderCv, setAnimando } from './game-engine.js';
 import { AudioCtrl } from './engine/audioController.js'; 
-import { updHUD, narrarContexto, toggleVoz, exibirGameOver, abrirM, fecharM } from './ui-manager.js';
+import { updHUD, narrarContexto, toggleVoz, exibirGameOver } from './ui-manager.js';
 
 function $(id) { return document.getElementById(id); }
 function on(id, fn) { const el = $(id); if (el) el.addEventListener('click', fn); }
+
+// Funções de Modal Seguras
+const abrirM = (id) => $(id)?.classList.add('active');
+const fecharM = (id) => $(id)?.classList.remove('active');
 
 /* CONTROLE DA ADA */
 function animarAda(estado) {
@@ -23,19 +26,20 @@ function animarAda(estado) {
     } else if (estado === 'no' && assets.no) {
         assets.no.classList.remove('avh');
         assets.no.play().catch(()=>{});
-    } else {
-        assets.img?.classList.remove('avh');
+    } else if (assets.img) {
+        assets.img.classList.remove('avh');
     }
 }
 
 /* NAVEGAÇÃO */
 function mostrarSeletorBlocos() {
     G.nome = $('nome-cientista')?.value || 'Cientista';
+    G.turma = $('turma-cientista')?.value || '';
     AudioCtrl.init();
     AudioCtrl.play();
     document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
     $('block-selector').classList.remove('hidden');
-    $('ada-command-post').classList.remove('active');
+    $('ada-command-post').classList.remove('active'); // Oculta ADA gigante no menu
 }
 
 function iniciarBloco(id) {
@@ -44,7 +48,7 @@ function iniciarBloco(id) {
     limparHistoricoSessao();
     document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
     $('game-screen').classList.remove('hidden');
-    $('ada-command-post').classList.add('active');
+    $('ada-command-post').classList.add('active'); // Mostra ADA gigante no jogo
     animarAda('idle');
     updHUD();
     proximaQ();
@@ -55,13 +59,19 @@ function processarResposta(alt, q) {
     G.respondeu = true;
     const analise = analisarAlternativa(alt);
     
+    document.querySelectorAll('.ba').forEach(b => {
+        b.classList.add('dis');
+        if (b.textContent === String(q.res)) b.classList.add('ok');
+        if (b.textContent === String(alt.valor) && !analise.correto) b.classList.add('no');
+    });
+
     if (analise.correto) {
         G.acertos++; G.combo++;
         animarAda('ok');
         narrarContexto(q.passo);
     } else {
         G.erros++; G.combo = 0;
-        G.vida -= (10 + analise.peso * 5);
+        G.vida -= (10 + (analise.peso || 1) * 5);
         animarAda('no');
         narrarContexto(q.dica || analise.descricao);
     }
@@ -79,12 +89,14 @@ function proximaQ() {
 }
 
 function renderQ(q) {
+    if(!q) return;
     $('conta-display').textContent = q.display;
     $('grid-botoes').innerHTML = '';
     $('btn-prox').classList.add('hidden');
     renderCv(q);
 
-    q.alternativas.forEach(alt => {
+    const alternativas = [...(q.alternativas || [])];
+    alternativas.forEach(alt => {
         const b = document.createElement('button');
         b.className = 'ba';
         b.textContent = alt.valor;
@@ -93,7 +105,7 @@ function renderQ(q) {
     });
 }
 
-/* INICIALIZAÇÃO */
+/* EVENTOS */
 document.addEventListener('DOMContentLoaded', () => {
     on('btn-acessar', mostrarSeletorBlocos);
     [1,2,3,4,5,6].forEach(i => on(`btn-bloco-${i}`, () => iniciarBloco(i)));
@@ -101,19 +113,31 @@ document.addEventListener('DOMContentLoaded', () => {
     on('btn-musica', () => AudioCtrl.toggle('btn-musica', 'tsom'));
     on('btn-voz', toggleVoz);
 
-    // MODAIS - Agora vinculados corretamente às funções do ui-manager
+    // Botões de Perfil, Dash e Créditos
     on('btn-perfil', () => {
         $('perfil-nome-display').textContent = G.nome;
         $('perfil-acertos-display').textContent = G.acertos;
+        $('perfil-vida-display').textContent = Math.round(G.vida);
         abrirM('mperfil');
     });
     on('btn-dash', () => abrirM('mdash'));
     on('btn-cred', () => abrirM('mcred'));
     
-    // Fechar modais ao clicar no X
+    // Fechar modais ao clicar no X (classe .mx)
     document.querySelectorAll('.mx').forEach(btn => {
         btn.onclick = (e) => e.target.closest('.modal').classList.remove('active');
     });
 
-    console.log("LabTech 10.7: Sistema Estabilizado.");
+    // Botões de navegação interna (data-action="seletor")
+    document.querySelectorAll('[data-action="seletor"]').forEach(el => {
+        el.onclick = () => {
+            fecharM('go');
+            fecharM('mperfil'); // Garante que fecha o perfil se aberto
+            document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+            $('block-selector').classList.remove('hidden');
+            $('ada-command-post').classList.remove('active');
+        };
+    });
+
+    console.log("LabTech 10.9: Protocolo Golden Tech Estabilizado.");
 });
