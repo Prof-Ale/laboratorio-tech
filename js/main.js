@@ -188,3 +188,84 @@ function processarResposta(alternativa, q) {
             const dano = 5 + (analise.peso * 5);
             G.vida = Math.max(0, G.vida - dano);
             if ($('db-last-err')) $('db-last-err').textContent = analise.erro;
+
+            if (q.bncc) {
+                if (analise.categoria === 'conceito') G.historico[q.bncc].erros_conceito++;
+                else G.historico[q.bncc].erros_calculo++;
+            }
+
+            feedbackEl.className = 'fb-box erro';
+            feedbackEl.innerHTML = `<h3>[!] Anomalia: ${analise.categoria.toUpperCase()}</h3><p>${analise.descricao}</p>`;
+            tocarAv('no');
+            
+            // DUA SONORO: Narra a descrição do erro e acopla a dica inteligente da ADA!
+            const textoErro = q.dica ? `${analise.descricao} Dica da ADA: ${q.dica}` : analise.descricao;
+            narrarContexto(textoErro);
+        }
+
+        if (q.tipo === 'reta' || q.tipo === 'sinais') {
+            setTimeout(() => animarArcos(q), 100);
+        }
+        
+        updHUD();
+        salvarProgresso();
+        $('btn-prox')?.classList.remove('hidden');
+
+        if (G.vida <= 0) setTimeout(exibirGameOver, 1200);
+
+    } catch (e) {
+        console.error("[LabTech] Falha Crítica no Processamento:", e);
+        $('btn-prox')?.classList.remove('hidden'); // Destrava o jogo em caso de erro
+    }
+}
+
+function proximaQ() {
+    setAnimando(false);
+    qAtual = selQ(G.currentBlock);
+    window.qAtual = qAtual; // Para o Debug
+    renderQ(qAtual);
+}
+
+function reiniciar() {
+    G.vida = 100;
+    G.energia = 60;
+    fecharM('go');
+    updHUD();
+    proximaQ();
+}
+
+/* ============================================================
+   INICIALIZAÇÃO
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+    carregarDados();
+
+    on('btn-acessar', mostrarSeletorBlocos);
+    [1,2,3,4,5,6].forEach(i => on(`btn-bloco-${i}`, () => iniciarBloco(i)));
+    
+    on('btn-prox', proximaQ);
+    on('btn-csv', () => { /* Chamar função de CSV */ });
+    on('btn-musica', toggleMusica);
+    on('btn-voz', toggleVoz);
+    on('btn-reiniciar', reiniciar);
+    
+    // Modais
+    on('btn-dash', () => abrirM('mdash'));
+    on('btn-fecha-dash', () => fecharM('mdash'));
+    on('btn-cred', () => abrirM('mcred'));
+    on('btn-fecha-cred', () => fecharM('mcred'));
+
+    // Delegação para botões de "Voltar ao Seletor"
+    document.querySelectorAll('[data-action="seletor"]').forEach(el => {
+        el.addEventListener('click', () => {
+            fecharM('go');
+            ocultarTodas();
+            $('block-selector').classList.remove('hidden');
+        });
+    });
+
+    setInterval(updateDebug, 500);
+    console.log(`[LabTech] Engine v10.3 Online.`);
+});
+
+// === FIM DO ARQUIVO ===
