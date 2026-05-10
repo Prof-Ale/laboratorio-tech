@@ -6,10 +6,28 @@
 
 export const bloco4 = [
 
-    // ── AULA 1: EXPRESSÕES ALGÉBRICAS (PENSAMENTO_ALGEBRICO) ──────────────
+    // ── AULA 1: EXPRESSÕES ALGÉBRICAS ──────────────────────────────────────
+
+    // [NOVA] QUESTÃO DE RECOMPOSIÇÃO (Resgate de Base)
+    {
+        id: "B4Q00", bloco: 4, aula: 1, tipo: "aritmetica",
+        dificuldade: 1, tipoPedagogico: "recomposicao", // ADA puxa essa se o aluno errar a B4Q01
+        bncc: "EF08MA06", bncc_desc: "Linguagem Algébrica",
+        display: "Na linguagem da álgebra, o que significa a expressão '3x'?",
+        res: "3 vezes o valor de x",
+        alternativas: [
+            { valor: "3 vezes o valor de x", tipo: "acerto" },
+            { valor: "30 mais x", tipo: "erro", categoria: "conceito", erro: "algebra_confunde_dezena", descricao: "Achou que o 3 representava a casa das dezenas (trinta e x).", peso: 3 },
+            { valor: "3 mais x", tipo: "erro", categoria: "conceito", erro: "algebra_confunde_soma", descricao: "Assumiu que a ausência de sinal significa adição.", peso: 2 },
+            { valor: "x elevado a 3", tipo: "erro", categoria: "procedimento", erro: "algebra_confunde_potencia", descricao: "Confundiu coeficiente multiplicativo com expoente.", peso: 2 }
+        ],
+        passo: "Na matemática, quando um número está 'grudado' em uma letra sem nenhum sinal entre eles, significa que estão se multiplicando.",
+        dica: "Dica da ADA: Número colado na letra = Multiplicação! 3x é o mesmo que 3 vezes x."
+    },
 
     {
         id: "B4Q01", bloco: 4, aula: 1, tipo: "aritmetica",
+        dificuldade: 2, tipoPedagogico: "base",
         bncc: "EF08MA06", bncc_desc: "Valor Numérico",
         display: "Para x = 3, qual é o valor numérico da expressão 2x + 5?",
         res: "11",
@@ -23,9 +41,9 @@ export const bloco4 = [
         dica: "Lembre-se: quando um número está grudado na letra, eles estão se multiplicando!"
     },
     
-
     {
         id: "B4Q03", bloco: 4, aula: 1, tipo: "aritmetica",
+        dificuldade: 2, tipoPedagogico: "base",
         bncc: "EF08MA06", bncc_desc: "Simplificação Algébrica",
         display: "Simplifique a expressão: 3x + 2x - x",
         res: "4x",
@@ -39,10 +57,11 @@ export const bloco4 = [
         dica: "Dica da ADA: Toda letra sem número na frente tem um '1' invisível protegendo ela!"
     },
 
-    // ── AULA 2: EQUAÇÕES DO 1° GRAU (PENSAMENTO_ALGEBRICO) ─────────────────
+    // ── AULA 2: EQUAÇÕES DO 1° GRAU ────────────────────────────────────────
 
     {
         id: "B4Q05", bloco: 4, aula: 2, tipo: "aritmetica",
+        dificuldade: 1, tipoPedagogico: "base",
         bncc: "EF08MA06", bncc_desc: "Equação — Transposição",
         display: "Resolva a equação: x + 5 = 12",
         res: "x = 7",
@@ -56,9 +75,9 @@ export const bloco4 = [
         dica: "Pense na balança: para equilibrar, o que você tira de um lado, tem que tirar do outro!"
     },
     
-
     {
         id: "B4Q09", bloco: 4, aula: 2, tipo: "aritmetica",
+        dificuldade: 2, tipoPedagogico: "base",
         bncc: "EF08MA06", bncc_desc: "Equação — Membros",
         display: "Resolva: 5x - 3 = 2x + 9",
         res: "x = 4",
@@ -72,10 +91,28 @@ export const bloco4 = [
         dica: "Cada um na sua casa! Letras para a esquerda, números para a direita. Quem muda de casa, muda de sinal!"
     },
 
-    // ── AULA 4: INEQUAÇÕES (PENSAMENTO_ALGEBRICO) ─────────────────────────
+    // [NOVA] QUESTÃO DE INVESTIGAÇÃO (Equações Visuais)
+    {
+        id: "B4Q12", bloco: 4, aula: 3, tipo: "contexto",
+        dificuldade: 3, tipoPedagogico: "investigacao", // ADA puxa se o Combo for >= 4
+        bncc: "EF08MA06", bncc_desc: "Lógica Algébrica",
+        display: "Investigação: 2 maçãs e 1 pera custam R$ 10. Se a pera custa R$ 4, qual o valor de 1 maçã?",
+        res: "R$ 3",
+        alternativas: [
+            { valor: "R$ 3", tipo: "acerto" },
+            { valor: "R$ 6", tipo: "erro", categoria: "atencao", erro: "logica_esquece_divisao", descricao: "Subtraiu a pera (10 - 4) mas não dividiu o restante pelas 2 maçãs.", peso: 2 },
+            { valor: "R$ 5", tipo: "erro", categoria: "conceito", erro: "logica_divisao_direta", descricao: "Dividiu os R$ 10 por 2 ignorando a existência da pera.", peso: 3 },
+            { valor: "R$ 4", tipo: "erro", categoria: "estrategia", erro: "logica_igualdade_valores", descricao: "Assumiu que a maçã tinha o mesmo valor da pera.", peso: 1 }
+        ],
+        passo: "Tire o valor da pera do total: 10 - 4 = 6. Sobram R$ 6 para as 2 maçãs. Logo, cada maçã custa 6 ÷ 2 = 3.",
+        dica: "Pense como uma equação: 2x + 4 = 10. Tente descobrir o valor do x!"
+    },
+
+    // ── AULA 4: INEQUAÇÕES ─────────────────────────────────────────────────
 
     {
         id: "B4Q14", bloco: 4, aula: 4, tipo: "aritmetica",
+        dificuldade: 3, tipoPedagogico: "base",
         bncc: "EF08MA06", bncc_desc: "Inequação — Regra do Negativo",
         display: "Resolva a inequação: -2x > 8",
         res: "x < -4",
@@ -89,10 +126,11 @@ export const bloco4 = [
         dica: "Cuidado! Sempre que multiplicar ou dividir por número NEGATIVO, a boca do jacaré (>) tem que virar pro outro lado (<)!"
     },
 
-    // ── AULA 5: PADRÕES E MODELAGEM (LITERACIA_MATEMATICA) ────────────────
+    // ── AULA 5: PADRÕES E MODELAGEM ────────────────────────────────────────
 
     {
         id: "B4Q16", bloco: 4, aula: 5, tipo: "padrao",
+        dificuldade: 3, tipoPedagogico: "base",
         bncc: "EF08MA08", bncc_desc: "Padrões — Generalização",
         display: "1 quadrado usa 4 palitos. 2 quadrados grudados usam 7. 3 grudados usam 10. Qual a fórmula para 'n' quadrados?",
         res: "3n + 1",
@@ -102,13 +140,13 @@ export const bloco4 = [
             { valor: "3n", tipo: "erro", categoria: "procedimento", erro: "padrao_omite_termo_fixo", descricao: "Identificou o pulo de 3 em 3, mas esqueceu o palito inicial de fechamento.", peso: 2 },
             { valor: "n + 3", tipo: "erro", categoria: "estrategia", erro: "padrao_modelo_linear_errado", descricao: "Tentou criar uma soma simples em vez de uma progressão multiplicativa.", peso: 2 }
         ],
-        pass: "Cada novo quadrado adiciona 3 palitos (3n). O primeiro quadrado precisou de +1 palito para fechar a forma. Logo, 3n + 1.",
+        passo: "Cada novo quadrado adiciona 3 palitos (3n). O primeiro quadrado precisou de +1 palito para fechar a forma. Logo, 3n + 1.",
         dica: "Veja de quanto em quanto o número de palitos aumenta. Esse número fica grudado no 'n'!"
     },
     
-
     {
         id: "B4Q18", bloco: 4, aula: 6, tipo: "geometria",
+        dificuldade: 3, tipoPedagogico: "base",
         bncc: "EF08MA08", bncc_desc: "Modelagem de Área",
         display: "Um retângulo tem largura (x) e comprimento (x + 5). Qual expressão representa sua ÁREA?",
         res: "x² + 5x",
