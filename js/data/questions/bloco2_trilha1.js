@@ -8,7 +8,7 @@ export const bloco2_trilha1 = [
     // ── AULA 1: INTEIROS E RETA NUMÉRICA (SISTEMA_NUMERICO) ──────────────
 
     {
-        id: "B2T1Q01", bloco: 2, aula: 1, tipo: "reta",
+        id: "B2T1Q01", bloco: 2, aula: 1, tipo: "aritmetica", // Mudado de 'reta' para não travar, já que não tem pulo
         bncc: "EF07MA02", bncc_desc: "Números Inteiros — Reta Numérica",
         display: "Na reta numérica, qual destes números está posicionado MAIS À ESQUERDA?",
         res: "-8",
@@ -43,6 +43,8 @@ export const bloco2_trilha1 = [
         id: "B2T1Q08", bloco: 2, aula: 2, tipo: "sinais",
         bncc: "EF07MA02", bncc_desc: "Adição de Inteiros — Sinais Iguais",
         display: "Resolva a operação: (-6) + (-4) = ?",
+        a: -6, // INJETADO PARA A RETA ANIMAR
+        b: -4, // INJETADO PARA A RETA ANIMAR
         res: "-10",
         alternativas: [
             { valor: "-10", tipo: "acerto" },
@@ -57,6 +59,8 @@ export const bloco2_trilha1 = [
         id: "B2T1Q09", bloco: 2, aula: 2, tipo: "sinais",
         bncc: "EF07MA02", bncc_desc: "Adição de Inteiros — Sinais Diferentes",
         display: "Qual o resultado de: (+10) + (-3) = ?",
+        a: 10,  // INJETADO PARA A RETA ANIMAR
+        b: -3,  // INJETADO PARA A RETA ANIMAR
         res: "+7",
         alternativas: [
             { valor: "+7", tipo: "acerto" },
@@ -74,6 +78,8 @@ export const bloco2_trilha1 = [
         id: "B2T1Q14", bloco: 2, aula: 3, tipo: "sinais",
         bncc: "EF07MA02", bncc_desc: "Subtração — Truque do Oposto",
         display: "Calcule o resultado de: (+6) - (-2) = ?",
+        a: 6, // INJETADO PARA A RETA ANIMAR (sai do 6)
+        b: 2, // INJETADO PARA A RETA ANIMAR (- (-2) vira pulo de +2)
         res: "+8",
         alternativas: [
             { valor: "+8", tipo: "acerto" },
@@ -89,6 +95,8 @@ export const bloco2_trilha1 = [
         id: "B2T1Q18", bloco: 2, aula: 3, tipo: "sinais",
         bncc: "EF07MA02", bncc_desc: "Diferença e Amplitude",
         display: "Moscou registrou -12°C e São Paulo +28°C. Qual a DIFERENÇA exata de temperatura entre elas?",
+        a: -12, // INJETADO PARA A RETA ANIMAR
+        b: 40,  // INJETADO PARA A RETA ANIMAR (distância percorrida)
         res: "40°C",
         alternativas: [
             { valor: "40°C", tipo: "acerto" },
@@ -100,7 +108,7 @@ export const bloco2_trilha1 = [
         dica: "Imagine subir um prédio: você sai do subsolo (-12) e vai até o 28º andar. Quantos andares você subiu no total?"
     },
     {
-        id: "B2T1Q20", bloco: 2, aula: 3, tipo: "sinais",
+        id: "B2T1Q20", bloco: 2, aula: 3, tipo: "teoria", // Mudado de 'sinais' para não quebrar o canvas
         bncc: "EF07MA02", bncc_desc: "Investigação Lógica",
         display: "É possível que a subtração de dois números NEGATIVOS resulte em um número POSITIVO?",
         res: "Sim. Ex: (-3) - (-8) = +5",
