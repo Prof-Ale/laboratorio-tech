@@ -1,5 +1,5 @@
 /**
- * ui-manager.js - Versão 3.9 (QA & Estabilizado)
+ * ui-manager.js - Versão 4.0 (MathLab Audio & Visual Stabilized)
  * Núcleo de Interface, Acessibilidade (DUA) e Telemetria Visual
  */
 
@@ -20,29 +20,38 @@ if (typeof window !== 'undefined' && window.speechSynthesis) {
  */
 export function narrarContexto(t) {
     try {
-        if (typeof window === 'undefined' || !window.speechSynthesis || !G.voz) return;
+        if (!window.speechSynthesis) return;
+        
+        // Verifica se a voz está ligada no estado global
+        if (!G.voz) {
+            console.log("[ADA-Voz] Silenciada pelo usuário.");
+            return;
+        }
 
-        window.speechSynthesis.cancel();
+        window.speechSynthesis.cancel(); // Para o áudio anterior
 
         const textoLimpo = t.replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, ' ');
+        console.log(`[ADA-Voz] Falando: "${textoLimpo}"`); // Log para o Painel de Debug
+
         const u = new SpeechSynthesisUtterance(textoLimpo);
+        u.lang = "pt-BR";
+        u.volume = 1;
+        u.rate = 1.1; // Fala um pouco mais ágil
 
         const vozes = window.speechSynthesis.getVoices();
-        const vozBR = vozes.find(x => x.lang.includes('pt-BR') && x.name.includes('Google')) || 
-                      vozes.find(x => x.lang.includes('pt-BR'));
-
-        u.lang = "pt-BR";
-        u.rate = 1.0; 
-        u.pitch = 1.1;
+        // Busca voz em PT-BR (mais abrangente para não falhar em celulares)
+        const vozBR = vozes.find(x => x.lang === 'pt-BR' || x.lang === 'pt_BR' || x.lang.includes('pt-BR'));
         if (vozBR) u.voice = vozBR;
 
+        // Efeito 'Ducking': abaixa a música para a voz passar
         u.onstart = () => { if (bgm && G.musica) bgm.volume = 0.02; };
         u.onend   = () => { if (bgm && G.musica) bgm.volume = 0.07; };
+        u.onerror = (e) => { console.warn("[ADA-Voz] Navegador bloqueou o áudio:", e); };
 
         window.speechSynthesis.speak(u);
 
     } catch (e) {
-        console.warn("[MathLab] Falha no TTS:", e);
+        console.error("[MathLab] Falha na síntese de voz:", e);
     }
 }
 
