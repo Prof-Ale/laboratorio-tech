@@ -6,10 +6,28 @@
 
 export const bloco3 = [
 
-    // ── AULA 1: UNIDADES DE COMPRIMENTO (OPERACOES_DECIMAIS) ──────────────
+    // ── AULA 1: UNIDADES DE COMPRIMENTO ────────────────────────────────────
+
+    // [NOVA] QUESTÃO DE RECOMPOSIÇÃO (Resgate de Base)
+    {
+        id: "B3Q00", bloco: 3, aula: 1, tipo: "aritmetica",
+        dificuldade: 1, tipoPedagogico: "recomposicao", // A ADA puxa essa se ele errar as de conversão
+        bncc: "EF07MA20", bncc_desc: "Conversão de Comprimento",
+        display: "Vamos relembrar a régua: Quantos centímetros (cm) cabem em exato 1 metro (m)?",
+        res: "100 cm",
+        alternativas: [
+            { valor: "100 cm", tipo: "acerto" },
+            { valor: "10 cm", tipo: "erro", categoria: "conceito", erro: "conversao_base_10_errada", descricao: "Confundiu centímetro com decímetro.", peso: 2 },
+            { valor: "1.000 cm", tipo: "erro", categoria: "procedimento", erro: "conversao_base_1000_errada", descricao: "Confundiu a conversão de metro para milímetro.", peso: 2 },
+            { valor: "60 cm", tipo: "erro", categoria: "conceito", erro: "confunde_base_tempo", descricao: "Usou a base 60 (do relógio) para medida de comprimento.", peso: 3 }
+        ],
+        passo: "A palavra 'Centi' significa cem. Portanto, 1 metro é formado por 100 centímetros.",
+        dica: "Dica da ADA: Lembre-se da palavra CENTÍMETRO. Ela já te dá a resposta: CENTO!"
+    },
 
     {
         id: "B3Q01", bloco: 3, aula: 1, tipo: "aritmetica",
+        dificuldade: 2, tipoPedagogico: "base",
         bncc: "EF07MA20", bncc_desc: "Conversão de Comprimento",
         display: "Uma distância de 2,5 km equivale a quantos metros?",
         res: "2.500 m",
@@ -25,6 +43,7 @@ export const bloco3 = [
     
     {
         id: "B3Q02", bloco: 3, aula: 1, tipo: "aritmetica",
+        dificuldade: 2, tipoPedagogico: "base",
         bncc: "EF07MA20", bncc_desc: "Conversão de Comprimento",
         display: "A medida de 350 cm equivale a quantos metros?",
         res: "3,5 m",
@@ -38,10 +57,11 @@ export const bloco3 = [
         dica: "Pense na fita métrica: 100 cm formam 1 metro. Então 300 cm são 3 metros, e 50 cm é a metade."
     },
 
-    // ── AULA 3: UNIDADES DE TEMPO (MODELAGEM_SITUACIONAL) ─────────────────
+    // ── AULA 3: UNIDADES DE TEMPO ──────────────────────────────────────────
 
     {
         id: "B3Q06", bloco: 3, aula: 3, tipo: "aritmetica",
+        dificuldade: 2, tipoPedagogico: "base",
         bncc: "EF07MA20", bncc_desc: "Conversão de Tempo",
         display: "Uma prova durou 2 horas e 45 minutos. Quantos minutos durou no total?",
         res: "165 min",
@@ -55,10 +75,11 @@ export const bloco3 = [
         dica: "Cuidado! O tempo não funciona de 100 em 100. O 'chefe' do tempo é o 60!"
     },
 
-    // ── AULA 4: PERÍMETRO (ESTRUTURA_GEOMETRICA) ──────────────────────────
+    // ── AULA 4: PERÍMETRO E ÁREA ───────────────────────────────────────────
 
     {
         id: "B3Q08", bloco: 3, aula: 4, tipo: "geometria",
+        dificuldade: 2, tipoPedagogico: "base",
         bncc: "EF07MA20", bncc_desc: "Perímetro de Retângulo",
         display: "Qual é o perímetro de um jardim retangular com 8 m de comprimento e 5 m de largura?",
         res: "26 m",
@@ -71,12 +92,10 @@ export const bloco3 = [
         passo: "Perímetro é a soma de TODOS os lados: 8 + 5 + 8 + 5 = 26 metros.",
         dica: "Imagine que você está caminhando sobre o muro do jardim. Você precisa percorrer os quatro lados para voltar ao início!"
     },
-    
-
-    // ── AULA 5: ÁREA (ESTRUTURA_GEOMETRICA) ───────────────────────────────
 
     {
         id: "B3Q13", bloco: 3, aula: 5, tipo: "geometria",
+        dificuldade: 2, tipoPedagogico: "base",
         bncc: "EF08MA07", bncc_desc: "Área de Triângulo",
         display: "Um triângulo tem base de 10 cm e altura de 6 cm. Qual é a sua área?",
         res: "30 cm²",
@@ -89,12 +108,29 @@ export const bloco3 = [
         passo: "Área do triângulo = (Base × Altura) ÷ 2. Então: (10 × 6) = 60. E 60 ÷ 2 = 30 cm².",
         dica: "Todo triângulo é a METADE de um retângulo. Calcule a área total e depois 'corte' ao meio!"
     },
-    
 
-    // ── AULA 6: VOLUME (ESTRUTURA_GEOMETRICA) ─────────────────────────────
+    // [NOVA] QUESTÃO DE INVESTIGAÇÃO (Desafio para quem tem Combo Alto)
+    {
+        id: "B3Q15", bloco: 3, aula: 5, tipo: "geometria",
+        dificuldade: 3, tipoPedagogico: "investigacao", // ADA puxa se o Combo for >= 4
+        bncc: "EF08MA07", bncc_desc: "Variação de Área",
+        display: "Investigação: Se você DOBRAR a medida dos lados de um quadrado, o que acontece com a área dele?",
+        res: "Fica 4 vezes maior",
+        alternativas: [
+            { valor: "Fica 4 vezes maior", tipo: "acerto" },
+            { valor: "Fica o dobro (2x)", tipo: "erro", categoria: "conceito", erro: "proporcionalidade_linear_area", descricao: "Assumiu que a área cresce na mesma proporção do lado.", peso: 3 },
+            { valor: "Fica 8 vezes maior", tipo: "erro", categoria: "procedimento", erro: "proporcionalidade_cubica_area", descricao: "Confundiu o aumento de área (2D) com volume (3D).", peso: 2 },
+            { valor: "Não se altera", tipo: "erro", categoria: "atencao", erro: "conceito_estatico", descricao: "Ignorou o efeito multiplicativo da geometria.", peso: 1 }
+        ],
+        passo: "Área = Lado × Lado. Se dobrar (2x), fazemos 2 × 2 = 4. A área cresce ao quadrado!",
+        dica: "Desenhe um quadradinho. Agora faça um quadrado com o dobro do lado. Quantos quadradinhos pequenos cabem dentro do novo? São 4!"
+    },
+
+    // ── AULA 6: VOLUME E PROBLEMAS INTEGRADORES ────────────────────────────
 
     {
         id: "B3Q17", bloco: 3, aula: 6, tipo: "geometria",
+        dificuldade: 2, tipoPedagogico: "base",
         bncc: "EF08MA07", bncc_desc: "Volume de Cubo",
         display: "Qual é o volume de um cubo cuja aresta (lado) mede 5 cm?",
         res: "125 cm³",
@@ -107,12 +143,10 @@ export const bloco3 = [
         passo: "Volume = Lado × Lado × Lado. V = 5 × 5 × 5 = 125 cm³.",
         dica: "Volume é 3D! Você precisa multiplicar as três dimensões: largura, comprimento e altura."
     },
-    
-
-    // ── PROBLEMAS INTEGRADORES (MODELAGEM_SITUACIONAL) ────────────────────
 
     {
         id: "B3Q20", bloco: 3, aula: 8, tipo: "contexto",
+        dificuldade: 3, tipoPedagogico: "base",
         bncc: "EF08MA07", bncc_desc: "Grandezas — Problema Integrador",
         display: "Vai colocar piso em uma sala de 4,5 m por 3 m. O piso custa R$ 45,00 o m². Qual o custo total?",
         res: "R$ 607,50",
