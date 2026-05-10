@@ -1,6 +1,6 @@
 /**
- * main.js — v11.8 "LabTech Vision & Voice"
- * Intervenções: Religamento do Feedback Escrito (#fb) e limpeza de rastro.
+ * main.js — v11.9 "LabTech Arcs & Engine"
+ * Intervenções: Religamento do motor gráfico (Canvas), arcos de animação e reta numérica.
  */
 import { G } from './engine/gameState.js';
 import { selQ, limparHistoricoSessao } from './engine/selector.js';
@@ -108,10 +108,12 @@ function processarResposta(alt, q) {
     if (G.respondeu) return;
     G.respondeu = true;
 
+    // GATILHO: Inicia animação de arcos no motor gráfico
+    setAnimando(true);
+
     const analise = analisarAlternativa(alt);
     const feedbackTexto = analise.correto ? q.passo : (q.dica || analise.descricao);
     
-    // INTERVENÇÃO: Exibir feedback escrito
     const fbContainer = $('fb');
     if (fbContainer) {
         fbContainer.textContent = feedbackTexto;
@@ -149,7 +151,9 @@ function proximaQ() {
     G.respondeu = false;
     animarAda('idle');
     
-    // INTERVENÇÃO: Limpar feedback escrito para a nova questão
+    // Reseta estado de animação para a nova questão
+    setAnimando(false);
+
     const fbContainer = $('fb');
     if (fbContainer) {
         fbContainer.textContent = '';
@@ -167,6 +171,7 @@ function renderQ(q) {
     if (grid) grid.innerHTML = '';
     $('btn-prox')?.classList.add('hidden');
     
+    // GATILHO: Renderiza a reta numérica e elementos estáticos do Canvas
     renderCv(q);
 
     const alternativas = [...(q.alternativas || [])];
@@ -226,5 +231,5 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     });
 
-    console.log("LabTech 11.8: Vision & Voice Online.");
+    console.log("LabTech 11.9: Arcs & Engine Estabilizados.");
 });
