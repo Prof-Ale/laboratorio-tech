@@ -1,5 +1,5 @@
 /**
- * ui-manager.js - Versão 4.2 (MathLab Audio & Visual Stabilized - ADA Cure)
+ * ui-manager.js - Versão 4.3 (MathLab Audio & Visual Stabilized - ADA Final)
  * Núcleo de Interface, Acessibilidade (DUA) e Telemetria Visual
  */
 
@@ -25,7 +25,7 @@ export function narrarContexto(t) {
             return;
         }
         
-        // Se G.voz for estritamente false, não fala. Se for undefined (início do jogo), fala!
+        // Se G.voz for estritamente false, não fala.
         if (G.voz === false) {
             console.log("[ADA-Voz] Silenciada no botão superior.");
             return;
@@ -36,8 +36,7 @@ export function narrarContexto(t) {
 
         const u = new SpeechSynthesisUtterance(textoLimpo);
         
-        // 🚨 A MÁGICA CONTRA O BUG DO CHROME (Garbage Collection) 🚨
-        // Prender a variável no "window" impede o navegador de apagar o áudio da memória
+        // MÁGICA CONTRA O BUG DO CHROME: Prender a variável no window
         window.adaUtterance = u; 
 
         u.lang = "pt-BR";
@@ -45,10 +44,24 @@ export function narrarContexto(t) {
         u.rate = 1.1; 
 
         const vozes = window.speechSynthesis.getVoices();
-        const vozBR = vozes.find(x => x.lang.includes('pt'));
+        
+        // FILTRO FEMININO: Busca vozes conhecidas por serem femininas no Windows/Android/Mac
+        let vozBR = vozes.find(x => x.lang.includes('pt') && (
+            x.name.includes('Maria') || 
+            x.name.includes('Luciana') || 
+            x.name.includes('Francisca') || 
+            x.name.includes('Vitória') ||
+            x.name.includes('Google') ||
+            x.name.includes('Female') ||
+            x.name.includes('Feminino')
+        ));
+
+        // Plano B: Se não achar mulher, pega qualquer uma em PT
+        if (!vozBR) vozBR = vozes.find(x => x.lang.includes('pt'));
+        
         if (vozBR) u.voice = vozBR;
 
-        // Rastreadores de evento
+        // Rastreadores de evento e Ducking de áudio
         u.onstart = () => { 
             console.log("[ADA-Voz] 2. Áudio começou a tocar fisicamente!");
             if (bgm && G.musica) bgm.volume = 0.02; 
@@ -58,7 +71,7 @@ export function narrarContexto(t) {
             if (bgm && G.musica) bgm.volume = 0.07; 
         };
         u.onerror = (e) => { 
-            console.error("[ADA-Voz] ERRO: Navegador bloqueou ou abortou o áudio:", e.error); 
+            console.error("[ADA-Voz] ERRO no SpeechSynthesis:", e.error); 
         };
 
         window.speechSynthesis.speak(u);
@@ -67,6 +80,7 @@ export function narrarContexto(t) {
         console.error("[MathLab] Falha na síntese de voz:", e);
     }
 }
+
 // === CONTROLES DE MÍDIA ===
 
 export function toggleMusica() {
@@ -89,53 +103,41 @@ export function toggleVoz() {
     if (el) el.textContent = G.voz ? "ON" : "OFF";
 
     if (!G.voz && window.speechSynthesis) {
-        window.speechSynthesis.cancel(); // Aqui mantemos o cancel apenas para o botão OFF manual
+        window.speechSynthesis.cancel();
     }
 }
 
 // === AVATAR E FEEDBACK VISUAL (ESTABILIZADO) ===
 
-/**
- * Gerencia a animação da ADA com proteção contra travamentos de vídeo
- */
 export function tocarAv(tipo) {
     const img = document.getElementById("av-img");
     const vid = document.getElementById(tipo === "ok" ? "vid-ok" : "vid-no");
 
-    // Proteção: Se a imagem base não existir, aborta para não quebrar o JS
     if (!img) return;
-
-    // Se o vídeo não existir no DOM, apenas sai (mantém a imagem estática)
     if (!vid) {
-        console.warn(`[ADA] Elemento de vídeo para ${tipo} não encontrado.`);
+        console.warn(`[ADA] Vídeo para ${tipo} não encontrado.`);
         return;
     }
 
-    // Reset de visibilidade seguro
     const resetAv = () => {
         vid.classList.add("avh");
         img.classList.remove("avh");
     };
 
-    // Alterna para o vídeo
     img.classList.add("avh");
     vid.classList.remove("avh");
     vid.currentTime = 0;
 
-    // Execução com tratamento de Promessa (Crucial para não travar o main.js)
     vid.play()
-        .then(() => {
-            vid.onended = resetAv;
-        })
+        .then(() => { vid.onended = resetAv; })
         .catch(err => {
-            console.warn("[MathLab] Bloqueio de autoplay ou vídeo ausente:", err);
+            console.warn("[MathLab] Play de vídeo bloqueado ou erro:", err);
             resetAv();
         });
 }
 
-/**
- * Atualiza as barras de HUD (Vida e Energia) e Combo
- */
+// === INTERFACE HUD E MODAIS ===
+
 export function updHUD() {
     const fv = document.getElementById("fv");
     const fen = document.getElementById("fen");
@@ -155,12 +157,9 @@ export function updHUD() {
     if (tnv) tnv.textContent = G.nivel;
 }
 
-// === GESTÃO DE MODAIS ===
-
 export function abrirM(id) {
     const modal = document.getElementById(id);
     if (!modal) return;
-
     modal.classList.add("show", "active");
     if (id === 'mdash') gerarDashboard();
 }
@@ -189,7 +188,6 @@ export function exibirGameOver() {
 
     if (goModal) {
         goModal.classList.add("show", "active");
-        // Garante que o modal de Game Over sobreponha tudo
         goModal.style.zIndex = "10000";
     }
 
@@ -204,8 +202,6 @@ function gerarDashboard() {
 
     c.innerHTML = "";
     let temDados = false;
-
-    // Garante que G.historico existe para não quebrar o loop
     const historico = G.historico || {};
 
     for (let hab in historico) {
