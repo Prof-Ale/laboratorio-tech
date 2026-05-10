@@ -1,5 +1,5 @@
 /**
- * main.js — v10.5 "LabTech Command Center"
+ * main.js — v10.6 "LabTech Stable Command"
  * Core de Orquestração com ADA Command Post, AudioController e Adaptive Engine
  */
 
@@ -7,7 +7,7 @@ import { G } from './engine/gameState.js';
 import { selQ, limparHistoricoSessao } from './engine/selector.js';
 import { analisarAlternativa, registrarErro } from './engine/diagnostic-engine.js';
 import { renderCv, animarArcos, setAnimando } from './game-engine.js';
-import { AudioCtrl } from './engine/audioController.js'; // Novo controlador
+import { AudioCtrl } from './engine/audioController.js'; 
 import { 
     updHUD, narrarContexto, toggleMusica, toggleVoz, 
     exibirGameOver, abrirM, fecharM 
@@ -29,7 +29,6 @@ function on(id, fn) {
 
 /**
  * Controla o Posto de Comando da ADA (Canto Inferior Direito)
- * @param {string} estado - 'idle', 'ok', 'no'
  */
 function animarAda(estado) {
     const img = $('av-img');
@@ -38,27 +37,30 @@ function animarAda(estado) {
     const container = $('ada-command-post');
 
     if (!container) return;
-    container.classList.remove('hidden');
 
-    // Reset geral
-    [img, vOk, vNo].forEach(el => el.classList.add('avh'));
+    // Remove classes de vídeo e oculta todos os assets primeiro
+    [img, vOk, vNo].forEach(el => {
+        if(el) el.classList.add('avh');
+    });
 
-    if (estado === 'ok') {
+    // Ativa o asset correspondente ao estado
+    if (estado === 'ok' && vOk) {
         vOk.classList.remove('avh');
         vOk.currentTime = 0;
-        vOk.play();
-    } else if (estado === 'no') {
+        vOk.play().catch(() => {});
+    } else if (estado === 'no' && vNo) {
         vNo.classList.remove('avh');
         vNo.currentTime = 0;
-        vNo.play();
-    } else {
+        vNo.play().catch(() => {});
+    } else if (img) {
         img.classList.remove('avh');
     }
 }
 
 function ocultarTodas() {
     ['splash-screen','block-selector','game-screen'].forEach(id => {
-        $(id)?.classList.add('hidden');
+        const el = $(id);
+        if (el) el.classList.add('hidden');
     });
 }
 
@@ -67,15 +69,20 @@ function ocultarTodas() {
    ============================================================ */
 
 function mostrarSeletorBlocos() {
+    // 1. Coleta dados do usuário
     G.nome = $('nome-cientista')?.value.trim() || 'Cientista';
     G.turma = $('turma-cientista')?.value.trim() || '';
     
-    // Inicia áudio na primeira interação
+    // 2. Inicializa e toca áudio na primeira interação do usuário (vital para navegadores)
+    AudioCtrl.init();
     AudioCtrl.play(); 
 
+    // 3. Transição de tela
     ocultarTodas();
     $('block-selector')?.classList.remove('hidden');
-    $('ada-command-post')?.classList.add('hidden'); // Esconde ADA no menu
+    
+    // 4. Garante que a ADA Gigante não apareça no menu
+    $('ada-command-post')?.classList.remove('active'); 
     
     narrarContexto(`Olá ${G.nome}, selecione o setor de análise.`);
     localStorage.setItem('laboratorio_tech_data', JSON.stringify(G));
@@ -94,7 +101,13 @@ function iniciarBloco(id) {
 
     ocultarTodas();
     $('game-screen')?.classList.remove('hidden');
-    animarAda('idle'); // Mostra a ADA grande no canto
+
+    // ATIVA O POSTO DE COMANDO DA ADA
+    const adaPost = $('ada-command-post');
+    if (adaPost) {
+        adaPost.classList.add('active');
+        animarAda('idle'); 
+    }
 
     if ($('nome-bloco-display')) $('nome-bloco-display').textContent = nomes[id];
 
@@ -103,12 +116,12 @@ function iniciarBloco(id) {
 }
 
 /* ============================================================
-   SISTEMA DE QUESTÕES ADAPTATIVAS
+   SISTEMA DE QUESTÕES E RESPOSTAS
    ============================================================ */
 
 function proximaQ() {
     setAnimando(false);
-    animarAda('idle'); // Volta ADA para modo estático
+    animarAda('idle'); 
     qAtual = selQ(G.currentBlock);
     renderQ(qAtual);
 }
@@ -127,9 +140,8 @@ function renderQ(q) {
     $('btn-prox')?.classList.add('hidden');
     G.respondeu = false;
     setAnimando(false);
-    renderCv(q); // Renderiza elementos gráficos (ex: reta numérica)
+    renderCv(q); 
 
-    // Lógica de alternativas
     const alternativas = [...(q.alternativas || [])].sort(() => Math.random() - 0.5);
 
     alternativas.forEach(alt => {
@@ -148,7 +160,6 @@ function processarResposta(alternativa, q) {
     const analise = analisarAlternativa(alternativa);
     const feedbackEl = $('fb');
 
-    // Feedback Visual nos Botões
     document.querySelectorAll('.ba').forEach(b => {
         b.classList.add('dis');
         if (b.textContent === String(q.res)) b.classList.add('ok');
@@ -160,10 +171,8 @@ function processarResposta(alternativa, q) {
         feedbackEl.className = 'fb-box acerto';
         feedbackEl.innerHTML = `<h3>[✓] SUCESSO</h3><p>${q.passo}</p>`;
         
-        animarAda('ok'); // ADA comemora!
+        animarAda('ok'); 
         narrarContexto(q.passo);
-        
-        // Ajusta intensidade da trilha se o combo estiver alto
         if (G.combo >= 4) AudioCtrl.setIntensity(true);
 
     } else {
@@ -177,7 +186,7 @@ function processarResposta(alternativa, q) {
         feedbackEl.className = 'fb-box erro';
         feedbackEl.innerHTML = `<h3>[!] FALHA</h3><p>${analise.descricao}</p>`;
         
-        animarAda('no'); // ADA alerta!
+        animarAda('no'); 
         const textoErro = q.dica ? `${analise.descricao}. Dica: ${q.dica}` : analise.descricao;
         narrarContexto(textoErro);
     }
@@ -190,29 +199,22 @@ function processarResposta(alternativa, q) {
 }
 
 /* ============================================================
-   INICIALIZAÇÃO E EVENTOS
+   INICIALIZAÇÃO
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
-    // Inicializa sons
-    AudioCtrl.init();
-
-    // Navegação base
+    // Escuta cliques para os blocos
     on('btn-acessar', mostrarSeletorBlocos);
     [1,2,3,4,5,6].forEach(i => on(`btn-bloco-${i}`, () => iniciarBloco(i)));
+    
     on('btn-prox', proximaQ);
-
-    // Controles de Áudio/Voz
     on('btn-musica', () => AudioCtrl.toggle('btn-musica', 'tsom'));
     on('btn-voz', toggleVoz);
 
     // Modais
     on('btn-perfil', () => {
-        $('perfil-nome-display').textContent = G.nome;
-        $('perfil-vida-display').textContent = Math.round(G.vida);
-        $('perfil-acertos-display').textContent = G.acertos;
+        if($('perfil-nome-display')) $('perfil-nome-display').textContent = G.nome;
         abrirM('mperfil');
     });
-
     on('btn-dash', () => abrirM('mdash'));
     on('btn-fecha-dash', () => fecharM('mdash'));
     on('btn-cred', () => abrirM('mcred'));
@@ -223,15 +225,15 @@ document.addEventListener('DOMContentLoaded', () => {
         iniciarBloco(G.currentBlock);
     });
 
-    // Delegar botões de voltar ao menu
+    // Voltar ao seletor
     document.querySelectorAll('[data-action="seletor"]').forEach(el => {
         el.onclick = () => {
             fecharM('go');
             ocultarTodas();
             $('block-selector').classList.remove('hidden');
-            $('ada-command-post').classList.add('hidden');
+            $('ada-command-post').classList.remove('active');
         };
     });
 
-    console.log(`[LabTech] Engine v10.5 Online. ADA Command Center Ativo.`);
+    console.log(`[LabTech] Engine v10.6 Online.`);
 });
