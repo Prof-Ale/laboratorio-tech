@@ -1,84 +1,108 @@
 /* ============================================================
-    LABORATÓRIO TECH — CSS v11.7 "Golden UI"
-    Intervenção: Restauração da Estética de Elite dos Botões e Inputs
+    LABORATÓRIO TECH — CSS v11.8 "Golden Shield"
+    INTERVENÇÃO: Restauração Total da Splash e Botões de Elite
    ============================================================ */
 
-/* ... (Mantenha o seu :root e Reset igual) ... */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Nunito:ital,wght@0,400;0,700;0,900;1,400&display=swap');
 
-/* RESTAURAÇÃO: Inputs da Splash (Grandes e Imponentes) */
+:root {
+    --choco-dark:    #2b1608;
+    --choco-gold:    #d4a017;
+    --choco-cream:   #f5e6c8;
+    --neon-cyan:     #00eaff;
+    --neon-green:    #00ff88;
+    --neon-red:      #ff4444;
+    --bg-dark:       #060610;
+    --font-display: 'Orbitron', sans-serif;
+    --font-body:    'Nunito', sans-serif;
+}
+
+/* RESET & ESTRUTURA */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg-dark); color: #f0f0f0; font-family: var(--font-body); }
+
+.screen { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; padding: 20px; z-index: 10; overflow-y: auto; background: var(--bg-dark); }
+.hidden { display: none !important; }
+
+/* ============================================================
+    SPLASH SCREEN (O RETORNO DO OURO)
+   ============================================================ */
+.splash-inner { width: 100%; max-width: 480px; text-align: center; margin: auto; }
+.splash-logo { font-family: var(--font-display); font-size: clamp(32px, 10vw, 42px); color: var(--choco-gold); text-shadow: 0 0 25px var(--choco-gold); margin-bottom: 5px; }
+.splash-sub { opacity: 0.8; font-size: 14px; letter-spacing: 1px; margin-bottom: 20px; }
+
+.splash-av { width: 180px; height: 180px; margin: 0 auto 25px; }
+.av-box { width: 100%; height: 100%; border-radius: 40px; border: 4px solid var(--choco-gold); overflow: hidden; background: #000; box-shadow: 0 0 30px var(--neon-cyan); }
+.ada-avatar-asset { width: 100%; height: 100%; object-fit: cover; }
+
+/* Inputs Imponentes das Capturas */
+.input-group { width: 100%; margin-top: 10px; }
 .input-group input { 
-    width: 100%; 
-    padding: 22px; /* Espaçamento luxuoso */
-    margin-bottom: 15px;
-    border-radius: 15px; 
-    border: 2px solid var(--choco-gold); 
-    background: rgba(0,0,0,0.9); 
-    color: var(--neon-cyan); 
-    font-size: 20px; 
-    text-align: center; 
-    font-family: var(--font-body);
-    font-weight: 700;
-    transition: 0.3s;
-    box-shadow: inset 0 0 10px rgba(212, 160, 23, 0.2);
+    width: 100%; padding: 22px; margin-bottom: 15px;
+    border-radius: 15px; border: 2px solid var(--choco-gold); 
+    background: rgba(0,0,0,0.9); color: var(--neon-cyan); 
+    font-size: 20px; text-align: center; font-family: var(--font-body);
+    font-weight: 700; transition: 0.3s;
+    box-shadow: inset 0 0 15px rgba(212, 160, 23, 0.2);
 }
+.input-group input:focus { outline: none; border-color: var(--neon-cyan); box-shadow: 0 0 20px var(--neon-cyan); }
 
-/* RESTAURAÇÃO: Botões de Alternativa (.ba) */
-.ba {
-    padding: 25px 15px; /* Altura imponente das capturas */
-    border-radius: 18px; 
-    background: #000;
-    border: 2px solid var(--neon-cyan); 
-    color: var(--neon-cyan);
-    font-family: var(--font-display); 
-    font-size: 22px; 
-    font-weight: 900;
-    cursor: pointer; 
-    transition: 0.2s all;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    text-transform: uppercase;
-}
-
-.ba:hover:not(.dis) { 
-    background: rgba(0, 234, 255, 0.1); 
-    border-color: #fff; 
-    transform: scale(1.02);
-}
-
-/* Estados de Resposta (Cores Sólidas das Capturas) */
-.ba.ok { 
-    background: var(--neon-green) !important; 
-    color: #000 !important; 
-    border-color: #fff !important;
-    box-shadow: 0 0 25px var(--neon-green);
-}
-
-.ba.no { 
-    background: var(--neon-red) !important; 
-    color: #fff !important; 
-    border-color: #fff !important;
-    box-shadow: 0 0 25px var(--neon-red);
-}
-
-/* RESTAURAÇÃO: Botão Próximo e Inicializar (Barras de Ouro) */
-.btn-start, .btn-next {
-    width: 100%; 
-    padding: 22px; 
-    background: var(--choco-gold); 
-    color: var(--choco-dark);
-    border: none; 
-    border-radius: 15px; 
-    font-family: var(--font-display);
-    font-weight: 900; 
-    font-size: 20px; 
-    cursor: pointer;
-    text-transform: uppercase;
+.btn-start { 
+    background: var(--choco-gold); padding: 22px; border: none; border-radius: 15px; 
+    font-family: var(--font-display); font-weight: 900; width: 100%; 
+    color: var(--choco-dark); cursor: pointer; transition: 0.2s;
+    font-size: 18px; text-transform: uppercase;
     box-shadow: 0 6px 0 #8a6d10, 0 10px 20px rgba(0,0,0,0.4);
-    transition: 0.1s;
+}
+.btn-start:active { transform: translateY(4px); box-shadow: 0 2px 0 #8a6d10; }
+
+/* ============================================================
+    GAMEPLAY: BOTÕES DE ELITE (.ba)
+   ============================================================ */
+.gw { width: 100%; max-width: 580px; margin: auto; }
+
+.ba {
+    padding: 25px 15px; border-radius: 18px; background: #000;
+    border: 2.5px solid var(--neon-cyan); color: var(--neon-cyan);
+    font-family: var(--font-display); font-size: 24px; font-weight: 900;
+    cursor: pointer; transition: 0.2s all;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+.ba:hover:not(.dis) { border-color: #fff; background: rgba(0, 234, 255, 0.1); transform: scale(1.02); }
+
+/* Cores de Feedback das Capturas */
+.ba.ok { background: var(--neon-green) !important; color: #000 !important; border-color: #fff !important; box-shadow: 0 0 25px var(--neon-green); }
+.ba.no { background: var(--neon-red) !important; color: #fff !important; border-color: #fff !important; box-shadow: 0 0 25px var(--neon-red); }
+.ba.dis { opacity: 0.5; cursor: default; pointer-events: none; }
+
+.btn-next {
+    width: 100%; padding: 22px; margin-top: 20px;
+    background: var(--choco-gold); color: var(--choco-dark);
+    border: none; border-radius: 15px; font-family: var(--font-display);
+    font-weight: 900; font-size: 18px; cursor: pointer;
+    box-shadow: 0 6px 0 #8a6d10;
 }
 
-.btn-start:active, .btn-next:active {
-    transform: translateY(4px);
-    box-shadow: 0 2px 0 #8a6d10;
-}
+/* ============================================================
+    OUTROS ELEMENTOS (Canvas, ADA, HUD)
+   ============================================================ */
+#canvas-game { width: 100%; height: 180px; background: rgba(255,255,255,0.02); border-radius: 20px; margin-bottom: 20px; border: 1px solid rgba(212, 160, 23, 0.2); }
 
-/* ... (Mantenha o resto do código de ADA e Modais) ... */
+.game-header { width: 100%; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; margin-bottom: 20px; }
+.bar { width: 120px; height: 12px; background: #222; border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,255,255,0.2); }
+.fill { height: 100%; background: var(--neon-green); width: 100%; transition: 0.5s; box-shadow: 0 0 10px var(--neon-green); }
+
+.fb-box { width: 100%; min-height: 80px; margin: 15px 0; padding: 15px 20px; border-radius: 15px; background: rgba(212, 160, 23, 0.1); border-left: 4px solid var(--choco-gold); color: var(--choco-cream); font-size: 15px; display: none; }
+
+#ada-command-post { position: fixed; bottom: 20px; right: 20px; width: 250px; height: 250px; z-index: 100; pointer-events: none; display: none; }
+#ada-command-post.active { display: block !important; }
+.ada-box { width: 100%; height: 100%; border-radius: 50%; border: 4px solid var(--neon-cyan); overflow: hidden; position: relative; box-shadow: 0 0 40px rgba(0, 234, 255, 0.4); }
+.ada-asset { position: absolute; width: 100%; height: 100%; object-fit: cover; }
+.avh { opacity: 0 !important; }
+
+/* MODAIS */
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 10000; display: none !important; align-items: center; justify-content: center; padding: 20px; }
+.modal.active { display: flex !important; }
+.mc { background: var(--bg-dark); border: 2px solid var(--choco-gold); border-radius: 25px; padding: 30px; position: relative; width: 100%; max-width: 450px; text-align: center; }
+
+@media (max-width: 600px) { #ada-command-post { width: 140px; height: 140px; } .ag { grid-template-columns: 1fr; } }
