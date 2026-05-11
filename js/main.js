@@ -10,6 +10,7 @@ import { renderCv, setAnimando, animarArcos } from './game-engine.js';
 import { AudioCtrl } from './engine/audioController.js'; 
 import { updHUD, narrarContexto, toggleVoz, exibirGameOver } from './ui-manager.js';
 import { initDebugMode, setDebug } from './engine/debug-mode.js';
+import { carregarPerfil, salvarPerfil } from './engine/cognitive-profile.js';
 
 const $ = (id) => document.getElementById(id);
 const on = (id, fn) => { const el = $(id); if (el) el.onclick = fn; };
@@ -110,6 +111,9 @@ function mostrarSeletorBlocos() {
     G.turma = $('turma-cientista')?.value.trim() || '7ºA';
     if (!G.historico) G.historico = {};
 
+    // --- MAGIA AQUI: O despertar da memória de longo prazo ---
+    G.perfilCognitivo = carregarPerfil(G.nome, G.turma);
+
     AudioCtrl.init();
     AudioCtrl.play();
 
@@ -117,8 +121,15 @@ function mostrarSeletorBlocos() {
     $('block-selector')?.classList.remove('hidden');
     $('ada-command-post')?.classList.remove('active'); 
 
-    // --- MÁGICA AQUI: Boas-vindas personalizadas da ADA ---
-    const mensagemBoasVindas = `Olá, ${G.nome} da turma ${G.turma}. Bem-vindo ao Laboratório. Escolha um módulo para começarmos a nossa evolução!`;
+    // --- A ADA REAGE AO PERFIL DO ALUNO ---
+    let mensagemBoasVindas = "";
+    
+    if (G.perfilCognitivo.novoUsuario) {
+        mensagemBoasVindas = `Olá, ${G.nome}. É sua primeira vez no laboratório. Meu nome é ADA. Escolha um módulo e vamos começar sua calibração lógica.`;
+    } else {
+        mensagemBoasVindas = `Bem-vindo de volta à base, ${G.nome}! Seus registros da turma ${G.turma} foram carregados. Pronto para continuar nossa evolução?`;
+    }
+    
     narrarContexto(mensagemBoasVindas, true);
 }
 
