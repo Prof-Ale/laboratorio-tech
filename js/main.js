@@ -194,6 +194,8 @@ async function processarResposta(alt, q) {
         const dano = 10 + (analise.peso || 1) * 5;
         G.vida = Math.max(0, G.vida - dano);
     }
+   registrarEvolucaoLongitudinal(G, analise, q);
+    
     atualizarHudVisual(); // Mostra o dano/vida atualizada
 
     // --- ETAPA 3: ADA (ÁUDIO E VÍDEO EM BACKGROUND) ---
