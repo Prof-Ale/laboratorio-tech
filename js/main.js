@@ -116,6 +116,10 @@ function mostrarSeletorBlocos() {
     document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
     $('block-selector')?.classList.remove('hidden');
     $('ada-command-post')?.classList.remove('active'); 
+
+    // --- MÁGICA AQUI: Boas-vindas personalizadas da ADA ---
+    const mensagemBoasVindas = `Olá, ${G.nome} da turma ${G.turma}. Bem-vindo ao Laboratório. Escolha um módulo para começarmos a nossa evolução!`;
+    narrarContexto(mensagemBoasVindas, true);
 }
 
 function iniciarBloco(id) {
