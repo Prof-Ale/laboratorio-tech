@@ -1,7 +1,7 @@
 /**
- * ui-manager.js - Versão 5.0 (Async ADA & Visual Stabilized)
+ * ui-manager.js - Versão 5.1 (ADA Overlap & Visual Stabilized)
  * Núcleo de Interface, Acessibilidade (DUA) e Telemetria Visual.
- * INTERVENÇÃO: Implementação do Promise Protocol no Áudio e Vídeo.
+ * INTERVENÇÃO: Compatibilidade com o ritmo acelerado (Overlap) do main.js.
  */
 
 import { G } from './engine/gameState.js';
@@ -14,22 +14,21 @@ if (typeof window !== 'undefined' && window.speechSynthesis) {
     carregarVozes();
 }
 
-// === SISTEMA DE NARRAÇÃO ASSÍNCRONO (PROMISE PROTOCOL) ===
+// === SISTEMA DE NARRAÇÃO ASSÍNCRONO (OVERLAP) ===
 
 /**
- * ADA narra o texto para o estudante (Inclusão e Engajamento).
- * Retorna uma Promise que resolve quando a fala terminar.
+ * ADA narra o texto para o estudante.
+ * Retorna uma Promise, mas agora recebe 'isCorrect' para cravar o vídeo.
  */
-export function narrarContexto(t) {
+export function narrarContexto(t, isCorrect = true) {
     return new Promise((resolve) => {
         try {
             if (!window.speechSynthesis || G.voz === false) {
-                // Se a voz estiver desligada ou não suportada, resolve imediatamente
                 resolve();
                 return;
             }
 
-            // Cancela qualquer fala pendente para não encavalar
+            // Cancela qualquer fala pendente para o jogo ficar rápido
             window.speechSynthesis.cancel();
 
             const textoLimpo = t.replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, ' ');
@@ -39,7 +38,7 @@ export function narrarContexto(t) {
 
             u.lang = "pt-BR";
             u.volume = 1;
-            u.rate = 1.1; 
+            u.rate = 1.15; // 5% mais rápida para dinâmica de jogo
 
             const vozes = window.speechSynthesis.getVoices();
             let vozBR = vozes.find(x => x.lang.includes('pt') && (
@@ -57,18 +56,18 @@ export function narrarContexto(t) {
 
             u.onstart = () => { 
                 if (bgm && G.musica) bgm.volume = 0.02; 
-                // Chama a animação de vídeo correspondente à fala
-                tocarAv(t.includes("correta") || t.includes("domínio") ? "ok" : "no");
+                // Toca o vídeo correspondente ao resultado real (passado pelo main.js)
+                tocarAv(isCorrect ? "ok" : "no");
             };
             
             u.onend = () => { 
                 if (bgm && G.musica) bgm.volume = 0.07; 
-                resolve(); // Avisa o Maestro que terminou de falar
+                resolve(); 
             };
             
             u.onerror = (e) => { 
                 console.warn("[ADA-Voz] SpeechSynthesis pulou ou falhou:", e.error); 
-                resolve(); // Resolve mesmo em erro para não travar o jogo
+                resolve(); 
             };
 
             window.speechSynthesis.speak(u);
@@ -192,7 +191,7 @@ export function exibirGameOver() {
         goModal.style.zIndex = "10000";
     }
 
-    narrarContexto(`Integridade do sistema comprometida. Taxa de sincronia final: ${tx} por cento. Reinicie para nova análise.`);
+    narrarContexto(`Integridade do sistema comprometida. Taxa de sincronia final: ${tx} por cento. Reinicie para nova análise.`, false);
 }
 
 // === DASHBOARD PEDAGÓGICO ===
