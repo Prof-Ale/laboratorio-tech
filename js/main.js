@@ -234,6 +234,14 @@ function proximaQ() {
 
     const q = selQ(G.currentBlock);
     if (!q) return;
+
+    // --- MÁGICA AQUI: A Premonição da ADA ---
+    const alertaPrevio = gerarMicroIntervencao(q, G.perfilCognitivo);
+    if (alertaPrevio) {
+        console.log("🔮 [PREDIÇÃO] ADA detectou risco! Disparando Microintervenção.");
+        narrarContexto(alertaPrevio, false); // Fala a dica com a expressão de 'atenção'
+    }
+
     renderQ(q);
 }
 
