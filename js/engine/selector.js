@@ -1,7 +1,7 @@
 /**
- * selector.js — v6.0 "The Shielded Navigator"
- * Seletor Híbrido + Question Normalizer Integrado.
- * INTERVENÇÃO: Implementação da Etapa 3 do Plano de Estabilização.
+ * selector.js — v7.0 "The Adaptive Strategist"
+ * Seletor Híbrido com Inteligência Diagnóstica (Etapa 8).
+ * INTERVENÇÃO: Leitura de Clusters Críticos para intervenção em tempo real.
  */
 
 import { G } from './gameState.js';
@@ -28,38 +28,55 @@ let respondedInSession = new Set();
 
 export function limparHistoricoSessao() {
     respondedInSession.clear();
-    console.log("[SELECTOR] 🧠 Memória de curto prazo resetada.");
+    console.log("[SELECTOR] 🧠 Memória de curto prazo resetada para o novo bloco.");
 }
 
 /**
  * MOTOR DE HEURÍSTICA PEDAGÓGICA (ADA Triage)
+ * A IA decide se o aluno precisa de intervenção antes de sortear uma questão normal.
  */
 function avaliarNecessidadeIntervencao(blocoId) {
     const qDisp = (BANCO[blocoId] || []).filter(q => !respondedInSession.has(q.id));
     if (qDisp.length === 0) return null;
 
-    // 1. DESAFIO (Flow)
-    if (G.combo >= 4) {
-        const desafio = qDisp.find(q => q.tipoPedagogico === "investigacao" || q.dificuldade === 3);
-        if (desafio) return desafio;
+    // 1. EMERGÊNCIA CLÍNICA (Leitura do Diagnostic Engine)
+    if (G.diagnostico && G.diagnostico.scores) {
+        // Filtra clusters com pontuação de erro crítica (>= 6) e pega o pior
+        const alertas = Object.entries(G.diagnostico.scores)
+            .filter(([cluster, score]) => score >= 6)
+            .sort((a, b) => b[1] - a[1]); // Ordena do pior para o menos pior
+
+        if (alertas.length > 0) {
+            const clusterCritico = alertas[0][0];
+            console.log(`[SELECTOR] 🚨 ALERTA CRÍTICO: Redirecionando aula para resgate de [${clusterCritico}]`);
+            
+            // Puxa uma questão de dificuldade baixa específica desse cluster
+            const resgate = qDisp.find(q => q.cluster === clusterCritico && q.dificuldade <= 2) 
+                         || qDisp.find(q => q.tipoPedagogico === "recomposicao");
+            
+            if (resgate) {
+                // Diminui o score temporariamente para não entrar em loop infinito de resgate
+                G.diagnostico.scores[clusterCritico] -= 3; 
+                return resgate;
+            }
+        }
     }
 
-    // 2. RESGATE (Risco de Vida)
+    // 2. RESGATE DE VIDA (Quase morrendo no Game Over)
     if (G.vida > 0 && G.vida < 35) {
+        console.log(`[SELECTOR] ⚠️ Energia Baixa: Injetando questão Salva-Vidas.`);
         const salvacao = qDisp.find(q => q.tipoPedagogico === "recomposicao" || q.dificuldade === 1);
         if (salvacao) return salvacao;
     }
 
-    // 3. REFORÇO (Habilidade BNCC)
-    if (G.historico) {
-        for (const [bncc, hist] of Object.entries(G.historico)) {
-            if ((hist.erros_conceito + hist.erros_calculo) >= 2) {
-                const reforco = qDisp.find(q => q.bncc === bncc && q.dificuldade <= 2);
-                if (reforco) return reforco;
-            }
-        }
+    // 3. DESAFIO DE FLOW (Acertando tudo, o aluno está entediado)
+    if (G.combo >= 4) {
+        console.log(`[SELECTOR] 🔥 Modo Flow Ativado: Puxando desafio avançado.`);
+        const desafio = qDisp.find(q => q.tipoPedagogico === "investigacao" || q.dificuldade === 3);
+        if (desafio) return desafio;
     }
-    return null; 
+
+    return null; // O aluno está estável, segue o roteiro normal.
 }
 
 /**
@@ -68,7 +85,7 @@ function avaliarNecessidadeIntervencao(blocoId) {
 export function selQ(blocoId) {
     const questoesDoBloco = BANCO[blocoId] || [];
 
-    // Fallback para Bloco Vazio (Normalizado)
+    // Fallback de Segurança
     if (questoesDoBloco.length === 0) {
         return normalizarQuestao({ 
             display: "Gaveta Vazia", 
@@ -76,18 +93,17 @@ export function selQ(blocoId) {
         });
     }
 
-    // 1. Tenta Intervenção da IA
+    // 1. TENTA INTERVENÇÃO DA IA PRIMEIRO
     const qIA = avaliarNecessidadeIntervencao(blocoId);
     if (qIA) {
         respondedInSession.add(qIA.id);
-        console.log(`[SELECTOR] 🤖 ADA interveio com: ${qIA.id}`);
-        return normalizarQuestao(qIA); // NORMALIZAÇÃO NA SAÍDA
+        return normalizarQuestao(qIA); // Sai blindada
     }
 
-    // 2. Filtra candidatas
+    // 2. FILTRA AS CANDIDATAS NORMAIS
     let candidatas = questoesDoBloco.filter(q => !respondedInSession.has(q.id));
 
-    // Fallback para Módulo Esgotado (Normalizado)
+    // Fim de Jogo Suave
     if (candidatas.length === 0) {
         console.warn("[SELECTOR] 🚩 Módulo esgotado.");
         return normalizarQuestao({ 
@@ -95,13 +111,13 @@ export function selQ(blocoId) {
             display: "Módulo Concluído!", 
             res: "OK", 
             alternativas: [{valor: "Fim"}],
-            passo: "Você percorreu todos os desafios deste bloco."
+            passo: "Você concluiu o módulo com sucesso."
         });
     }
 
-    // 3. Shuffle Pedagógico (Aula X e X+1)
+    // 3. SHUFFLE PEDAGÓGICO (Quebra a linearidade chata)
     const aulasDisponiveis = [...new Set(candidatas.map(q => q.aula || 1))].sort((a,b) => a - b);
-    const aulasParaSorteio = aulasDisponiveis.slice(0, 2); 
+    const aulasParaSorteio = aulasDisponiveis.slice(0, 2); // Sorteia entre as duas aulas mais baixas disponíveis
     const poolDeSorteio = candidatas.filter(q => aulasParaSorteio.includes(q.aula || 1));
     
     const indiceSorteado = Math.floor(Math.random() * poolDeSorteio.length);
@@ -109,8 +125,8 @@ export function selQ(blocoId) {
 
     respondedInSession.add(qSorteada.id);
 
-    console.log(`[SELECTOR] 🎯 Questão selecionada: ${qSorteada.id} (Aula ${qSorteada.aula || 1})`);
+    console.log(`[SELECTOR] 🎯 Roteiro Normal: Sorteada ${qSorteada.id} (Aula ${qSorteada.aula || 1})`);
 
-    // ETAPA 3: O ponto de unificação. Nada sai daqui sem ser normalizado.
+    // ETAPA 3 CONSOLIDADA: Tudo passa pelo Segurança
     return normalizarQuestao(qSorteada);
 }
