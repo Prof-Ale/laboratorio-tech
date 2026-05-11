@@ -1,58 +1,38 @@
 /**
- * main.js — v12.1 "LabTech Quantum Pulse"
- * Intervenção: Substituição de renderCv por animarArcos no gatilho de resposta.
+ * main.js — v12.3 "Neural Calibration"
+ * Intervenções: Cálculo de delta para saltos e persistência de telemetria.
  */
 import { G } from './engine/gameState.js';
 import { selQ, limparHistoricoSessao } from './engine/selector.js';
 import { analisarAlternativa, registrarErro } from './engine/diagnostic-engine.js';
-import { renderCv, setAnimando, animarArcos } from './game-engine.js'; // Importação do motor de animação
+import { renderCv, setAnimando, animarArcos } from './game-engine.js';
 import { AudioCtrl } from './engine/audioController.js'; 
 import { updHUD, narrarContexto, toggleVoz, exibirGameOver } from './ui-manager.js';
 
-// Helpers de DOM
 const $ = (id) => document.getElementById(id);
 const on = (id, fn) => { const el = $(id); if (el) el.onclick = fn; };
 
-// Gerenciamento de Modais
 const abrirM = (id) => $(id)?.classList.add('active');
 const fecharM = (id) => $(id)?.classList.remove('active');
 
 /* ============================================================
-   CONTROLE DO AVATAR ADA
-   ============================================================ */
-function animarAda(estado) {
-    const assets = { img: $('av-img'), ok: $('vid-ok'), no: $('vid-no') };
-    if (!assets.img) return;
-
-    Object.values(assets).forEach(el => el?.classList.add('avh'));
-
-    if (estado === 'ok' && assets.ok) {
-        assets.ok.classList.remove('avh');
-        assets.ok.play().catch(() => {});
-    } else if (estado === 'no' && assets.no) {
-        assets.no.classList.remove('avh');
-        assets.no.play().catch(() => {});
-    } else {
-        assets.img.classList.remove('avh');
-    }
-}
-
-/* ============================================================
-   TELEMETRIA E DADOS
+   TELEMETRIA E DASHBOARD
    ============================================================ */
 function atualizarDashboard() {
     const content = $('dash-content');
     if (!content) return;
     
     let html = "";
-    if (Object.keys(G.historico).length === 0) {
-        html = "<p style='text-align:center; opacity:0.5;'>Nenhum dado coletado nesta sessão.</p>";
+    // Garantia de que o histórico existe e tem dados
+    if (!G.historico || Object.keys(G.historico).length === 0) {
+        html = "<p style='text-align:center; opacity:0.5; padding:20px;'>Nenhuma telemetria BNCC registrada.</p>";
     } else {
         Object.entries(G.historico).forEach(([hab, dados]) => {
+            const erros = (dados.erros_conceito || 0) + (dados.erros_calculo || 0);
             html += `<div class="dash-card">
                 <div style="color:var(--choco-gold); font-weight:bold; font-size:12px;">${hab}</div>
                 <div style="font-size:11px; color:var(--neon-cyan); margin-top:4px;">
-                    Acertos: ${dados.acertos} | Erros: ${dados.erros_conceito + dados.erros_calculo}
+                    Acertos: ${dados.acertos || 0} | Erros: ${erros}
                 </div>
             </div>`;
         });
@@ -61,12 +41,15 @@ function atualizarDashboard() {
 }
 
 /* ============================================================
-   NAVEGAÇÃO E FLUXO
+   FLUXO DE NAVEGAÇÃO
    ============================================================ */
 function mostrarSeletorBlocos() {
     G.nome = $('nome-cientista')?.value.trim() || 'Cientista';
     G.turma = $('turma-cientista')?.value.trim() || '7ºA';
     
+    // Inicializa o histórico se estiver nulo para não quebrar o Dash
+    if (!G.historico) G.historico = {};
+
     AudioCtrl.init();
     AudioCtrl.play();
 
@@ -87,7 +70,6 @@ function iniciarBloco(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
     $('game-screen')?.classList.remove('hidden');
     $('ada-command-post')?.classList.add('active');
-    animarAda('idle');
     
     atualizarHudVisual();
     proximaQ();
@@ -104,14 +86,24 @@ function atualizarHudVisual() {
 }
 
 /* ============================================================
-   LÓGICA DE JOGO
+   LÓGICA DE RESPOSTA E ANIMAÇÃO
    ============================================================ */
 function processarResposta(alt, q) {
     if (G.respondeu) return;
     G.respondeu = true;
 
-    // INTERVENÇÃO DE ALTA PRECISÃO: Chama o motor de animação de pulo
-    animarArcos(q, alt.valor); 
+    /**
+     * CALIBRAÇÃO DO SALTO:
+     * O valor do botão (alt.valor) é a COORDENADA DE DESTINO.
+     * O motor gráfico precisa do DESLOCAMENTO (Salto).
+     * Cálculo: Salto = Destino - Início
+     */
+    const pontoA = Number(q.a || q.inicio || 0);
+    const pontoB = Number(alt.valor);
+    const deslocamento = pontoB - pontoA;
+
+    // Dispara a animação com o deslocamento real
+    animarArcos(q, deslocamento); 
 
     const analise = analisarAlternativa(alt);
     const feedbackTexto = analise.correto ? q.passo : (q.dica || analise.descricao);
@@ -130,15 +122,14 @@ function processarResposta(alt, q) {
 
     if (analise.correto) {
         G.acertos++; G.combo++;
-        animarAda('ok');
         narrarContexto(feedbackTexto);
     } else {
         G.combo = 0;
         G.erros++;
+        // Envia para o Diagnostic Engine para alimentar o Dashboard
         registrarErro(G, analise);
         const dano = 10 + (analise.peso || 1) * 5;
         G.vida = Math.max(0, G.vida - dano);
-        animarAda('no');
         narrarContexto(feedbackTexto);
     }
     
@@ -146,15 +137,12 @@ function processarResposta(alt, q) {
     $('btn-prox')?.classList.remove('hidden');
 
     if (G.vida <= 0) {
-        setTimeout(() => { animarAda('no'); exibirGameOver(); }, 800);
+        setTimeout(() => { exibirGameOver(); }, 800);
     }
 }
 
 function proximaQ() {
     G.respondeu = false;
-    animarAda('idle');
-    
-    // Reseta o motor gráfico para a nova questão
     setAnimando(false);
 
     const fbContainer = $('fb');
@@ -174,7 +162,6 @@ function renderQ(q) {
     if (grid) grid.innerHTML = '';
     $('btn-prox')?.classList.add('hidden');
     
-    // Desenha o estado inicial da reta
     renderCv(q);
 
     const alternativas = [...(q.alternativas || [])];
@@ -196,6 +183,7 @@ function renderQ(q) {
 document.addEventListener('DOMContentLoaded', () => {
     on('btn-acessar', mostrarSeletorBlocos);
     [1,2,3,4,5,6].forEach(i => on(`btn-bloco-${i}`, () => iniciarBloco(i)));
+    
     on('btn-prox', proximaQ);
     on('btn-musica', () => AudioCtrl.toggle('btn-musica', 'tsom'));
     on('btn-voz', () => {
@@ -230,6 +218,4 @@ document.addEventListener('DOMContentLoaded', () => {
             $('ada-command-post')?.classList.remove('active');
         };
     });
-
-    console.log("LabTech 12.1: Quantum Pulse Online.");
 });
