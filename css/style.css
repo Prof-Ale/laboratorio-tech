@@ -1,83 +1,171 @@
 /* ============================================================
-    LABORATÓRIO TECH — TELA DE SELEÇÃO DE BLOCOS
-    INTERVENÇÃO: Restauração da Grade e Boas-Vindas da ADA
+    LABORATÓRIO TECH — CSS v12.0 "PROTOCOL TOTAL"
+    Intervenções: Blindagem da Splash, Restauração da Grade e Reta
+    ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Nunito:ital,wght@0,400;0,700;0,900;1,400&display=swap');
+
+:root {
+    --choco-dark:    #2b1608;
+    --choco-gold:    #d4a017;
+    --choco-cream:   #f5e6c8;
+    --neon-cyan:     #00eaff;
+    --neon-green:    #00ff88;
+    --neon-red:      #ff4444;
+    --bg-dark:       #060610;
+    --font-display: 'Orbitron', sans-serif;
+    --font-body:    'Nunito', sans-serif;
+}
+
+/* RESET TOTAL */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { 
+    width: 100%; height: 100%; overflow: hidden; 
+    background: var(--bg-dark); color: #f0f0f0; 
+    font-family: var(--font-body); 
+}
+
+/* ESTRUTURA DE TELAS */
+.screen {
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 20px; z-index: 10;
+    overflow-y: auto; background: var(--bg-dark);
+}
+.hidden { display: none !important; }
+
+/* ============================================================
+    1. SPLASH SCREEN (ESTILO EXCLUSIVO E PROTEGIDO)
    ============================================================ */
-
-/* Container de Seleção */
-.block-sel-inner {
-    width: 100%;
-    max-width: 600px;
-    margin: auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.splash-inner { 
+    width: 100%; max-width: 480px; text-align: center; margin: auto; 
+    display: flex; flex-direction: column; align-items: center;
 }
 
-/* Frase de Boas-Vindas da ADA */
+.splash-logo { font-family: var(--font-display); font-size: clamp(32px, 10vw, 42px); color: var(--choco-gold); text-shadow: 0 0 25px var(--choco-gold); margin-bottom: 5px; }
+.splash-sub { opacity: 0.8; font-size: 14px; letter-spacing: 1px; margin-bottom: 20px; }
+
+.splash-av { width: 180px; height: 180px; margin: 0 auto 25px; }
+.av-box { width: 100%; height: 100%; border-radius: 40px; border: 4px solid var(--choco-gold); overflow: hidden; background: #000; box-shadow: 0 0 30px var(--neon-cyan); }
+.ada-avatar-asset { width: 100%; height: 100%; object-fit: cover; }
+
+/* Inputs da Splash: Grandes e Imponentes */
+.splash-inner .input-group { width: 100%; margin-top: 10px; display: flex; flex-direction: column; gap: 15px; }
+.splash-inner input[type="text"] { 
+    width: 100%; padding: 22px; 
+    border-radius: 15px; border: 2px solid var(--choco-gold); 
+    background: rgba(0,0,0,0.9); color: var(--neon-cyan); 
+    font-size: 20px; text-align: center; font-family: var(--font-body);
+    font-weight: 700; transition: 0.3s;
+    box-shadow: inset 0 0 15px rgba(212, 160, 23, 0.2);
+}
+.splash-inner input[type="text"]:focus { outline: none; border-color: var(--neon-cyan); box-shadow: 0 0 20px var(--neon-cyan); }
+
+.splash-inner .btn-start { 
+    background: var(--choco-gold); padding: 22px; border: none; border-radius: 15px; 
+    font-family: var(--font-display); font-weight: 900; width: 100%; 
+    color: var(--choco-dark); cursor: pointer; transition: 0.2s;
+    font-size: 18px; text-transform: uppercase;
+    box-shadow: 0 6px 0 #8a6d10, 0 10px 20px rgba(0,0,0,0.4);
+    margin-top: 10px;
+}
+.splash-inner .btn-start:active { transform: translateY(4px); box-shadow: 0 2px 0 #8a6d10; }
+
+/* ============================================================
+    2. SELETOR DE BLOCOS (ESTILO EXCLUSIVO)
+   ============================================================ */
+.selector-inner {
+    width: 100%; max-width: 600px; text-align: center; margin: auto;
+    display: flex; flex-direction: column; align-items: center; gap: 20px;
+}
+
 .ada-welcome-text {
-    font-family: var(--font-display);
-    color: var(--neon-cyan);
-    font-size: 18px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    text-shadow: 0 0 10px var(--neon-cyan);
+    font-family: var(--font-display); color: var(--neon-cyan);
+    font-size: 18px; text-transform: uppercase;
+    text-shadow: 0 0 10px var(--neon-cyan); margin-bottom: 10px;
 }
 
-/* A GRADE DE BOTÕES (O erro estava aqui) */
+/* A Grade de Blocos */
 .block-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 colunas imponentes */
-    gap: 20px;
-    width: 100%;
-    padding: 10px;
+    display: grid; grid-template-columns: repeat(2, 1fr); /* 2 Colunas */
+    gap: 15px; width: 100%; padding: 10px;
 }
 
-/* Botões de Bloco Estilo "Cartão de Acesso" */
 .btn-block {
-    padding: 30px 10px;
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid var(--choco-gold);
-    border-radius: 20px;
-    color: var(--choco-gold);
-    font-family: var(--font-display);
-    font-size: 16px;
-    font-weight: 900;
-    cursor: pointer;
-    transition: 0.3s all;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    padding: 25px 10px; background: rgba(0, 0, 0, 0.8);
+    border: 2px solid var(--choco-gold); border-radius: 18px;
+    color: var(--choco-gold); font-family: var(--font-display);
+    font-size: 16px; font-weight: 900; cursor: pointer;
+    transition: 0.3s all; display: flex; flex-direction: column; align-items: center; gap: 8px;
 }
 
-.btn-block span {
-    font-size: 12px;
-    opacity: 0.7;
-    font-family: var(--font-body);
-    text-transform: none;
+.btn-block span { font-size: 12px; opacity: 0.7; font-family: var(--font-body); text-transform: none; }
+.btn-block:hover { background: var(--choco-gold); color: var(--choco-dark); transform: translateY(-5px); box-shadow: 0 0 20px var(--choco-gold); }
+
+/* ============================================================
+    3. TELA DE JOGO (GAME Engine & HUD)
+   ============================================================ */
+.gw { width: 100%; max-width: 580px; margin: auto; display: flex; flex-direction: column; align-items: center; }
+
+/* Canvas e Reta Numérica (Necessário para o motor gráfico) */
+#canvas-game {
+    width: 100%; height: 130px; /* Altura original */
+    background: rgba(0, 0, 0, 0.9); border-radius: 15px;
+    margin-bottom: 20px; border: 1px solid rgba(212, 160, 23, 0.2);
+    display: block; /* Garante visibilidade */
 }
 
-.btn-block:hover {
-    background: var(--choco-gold);
-    color: var(--choco-dark);
-    transform: translateY(-5px);
-    box-shadow: 0 0 25px var(--choco-gold);
+.game-header { 
+    width: 100%; display: flex; justify-content: space-between; align-items: center; 
+    background: rgba(255,255,255,0.05); padding: 15px; 
+    border-radius: 15px; margin-bottom: 20px;
+}
+.hud-item { display: flex; flex-direction: column; gap: 5px; }
+.hud-label { font-size: 10px; font-weight: 900; color: var(--choco-gold); letter-spacing: 1px; text-transform: uppercase; }
+#tnv { font-family: var(--font-display); font-size: 22px; color: var(--neon-cyan); }
+
+.bar { width: 120px; height: 12px; background: #222; border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,255,255,0.2); }
+.fill { height: 100%; background: var(--neon-green); width: 100%; transition: 0.5s; box-shadow: 0 0 10px var(--neon-green); }
+
+/* Caixa de Pergunta (display do desafio) */
+#conta-display {
+    font-size: clamp(20px, 6vw, 26px); font-weight: 800; text-align: center;
+    padding: 20px 15px; background: rgba(14,14,32,0.9);
+    border-radius: 20px; border: 2px solid var(--neon-cyan);
+    margin-bottom: 20px; box-shadow: 0 0 20px rgba(0, 234, 255, 0.2);
 }
 
-/* Garantia de visibilidade da ADA na Seleção */
-.block-selector .splash-av {
-    margin-bottom: 10px;
-    transform: scale(1.1); /* ADA um pouco maior nas boas-vindas */
+/* Alternativas (Peso e Brilho das Capturas) */
+.alternatives-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
+.ba {
+    padding: 22px 10px; border-radius: 16px; background: #000;
+    border: 2px solid var(--neon-cyan); color: var(--neon-cyan);
+    font-family: var(--font-display); font-size: 20px; font-weight: 900;
+    cursor: pointer; transition: 0.2s; box-shadow: 0 5px 15px rgba(0,0,0,0.4);
 }
+.ba.ok { background: var(--neon-green) !important; color: #000 !important; border-color: #fff !important; box-shadow: 0 0 20px var(--neon-green); }
+.ba.no { background: var(--neon-red) !important; color: #fff !important; border-color: #fff !important; box-shadow: 0 0 20px var(--neon-red); }
 
-/* Ajuste para Celular: 1 coluna se a tela for pequena */
-@media (max-width: 480px) {
-    .block-grid {
-        grid-template-columns: 1fr;
-    }
-    .btn-block {
-        padding: 20px;
-    }
+/* ============================================================
+    4. ADA E CONTROLES LATERAIS
+   ============================================================ */
+#ada-command-post { position: fixed; bottom: 20px; right: 20px; width: 250px; height: 250px; z-index: 100; pointer-events: none; display: none; }
+#ada-command-post.active { display: block !important; }
+.ada-box { width: 100%; height: 100%; border-radius: 50%; border: 4px solid var(--neon-cyan); overflow: hidden; position: relative; box-shadow: 0 0 40px rgba(0, 234, 255, 0.4); }
+.ada-asset { position: absolute; width: 100%; height: 100%; object-fit: cover; }
+.avh { opacity: 0 !important; }
+
+/* Botões Laterais */
+.side-controls { position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 500; }
+.btn-round { width: 45px; height: 45px; border-radius: 12px; background: #000; border: 2px solid var(--choco-gold); color: #fff; cursor: pointer; }
+
+/* MODAIS */
+.modal.active { display: flex !important; }
+.mc { background: var(--bg-dark); border: 2px solid var(--choco-gold); border-radius: 25px; padding: 30px; position: relative; width: 100%; max-width: 450px; text-align: center; }
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+    .block-grid { grid-template-columns: 1fr; }
+    #canvas-game { height: 100px; }
+    #ada-command-post { width: 140px; height: 140px; }
 }
