@@ -60,18 +60,37 @@ function criarPerfilBase(nome, turma, key) {
     };
 }
 
-// 4. ATUALIZA A MEMÓRIA COM BASE NO ERRO (Chamado pelo Diagnostic Engine)
-export function registrarEvolucaoLongitudinal(G, analise) {
-    if (!G.perfilCognitivo) return; // Se por algum motivo o aluno estiver anônimo, ignora
+// 4. ATUALIZA A MEMÓRIA COM BASE NO ERRO (Chamado a cada clique do aluno)
+export function registrarEvolucaoLongitudinal(G, analise, q) {
+    if (!G.perfilCognitivo || !q) return; 
     
     const p = G.perfilCognitivo;
+    const hab = q.bncc || "Geral";
 
-    // Soma os erros no histórico de longo prazo
-    if (analise && analise.categoria) {
+    if (analise && !analise.correto) {
+        // Se errou, aumenta a "febre" dessa habilidade no longo prazo
         p.errosHistoricos[analise.categoria] = (p.errosHistoricos[analise.categoria] || 0) + 1;
+        p.clustersProblema[hab] = (p.clustersProblema[hab] || 0) + 1;
+    } else if (analise && analise.correto) {
+        // Se acertou, a ADA entende que ele está curando a defasagem
+        if (p.clustersProblema[hab] > 0) p.clustersProblema[hab] -= 0.5; 
+        p.questoesResolvidas = (p.questoesResolvidas || 0) + 1;
     }
 
-    // (No próximo passo, vamos injetar os clusters aqui)
+    salvarPerfil(p); 
+}
 
-    salvarPerfil(p); // Salva fisicamente no PC do aluno
+// 5. MOTOR DE PREVISÃO (Microintervenção Pré-Questão)
+export function gerarMicroIntervencao(q, perfil) {
+    if (!perfil || !q) return null;
+    
+    const hab = q.bncc || "Geral";
+    const risco = perfil.clustersProblema[hab] || 0;
+
+    // Se o aluno já errou muito essa mesma habilidade no passado (risco alto)
+    if (risco >= 3) { 
+        return `Atenção, ${perfil.nome}. Nossos registros apontam que este desafio exige cuidado. ${q.dica || 'Analise a reta com calma antes de agir.'}`;
+    }
+    
+    return null; // Se não tem risco, a ADA fica quieta e deixa ele jogar.
 }
