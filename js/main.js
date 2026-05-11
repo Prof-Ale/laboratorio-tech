@@ -9,6 +9,7 @@ import { analisarAlternativa, registrarErro } from './engine/diagnostic-engine.j
 import { renderCv, setAnimando, animarArcos } from './game-engine.js';
 import { AudioCtrl } from './engine/audioController.js'; 
 import { updHUD, narrarContexto, toggleVoz, exibirGameOver } from './ui-manager.js';
+import { initDebugMode, setDebug } from './engine/debug-mode.js';
 
 const $ = (id) => document.getElementById(id);
 const on = (id, fn) => { const el = $(id); if (el) el.onclick = fn; };
@@ -155,6 +156,8 @@ function proximaQ() {
 }
 
 function renderQ(q) {
+    setDebug('qId', q.id); setDebug('qTipo', q.tipo); setDebug('qBncc', q.bncc); setDebug('qDif', q.peso);
+    
     if ($('conta-display')) $('conta-display').textContent = q.display;
     const grid = $('grid-botoes');
     if (grid) grid.innerHTML = '';
@@ -176,6 +179,7 @@ function renderQ(q) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initDebugMode();
     on('btn-acessar', mostrarSeletorBlocos);
     [1,2,3,4,5,6].forEach(i => on(`btn-bloco-${i}`, () => iniciarBloco(i)));
     
