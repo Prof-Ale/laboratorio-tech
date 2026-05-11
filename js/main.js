@@ -110,7 +110,7 @@ async function processarResposta(alt, q) {
         G.historico[hab].acertos++;
     } else {
         G.combo = 0;
-        registrarErro(G, analise); 
+        registrarErro(G, analise, q); // AGORA ELE ENVIA A QUESTÃO 'q'
         const dano = 10 + (analise.peso || 1) * 5;
         G.vida = Math.max(0, G.vida - dano);
     }
