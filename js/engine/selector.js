@@ -115,9 +115,9 @@ export function selQ(blocoId) {
         });
     }
 
-    // 3. SHUFFLE PEDAGÓGICO (Quebra a linearidade chata)
+   // 3. SHUFFLE PEDAGÓGICO (Modo Aleatoriedade Alta)
     const aulasDisponiveis = [...new Set(candidatas.map(q => q.aula || 1))].sort((a,b) => a - b);
-    const aulasParaSorteio = aulasDisponiveis.slice(0, 6); // Sorteia entre as seis aulas mais baixas disponíveis
+    const aulasParaSorteio = aulasDisponiveis.slice(0, 5); // Sorteia entre 5 aulas de uma vez!
     const poolDeSorteio = candidatas.filter(q => aulasParaSorteio.includes(q.aula || 1));
     
     const indiceSorteado = Math.floor(Math.random() * poolDeSorteio.length);
