@@ -17,27 +17,92 @@ const on = (id, fn) => { const el = $(id); if (el) el.onclick = fn; };
 const abrirM = (id) => $(id)?.classList.add('active');
 const fecharM = (id) => $(id)?.classList.remove('active');
 
+/* ============================================================
+   TELEMETRIA E DASHBOARD (PREMIUM EDITION)
+   ============================================================ */
 function atualizarDashboard() {
     const content = $('dash-content');
     if (!content) return;
     
-    let html = "";
     if (!G.historico || Object.keys(G.historico).length === 0) {
-        html = "<p style='text-align:center; opacity:0.5; padding:20px;'>Aguardando coleta de dados BNCC...</p>";
-    } else {
-        Object.entries(G.historico).forEach(([hab, dados]) => {
-            const acertos = dados.acertos || 0;
-            const erros = (dados.erros_conceito || 0) + (dados.erros_calculo || 0);
-            
-            html += `<div class="dash-card">
-                <div style="color:var(--choco-gold); font-weight:bold; font-size:12px; margin-bottom:4px;">${hab}</div>
-                <div style="font-size:11px; color:var(--neon-cyan);">
-                    Sucesso: ${acertos} | Falhas: ${erros}
-                </div>
-            </div>`;
-        });
+        content.innerHTML = "<p style='text-align:center; opacity:0.5; padding:20px;'>Aguardando coleta de dados BNCC...</p>";
+        return;
     }
+
+    // Cabeçalho com o botão de Exportar
+    let html = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; border-bottom: 1px solid var(--choco-gold); padding-bottom: 10px;">
+            <h3 style="color:var(--choco-gold); margin:0; font-family: var(--font-display); font-size: 14px;">RELATÓRIO BNCC</h3>
+            <button id="btn-export-csv" style="background:var(--neon-cyan); color:#000; border:none; padding:6px 12px; border-radius:8px; cursor:pointer; font-weight:900; font-family: var(--font-display); font-size:10px; transition: 0.2s;">📥 EXPORTAR CSV</button>
+        </div>
+        <div style="max-height: 60vh; overflow-y: auto; padding-right: 5px;">
+    `;
+
+    Object.entries(G.historico).forEach(([hab, dados]) => {
+        const total = (dados.acertos || 0) + (dados.erros_conceito || 0) + (dados.erros_calculo || 0);
+        if (total === 0) return;
+
+        const txAcerto = Math.round(((dados.acertos || 0) / total) * 100);
+
+        // O Médico dá o diagnóstico
+        let diagnostico = "";
+        if (dados.erros_conceito > dados.acertos) {
+            diagnostico = `<div style="color: var(--neon-red); margin-top:6px; font-size:11px; font-weight:bold;">⚠️ Bloqueio Conceitual (Exige Revisão de Base)</div>`;
+        } else if (dados.erros_calculo > 0) {
+            diagnostico = `<div style="color: #ffbb33; margin-top:6px; font-size:11px; font-weight:bold;">📐 Falha Operacional (Erro de Atenção/Cálculo)</div>`;
+        } else {
+            diagnostico = `<div style="color: var(--neon-green); margin-top:6px; font-size:11px; font-weight:bold;">✅ Domínio Estabilizado</div>`;
+        }
+
+        html += `
+            <div class="dash-card" style="background:rgba(255,255,255,0.05); border-left:4px solid var(--choco-gold); padding:12px; margin-bottom:12px; border-radius:6px;">
+                <div style="display:flex; justify-content:space-between; font-weight:bold;">
+                    <span style="color:var(--choco-gold); font-size:13px;">${hab}</span>
+                    <span style="color:var(--neon-cyan); font-size:13px;">${txAcerto}% Precisão</span>
+                </div>
+                <div style="font-size:11px; margin-top:6px; opacity:0.8; display: flex; gap: 10px;">
+                    <span style="color: var(--neon-green)">Acertos: ${dados.acertos || 0}</span> | 
+                    <span style="color: var(--neon-red)">Erros Conceito: ${dados.erros_conceito || 0}</span> | 
+                    <span style="color: #ffbb33">Erros Cálculo: ${dados.erros_calculo || 0}</span>
+                </div>
+                <div style="width:100%; height:6px; background:#222; border-radius:3px; margin-top:8px; overflow:hidden;">
+                    <div style="width:${txAcerto}%; height:100%; background:var(--neon-green);"></div>
+                </div>
+                ${diagnostico}
+            </div>`;
+    });
+
+    html += `</div>`; // Fecha a div com scroll
     content.innerHTML = html;
+
+    // Conecta o clique do botão ao gerador de CSV
+    const btnCsv = $('btn-export-csv');
+    if (btnCsv) {
+        btnCsv.onclick = exportarCSV;
+    }
+}
+
+// O Gerador de CSV (Pode colar logo abaixo do atualizarDashboard)
+function exportarCSV() {
+    if (!G.historico) return;
+    let csv = "Habilidade BNCC;Acertos;Erros de Conceito;Erros de Calculo;Precisao (%)\n";
+    
+    Object.entries(G.historico).forEach(([hab, dados]) => {
+        const total = (dados.acertos || 0) + (dados.erros_conceito || 0) + (dados.erros_calculo || 0);
+        if (total === 0) return;
+        const txAcerto = Math.round(((dados.acertos || 0) / total) * 100);
+        csv += `${hab};${dados.acertos || 0};${dados.erros_conceito || 0};${dados.erros_calculo || 0};${txAcerto}%\n`;
+    });
+
+    // Mágica do navegador para forçar download
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.setAttribute("href", url);
+    a.setAttribute("download", `Telemetria_LabTech_${G.nome.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 }
 
 function mostrarSeletorBlocos() {
