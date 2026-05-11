@@ -1,7 +1,7 @@
 /**
- * js/game-engine.js — Versão 7.6 "MathLab Precision Target"
- * Motor de Renderização: Calibração de Trajetória e Arcos Dinâmicos.
- * INTERVENÇÃO: Correção matemática do ponto de destino e normalização de variáveis.
+ * js/game-engine.js — Versão 8.0 "Async Engine"
+ * Motor de Renderização: Implementação do Promise Protocol.
+ * INTERVENÇÃO: Permitir que o Pipeline de Resposta (main.js) aguarde a animação.
  */
 
 let animState = 0;
@@ -9,36 +9,53 @@ let isAnimating = false;
 let currentQ = null;
 let currentB = null; 
 let animId = null;
+let resolveAnimacao = null; // Guarda a promessa de conclusão
 
 export function setAnimando(val) {
     isAnimating = val;
     if (!val) {
         animState = 0;
         if (animId) cancelAnimationFrame(animId);
+        if (resolveAnimacao) {
+            resolveAnimacao(); // Se for cancelado bruscamente, libera o Maestro
+            resolveAnimacao = null;
+        }
     }
 }
 
 /**
- * Inicia a animação de salto
+ * Inicia a animação de salto e retorna uma Promise.
+ * O main.js usará 'await animarArcos(...)' para pausar a execução.
  */
 export function animarArcos(q, bOverride = null) {
-    if (!q || (q.tipo !== "reta" && q.tipo !== "sinais")) return;
-    
-    if (animId) cancelAnimationFrame(animId);
-    
-    // Normaliza os parâmetros da questão
-    const params = getParams(q, bOverride);
-    
-    currentQ = q;
-    currentB = params.b; 
-    
-    isAnimating = true;
-    animState = 0;
-    loopAnimacao();
+    return new Promise((resolve) => {
+        if (!q || (q.tipo !== "reta" && q.tipo !== "sinais")) {
+            resolve(); // Se não for reta, conclui imediatamente
+            return;
+        }
+        
+        if (animId) cancelAnimationFrame(animId);
+        
+        // Se já havia uma animação pendente, resolve ela antes de começar a nova
+        if (resolveAnimacao) resolveAnimacao();
+        resolveAnimacao = resolve;
+        
+        const params = getParams(q, bOverride);
+        
+        currentQ = q;
+        currentB = params.b; 
+        
+        isAnimating = true;
+        animState = 0;
+        loopAnimacao();
+    });
 }
 
 function loopAnimacao() {
-    if (!isAnimating || !currentQ) return;
+    if (!isAnimating || !currentQ) {
+        if (resolveAnimacao) resolveAnimacao();
+        return;
+    }
     
     animState += 0.03; // Velocidade de cruzeiro
     
@@ -46,6 +63,12 @@ function loopAnimacao() {
         animState = 1;
         isAnimating = false;
         renderCv(currentQ, currentB); 
+        
+        // A MÁGICA ACONTECE AQUI: Avisa o main.js que terminou
+        if (resolveAnimacao) {
+            resolveAnimacao();
+            resolveAnimacao = null;
+        }
         return;
     }
     
@@ -78,7 +101,6 @@ export function renderCv(q, bOverride = null) {
     if (q && (q.tipo === "reta" || q.tipo === "sinais")) {
         desenharReta(ctx, cssWidth, cssHeight);
         
-        // CIRURGIA: Normalização para evitar erros de alvo
         const { a, b } = getParams(q, bOverride);
         
         if (a !== undefined && b !== undefined && (isAnimating || animState > 0)) {
@@ -92,11 +114,10 @@ export function renderCv(q, bOverride = null) {
 }
 
 /**
- * AUXILIAR: Normaliza os dados para garantir que A e B sejam números
+ * AUXILIAR: Normaliza os dados
  */
 function getParams(q, bOverride) {
     const a = Number(q.a ?? q.inicio ?? q.valorInicial ?? 0);
-    // Se bOverride existir (clique do aluno), ele manda. Senão, usa o b do JSON.
     const bRaw = bOverride !== null ? bOverride : (q.b ?? q.salto ?? q.valor ?? 0);
     const b = Number(bRaw);
     return { a, b };
@@ -156,7 +177,7 @@ function desenharPontoPartida(ctx, w, h, a) {
 
 function desenharArco(ctx, w, h, a, b, progresso) {
     const startX = getX(a, w);
-    const destino = a + b; // A MATEMÁTICA REAL: Destino é a soma
+    const destino = a + b; 
     const endX = getX(destino, w);
     
     const yCenter = h - 40;
@@ -165,7 +186,6 @@ function desenharArco(ctx, w, h, a, b, progresso) {
 
     ctx.save();
     
-    // Rastro (Target)
     ctx.beginPath();
     ctx.setLineDash([4, 4]);
     ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
@@ -177,7 +197,6 @@ function desenharArco(ctx, w, h, a, b, progresso) {
     }
     ctx.stroke();
 
-    // Arco Animado
     ctx.beginPath();
     ctx.setLineDash([]);
     ctx.strokeStyle = corArco;
@@ -193,7 +212,6 @@ function desenharArco(ctx, w, h, a, b, progresso) {
     }
     ctx.stroke();
 
-    // Bolinha
     let atualX = startX + (endX - startX) * progresso;
     let atualY = yCenter - alturaArco * (1 - Math.pow(2 * progresso - 1, 2));
 
