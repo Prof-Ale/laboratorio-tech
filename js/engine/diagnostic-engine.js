@@ -1,44 +1,26 @@
 /**
- * diagnostic-engine.js v2.0 — "ADA & Gemini Edition"
- * Núcleo de Inteligência Pedagógica do LabTech
+ * diagnostic-engine.js v3.0 — "LabTech Biopsy Edition"
+ * Núcleo de Inteligência Pedagógica e Taxonomia de Erros.
+ * INTERVENÇÃO: Unificação de telemetria para o Dashboard e suporte ao Normalizador.
  */
 
 /* ============================================================
-   CLUSTERS OFICIAIS (A Inteligência do Bloco 1 ao 6)
+   CLUSTERS DE DESVIO (Para o Selector-Engine decidir a rota)
 ============================================================ */
 export const CLUSTERS = {
-    "NUMEROCENTRISMO": [
-        "valorposicional_ignora_ordem",
-        "decomposicao_confunde_dezena_unidade",
-        "inteiros_confunde_sinal_adicao"
-    ],
-    "FRACIONARIO_DECIMAL": [
-        "fracao_soma_denominadores",
-        "fracao_soma_direta_bases_diferentes",
-        "decimal_soma_desalinha_virgula",
-        "decimal_multiplicacao_ignora_casas_totais"
-    ],
-    "MODELAGEM_E_ALGEBRA": [
-        "problema_ignora_condicao_inteira",
-        "modelagem_interpreta_dobro_como_soma",
-        "equacao_mantem_sinal_transposicao",
-        "algebra_distribuitiva_incompleta"
-    ],
-    "ESTRUTURA_ESPACIAL": [
-        "geometry_confunde_perimetro_area",
-        "poligono_generaliza_triangulo",
-        "pitagoras_omite_raiz_final"
-    ],
-    "LITERACIA_ESTATISTICA": [
-        "media_apenas_soma",
-        "critica_ignora_outlier_na_media",
-        "grafico_leitura_passiva"
-    ]
+    "NUMEROCENTRISMO": ["valorposicional_ignora_ordem", "decomposicao_confunde_dezena_unidade", "inteiros_confunde_sinal_adicao"],
+    "FRACIONARIO_DECIMAL": ["fracao_soma_denominadores", "fracao_soma_direta_bases_diferentes", "decimal_soma_desalinha_virgula"],
+    "MODELAGEM_E_ALGEBRA": ["problema_ignora_condicao_inteira", "modelagem_interpreta_dobro_como_soma", "equacao_mantem_sinal_transposicao"],
+    "ESTRUTURA_ESPACIAL": ["geometry_confunde_perimetro_area", "poligono_generaliza_triangulo"],
+    "LITERACIA_ESTATISTICA": ["media_apenas_soma", "grafico_leitura_passiva"]
 };
 
-/* ============================================================
-   MENSAGENS DE INTERVENÇÃO (ADA Falando com o Aluno)
-============================================================ */
+/**
+ * Categorias de Erro (Para o Dashboard e ADA)
+ * conceito: Erro de base, exige RECOMPOSIÇÃO.
+ * procedimento: Erro de método, exige REFORÇO.
+ * calculo: Erro de atenção, exige PRÁTICA.
+ */
 export const INTERVENCOES = {
     conceito: "Precisamos voltar à base. O conceito por trás dessa operação ainda não está claro.",
     procedimento: "Você entendeu a ideia, mas o 'passo a passo' falhou. Vamos revisar o método?",
@@ -47,81 +29,65 @@ export const INTERVENCOES = {
 };
 
 /* ============================================================
-   MECANISMO DE ANÁLISE (O Coração da ADA)
+   MECANISMO DE ANÁLISE
 ============================================================ */
 
 export function analisarAlternativa(alternativa) {
-    if (!alternativa) return { correto: false, erro: 'invalido' };
+    if (!alternativa) return { correto: false, categoria: 'calculo', descricao: 'Erro não catalogado.' };
 
-    if (alternativa.tipo === 'acerto') {
+    // Se a alternativa já diz que é acerto, o médico dá alta
+    if (alternativa.tipo === 'acerto' || alternativa.correto === true) {
         return { correto: true };
     }
 
+    // Se for erro, extrai a "biopsia" da alternativa
     return {
         correto: false,
-        categoria: alternativa.categoria || 'calculo',
-        erro: alternativa.erro || 'erro_generico',
-        descricao: alternativa.descricao || 'Erro identificado.',
+        categoria: alternativa.categoria || 'calculo', // conceito, procedimento, calculo
+        erroId: alternativa.erro || 'erro_generico',   // ID para o Cluster
+        descricao: alternativa.descricao || 'Análise técnica em andamento.',
         peso: alternativa.peso || 1 
     };
 }
 
 /* ============================================================
-   REGISTRO E CÁLCULO (Estado do Jogo G)
+   REGISTRO DE TELEMETRIA (Dashboard & IA)
 ============================================================ */
 
 export function registrarErro(G, analise) {
-    // 1. Blindagem profunda: Garante que TODA a estrutura exista, 
-    // mesmo se vier de um save antigo corrompido.
-    if (!G.diagnostico) G.diagnostico = {};
-    if (!G.diagnostico.logs) G.diagnostico.logs = [];
-    if (!G.diagnostico.scores) G.diagnostico.scores = {};
+    // 1. Garante estruturas de dados
+    if (!G.historico) G.historico = {};
+    if (!G.diagnostico) G.diagnostico = { logs: [], scores: {} };
 
-    // 2. Agora o push funciona sempre!
+    // Pegamos a habilidade atual do estado global (setada pelo Selector)
+    const hab = G.lastBncc || "Geral";
+
+    // 2. ALIMENTA O DASHBOARD (Estrutura ui-manager.js)
+    if (!G.historico[hab]) {
+        G.historico[hab] = { acertos: 0, erros_conceito: 0, erros_calculo: 0, desc: "Habilidade BNCC" };
+    }
+
+    if (analise.categoria === 'conceito') {
+        G.historico[hab].erros_conceito++;
+    } else {
+        // Procedimento e cálculo entram como 'falha operacional' no dashboard simples
+        G.historico[hab].erros_calculo++;
+    }
+
+    // 3. ALIMENTA A IA (Para o Selector-Engine futuro)
     G.diagnostico.logs.push({
-        erro: analise.erro,
+        bncc: hab,
+        erro: analise.erroId,
         categoria: analise.categoria,
-        peso: analise.peso,
         timestamp: Date.now()
     });
 
-    // 3. Atualiza os Clusters (usando o try/catch para segurança extra)
-    try {
-        for (const [cluster, erros] of Object.entries(CLUSTERS)) {
-            // Verifica se o cluster no constants é objeto (novo padrão QA) ou array (padrão antigo)
-            const listaErros = Array.isArray(erros) ? erros : (erros.lista || []);
-            
-            if (listaErros.includes(analise.erro)) {
-                G.diagnostico.scores[cluster] = (G.diagnostico.scores[cluster] || 0) + analise.peso;
-            }
+    // Atualiza os Clusters para detecção de alertas críticos
+    for (const [cluster, listaErros] of Object.entries(CLUSTERS)) {
+        if (listaErros.includes(analise.erroId)) {
+            G.diagnostico.scores[cluster] = (G.diagnostico.scores[cluster] || 0) + analise.peso;
         }
-    } catch(e) {
-        console.warn("[Diagnóstico] Falha ao processar cluster, mas o jogo segue.", e);
     }
-}
-
-/* ============================================================
-   FUNÇÕES DE RELATÓRIO E ALERTA DA ADA
-============================================================ */
-
-export function detectarAlertaCritico(G) {
-    if (!G.diagnostico || !G.diagnostico.scores) return null;
-
-    const alertas = Object.entries(G.diagnostico.scores)
-        .filter(([cluster, score]) => score >= 6) // Peso de atenção crítica
-        .map(([cluster]) => cluster);
-
-    return alertas.length > 0 ? alertas : null;
-}
-
-export function gerarResumoGeral(G) {
-    const scores = G.diagnostico?.scores || {};
-    const dominante = Object.entries(scores).sort((a, b) => b[1] - a[1])[0];
-
-    return {
-        perfil: scores,
-        clusterDominante: dominante ? dominante[0] : "Estável",
-        nivelDificuldade: dominante ? (dominante[1] > 10 ? "Crítico" : "Em evolução") : "Iniciante",
-        alertas: detectarAlertaCritico(G)
-    };
+    
+    console.log(`[MEDICO] Erro registrado em ${hab}. Categoria: ${analise.categoria}`);
 }
