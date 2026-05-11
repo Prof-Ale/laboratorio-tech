@@ -1,6 +1,6 @@
 /**
- * main.js — v12.3 "Neural Calibration"
- * Intervenções: Cálculo de delta para saltos e persistência de telemetria.
+ * main.js — v12.4 "LabTech Command Center"
+ * Prioridade: Dashboard (Telemetria) e Calibração de Trajetória.
  */
 import { G } from './engine/gameState.js';
 import { selQ, limparHistoricoSessao } from './engine/selector.js';
@@ -16,23 +16,25 @@ const abrirM = (id) => $(id)?.classList.add('active');
 const fecharM = (id) => $(id)?.classList.remove('active');
 
 /* ============================================================
-   TELEMETRIA E DASHBOARD
+   TELEMETRIA E DASHBOARD (PRIORIDADE)
    ============================================================ */
 function atualizarDashboard() {
     const content = $('dash-content');
     if (!content) return;
     
     let html = "";
-    // Garantia de que o histórico existe e tem dados
+    // Verificação robusta do histórico
     if (!G.historico || Object.keys(G.historico).length === 0) {
-        html = "<p style='text-align:center; opacity:0.5; padding:20px;'>Nenhuma telemetria BNCC registrada.</p>";
+        html = "<p style='text-align:center; opacity:0.5; padding:20px;'>Aguardando coleta de dados BNCC...</p>";
     } else {
         Object.entries(G.historico).forEach(([hab, dados]) => {
-            const erros = (dados.erros_conceito || 0) + (dados.erros_calculo || 0);
+            const totalAcertos = dados.acertos || 0;
+            const totalErros = (dados.erros_conceito || 0) + (dados.erros_calculo || 0);
+            
             html += `<div class="dash-card">
-                <div style="color:var(--choco-gold); font-weight:bold; font-size:12px;">${hab}</div>
-                <div style="font-size:11px; color:var(--neon-cyan); margin-top:4px;">
-                    Acertos: ${dados.acertos || 0} | Erros: ${erros}
+                <div style="color:var(--choco-gold); font-weight:bold; font-size:12px; margin-bottom:4px;">${hab}</div>
+                <div style="font-size:11px; color:var(--neon-cyan);">
+                    Sucesso: ${totalAcertos} | Falhas: ${totalErros}
                 </div>
             </div>`;
         });
@@ -41,13 +43,13 @@ function atualizarDashboard() {
 }
 
 /* ============================================================
-   FLUXO DE NAVEGAÇÃO
+   NAVEGAÇÃO E FLUXO
    ============================================================ */
 function mostrarSeletorBlocos() {
     G.nome = $('nome-cientista')?.value.trim() || 'Cientista';
     G.turma = $('turma-cientista')?.value.trim() || '7ºA';
     
-    // Inicializa o histórico se estiver nulo para não quebrar o Dash
+    // Inicialização Crítica: Se o histórico não existir, cria o mapa
     if (!G.historico) G.historico = {};
 
     AudioCtrl.init();
@@ -62,9 +64,9 @@ function iniciarBloco(id) {
     G.currentBlock = id;
     G.vida = 100;
     G.acertos = 0;
-    G.erros = 0;
     G.combo = 0;
     
+    // Limpa apenas o histórico de questões (IDs), mantém a telemetria BNCC global
     limparHistoricoSessao();
 
     document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
@@ -86,51 +88,57 @@ function atualizarHudVisual() {
 }
 
 /* ============================================================
-   LÓGICA DE RESPOSTA E ANIMAÇÃO
+   LÓGICA DE RESPOSTA E CALIBRAÇÃO DE ARCO
    ============================================================ */
 function processarResposta(alt, q) {
     if (G.respondeu) return;
     G.respondeu = true;
 
     /**
-     * CALIBRAÇÃO DO SALTO:
-     * O valor do botão (alt.valor) é a COORDENADA DE DESTINO.
-     * O motor gráfico precisa do DESLOCAMENTO (Salto).
-     * Cálculo: Salto = Destino - Início
+     * CALIBRAÇÃO DE MIRA:
+     * O motor gráfico precisa do DESLOCAMENTO (Delta).
+     * Se o aluno clicou no resultado 'X', o pulo deve ser 'X - Início'.
      */
-    const pontoA = Number(q.a || q.inicio || 0);
-    const pontoB = Number(alt.valor);
-    const deslocamento = pontoB - pontoA;
+    const inicio = Number(q.a || q.inicio || 0);
+    const destino = Number(alt.valor);
+    const saltoCalculado = destino - inicio;
 
-    // Dispara a animação com o deslocamento real
-    animarArcos(q, deslocamento); 
+    // Dispara animação com o deslocamento relativo correto
+    animarArcos(q, saltoCalculado); 
 
     const analise = analisarAlternativa(alt);
-    const feedbackTexto = analise.correto ? q.passo : (q.dica || analise.descricao);
     
+    // Feedback Escrito
     const fbContainer = $('fb');
     if (fbContainer) {
-        fbContainer.textContent = feedbackTexto;
+        fbContainer.textContent = analise.correto ? q.passo : (q.dica || analise.descricao);
         fbContainer.style.display = 'block';
     }
 
+    // Estilização dos botões de alternativa
     document.querySelectorAll('.ba').forEach(b => {
         b.classList.add('dis');
         if (String(b.textContent) === String(q.res)) b.classList.add('ok');
         if (String(b.textContent) === String(alt.valor) && !analise.correto) b.classList.add('no');
     });
 
+    // Registro de Telemetria (Dashboard)
     if (analise.correto) {
         G.acertos++; G.combo++;
-        narrarContexto(feedbackTexto);
+        // Alimenta o histórico BNCC mesmo no acerto para o Dashboard
+        const hab = q.bncc || "Geral";
+        if (!G.historico[hab]) G.historico[hab] = { acertos: 0, erros_conceito: 0, erros_calculo: 0 };
+        G.historico[hab].acertos++;
+        
+        narrarContexto(q.passo);
     } else {
         G.combo = 0;
-        G.erros++;
-        // Envia para o Diagnostic Engine para alimentar o Dashboard
-        registrarErro(G, analise);
+        // O Diagnostic Engine faz o registro detalhado do erro
+        registrarErro(G, analise); 
+        
         const dano = 10 + (analise.peso || 1) * 5;
-        G.vida = Math.max(0, G.vida - dano);
-        narrarContexto(feedbackTexto);
+        G.vida = Math.max(0, G.vida - dno);
+        narrarContexto(q.dica || analise.descricao);
     }
     
     atualizarHudVisual();
@@ -178,7 +186,7 @@ function renderQ(q) {
 }
 
 /* ============================================================
-   INICIALIZAÇÃO
+   INICIALIZAÇÃO E EVENTOS
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
     on('btn-acessar', mostrarSeletorBlocos);
