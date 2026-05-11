@@ -1,18 +1,15 @@
 /**
- * js/game-engine.js — Versão 7.5 "MathLab Render Dynamic Arcs"
- * Motor de Renderização: Foco em Saltos Dinâmicos e Sincronia de Resposta.
- * INTERVENÇÃO: Adição de suporte a saltoOverride para animação de escolhas.
+ * js/game-engine.js — Versão 7.6 "MathLab Precision Target"
+ * Motor de Renderização: Calibração de Trajetória e Arcos Dinâmicos.
+ * INTERVENÇÃO: Correção matemática do ponto de destino e normalização de variáveis.
  */
 
 let animState = 0;
 let isAnimating = false;
 let currentQ = null;
-let currentB = null; // Armazena o valor do salto atual (fixo ou override)
+let currentB = null; 
 let animId = null;
 
-/**
- * Controla o estado global de animação
- */
 export function setAnimando(val) {
     isAnimating = val;
     if (!val) {
@@ -22,17 +19,18 @@ export function setAnimando(val) {
 }
 
 /**
- * Inicia a animação de salto na reta numérica
- * INTERVENÇÃO: Agora aceita o valor do salto escolhido pelo aluno (bOverride)
+ * Inicia a animação de salto
  */
 export function animarArcos(q, bOverride = null) {
     if (!q || (q.tipo !== "reta" && q.tipo !== "sinais")) return;
     
     if (animId) cancelAnimationFrame(animId);
     
+    // Normaliza os parâmetros da questão
+    const params = getParams(q, bOverride);
+    
     currentQ = q;
-    // Prioriza o valor clicado pelo aluno, se não houver, usa o do banco
-    currentB = bOverride !== null ? bOverride : (q.b ?? q.salto ?? q.valor);
+    currentB = params.b; 
     
     isAnimating = true;
     animState = 0;
@@ -42,12 +40,12 @@ export function animarArcos(q, bOverride = null) {
 function loopAnimacao() {
     if (!isAnimating || !currentQ) return;
     
-    animState += 0.025; // Velocidade do "pulo"
+    animState += 0.03; // Velocidade de cruzeiro
     
     if (animState >= 1) {
         animState = 1;
         isAnimating = false;
-        renderCv(currentQ, currentB); // Frame final
+        renderCv(currentQ, currentB); 
         return;
     }
     
@@ -57,21 +55,15 @@ function loopAnimacao() {
 
 /**
  * Renderizador Principal
- * INTERVENÇÃO: bOverride permite desenhar saltos que não estão pré-definidos no JSON
  */
 export function renderCv(q, bOverride = null) {
     const cv = document.getElementById("canvas-game");
     if (!cv) return;
     const ctx = cv.getContext("2d");
 
-    if (isAnimating && currentQ && q.id !== currentQ.id) {
-        setAnimando(false);
-    }
-
     const parentWidth = cv.parentElement ? cv.parentElement.clientWidth : 580;
     const cssWidth = Math.min(parentWidth, 580) || 580;
     const cssHeight = 130;
-    
     const dpr = window.devicePixelRatio || 1;
     
     cv.width = cssWidth * dpr;
@@ -86,11 +78,9 @@ export function renderCv(q, bOverride = null) {
     if (q && (q.tipo === "reta" || q.tipo === "sinais")) {
         desenharReta(ctx, cssWidth, cssHeight);
         
-        // Determina Ponto de Partida (A) e Valor do Salto (B)
-        const a = q.a ?? q.inicio ?? q.valorInicial;
-        const b = bOverride !== null ? bOverride : (q.b ?? q.salto ?? q.valor);
+        // CIRURGIA: Normalização para evitar erros de alvo
+        const { a, b } = getParams(q, bOverride);
         
-        // Lógica de exibição: Arco animado ou Ponto Estático
         if (a !== undefined && b !== undefined && (isAnimating || animState > 0)) {
             desenharArco(ctx, cssWidth, cssHeight, a, b, animState);
         } else if (a !== undefined) {
@@ -101,8 +91,19 @@ export function renderCv(q, bOverride = null) {
     }
 }
 
+/**
+ * AUXILIAR: Normaliza os dados para garantir que A e B sejam números
+ */
+function getParams(q, bOverride) {
+    const a = Number(q.a ?? q.inicio ?? q.valorInicial ?? 0);
+    // Se bOverride existir (clique do aluno), ele manda. Senão, usa o b do JSON.
+    const bRaw = bOverride !== null ? bOverride : (q.b ?? q.salto ?? q.valor ?? 0);
+    const b = Number(bRaw);
+    return { a, b };
+}
+
 /* ========================================================
-    UTILITÁRIOS E DESENHO (Preservados)
+    SISTEMA DE COORDENADAS E DESENHO
    ======================================================== */
 
 function getX(val, width) {
@@ -116,7 +117,6 @@ function getX(val, width) {
 
 function desenharReta(ctx, w, h) {
     const yCenter = h - 40; 
-
     ctx.beginPath();
     ctx.moveTo(20, yCenter);
     ctx.lineTo(w - 20, yCenter);
@@ -129,20 +129,15 @@ function desenharReta(ctx, w, h) {
 
     for (let i = -10; i <= 10; i++) {
         const x = getX(i, w);
-        const isDestaque = (i === 0);
-        
         ctx.beginPath();
         ctx.moveTo(x, yCenter - 6);
         ctx.lineTo(x, yCenter + 6);
-        ctx.strokeStyle = isDestaque ? "#00e5ff" : "rgba(255, 255, 255, 0.4)";
-        ctx.lineWidth = isDestaque ? 3 : 1.5;
+        ctx.strokeStyle = (i === 0) ? "#00e5ff" : "rgba(255, 255, 255, 0.4)";
+        ctx.lineWidth = (i === 0) ? 3 : 1.5;
         ctx.stroke();
 
-        ctx.fillStyle = isDestaque ? "#00e5ff" : "rgba(255, 255, 255, 0.8)";
-        const saltoTextos = w < 400 ? 4 : 2;
-        if (i % saltoTextos === 0 || i === 0) {
-            ctx.fillText(i, x, yCenter + 22);
-        }
+        ctx.fillStyle = (i === 0) ? "#00e5ff" : "rgba(255, 255, 255, 0.8)";
+        if (i % 2 === 0 || i === 0) ctx.fillText(i, x, yCenter + 22);
     }
 }
 
@@ -161,27 +156,28 @@ function desenharPontoPartida(ctx, w, h, a) {
 
 function desenharArco(ctx, w, h, a, b, progresso) {
     const startX = getX(a, w);
-    const endX = getX(a + Number(b), w); // Garante que b seja tratado como número
+    const destino = a + b; // A MATEMÁTICA REAL: Destino é a soma
+    const endX = getX(destino, w);
+    
     const yCenter = h - 40;
     const alturaArco = 60; 
-
     const corArco = b >= 0 ? "#00ff88" : "#ff4444"; 
 
     ctx.save();
     
-    // Rastro pontilhado
+    // Rastro (Target)
     ctx.beginPath();
     ctx.setLineDash([4, 4]);
     ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
     ctx.lineWidth = 2;
-    for (let t = 0; t <= 1; t += 0.02) {
+    for (let t = 0; t <= 1; t += 0.05) {
         let cx = startX + (endX - startX) * t;
         let cy = yCenter - alturaArco * (1 - Math.pow(2 * t - 1, 2));
         if (t === 0) ctx.moveTo(cx, cy); else ctx.lineTo(cx, cy);
     }
     ctx.stroke();
 
-    // Arco de movimento
+    // Arco Animado
     ctx.beginPath();
     ctx.setLineDash([]);
     ctx.strokeStyle = corArco;
@@ -197,7 +193,7 @@ function desenharArco(ctx, w, h, a, b, progresso) {
     }
     ctx.stroke();
 
-    // Indicador de posição atual
+    // Bolinha
     let atualX = startX + (endX - startX) * progresso;
     let atualY = yCenter - alturaArco * (1 - Math.pow(2 * progresso - 1, 2));
 
@@ -219,6 +215,6 @@ function desenharFundoLogico(ctx, w, h) {
     ctx.textAlign = "center";
     ctx.font = "italic 13px 'Nunito'";
     ctx.fillStyle = "rgba(0, 229, 255, 0.5)";
-    ctx.fillText("PROCESSADOR DE SINAIS ATIVO", w / 2, h / 2 + 5);
+    ctx.fillText("SISTEMA DE PROCESSAMENTO ATIVO", w / 2, h / 2 + 5);
     ctx.restore();
 }
