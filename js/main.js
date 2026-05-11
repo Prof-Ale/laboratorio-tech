@@ -1,11 +1,11 @@
 /**
- * main.js — v12.0 "LabTech Quantum Logic"
- * Intervenções: Ativação de saltos dinâmicos e restauração do shuffle de questões.
+ * main.js — v12.1 "LabTech Quantum Pulse"
+ * Intervenção: Substituição de renderCv por animarArcos no gatilho de resposta.
  */
 import { G } from './engine/gameState.js';
 import { selQ, limparHistoricoSessao } from './engine/selector.js';
 import { analisarAlternativa, registrarErro } from './engine/diagnostic-engine.js';
-import { renderCv, setAnimando } from './game-engine.js';
+import { renderCv, setAnimando, animarArcos } from './game-engine.js'; // Importação do motor de animação
 import { AudioCtrl } from './engine/audioController.js'; 
 import { updHUD, narrarContexto, toggleVoz, exibirGameOver } from './ui-manager.js';
 
@@ -79,10 +79,9 @@ function iniciarBloco(id) {
     G.currentBlock = id;
     G.vida = 100;
     G.acertos = 0;
-    G.erros = 0; // Reset de erros adicionado para v12
+    G.erros = 0;
     G.combo = 0;
     
-    // INTERVENÇÃO: Força o reset do seletor para garantir novo shuffle
     limparHistoricoSessao();
 
     document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
@@ -111,9 +110,8 @@ function processarResposta(alt, q) {
     if (G.respondeu) return;
     G.respondeu = true;
 
-    // INTERVENÇÃO CIRÚRGICA: Dispara o motor de animação com o valor do salto
-    setAnimando(true);
-    renderCv(q, alt.valor); 
+    // INTERVENÇÃO DE ALTA PRECISÃO: Chama o motor de animação de pulo
+    animarArcos(q, alt.valor); 
 
     const analise = analisarAlternativa(alt);
     const feedbackTexto = analise.correto ? q.passo : (q.dica || analise.descricao);
@@ -156,6 +154,7 @@ function proximaQ() {
     G.respondeu = false;
     animarAda('idle');
     
+    // Reseta o motor gráfico para a nova questão
     setAnimando(false);
 
     const fbContainer = $('fb');
@@ -175,7 +174,7 @@ function renderQ(q) {
     if (grid) grid.innerHTML = '';
     $('btn-prox')?.classList.add('hidden');
     
-    // Renderiza a base (reta numérica) sem saltos ainda
+    // Desenha o estado inicial da reta
     renderCv(q);
 
     const alternativas = [...(q.alternativas || [])];
@@ -197,11 +196,8 @@ function renderQ(q) {
 document.addEventListener('DOMContentLoaded', () => {
     on('btn-acessar', mostrarSeletorBlocos);
     [1,2,3,4,5,6].forEach(i => on(`btn-bloco-${i}`, () => iniciarBloco(i)));
-    
     on('btn-prox', proximaQ);
-    
     on('btn-musica', () => AudioCtrl.toggle('btn-musica', 'tsom'));
-    
     on('btn-voz', () => {
         toggleVoz();
         if ($('tvoz')) $('tvoz').textContent = G.voz ? "ON" : "OFF";
@@ -235,5 +231,5 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     });
 
-    console.log("LabTech 12.0: Quantum Logic Online.");
+    console.log("LabTech 12.1: Quantum Pulse Online.");
 });
