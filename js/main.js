@@ -1,7 +1,7 @@
 /**
- * main.js — v13.0 "LabTech Async Pipeline"
- * Prioridade: Fim das Race Conditions. Orquestração sequencial de eventos.
- * Fluxo: Diagnóstico -> HUD -> ADA -> Canvas -> Liberação.
+ * main.js — v13.1 "LabTech Sniper Pace"
+ * Prioridade: Fim das Race Conditions + Ritmo Dinâmico (Overlap).
+ * Fluxo: Diagnóstico -> HUD -> ADA (Background) + Canvas (Espera Pulo) -> Liberação.
  */
 import { G } from './engine/gameState.js';
 import { selQ, limparHistoricoSessao } from './engine/selector.js';
@@ -81,7 +81,6 @@ function atualizarHudVisual() {
 /* ============================================================
    PIPELINE ASSÍNCRONO DE RESPOSTA (O MAESTRO)
    ============================================================ */
-// INTERVENÇÃO: A função agora é 'async' para aguardar cada etapa terminar
 async function processarResposta(alt, q) {
     if (G.respondeu) return;
     G.respondeu = true;
@@ -116,14 +115,13 @@ async function processarResposta(alt, q) {
     }
     atualizarHudVisual(); // Mostra o dano/vida atualizada
 
-    // --- ETAPA 3: ADA ENTRA EM AÇÃO (Avatar e Áudio) ---
-    // O await fará o código esperar a ADA terminar de falar/animar 
-    // (Isso funcionará 100% no próximo passo, quando refatorarmos o ui-manager)
-    await narrarContexto(feedbackTexto);
+    // --- ETAPA 3: ADA (ÁUDIO E VÍDEO EM BACKGROUND) ---
+    // Removido o 'await'. A ADA fala enquanto o resto acontece.
+    // Passamos 'analise.correto' para engatilhar a expressão certa.
+    narrarContexto(feedbackTexto, analise.correto);
 
     // --- ETAPA 4: MOTOR GRÁFICO (Canvas) ---
-    // O await fará o sistema esperar a bolinha terminar de pular
-    // (Funcionará 100% quando refatorarmos o game-engine)
+    // Esperamos APENAS a animação do salto da bolinha
     await animarArcos(q, deslocamento);
 
     // --- ETAPA 5: LIBERAÇÃO (Feedback e Próximo Desafio) ---
