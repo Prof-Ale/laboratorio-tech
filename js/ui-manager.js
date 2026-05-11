@@ -1,13 +1,12 @@
 /**
- * ui-manager.js - Versão 4.3 (MathLab Audio & Visual Stabilized - ADA Final)
- * Núcleo de Interface, Acessibilidade (DUA) e Telemetria Visual
+ * ui-manager.js - Versão 5.0 (Async ADA & Visual Stabilized)
+ * Núcleo de Interface, Acessibilidade (DUA) e Telemetria Visual.
+ * INTERVENÇÃO: Implementação do Promise Protocol no Áudio e Vídeo.
  */
 
 import { G } from './engine/gameState.js';
 
 const bgm = document.getElementById("bgm");
-
-// === SISTEMA DE NARRAÇÃO (ADA TTS) ===
 
 if (typeof window !== 'undefined' && window.speechSynthesis) {
     const carregarVozes = () => { window.speechSynthesis.getVoices(); };
@@ -15,70 +14,70 @@ if (typeof window !== 'undefined' && window.speechSynthesis) {
     carregarVozes();
 }
 
+// === SISTEMA DE NARRAÇÃO ASSÍNCRONO (PROMISE PROTOCOL) ===
+
 /**
- * ADA narra o texto para o estudante (Inclusão e Engajamento)
+ * ADA narra o texto para o estudante (Inclusão e Engajamento).
+ * Retorna uma Promise que resolve quando a fala terminar.
  */
 export function narrarContexto(t) {
-    try {
-        if (!window.speechSynthesis) {
-            console.warn("[ADA-Voz] API de voz não suportada neste navegador.");
-            return;
+    return new Promise((resolve) => {
+        try {
+            if (!window.speechSynthesis || G.voz === false) {
+                // Se a voz estiver desligada ou não suportada, resolve imediatamente
+                resolve();
+                return;
+            }
+
+            // Cancela qualquer fala pendente para não encavalar
+            window.speechSynthesis.cancel();
+
+            const textoLimpo = t.replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, ' ');
+            const u = new SpeechSynthesisUtterance(textoLimpo);
+            
+            window.adaUtterance = u; 
+
+            u.lang = "pt-BR";
+            u.volume = 1;
+            u.rate = 1.1; 
+
+            const vozes = window.speechSynthesis.getVoices();
+            let vozBR = vozes.find(x => x.lang.includes('pt') && (
+                x.name.includes('Maria') || 
+                x.name.includes('Luciana') || 
+                x.name.includes('Francisca') || 
+                x.name.includes('Vitória') ||
+                x.name.includes('Google') ||
+                x.name.includes('Female') ||
+                x.name.includes('Feminino')
+            ));
+
+            if (!vozBR) vozBR = vozes.find(x => x.lang.includes('pt'));
+            if (vozBR) u.voice = vozBR;
+
+            u.onstart = () => { 
+                if (bgm && G.musica) bgm.volume = 0.02; 
+                // Chama a animação de vídeo correspondente à fala
+                tocarAv(t.includes("correta") || t.includes("domínio") ? "ok" : "no");
+            };
+            
+            u.onend = () => { 
+                if (bgm && G.musica) bgm.volume = 0.07; 
+                resolve(); // Avisa o Maestro que terminou de falar
+            };
+            
+            u.onerror = (e) => { 
+                console.warn("[ADA-Voz] SpeechSynthesis pulou ou falhou:", e.error); 
+                resolve(); // Resolve mesmo em erro para não travar o jogo
+            };
+
+            window.speechSynthesis.speak(u);
+
+        } catch (e) {
+            console.error("[MathLab] Falha na síntese de voz:", e);
+            resolve();
         }
-        
-        // Se G.voz for estritamente false, não fala.
-        if (G.voz === false) {
-            console.log("[ADA-Voz] Silenciada no botão superior.");
-            return;
-        }
-
-        const textoLimpo = t.replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, ' ');
-        console.log(`[ADA-Voz] 1. Preparando para falar: "${textoLimpo}"`);
-
-        const u = new SpeechSynthesisUtterance(textoLimpo);
-        
-        // MÁGICA CONTRA O BUG DO CHROME: Prender a variável no window
-        window.adaUtterance = u; 
-
-        u.lang = "pt-BR";
-        u.volume = 1;
-        u.rate = 1.1; 
-
-        const vozes = window.speechSynthesis.getVoices();
-        
-        // FILTRO FEMININO: Busca vozes conhecidas por serem femininas no Windows/Android/Mac
-        let vozBR = vozes.find(x => x.lang.includes('pt') && (
-            x.name.includes('Maria') || 
-            x.name.includes('Luciana') || 
-            x.name.includes('Francisca') || 
-            x.name.includes('Vitória') ||
-            x.name.includes('Google') ||
-            x.name.includes('Female') ||
-            x.name.includes('Feminino')
-        ));
-
-        // Plano B: Se não achar mulher, pega qualquer uma em PT
-        if (!vozBR) vozBR = vozes.find(x => x.lang.includes('pt'));
-        
-        if (vozBR) u.voice = vozBR;
-
-        // Rastreadores de evento e Ducking de áudio
-        u.onstart = () => { 
-            console.log("[ADA-Voz] 2. Áudio começou a tocar fisicamente!");
-            if (bgm && G.musica) bgm.volume = 0.02; 
-        };
-        u.onend   = () => { 
-            console.log("[ADA-Voz] 3. Áudio terminou.");
-            if (bgm && G.musica) bgm.volume = 0.07; 
-        };
-        u.onerror = (e) => { 
-            console.error("[ADA-Voz] ERRO no SpeechSynthesis:", e.error); 
-        };
-
-        window.speechSynthesis.speak(u);
-
-    } catch (e) {
-        console.error("[MathLab] Falha na síntese de voz:", e);
-    }
+    });
 }
 
 // === CONTROLES DE MÍDIA ===
@@ -107,31 +106,33 @@ export function toggleVoz() {
     }
 }
 
-// === AVATAR E FEEDBACK VISUAL (ESTABILIZADO) ===
+// === AVATAR DE VÍDEO (REFINADO PARA TRABALHAR COM O ÁUDIO) ===
 
 export function tocarAv(tipo) {
     const img = document.getElementById("av-img");
     const vid = document.getElementById(tipo === "ok" ? "vid-ok" : "vid-no");
 
     if (!img) return;
-    if (!vid) {
-        console.warn(`[ADA] Vídeo para ${tipo} não encontrado.`);
-        return;
-    }
+    if (!vid) return;
 
     const resetAv = () => {
         vid.classList.add("avh");
         img.classList.remove("avh");
     };
 
+    // Esconde os outros
+    document.getElementById("vid-ok")?.classList.add("avh");
+    document.getElementById("vid-no")?.classList.add("avh");
     img.classList.add("avh");
+    
+    // Mostra o vídeo atual
     vid.classList.remove("avh");
     vid.currentTime = 0;
 
     vid.play()
         .then(() => { vid.onended = resetAv; })
         .catch(err => {
-            console.warn("[MathLab] Play de vídeo bloqueado ou erro:", err);
+            console.warn("[MathLab] Play de vídeo bloqueado:", err);
             resetAv();
         });
 }
@@ -215,22 +216,22 @@ function gerarDashboard() {
         let diagnostico = "";
 
         if (hist.erros_conceito > hist.acertos) {
-            diagnostico = `<div class="alerta-sinal">⚠️ <strong>Bloqueio Conceitual:</strong> O aluno não domina a regra base desta habilidade.</div>`;
+            diagnostico = `<div class="alerta-sinal" style="color: var(--neon-red); margin-top:5px;">⚠️ Bloqueio Conceitual: O aluno não domina a regra base desta habilidade.</div>`;
         } else if (hist.erros_calculo > 0) {
-            diagnostico = `<div class="alerta-calc">📐 <strong>Falha Operacional:</strong> Erros de atenção ou processo aritmético.</div>`;
+            diagnostico = `<div class="alerta-calc" style="color: #ffbb33; margin-top:5px;">📐 Falha Operacional: Erros de atenção ou processo aritmético.</div>`;
         } else {
-            diagnostico = `<div class="alerta-ok">✅ <strong>Domínio Estabilizado.</strong></div>`;
+            diagnostico = `<div class="alerta-ok" style="color: var(--neon-green); margin-top:5px;">✅ Domínio Estabilizado.</div>`;
         }
 
         c.innerHTML += `
             <div class="dash-card">
-                <div class="dash-card-header">
-                    <span class="hab-code">${hab}</span>
-                    <span class="hab-pct">${txAcerto}%</span>
+                <div class="dash-card-header" style="display:flex; justify-content:space-between;">
+                    <span class="hab-code" style="color:var(--choco-gold); font-weight:bold;">${hab}</span>
+                    <span class="hab-pct" style="color:var(--neon-cyan);">${txAcerto}%</span>
                 </div>
-                <p class="hab-desc">${hist.desc || "Habilidade em análise"}</p>
-                <div class="dash-bar">
-                    <div class="dash-fill-ok" style="width:${txAcerto}%"></div>
+                <p class="hab-desc" style="font-size:11px; opacity:0.8; margin:5px 0;">${hist.desc || "Habilidade em análise"}</p>
+                <div class="dash-bar" style="width:100%; height:8px; background:#222; border-radius:4px; overflow:hidden;">
+                    <div class="dash-fill-ok" style="width:${txAcerto}%; height:100%; background:var(--neon-green);"></div>
                 </div>
                 ${diagnostico}
             </div>`;
