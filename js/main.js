@@ -221,8 +221,6 @@ function proximaQ() {
 }
 
 function renderQ(q) {
-    setDebug('qId', q.id); setDebug('qTipo', q.tipo); setDebug('qBncc', q.bncc); setDebug('qDif', q.peso);
-    
     if ($('conta-display')) $('conta-display').textContent = q.display;
     const grid = $('grid-botoes');
     if (grid) grid.innerHTML = '';
@@ -230,7 +228,9 @@ function renderQ(q) {
     
     renderCv(q);
 
-    const alternativas = [...(q.alternativas || [])];
+    // --- MÁGICA AQUI: Embaralha as alternativas antes de desenhar os botões ---
+    const alternativas = [...(q.alternativas || [])].sort(() => Math.random() - 0.5);
+
     alternativas.forEach(alt => {
         const b = document.createElement('button');
         b.className = 'ba';
