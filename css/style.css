@@ -1,6 +1,7 @@
 /* ============================================================
-    LABORATÓRIO TECH — CSS v12.1 "THE MASTER KEY"
-    Intervenção: Restauração de Cliques, Grid de Blocos e Splash
+    LABORATÓRIO TECH — CSS v12.2 "FULL UI RESTORATION"
+    Intervenções: Restauração de Cliques, Grid de Blocos, Splash 
+    e Padronização de Botões de Navegação.
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Nunito:ital,wght@0,400;0,700;0,900;1,400&display=swap');
@@ -25,7 +26,7 @@ html, body {
     font-family: var(--font-body); 
 }
 
-/* ESTRUTURA DE TELAS: O segredo está no pointer-events: none quando hidden */
+/* ESTRUTURA DE TELAS */
 .screen {
     position: fixed; inset: 0;
     display: flex; flex-direction: column; align-items: center;
@@ -63,15 +64,14 @@ html, body {
 }
 
 /* ============================================================
-    2. SELETOR DE BLOCOS (GRID RESTAURADO)
+    2. SELETOR DE BLOCOS (GRID E NAVEGAÇÃO)
    ============================================================ */
 .selector-inner { width: 100%; max-width: 600px; text-align: center; margin: auto; }
 .section-title { font-family: var(--font-display); color: var(--neon-cyan); margin-bottom: 25px; font-size: 20px; }
 
-/* Correção da Grade Amontoada */
 .blocks-grid { 
     display: grid; 
-    grid-template-columns: 1fr 1fr; /* 2 Colunas */
+    grid-template-columns: 1fr 1fr; 
     gap: 15px; width: 100%; 
 }
 
@@ -85,9 +85,51 @@ html, body {
 .block-icon { font-size: 32px; margin-bottom: 10px; }
 .block-name { font-family: var(--font-display); font-size: 12px; font-weight: 700; }
 
+/* RESTAURAÇÃO: Botão "Alterar Usuário" */
+.bc2 {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: rgba(0,0,0,0.6);
+    border: 1px solid var(--choco-gold);
+    color: var(--choco-gold);
+    border-radius: 8px;
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.bc2:hover { background: var(--choco-gold); color: var(--choco-dark); }
+
 /* ============================================================
-    3. GAMEPLAY (RETA E BOTÕES)
+    3. GAMEPLAY (HUD, RETA E BOTÕES)
    ============================================================ */
+.game-header { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+
+/* RESTAURAÇÃO: Mini Botões do Header */
+.game-controls { display: flex; gap: 8px; }
+.mini-btn {
+    background: rgba(0,0,0,0.8);
+    border: 1px solid var(--choco-gold);
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.2s;
+    text-transform: uppercase;
+}
+.mini-btn:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); }
+.mini-btn span { color: var(--choco-gold); }
+
 #canvas-game { width: 100%; height: 180px; background: #000; border-radius: 15px; margin-bottom: 20px; border: 1px solid rgba(212, 160, 23, 0.2); }
 
 #conta-display {
@@ -107,13 +149,35 @@ html, body {
 .ba.ok { background: var(--neon-green) !important; color: #000 !important; }
 .ba.no { background: var(--neon-red) !important; color: #fff !important; }
 
+/* RESTAURAÇÃO: Botão "Próximo Desafio" */
+.btn-next {
+    width: 100%;
+    max-width: 380px;
+    padding: 22px;
+    margin-top: 25px;
+    background: var(--choco-gold);
+    color: var(--choco-dark);
+    border: none;
+    border-radius: 15px;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 18px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #8a6d10, 0 10px 20px rgba(0,0,0,0.4);
+    transition: 0.1s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.btn-next:active { transform: translateY(4px); box-shadow: 0 2px 0 #8a6d10; }
+
 /* ============================================================
-    4. CONTROLES E MODAIS (DESTRANCAR CLIQUE)
+    4. CONTROLES E MODAIS
    ============================================================ */
-/* Botões laterais: Z-index altíssimo e pointer-events auto */
 .side-controls { 
     position: fixed; top: 20px; right: 20px; 
-    display: flex; gap: 10px; z-index: 1000; /* Acima de tudo */
+    display: flex; gap: 10px; z-index: 1000; 
 }
 .btn-round { 
     width: 50px; height: 50px; border-radius: 15px; 
@@ -130,7 +194,6 @@ html, body {
 .mc { background: var(--bg-dark); border: 2px solid var(--choco-gold); border-radius: 25px; padding: 30px; position: relative; width: 100%; max-width: 450px; text-align: center; }
 .mx { position: absolute; top: 15px; right: 20px; background: none; border: none; color: var(--neon-red); font-size: 32px; cursor: pointer; }
 
-/* ADA POST */
 #ada-command-post { position: fixed; bottom: 20px; right: 20px; width: 250px; height: 250px; z-index: 50; pointer-events: none; }
 .ada-box { width: 100%; height: 100%; border-radius: 50%; border: 4px solid var(--neon-cyan); overflow: hidden; position: relative; }
 .ada-asset { position: absolute; width: 100%; height: 100%; object-fit: cover; }
