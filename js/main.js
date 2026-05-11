@@ -203,6 +203,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     on('btn-cred', () => abrirM('mcred'));
+    // --- NOVO: Botão de Reconectar no Game Over ---
+    on('btn-reiniciar', () => {
+        fecharM('go'); // Fecha a janela vermelha de alerta
+        if (G.currentBlock) {
+            console.log(`[SISTEMA] Reiniciando o Módulo ${G.currentBlock}...`);
+            iniciarBloco(G.currentBlock); // MÁGICA: Recarrega a fase atual do zero!
+        }
+    });
     
     document.querySelectorAll('.mx').forEach(btn => {
         btn.onclick = (e) => e.target.closest('.modal').classList.remove('active');
