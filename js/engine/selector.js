@@ -117,7 +117,7 @@ export function selQ(blocoId) {
 
     // 3. SHUFFLE PEDAGÓGICO (Quebra a linearidade chata)
     const aulasDisponiveis = [...new Set(candidatas.map(q => q.aula || 1))].sort((a,b) => a - b);
-    const aulasParaSorteio = aulasDisponiveis.slice(0, 2); // Sorteia entre as duas aulas mais baixas disponíveis
+    const aulasParaSorteio = aulasDisponiveis.slice(0, 6); // Sorteia entre as seis aulas mais baixas disponíveis
     const poolDeSorteio = candidatas.filter(q => aulasParaSorteio.includes(q.aula || 1));
     
     const indiceSorteado = Math.floor(Math.random() * poolDeSorteio.length);
