@@ -1,12 +1,70 @@
 /**
- * main.js — v13.1 "LabTech Sniper Pace"
+ * main.js — v13.11 "LabTech Sniper Pace"
  * Prioridade: Fim das Race Conditions + Ritmo Dinâmico (Overlap).
  * Fluxo: Diagnóstico -> HUD -> ADA (Background) + Canvas (Espera Pulo) -> Liberação.
  */
 import { G } from './engine/gameState.js';
 import { selQ, limparHistoricoSessao } from './engine/selector.js';
 import { analisarAlternativa, registrarErro } from './engine/diagnostic-engine.js';
-import { renderCv, setAnimando, animarArcos } from './game-engine.js';
+import { renderCv, setAnimando, animarArcos } from './game-engine.js';function gerarPainelProfessor() {
+    const dados = extrairRelatorioProfessor(G.perfilCognitivo);
+    
+    let modalProf = $('m-professor');
+    if (!modalProf) {
+        modalProf = document.createElement('div');
+        modalProf.id = 'm-professor';
+        modalProf.className = 'modal'; 
+        document.body.appendChild(modalProf);
+    }
+
+    // INTERVENÇÃO: Adicionamos position:relative no container principal (mc) 
+    // e criamos o botão "X" flutuando no canto superior direito.
+    modalProf.innerHTML = `
+        <div class="mc" style="max-width: 500px; border: 2px solid var(--choco-gold); background: #060610; position: relative;">
+            
+            <button class="mx" style="position: absolute; top: 15px; right: 15px; background: transparent; color: var(--choco-gold); border: 1px solid var(--choco-gold); border-radius: 50%; width: 30px; height: 30px; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; padding: 0;">✕</button>
+
+            <h2 style="color:var(--choco-gold); border-bottom: 1px solid; padding-bottom: 10px; margin-top: 0; padding-right: 30px;">MAPA COGNITIVO: ${dados.identificacao}</h2>
+            
+            <div style="text-align:left; margin-top:20px; font-family: monospace; font-size:12px;">
+                <p>📊 <strong>Histórico Longitudinal:</strong></p>
+                <ul style="list-style:none; padding:0; color: var(--neon-cyan);">
+                    <li>• Ativo há: ${dados.tempoVida} dias</li>
+                    <li>• Desafios vencidos: ${dados.totalResolvidas}</li>
+                </ul>
+
+                <p style="margin-top:15px;">🔍 <strong>Natureza das Falhas (Acumulado):</strong></p>
+                <div style="display:flex; gap:10px; height:20px; background:#222; border-radius:10px; overflow:hidden; margin-bottom:5px;">
+                    <div style="width:${dados.distribuicaoErros.conceito}%; background:var(--neon-red);" title="Conceito"></div>
+                    <div style="width:${dados.distribuicaoErros.procedimento}%; background:#ffbb33;" title="Procedimento"></div>
+                    <div style="width:${dados.distribuicaoErros.calculo}%; background:var(--neon-green);" title="Cálculo"></div>
+                </div>
+                <div style="font-size:10px; display:flex; justify-content:space-between; opacity:0.7;">
+                    <span>Conceito (${dados.distribuicaoErros.conceito}%)</span>
+                    <span>Cálculo (${dados.distribuicaoErros.calculo}%)</span>
+                </div>
+
+                <p style="margin-top:15px;">🚩 <strong>Alertas de Habilidade (Febre):</strong></p>
+                ${dados.pontosCriticos.length > 0 ? 
+                    dados.pontosCriticos.map(([hab, score]) => `
+                        <div style="display:flex; justify-content:space-between; margin-bottom:4px; color: ${score > 5 ? 'var(--neon-red)' : 'white'}">
+                            <span>${hab}</span>
+                            <span>Intensidade: ${score.toFixed(1)}</span>
+                        </div>
+                    `).join('') : '<p style="color:var(--neon-green)">Nenhuma defasagem crítica registrada.</p>'
+                }
+            </div>
+        </div>
+    `;
+
+    modalProf.classList.add('active');
+    
+    // Efeito de Hover (brilha ao passar o mouse) e comando para fechar
+    const btnX = modalProf.querySelector('.mx');
+    btnX.onmouseover = () => { btnX.style.background = 'var(--choco-gold)'; btnX.style.color = '#000'; };
+    btnX.onmouseout = () => { btnX.style.background = 'transparent'; btnX.style.color = 'var(--choco-gold)'; };
+    btnX.onclick = () => modalProf.classList.remove('active');
+}
 import { AudioCtrl } from './engine/audioController.js'; 
 import { updHUD, narrarContexto, toggleVoz, exibirGameOver } from './ui-manager.js';
 import { initDebugMode, setDebug } from './engine/debug-mode.js';
