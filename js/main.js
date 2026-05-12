@@ -157,6 +157,22 @@ function atualizarHudVisual() {
     }
     if ($('tnv')) $('tnv').textContent = G.combo > 0 ? G.combo : "1";
     
+    // --- NOVO: Atualiza os dados do Modal de Perfil silenciosamente ---
+    if (G.perfilCognitivo) {
+        if ($('perfil-nome-display')) 
+            $('perfil-nome-display').textContent = `Lvl ${G.perfilCognitivo.nivel || 1} | ${G.nome}`;
+        
+        if ($('perfil-nivel-txt')) 
+            $('perfil-nivel-txt').textContent = G.perfilCognitivo.nivel || 1;
+
+        if ($('perfil-acertos-display')) 
+            $('perfil-acertos-display').textContent = `${G.perfilCognitivo.xp || 0} XP`;
+    }
+
+    updHUD();
+}
+    if ($('tnv')) $('tnv').textContent = G.combo > 0 ? G.combo : "1";
+    
     // Atualiza os dados do Modal de Perfil silenciosamente
     if (G.perfilCognitivo) {
         if ($('perfil-nome-display')) $('perfil-nome-display').textContent = `Lvl ${G.perfilCognitivo.nivel} | ${G.nome}`;
