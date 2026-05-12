@@ -45,15 +45,13 @@ function criarPerfilBase(nome, turma, key) {
         turma: turma,
         sessoesConcluidas: 0,
         questoesResolvidas: 0,
-        // Onde ele trava mais ao longo da vida?
-        errosHistoricos: {
-            conceito: 0,
-            procedimento: 0,
-            calculo: 0
-        },
-        // Quais habilidades ele tem mais dificuldade?
+        
+        // --- NOVO: SISTEMA DE RPG ---
+        xp: 0,
+        nivel: 1,
+
+        errosHistoricos: { conceito: 0, procedimento: 0, calculo: 0 },
         clustersProblema: {},
-        // Preferência de aprendizado (Visual vs Abstrato) - Será alimentado no futuro
         afinidadeVisual: 0, 
         dataCriacao: Date.now(),
         ultimaSessao: Date.now()
