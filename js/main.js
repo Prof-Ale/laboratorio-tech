@@ -171,16 +171,7 @@ function atualizarHudVisual() {
 
     updHUD();
 }
-    if ($('tnv')) $('tnv').textContent = G.combo > 0 ? G.combo : "1";
     
-    // Atualiza os dados do Modal de Perfil silenciosamente
-    if (G.perfilCognitivo) {
-        if ($('perfil-nome-display')) $('perfil-nome-display').textContent = `Lvl ${G.perfilCognitivo.nivel} | ${G.nome}`;
-        if ($('perfil-acertos-display')) $('perfil-acertos-display').textContent = `${G.perfilCognitivo.xp} XP`;
-    }
-
-    updHUD();
-}
 
  
 /* ============================================================
