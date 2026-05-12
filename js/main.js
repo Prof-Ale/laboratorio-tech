@@ -10,7 +10,7 @@ import { renderCv, setAnimando, animarArcos } from './game-engine.js';
 import { AudioCtrl } from './engine/audioController.js'; 
 import { updHUD, narrarContexto, toggleVoz, exibirGameOver } from './ui-manager.js';
 import { initDebugMode, setDebug } from './engine/debug-mode.js';
-import { carregarPerfil, salvarPerfil, registrarEvolucaoLongitudinal, gerarMicroIntervencao } from './engine/cognitive-profile.js';
+import { carregarPerfil, salvarPerfil, registrarEvolucaoLongitudinal, gerarMicroIntervencao, extrairRelatorioProfessor } from './engine/cognitive-profile.js';
 
 const $ = (id) => document.getElementById(id);
 const on = (id, fn) => { const el = $(id); if (el) el.onclick = fn; };
