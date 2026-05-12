@@ -377,3 +377,4 @@ function gerarPainelProfessor() {
     modalProf.classList.add('active');
     modalProf.querySelector('.mx').onclick = () => modalProf.classList.remove('active');
 }
+});
