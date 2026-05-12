@@ -242,9 +242,31 @@ async function processarResposta(alt, q) {
     const hab = q.bncc || "Geral";
     if (!G.historico[hab]) G.historico[hab] = { acertos: 0, erros_conceito: 0, erros_calculo: 0 };
 
-    if (analise.correto) {
+   if (analise.correto) {
         G.acertos++; G.combo++;
         G.historico[hab].acertos++;
+        
+        // --- NOVO: SISTEMA DE RPG (GANHO DE XP E LEVEL UP) ---
+        if (G.perfilCognitivo) {
+            // Se o perfil antigo não tiver XP, inicializa agora
+            if (G.perfilCognitivo.xp === undefined) {
+                G.perfilCognitivo.xp = 0;
+                G.perfilCognitivo.nivel = 1;
+            }
+
+            // Ganha 10 XP base + 5 XP extra por cada ponto de Combo
+            const ganhoXp = 10 + (G.combo * 5); 
+            G.perfilCognitivo.xp += ganhoXp;
+
+            // Curva de Nível: Precisa de 100 XP pro Lvl 2, 200 pro Lvl 3, etc.
+            const nivelCalculado = Math.floor(G.perfilCognitivo.xp / 100) + 1;
+            
+            if (nivelCalculado > G.perfilCognitivo.nivel) {
+                G.perfilCognitivo.nivel = nivelCalculado;
+                console.log(`🎉 LEVEL UP! ${G.nome} subiu para o Nível ${nivelCalculado}!`);
+                narrarContexto(`Evolução confirmada. Parabéns, ${G.nome}. Você atingiu o nível ${nivelCalculado} de cognição.`, true);
+            }
+        }
     } else {
         G.combo = 0;
         registrarErro(G, analise, q); 
