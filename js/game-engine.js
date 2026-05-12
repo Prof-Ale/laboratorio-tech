@@ -1,7 +1,7 @@
 /**
- * js/game-engine.js — Versão 8.0 "Async Engine"
- * Motor de Renderização: Implementação do Promise Protocol.
- * INTERVENÇÃO: Permitir que o Pipeline de Resposta (main.js) aguarde a animação.
+ * js/game-engine.js — Versão 8.1 "Adaptive Engine"
+ * Motor de Renderização com Camadas Cognitivas.
+ * INTERVENÇÃO: O Canvas agora muda de forma baseado no perfil (Visual vs Abstrato).
  */
 
 let animState = 0;
@@ -9,7 +9,8 @@ let isAnimating = false;
 let currentQ = null;
 let currentB = null; 
 let animId = null;
-let resolveAnimacao = null; // Guarda a promessa de conclusão
+let resolveAnimacao = null; 
+let currentModo = 'normal'; // Guarda o estado cognitivo atual
 
 export function setAnimando(val) {
     isAnimating = val;
@@ -17,26 +18,20 @@ export function setAnimando(val) {
         animState = 0;
         if (animId) cancelAnimationFrame(animId);
         if (resolveAnimacao) {
-            resolveAnimacao(); // Se for cancelado bruscamente, libera o Maestro
+            resolveAnimacao(); 
             resolveAnimacao = null;
         }
     }
 }
 
-/**
- * Inicia a animação de salto e retorna uma Promise.
- * O main.js usará 'await animarArcos(...)' para pausar a execução.
- */
-export function animarArcos(q, bOverride = null) {
+export function animarArcos(q, bOverride = null, modo = 'normal') {
     return new Promise((resolve) => {
         if (!q || (q.tipo !== "reta" && q.tipo !== "sinais")) {
-            resolve(); // Se não for reta, conclui imediatamente
+            resolve(); 
             return;
         }
         
         if (animId) cancelAnimationFrame(animId);
-        
-        // Se já havia uma animação pendente, resolve ela antes de começar a nova
         if (resolveAnimacao) resolveAnimacao();
         resolveAnimacao = resolve;
         
@@ -44,6 +39,7 @@ export function animarArcos(q, bOverride = null) {
         
         currentQ = q;
         currentB = params.b; 
+        currentModo = modo; // Trava o modo durante o salto
         
         isAnimating = true;
         animState = 0;
@@ -57,14 +53,13 @@ function loopAnimacao() {
         return;
     }
     
-    animState += 0.03; // Velocidade de cruzeiro
+    animState += 0.03; 
     
     if (animState >= 1) {
         animState = 1;
         isAnimating = false;
-        renderCv(currentQ, currentB); 
+        renderCv(currentQ, currentB, currentModo); 
         
-        // A MÁGICA ACONTECE AQUI: Avisa o main.js que terminou
         if (resolveAnimacao) {
             resolveAnimacao();
             resolveAnimacao = null;
@@ -72,17 +67,16 @@ function loopAnimacao() {
         return;
     }
     
-    renderCv(currentQ, currentB);
+    renderCv(currentQ, currentB, currentModo);
     animId = requestAnimationFrame(loopAnimacao);
 }
 
-/**
- * Renderizador Principal
- */
-export function renderCv(q, bOverride = null) {
+export function renderCv(q, bOverride = null, modo = null) {
     const cv = document.getElementById("canvas-game");
     if (!cv) return;
     const ctx = cv.getContext("2d");
+
+    if (modo) currentModo = modo;
 
     const parentWidth = cv.parentElement ? cv.parentElement.clientWidth : 580;
     const cssWidth = Math.min(parentWidth, 580) || 580;
@@ -113,9 +107,6 @@ export function renderCv(q, bOverride = null) {
     }
 }
 
-/**
- * AUXILIAR: Normaliza os dados
- */
 function getParams(q, bOverride) {
     const a = Number(q.a ?? q.inicio ?? q.valorInicial ?? 0);
     const bRaw = bOverride !== null ? bOverride : (q.b ?? q.salto ?? q.valor ?? 0);
@@ -138,6 +129,19 @@ function getX(val, width) {
 
 function desenharReta(ctx, w, h) {
     const yCenter = h - 40; 
+    
+    // --- INTELIGÊNCIA DE RENDERIZAÇÃO: Camadas Visuais ---
+    if (currentModo === 'visual') {
+        ctx.save();
+        // Âncora Vermelha (Dívida/Negativo)
+        ctx.fillStyle = "rgba(255, 68, 68, 0.08)";
+        ctx.fillRect(20, yCenter - 25, (w/2) - 20, 50);
+        // Âncora Verde (Lucro/Positivo)
+        ctx.fillStyle = "rgba(0, 255, 136, 0.08)";
+        ctx.fillRect(w/2, yCenter - 25, (w/2) - 20, 50);
+        ctx.restore();
+    }
+
     ctx.beginPath();
     ctx.moveTo(20, yCenter);
     ctx.lineTo(w - 20, yCenter);
@@ -158,7 +162,20 @@ function desenharReta(ctx, w, h) {
         ctx.stroke();
 
         ctx.fillStyle = (i === 0) ? "#00e5ff" : "rgba(255, 255, 255, 0.8)";
-        if (i % 2 === 0 || i === 0) ctx.fillText(i, x, yCenter + 22);
+        
+        // --- DECISÃO DO QUE ESCREVER NA RETA ---
+        let deveDesenharTexto = false;
+        if (currentModo === 'abstrato') {
+            deveDesenharTexto = (i === -10 || i === 0 || i === 10); // Hardcore: Esconde quase tudo
+        } else if (currentModo === 'visual') {
+            deveDesenharTexto = true; // Boia de salvação: Desenha todos os números
+        } else {
+            deveDesenharTexto = (i % 2 === 0 || i === 0); // Padrão
+        }
+
+        if (deveDesenharTexto) {
+            ctx.fillText(i, x, yCenter + 22);
+        }
     }
 }
 
