@@ -160,7 +160,6 @@ function atualizarHudVisual() {
 }
 
  
-
 /* ============================================================
    PIPELINE ASSÍNCRONO DE RESPOSTA (O MAESTRO)
    ============================================================ */
@@ -282,8 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     on('btn-prox', proximaQ);
     on('btn-musica', () => AudioCtrl.toggle('btn-musica', 'tsom'));
-   on('btn-musica', () => AudioCtrl.toggle('btn-musica', 'tsom'));
-    
+      
     // 1. FECHAMENTO CORRETO DO BOTÃO DE VOZ:
     on('btn-voz', () => {
         toggleVoz();
