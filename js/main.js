@@ -1,5 +1,5 @@
 /**
- * main.js — v13.11 "LabTech Sniper Pace"
+ * main.js — v13.2 "LabTech Sniper Pace"
  * Prioridade: Fim das Race Conditions + Ritmo Dinâmico (Overlap).
  * Fluxo: Diagnóstico -> HUD -> ADA (Background) + Canvas (Espera Pulo) -> Liberação.
  */
@@ -214,6 +214,13 @@ function atualizarHudVisual() {
         barraVida.style.background = G.vida < 30 ? "var(--neon-red)" : "var(--neon-green)";
     }
     if ($('tnv')) $('tnv').textContent = G.combo > 0 ? G.combo : "1";
+    
+    // Atualiza os dados do Modal de Perfil silenciosamente
+    if (G.perfilCognitivo) {
+        if ($('perfil-nome-display')) $('perfil-nome-display').textContent = `Lvl ${G.perfilCognitivo.nivel} | ${G.nome}`;
+        if ($('perfil-acertos-display')) $('perfil-acertos-display').textContent = `${G.perfilCognitivo.xp} XP`;
+    }
+
     updHUD();
 }
 
