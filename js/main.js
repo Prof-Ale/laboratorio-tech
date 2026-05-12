@@ -245,15 +245,106 @@ function proximaQ() {
     renderQ(q);
 }
 
+/* ============================================================
+   PIPELINE ASSÍNCRONO DE RESPOSTA (O MAESTRO)
+   ============================================================ */
+async function processarResposta(alt, q) {
+    if (G.respondeu) return;
+    G.respondeu = true;
+
+    const getNum = (val) => parseFloat(String(val).replace(/[^\d.-]/g, '')) || 0;
+    const pontoA = getNum(q.a || q.inicio || q.valorInicial);
+    const pontoB = getNum(alt.valor);
+    const deslocamento = pontoB - pontoA;
+    
+    const analise = analisarAlternativa(alt);
+    const feedbackTexto = analise.correto ? q.passo : (q.dica || analise.descricao);
+
+    document.querySelectorAll('.ba').forEach(b => {
+        b.classList.add('dis'); 
+        if (String(b.textContent) === String(q.res)) b.classList.add('ok');
+        if (String(b.textContent) === String(alt.valor) && !analise.correto) b.classList.add('no');
+    });
+
+    const hab = q.bncc || "Geral";
+    if (!G.historico[hab]) G.historico[hab] = { acertos: 0, erros_conceito: 0, erros_calculo: 0 };
+
+    if (analise.correto) {
+        G.acertos++; G.combo++;
+        G.historico[hab].acertos++;
+    } else {
+        G.combo = 0;
+        registrarErro(G, analise, q); 
+        const dano = 10 + (analise.peso || 1) * 5;
+        G.vida = Math.max(0, G.vida - dano);
+    }
+    registrarEvolucaoLongitudinal(G, analise, q);
+    
+    atualizarHudVisual(); 
+
+    narrarContexto(feedbackTexto, analise.correto);
+
+    // --- LEITURA DO ESTADO PARA A ANIMAÇÃO ---
+    let modoGrafico = 'normal';
+    if (G.perfilCognitivo && G.perfilCognitivo.errosHistoricos.conceito >= 3) modoGrafico = 'visual';
+    if (G.combo >= 3) modoGrafico = 'abstrato';
+
+    // Dispara a animação passando o humor da tela
+    await animarArcos(q, deslocamento, modoGrafico);
+
+    const fbContainer = $('fb');
+    if (fbContainer) {
+        fbContainer.textContent = feedbackTexto;
+        fbContainer.style.display = 'block';
+    }
+
+    $('btn-prox')?.classList.remove('hidden');
+
+    if (G.vida <= 0) {
+        setTimeout(() => { exibirGameOver(); }, 800);
+    }
+}
+/* ============================================================ */
+
+function proximaQ() {
+    G.respondeu = false;
+    setAnimando(false);
+
+    const fbContainer = $('fb');
+    if (fbContainer) {
+        fbContainer.textContent = '';
+        fbContainer.style.display = 'none';
+    }
+
+    const q = selQ(G.currentBlock);
+    if (!q) return;
+
+    const alertaPrevio = gerarMicroIntervencao(q, G.perfilCognitivo);
+    if (alertaPrevio) {
+        console.log("🔮 [PREDIÇÃO] ADA detectou risco! Disparando Microintervenção.");
+        narrarContexto(alertaPrevio, false); 
+    }
+
+    renderQ(q);
+}
+
 function renderQ(q) {
     if ($('conta-display')) $('conta-display').textContent = q.display;
     const grid = $('grid-botoes');
     if (grid) grid.innerHTML = '';
     $('btn-prox')?.classList.add('hidden');
     
-    renderCv(q);
+    // --- MÁGICA AQUI: Define como o Canvas vai nascer ---
+    let modoGrafico = 'normal';
+    if (G.perfilCognitivo && G.perfilCognitivo.errosHistoricos.conceito >= 3) {
+        modoGrafico = 'visual'; // Aluno tem bloqueio de base, liga âncora visual
+    }
+    if (G.combo >= 3) {
+        modoGrafico = 'abstrato'; // Aluno tá em flow, esconde a régua pra forçar cálculo
+    }
 
-    // --- MÁGICA AQUI: Embaralha as alternativas antes de desenhar os botões ---
+    renderCv(q, null, modoGrafico);
+
     const alternativas = [...(q.alternativas || [])].sort(() => Math.random() - 0.5);
 
     alternativas.forEach(alt => {
