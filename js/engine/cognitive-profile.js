@@ -93,4 +93,28 @@ export function gerarMicroIntervencao(q, perfil) {
     }
     
     return null; // Se não tem risco, a ADA fica quieta e deixa ele jogar.
+/**
+ * Gera um relatório formatado para o Painel do Professor.
+ */
+export function extrairRelatorioProfessor(perfil) {
+    if (!perfil) return "Nenhum perfil carregado.";
+
+    // Calcula o total de erros para percentuais
+    const totalErros = (perfil.errosHistoricos.conceito || 0) + 
+                       (perfil.errosHistoricos.procedimento || 0) + 
+                       (perfil.errosHistoricos.calculo || 0);
+
+    return {
+        identificacao: `${perfil.nome} [${perfil.turma}]`,
+        tempoVida: Math.floor((Date.now() - perfil.dataCriacao) / (1000 * 60 * 60 * 24)), // Dias de uso
+        totalResolvidas: perfil.questoesResolvidas || 0,
+        distribuicaoErros: {
+            conceito: totalErros > 0 ? Math.round((perfil.errosHistoricos.conceito / totalErros) * 100) : 0,
+            procedimento: totalErros > 0 ? Math.round((perfil.errosHistoricos.procedimento / totalErros) * 100) : 0,
+            calculo: totalErros > 0 ? Math.round((perfil.errosHistoricos.calculo / totalErros) * 100) : 0
+        },
+        pontosCriticos: Object.entries(perfil.clustersProblema)
+                        .filter(([_, score]) => score > 0)
+                        .sort((a, b) => b[1] - a[1])
+    };
 }
