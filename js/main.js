@@ -278,8 +278,17 @@ document.addEventListener('DOMContentLoaded', () => {
     on('btn-voz', () => {
         toggleVoz();
         if ($('tvoz')) $('tvoz').textContent = G.voz ? "ON" : "OFF";
+       // --- ATALHO SECRETO: Painel do Professor (Alt + P) ---
+    document.addEventListener('keydown', (e) => {
+        if (e.altKey && e.key.toLowerCase() === 'p') {
+            if (!G.perfilCognitivo) {
+                alert("Identifique um aluno primeiro para carregar o mapa cognitivo.");
+                return;
+            }
+            gerarPainelProfessor();
+        }
     });
-
+  
     on('btn-perfil', () => {
         if ($('perfil-nome-display')) $('perfil-nome-display').textContent = `${G.nome} | ${G.turma}`;
         if ($('perfil-acertos-display')) $('perfil-acertos-display').textContent = G.acertos;
@@ -316,3 +325,55 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     });
 });
+function gerarPainelProfessor() {
+    const dados = extrairRelatorioProfessor(G.perfilCognitivo);
+    
+    // Criamos o modal dinamicamente para não precisar mexer no HTML
+    let modalProf = $('m-professor');
+    if (!modalProf) {
+        modalProf = document.createElement('div');
+        modalProf.id = 'm-professor';
+        modalProf.className = 'modal'; // Usa a sua classe de modal já existente
+        document.body.appendChild(modalProf);
+    }
+
+    modalProf.innerHTML = `
+        <div class="mc" style="max-width: 500px; border: 2px solid var(--choco-gold); background: #060610;">
+            <h2 style="color:var(--choco-gold); border-bottom: 1px solid; padding-bottom: 10px;">MAPA COGNITIVO: ${dados.identificacao}</h2>
+            
+            <div style="text-align:left; margin-top:20px; font-family: monospace; font-size:12px;">
+                <p>📊 <strong>Histórico Longitudinal:</strong></p>
+                <ul style="list-style:none; padding:0; color: var(--neon-cyan);">
+                    <li>• Ativo há: ${dados.tempoVida} dias</li>
+                    <li>• Desafios vencidos: ${dados.totalResolvidas}</li>
+                </ul>
+
+                <p style="margin-top:15px;">🔍 <strong>Natureza das Falhas (Acumulado):</strong></p>
+                <div style="display:flex; gap:10px; height:20px; background:#222; border-radius:10px; overflow:hidden; margin-bottom:5px;">
+                    <div style="width:${dados.distribuicaoErros.conceito}%; background:var(--neon-red);" title="Conceito"></div>
+                    <div style="width:${dados.distribuicaoErros.procedimento}%; background:#ffbb33;" title="Procedimento"></div>
+                    <div style="width:${dados.distribuicaoErros.calculo}%; background:var(--neon-green);" title="Cálculo"></div>
+                </div>
+                <div style="font-size:10px; display:flex; justify-content:space-between; opacity:0.7;">
+                    <span>Conceito (${dados.distribuicaoErros.conceito}%)</span>
+                    <span>Cálculo (${dados.distribuicaoErros.calculo}%)</span>
+                </div>
+
+                <p style="margin-top:15px;">🚩 <strong>Alertas de Habilidade (Febre):</strong></p>
+                ${dados.pontosCriticos.length > 0 ? 
+                    dados.pontosCriticos.map(([hab, score]) => `
+                        <div style="display:flex; justify-content:space-between; margin-bottom:4px; color: ${score > 5 ? 'var(--neon-red)' : 'white'}">
+                            <span>${hab}</span>
+                            <span>Intensidade: ${score.toFixed(1)}</span>
+                        </div>
+                    `).join('') : '<p style="color:var(--neon-green)">Nenhuma defasagem crítica registrada.</p>'
+                }
+            </div>
+
+            <button class="mx" style="margin-top:20px; background:var(--choco-gold); color:black; border:none; padding:8px 20px; cursor:pointer; font-weight:bold;">FECHAR RELATÓRIO</button>
+        </div>
+    `;
+
+    modalProf.classList.add('active');
+    modalProf.querySelector('.mx').onclick = () => modalProf.classList.remove('active');
+}
