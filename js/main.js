@@ -385,4 +385,3 @@ function gerarPainelProfessor() {
     modalProf.querySelector('.mx').onclick = () => modalProf.classList.remove('active');
 }
 // SEM NENHUM FANTASMA
-});
