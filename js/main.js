@@ -384,4 +384,5 @@ function gerarPainelProfessor() {
     modalProf.classList.add('active');
     modalProf.querySelector('.mx').onclick = () => modalProf.classList.remove('active');
 }
-// SEM NENHUM "});" FANTASMA AQUI NO FINAL!
+// SEM NENHUM FANTASMA
+});
