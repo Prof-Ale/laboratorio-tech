@@ -275,10 +275,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     on('btn-prox', proximaQ);
     on('btn-musica', () => AudioCtrl.toggle('btn-musica', 'tsom'));
+   on('btn-musica', () => AudioCtrl.toggle('btn-musica', 'tsom'));
+    
+    // 1. FECHAMENTO CORRETO DO BOTÃO DE VOZ:
     on('btn-voz', () => {
         toggleVoz();
         if ($('tvoz')) $('tvoz').textContent = G.voz ? "ON" : "OFF";
-       // --- ATALHO SECRETO: Painel do Professor (Alt + P) ---
+    }); // <-- Faltava esse fechamento aqui!
+
+    // --- ATALHO SECRETO: Painel do Professor (Alt + P) ---
     document.addEventListener('keydown', (e) => {
         if (e.altKey && e.key.toLowerCase() === 'p') {
             if (!G.perfilCognitivo) {
@@ -302,12 +307,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     on('btn-cred', () => abrirM('mcred'));
+    
     // --- NOVO: Botão de Reconectar no Game Over ---
     on('btn-reiniciar', () => {
-        fecharM('go'); // Fecha a janela vermelha de alerta
+        fecharM('go'); 
         if (G.currentBlock) {
             console.log(`[SISTEMA] Reiniciando o Módulo ${G.currentBlock}...`);
-            iniciarBloco(G.currentBlock); // MÁGICA: Recarrega a fase atual do zero!
+            iniciarBloco(G.currentBlock); 
         }
     });
     
@@ -324,16 +330,17 @@ document.addEventListener('DOMContentLoaded', () => {
             $('ada-command-post')?.classList.remove('active');
         };
     });
-});
+}); // <-- FECHA O DOMContentLoaded AQUI
+
+// 2. FUNÇÃO DO PAINEL FICA ISOLADA NO FINAL DO ARQUIVO:
 function gerarPainelProfessor() {
     const dados = extrairRelatorioProfessor(G.perfilCognitivo);
     
-    // Criamos o modal dinamicamente para não precisar mexer no HTML
     let modalProf = $('m-professor');
     if (!modalProf) {
         modalProf = document.createElement('div');
         modalProf.id = 'm-professor';
-        modalProf.className = 'modal'; // Usa a sua classe de modal já existente
+        modalProf.className = 'modal'; 
         document.body.appendChild(modalProf);
     }
 
@@ -377,4 +384,4 @@ function gerarPainelProfessor() {
     modalProf.classList.add('active');
     modalProf.querySelector('.mx').onclick = () => modalProf.classList.remove('active');
 }
-});
+// SEM NENHUM "});" FANTASMA AQUI NO FINAL!
