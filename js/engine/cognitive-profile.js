@@ -1,7 +1,7 @@
 /**
  * cognitive-profile.js — v1.0 "LabTech Hippocampus"
  * Motor de Memória Longitudinal. Salva e recupera o perfil cognitivo do aluno.
- * INTERVENÇÃO: Início da Adaptação Preditiva (Memória de Longo Prazo).
+ * INTERVENÇÃO: Início da Adaptação Preditiva (Memória de Longo Prazo) + Relatório Professor.
  */
 
 const PREFIX = 'labtech_profile_';
@@ -93,9 +93,9 @@ export function gerarMicroIntervencao(q, perfil) {
     }
     
     return null; // Se não tem risco, a ADA fica quieta e deixa ele jogar.
-/**
- * Gera um relatório formatado para o Painel do Professor.
- */
+}
+
+// 6. RELATÓRIO DO PROFESSOR (Extrai dados formatados para o Painel Secreto)
 export function extrairRelatorioProfessor(perfil) {
     if (!perfil) return "Nenhum perfil carregado.";
 
