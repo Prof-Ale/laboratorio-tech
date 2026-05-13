@@ -1,13 +1,14 @@
 /**
- * selector.js — v8.0 "The Scalable Strategist"
- * Seletor Híbrido com IA Triage + Carregamento JSON.
+ * selector.js — v8.1 "The Scalable Strategist"
+ * Seletor Híbrido com IA Triage + Carregamento JSON Dinâmico.
  */
 
 import { G } from './gameState.js';
 import { normalizarQuestao } from './question-normalizer.js';
 
 export let bancoQuestoes = [];
-const BANCO = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] };
+// Deixamos o BANCO vazio inicialmente. Ele vai crescer sozinho!
+const BANCO = {}; 
 let respondedInSession = new Set();
 
 export function limparHistoricoSessao() {
@@ -21,17 +22,22 @@ export async function carregarBancoDeQuestoes() {
         const resposta = await fetch('./data/questoes.json');
         bancoQuestoes = await resposta.json();
         
-        // Limpa o banco e distribui as questões baixadas por aula
-        Object.keys(BANCO).forEach(k => BANCO[k] = []);
+        // Limpa as chaves antigas se o banco for recarregado no meio do jogo
+        for (let key in BANCO) delete BANCO[key]; 
+
+        // Distribui as questões e cria a gaveta se ela não existir
         bancoQuestoes.forEach(q => {
-            if (BANCO[q.aula]) BANCO[q.aula].push(q);
+            if (!q.aula) return; // Ignora se a questão vier sem aula
+            if (!BANCO[q.aula]) BANCO[q.aula] = []; // 🛠️ Cria a gaveta na hora!
+            BANCO[q.aula].push(q);
         });
 
-        console.log(`[SISTEMA] Banco Carregado. Total: ${bancoQuestoes.length} questões.`);
+        console.log(`[SISTEMA] Banco Carregado. Total: ${bancoQuestoes.length} questões. Aulas identificadas: ${Object.keys(BANCO).join(', ')}`);
     } catch (erro) {
         console.error("[SISTEMA] Falha ao carregar banco:", erro);
     }
 }
+
 
 /**
  * MOTOR DE IA TRIAGE (Mantive sua lógica de ouro!)
