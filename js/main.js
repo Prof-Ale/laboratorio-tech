@@ -4,7 +4,7 @@
  * Fluxo: Diagnóstico -> HUD -> ADA (Background) + Canvas (Espera Pulo) -> Liberação.
  */
 import { G } from './engine/gameState.js';
-import { selQ, limparHistoricoSessao } from './engine/selector.js';
+import { selQ, limparHistoricoSessao, carregarBancoDeQuestoes } from './engine/selector.js';
 import { analisarAlternativa, registrarErro } from './engine/diagnostic-engine.js';
 import { renderCv, setAnimando, animarArcos } from './game-engine.js';
 import { AudioCtrl } from './engine/audioController.js'; 
@@ -310,10 +310,18 @@ function renderQ(q) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', async () => { // Adicione 'async' aqui
-    await carregarBancoDeQuestoes(); // <--- A IGNIÇÃO QUE FALTAVA!
+document.addEventListener('DOMContentLoaded', async () => { 
+    console.log("🚀 [SISTEMA] Iniciando ignição do banco de dados...");
+    
+    try {
+        await carregarBancoDeQuestoes(); 
+        console.log("✅ [SISTEMA] Banco carregado e pronto para o combate!");
+    } catch (e) {
+        console.error("❌ [SISTEMA] Falha catastrófica ao carregar questões:", e);
+    }
+
     initDebugMode();
-    initDebugMode();
+  
     on('btn-acessar', mostrarSeletorBlocos);
     [1,2,3,4,5,6].forEach(i => on(`btn-bloco-${i}`, () => iniciarBloco(i)));
     
