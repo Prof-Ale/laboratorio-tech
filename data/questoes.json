@@ -599,8 +599,7 @@
       { "valor": "8/3", "tipo": "erro", "categoria": "conceito", "erro": "fracao_inverte_numerador_denominador", "descricao": "Inverteu a posição da parte (numerador) com o todo (denominador).", "peso": 3 },
       { "valor": "3/5", "tipo": "erro", "categoria": "procedimento", "erro": "fracao_usa_sobra_como_denominador", "descricao": "Usou a quantidade de fatias restantes como base da fração.", "peso": 2 },
       { "valor": "5/8", "tipo": "erro", "categoria": "interpretacao", "erro": "fracao_calcula_sobra", "descricao": "Identificou a fração do que sobrou, não do que foi comido.", "peso": 2 }
-      },
-  ],
+    ],
     "passo": "O número de baixo (denominador) indica o total de fatias (8). O de cima (numerador) o que foi pego (3).",
     "dica": "O denominador 'denomina' em quantas partes o todo foi dividido. Imagine ele no fundo da caixa!"
   },
@@ -614,60 +613,26 @@
       { "valor": "4/8", "tipo": "acerto" },
       { "valor": "1/4", "tipo": "erro", "categoria": "conceito", "erro": "fracao_aumenta_apenas_denominador", "descricao": "Aumentou o denominador mantendo o numerador, o que diminui o valor da fração.", "peso": 3 },
       { "valor": "2/8", "tipo": "erro", "categoria": "procedimento", "erro": "fracao_multiplicacao_assimetrica", "descricao": "Multiplicou numerador e denominador por números diferentes.", "peso": 2 },
-      {
-  "valor": "3/8",
-  "tipo": "erro",
-  "categoria": "atencao",
-  "erro": "fracao_estimativa_visual_falha",
-  "descricao": "Escolheu uma fração visualmente próxima de 1/2, mas incorreta.",
-  "peso": 1
-],
-"passo": "Frações equivalentes representam a mesma quantidade. Multiplicando 1/2 por 4/4 temos 4/8.",
-"dica": "Multiplique numerador e denominador pelo MESMO número."
-},
- {
-  "id": "B2T2Q11",
-  "aula": 5,
-  "tipo": "aritmetica",
-  "dificuldade": 2,
-  "tipoPedagogico": "base",
-  "bncc": "EF07MA04",
-  "bncc_desc": "Frações Equivalentes",
-  "display": "Qual fração abaixo vale o mesmo que (é equivalente a) 1/2?",
-  "res": "4/8",
-  "alternativas": [
-    {
-      "valor": "4/8",
-      "tipo": "acerto"
-    },
-    {
-      "valor": "1/4",
-      "tipo": "erro",
-      "categoria": "conceito",
-      "erro": "fracao_aumenta_apenas_denominador",
-      "descricao": "Aumentou o denominador mantendo o numerador, o que diminui o valor da fração.",
-      "peso": 3
-    },
-    {
-      "valor": "2/8",
-      "tipo": "erro",
-      "categoria": "procedimento",
-      "erro": "fracao_multiplicacao_assimetrica",
-      "descricao": "Multiplicou numerador e denominador por números diferentes.",
-      "peso": 2
-    },
-    {
-      "valor": "3/8",
-      "tipo": "erro",
-      "categoria": "atencao",
-      "erro": "fracao_estimativa_visual_falha",
-      "descricao": "Escolheu uma fração visualmente próxima de 1/2, mas incorreta.",
-      "peso": 1
-    }
-  ],
-  "passo": "Frações equivalentes representam a mesma quantidade. Multiplicando 1/2 por 4/4 temos 4/8.",
-  "dica": "Multiplique numerador e denominador pelo MESMO número."
-},
+      { "valor": "3/8", "tipo": "erro", "categoria": "atencao", "erro": "fracao_estimativa_visual_falha", "descricao": "Escolheu um valor por semelhança visual sem testar a proporção.", "peso": 1 }
+    ],
+    "passo": "Para ser equivalente, multiplique em cima e em baixo pelo mesmo número. 1×4=4 e 2×4=8. Logo, 4/8.",
+    "dica": "Frações equivalentes são formas diferentes de dizer a mesma quantidade. 1 de 2 é o mesmo que 4 de 8!"
+  },
+  {
+    "id": "B2T2Q12", "aula": 5, "tipo": "aritmetica",
+    "dificuldade": 2, "tipoPedagogico": "base",
+    "bncc": "EF07MA04", "bncc_desc": "Simplificação de Frações",
+    "display": "Qual é a forma mais simples (irredutível) da fração 12/18?",
+    "res": "2/3",
+    "alternativas": [
+      { "valor": "2/3", "tipo": "acerto" },
+      { "valor": "4/6", "tipo": "erro", "categoria": "procedimento", "erro": "fracao_simplificacao_incompleta", "descricao": "Simplificou uma vez, mas não chegou até a forma final irredutível.", "peso": 2 },
+      { "valor": "6/9", "tipo": "erro", "categoria": "procedimento", "erro": "fracao_simplificacao_parcial", "descricao": "Iniciou a simplificação mas parou no primeiro divisor encontrado.", "peso": 2 },
+      { "valor": "1/3", "tipo": "erro", "categoria": "calculo", "erro": "fracao_erro_divisao_tabuada", "descricao": "Errou a divisão básica durante o processo de simplificação.", "peso": 1 }
+    ],
+    "passo": "Dividimos ambos por 6 (MDC): 12÷6=2 e 18÷6=3. Resultado: 2/3.",
+    "dica": "Simplificar é 'enxugar' a fração. Continue dividindo até que não exista mais nenhum número que divida os dois ao mesmo tempo."
+  },
   {
     "id": "B2T3Q01", "aula": 6, "tipo": "aritmetica",
     "dificuldade": 1, "tipoPedagogico": "base",
@@ -1433,7 +1398,7 @@
     "passo": "Condição de Existência: o maior lado (8) DEVE ser menor que a soma dos outros dois (3 + 4 = 7). Como 8 é maior que 7, a figura fica aberta.",
     "dica": "Imagine os dois palitos menores (3 e 4) deitados no chão. Se você tentar encostar as pontas deles, eles conseguem alcançar o tamanho do palito de 8?"
   },
-    {
+  {
     "id": "B3T1Q01",
     "aula": 1,
     "tipo": "valor_posicional",
