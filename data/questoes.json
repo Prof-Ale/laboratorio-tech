@@ -41,7 +41,7 @@
       { "valor": "80", "tipo": "erro", "categoria": "procedimento", "erro": "valorposicional_reduz_ordem", "descricao": "Atribuiu o valor de dezena em vez de centena.", "peso": 2 },
       { "valor": "8.000", "tipo": "erro", "categoria": "procedimento", "erro": "valorposicional_aumenta_ordem", "descricao": "Atribuiu o valor de milhar em vez de centena.", "peso": 2 }
     ],
-    "passo": "O 8 ocupa a terceira ordem (centenas). Ele representa 8 grupos de 100.",
+    "passo": "O 8 ocupa a terceira ordem (centenas). Ele representa 8 groups de 100.",
     "dica": "Conte da direita para a esquerda: Unidade, Dezena, Centena..."
   },
   {
@@ -762,7 +762,7 @@
     "alternativas": [
       { "valor": "3,6", "tipo": "acerto" },
       { "valor": "36", "tipo": "erro", "categoria": "conceito", "erro": "decimal_multiplicacao_ignora_casas_totais", "descricao": "Multiplicou como inteiros e não devolveu as casas decimais ao resultado final.", "peso": 3 },
-      { "valor": "0,36", "tipo": "erro", "categoria": "procedimento", "erro": "decimal_multiplicacao_excesso_casas", "descricao": "Aplicou mais casas decimais do que a soma das casas dos fatores exigia.", "peso": 2 },
+      { "valor": "0,36", "tipo": "erro", "categoria": "procedimento", "erro": "decimal_multiplicacao_excesso_casas", "descricao": "Aplicou mais casas decimais do que a soma das casas dos factors exigia.", "peso": 2 },
       { "valor": "3,06", "tipo": "erro", "categoria": "calculo", "erro": "decimal_multiplicacao_erro_tabuada", "descricao": "Erro aritmético básico durante o algoritmo de multiplicação.", "peso": 1 }
     ],
     "passo": "Multiplique 15 × 24 = 360. Como cada fator tem 1 casa (total 2), recue 2 casas no resultado: 3,60 (ou 3,6).",
@@ -1403,16 +1403,16 @@
     "aula": 1,
     "tipo": "valor_posicional",
     "dificuldade": 1,
-    "tipoPedagogico": "bloom_lembrar",
+    "tipoPedagogico": "base",
     "bncc": "EF06MA01",
     "bncc_desc": "Valor Posicional",
     "display": "Qual é o valor posicional do algarismo 7 no número 57.321?",
     "res": "7.000",
     "alternativas": [
       { "valor": "7.000", "tipo": "acerto" },
-      { "valor": "700", "tipo": "erro", "categoria": "procedimento" },
-      { "valor": "70.000", "tipo": "erro", "categoria": "conceito" },
-      { "valor": "7", "tipo": "erro", "categoria": "atencao" }
+      { "valor": "700", "tipo": "erro", "categoria": "procedimento", "erro": "valorposicional_reduz_ordem", "descricao": "Confundiu unidade de milhar com centena.", "peso": 2 },
+      { "valor": "70.000", "tipo": "erro", "categoria": "conceito", "erro": "valorposicional_aumenta_ordem", "descricao": "Confundiu unidade de milhar com dezena de milhar.", "peso": 3 },
+      { "valor": "7", "tipo": "erro", "categoria": "atencao", "erro": "valorposicional_valor_absoluto", "descricao": "Indicou o valor absoluto do algarismo isolado.", "peso": 1 }
     ],
     "passo": "O algarismo 7 ocupa a ordem das unidades de milhar.",
     "dica": "Conte as casas da direita para a esquerda."
@@ -1422,16 +1422,16 @@
     "aula": 1,
     "tipo": "primos",
     "dificuldade": 1,
-    "tipoPedagogico": "bloom_lembrar",
+    "tipoPedagogico": "base",
     "bncc": "EF06MA05",
     "bncc_desc": "Números Primos",
     "display": "Qual destes números é primo?",
     "res": "13",
     "alternativas": [
       { "valor": "13", "tipo": "acerto" },
-      { "valor": "15", "tipo": "erro", "categoria": "conceito" },
-      { "valor": "21", "tipo": "erro", "categoria": "conceito" },
-      { "valor": "27", "tipo": "erro", "categoria": "procedimento" }
+      { "valor": "15", "tipo": "erro", "categoria": "conceito", "erro": "primo_confunde_com_impar_15", "descricao": "Classificou um múltiplo de 3 e 5 como primo por ser ímpar.", "peso": 3 },
+      { "valor": "21", "tipo": "erro", "categoria": "conceito", "erro": "primo_confunde_com_impar_21", "descricao": "Classificou um múltiplo de 3 e 7 como primo por ser ímpar.", "peso": 3 },
+      { "valor": "27", "tipo": "erro", "categoria": "procedimento", "erro": "primo_confunde_com_impar_27", "descricao": "Classificou um cubo perfeito (3³) como primo.", "peso": 2 }
     ],
     "passo": "13 possui apenas dois divisores: 1 e 13.",
     "dica": "Teste se o número aparece em outras tabuadas."
@@ -1441,16 +1441,16 @@
     "aula": 1,
     "tipo": "potenciacao",
     "dificuldade": 1,
-    "tipoPedagogico": "bloom_lembrar",
+    "tipoPedagogico": "base",
     "bncc": "EF06MA06",
     "bncc_desc": "Potenciação",
     "display": "Quanto vale 8²?",
     "res": "64",
     "alternativas": [
       { "valor": "64", "tipo": "acerto" },
-      { "valor": "16", "tipo": "erro", "categoria": "conceito" },
-      { "valor": "82", "tipo": "erro", "categoria": "procedimento" },
-      { "valor": "56", "tipo": "erro", "categoria": "calculo" }
+      { "valor": "16", "tipo": "erro", "categoria": "conceito", "erro": "potenciacao_multiplica_base_expoente", "descricao": "Multiplicou a base pelo expoente (8x2).", "peso": 3 },
+      { "valor": "82", "tipo": "erro", "categoria": "procedimento", "erro": "potenciacao_justapoe_numeros", "descricao": "Apenas juntou os algarismos 8 e 2.", "peso": 2 },
+      { "valor": "56", "tipo": "erro", "categoria": "calculo", "erro": "potenciacao_erro_tabuada", "descricao": "Errou a tabuada do 8.", "peso": 1 }
     ],
     "passo": "8² significa 8 × 8.",
     "dica": "Expoente 2 significa multiplicar o número por ele mesmo."
@@ -1460,16 +1460,16 @@
     "aula": 1,
     "tipo": "mmc",
     "dificuldade": 2,
-    "tipoPedagogico": "bloom_aplicar",
+    "tipoPedagogico": "base",
     "bncc": "EF06MA05",
     "bncc_desc": "MMC",
     "display": "Determine o MMC entre 12 e 18.",
     "res": "36",
     "alternativas": [
       { "valor": "36", "tipo": "acerto" },
-      { "valor": "6", "tipo": "erro", "categoria": "conceito" },
-      { "valor": "24", "tipo": "erro", "categoria": "procedimento" },
-      { "valor": "216", "tipo": "erro", "categoria": "estrategia" }
+      { "valor": "6", "tipo": "erro", "categoria": "conceito", "erro": "mmc_confunde_com_mdc", "descricao": "Calculou o Máximo Divisor Comum em vez do Mínimo Múltiplo.", "peso": 3 },
+      { "valor": "24", "tipo": "erro", "categoria": "procedimento", "erro": "mmc_multiplo_comum_incompleto", "descricao": "Encontrou um múltiplo, mas não considerou os dois números.", "peso": 2 },
+      { "valor": "216", "tipo": "erro", "categoria": "estrategia", "erro": "mmc_multiplica_direto", "descricao": "Multiplicou os números entre si desnecessariamente.", "peso": 2 }
     ],
     "passo": "O primeiro múltiplo comum entre 12 e 18 é 36.",
     "dica": "Liste os múltiplos dos dois números."
@@ -1479,16 +1479,16 @@
     "aula": 1,
     "tipo": "mdc",
     "dificuldade": 2,
-    "tipoPedagogico": "bloom_aplicar",
+    "tipoPedagogico": "base",
     "bncc": "EF06MA05",
     "bncc_desc": "MDC",
     "display": "Determine o MDC entre 24 e 36.",
     "res": "12",
     "alternativas": [
       { "valor": "12", "tipo": "acerto" },
-      { "valor": "6", "tipo": "erro", "categoria": "procedimento" },
-      { "valor": "72", "tipo": "erro", "categoria": "conceito" },
-      { "valor": "24", "tipo": "erro", "categoria": "atencao" }
+      { "valor": "6", "tipo": "erro", "categoria": "procedimento", "erro": "mdc_divisor_comum_menor", "descricao": "Encontrou um divisor comum, mas não o máximo.", "peso": 2 },
+      { "valor": "72", "tipo": "erro", "categoria": "conceito", "erro": "mdc_confunde_com_mmc", "descricao": "Calculou o MMC em vez do MDC.", "peso": 3 },
+      { "valor": "24", "tipo": "erro", "categoria": "atencao", "erro": "mdc_elege_menor_numero", "descricao": "Apenas repetiu o menor número da questão.", "peso": 1 }
     ],
     "passo": "12 é o maior número que divide 24 e 36 ao mesmo tempo.",
     "dica": "Procure os divisores comuns."
@@ -1498,16 +1498,16 @@
     "aula": 2,
     "tipo": "inteiros",
     "dificuldade": 1,
-    "tipoPedagogico": "bloom_lembrar",
+    "tipoPedagogico": "base",
     "bncc": "EF07MA02",
     "bncc_desc": "Números Inteiros",
     "display": "Qual é o oposto de -8?",
     "res": "+8",
     "alternativas": [
       { "valor": "+8", "tipo": "acerto" },
-      { "valor": "-8", "tipo": "erro", "categoria": "conceito" },
-      { "valor": "0", "tipo": "erro", "categoria": "estrategia" },
-      { "valor": "-16", "tipo": "erro", "categoria": "procedimento" }
+      { "valor": "-8", "tipo": "erro", "categoria": "conceito", "erro": "oposto_mantem_sinal", "descricao": "Manteve o sinal negativo.", "peso": 3 },
+      { "valor": "0", "tipo": "erro", "categoria": "estrategia", "erro": "oposto_confunde_com_nulo", "descricao": "Assumiu que o oposto zera o valor.", "peso": 2 },
+      { "valor": "-16", "tipo": "erro", "categoria": "procedimento", "erro": "oposto_dobra_valor", "descricao": "Dobrou o valor e manteve o sinal.", "peso": 2 }
     ],
     "passo": "O oposto possui mesma distância do zero, mas lado contrário.",
     "dica": "Troque apenas o sinal."
@@ -1517,16 +1517,16 @@
     "aula": 2,
     "tipo": "fracoes",
     "dificuldade": 2,
-    "tipoPedagogico": "bloom_compreender",
+    "tipoPedagogico": "base",
     "bncc": "EF07MA04",
     "bncc_desc": "Frações",
     "display": "Qual decimal representa a fração 3/4?",
     "res": "0,75",
     "alternativas": [
       { "valor": "0,75", "tipo": "acerto" },
-      { "valor": "0,34", "tipo": "erro", "categoria": "procedimento" },
-      { "valor": "0,5", "tipo": "erro", "categoria": "conceito" },
-      { "valor": "1,25", "tipo": "erro", "categoria": "calculo" }
+      { "valor": "0,34", "tipo": "erro", "categoria": "procedimento", "erro": "fracao_justapoe_algarismos", "descricao": "Apenas colocou os números da fração após a vírgula.", "peso": 2 },
+      { "valor": "0,5", "tipo": "erro", "categoria": "conceito", "erro": "fracao_confunde_meio", "descricao": "Assumiu o valor decimal da fração 1/2.", "peso": 3 },
+      { "valor": "1,25", "tipo": "erro", "categoria": "calculo", "erro": "fracao_inverte_divisao", "descricao": "Dividiu 4 por 3 em vez de 3 por 4.", "peso": 1 }
     ],
     "passo": "3 dividido por 4 resulta em 0,75.",
     "dica": "Frações podem ser transformadas em divisão."
@@ -1536,16 +1536,16 @@
     "aula": 2,
     "tipo": "proporcionalidade",
     "dificuldade": 2,
-    "tipoPedagogico": "bloom_aplicar",
+    "tipoPedagogico": "base",
     "bncc": "EF07MA08",
     "bncc_desc": "Proporcionalidade",
     "display": "Se 4 cadernos custam R$ 32, quanto custam 6 cadernos?",
     "res": "48",
     "alternativas": [
       { "valor": "48", "tipo": "acerto" },
-      { "valor": "40", "tipo": "erro", "categoria": "procedimento" },
-      { "valor": "52", "tipo": "erro", "categoria": "calculo" },
-      { "valor": "64", "tipo": "erro", "categoria": "conceito" }
+      { "valor": "40", "tipo": "erro", "categoria": "procedimento", "erro": "proporcao_calculo_linear_errado", "descricao": "Somou o valor de 1 caderno ao total.", "peso": 2 },
+      { "valor": "52", "tipo": "erro", "categoria": "calculo", "erro": "proporcao_erro_tabuada", "descricao": "Errou a multiplicação básica.", "peso": 1 },
+      { "valor": "64", "tipo": "erro", "categoria": "conceito", "erro": "proporcao_dobra_valor", "descricao": "Dobrou o valor assumindo erroneamente que os cadernos dobraram.", "peso": 3 }
     ],
     "passo": "Cada caderno custa 8 reais. Multiplicando por 6: 48.",
     "dica": "Primeiro descubra o valor unitário."
@@ -1555,16 +1555,16 @@
     "aula": 3,
     "tipo": "area",
     "dificuldade": 1,
-    "tipoPedagogico": "bloom_aplicar",
+    "tipoPedagogico": "base",
     "bncc": "EF08MA19",
     "bncc_desc": "Área",
     "display": "Calcule a área de um retângulo de 8 cm por 5 cm.",
     "res": "40 cm²",
     "alternativas": [
       { "valor": "40 cm²", "tipo": "acerto" },
-      { "valor": "26 cm²", "tipo": "erro", "categoria": "conceito" },
-      { "valor": "80 cm²", "tipo": "erro", "categoria": "procedimento" },
-      { "valor": "13 cm²", "tipo": "erro", "categoria": "calculo" }
+      { "valor": "26 cm²", "tipo": "erro", "categoria": "conceito", "erro": "area_calcula_perimetro", "descricao": "Calculou o perímetro em vez da área.", "peso": 3 },
+      { "valor": "80 cm²", "tipo": "erro", "categoria": "procedimento", "erro": "area_dobra_produto", "descricao": "Multiplicou a área por 2 desnecessariamente.", "peso": 2 },
+      { "valor": "13 cm²", "tipo": "erro", "categoria": "calculo", "erro": "area_soma_simples", "descricao": "Apenas somou a base e a altura.", "peso": 1 }
     ],
     "passo": "Área do retângulo = base × altura.",
     "dica": "Multiplique comprimento pela largura."
@@ -1574,16 +1574,16 @@
     "aula": 3,
     "tipo": "conversao",
     "dificuldade": 1,
-    "tipoPedagogico": "bloom_aplicar",
+    "tipoPedagogico": "base",
     "bncc": "EF07MA29",
     "bncc_desc": "Conversão de Medidas",
     "display": "Converta 2,5 metros em centímetros.",
     "res": "250 cm",
     "alternativas": [
       { "valor": "250 cm", "tipo": "acerto" },
-      { "valor": "25 cm", "tipo": "erro", "categoria": "procedimento" },
-      { "valor": "2.500 cm", "tipo": "erro", "categoria": "conceito" },
-      { "valor": "205 cm", "tipo": "erro", "categoria": "calculo" }
+      { "valor": "25 cm", "tipo": "erro", "categoria": "procedimento", "erro": "conversao_fator_10", "descricao": "Multiplicou por 10 em vez de 100.", "peso": 2 },
+      { "valor": "2.500 cm", "tipo": "erro", "categoria": "conceito", "erro": "conversao_fator_1000", "descricao": "Multiplicou por 1000, confundindo com milímetros.", "peso": 3 },
+      { "valor": "205 cm", "tipo": "erro", "categoria": "calculo", "erro": "conversao_erro_posicao_virgula", "descricao": "Errou a conversão esquecendo um zero.", "peso": 1 }
     ],
     "passo": "1 metro possui 100 centímetros.",
     "dica": "Multiplique metros por 100."
@@ -1593,16 +1593,16 @@
     "aula": 4,
     "tipo": "equacao",
     "dificuldade": 2,
-    "tipoPedagogico": "bloom_aplicar",
+    "tipoPedagogico": "base",
     "bncc": "EF08MA06",
     "bncc_desc": "Equação do 1° Grau",
     "display": "Resolva: 2x + 5 = 17.",
     "res": "x = 6",
     "alternativas": [
       { "valor": "x = 6", "tipo": "acerto" },
-      { "valor": "x = 11", "tipo": "erro", "categoria": "procedimento" },
-      { "valor": "x = 12", "tipo": "erro", "categoria": "conceito" },
-      { "valor": "x = 7", "tipo": "erro", "categoria": "calculo" }
+      { "valor": "x = 11", "tipo": "erro", "categoria": "procedimento", "erro": "equacao_soma_em_vez_subtrair", "descricao": "Somou o 5 ao 17 ao mudar de lado.", "peso": 2 },
+      { "valor": "x = 12", "tipo": "erro", "categoria": "conceito", "erro": "equacao_subtrai_multiplicador", "descricao": "Subtraiu o 2x do 17 de forma errada.", "peso": 3 },
+      { "valor": "x = 7", "tipo": "erro", "categoria": "calculo", "erro": "equacao_erro_divisao", "descricao": "Errou a divisão de 12 por 2.", "peso": 1 }
     ],
     "passo": "Primeiro isolamos o 2x: 17 - 5 = 12. Depois dividimos por 2.",
     "dica": "Deixe a incógnita sozinha."
@@ -1612,16 +1612,16 @@
     "aula": 4,
     "tipo": "inequacao",
     "dificuldade": 3,
-    "tipoPedagogico": "bloom_analisar",
+    "tipoPedagogico": "base",
     "bncc": "EF09MA09",
     "bncc_desc": "Inequações",
     "display": "Resolva: 3x < 18.",
     "res": "x < 6",
     "alternativas": [
       { "valor": "x < 6", "tipo": "acerto" },
-      { "valor": "x > 6", "tipo": "erro", "categoria": "conceito" },
-      { "valor": "x = 6", "tipo": "erro", "categoria": "procedimento" },
-      { "valor": "x < 3", "tipo": "erro", "categoria": "calculo" }
+      { "valor": "x > 6", "tipo": "erro", "categoria": "conceito", "erro": "inequacao_inverte_sinal_indevidamente", "descricao": "Inverteu a desigualdade ao dividir por um número positivo.", "peso": 3 },
+      { "valor": "x = 6", "tipo": "erro", "categoria": "procedimento", "erro": "inequacao_transforma_em_equacao", "descricao": "Trocou o sinal de menor pelo de igual.", "peso": 2 },
+      { "valor": "x < 3", "tipo": "erro", "categoria": "calculo", "erro": "inequacao_erro_divisao", "descricao": "Errou a divisão básica.", "peso": 1 }
     ],
     "passo": "Dividimos ambos os lados por 3.",
     "dica": "A desigualdade continua igual porque dividimos por número positivo."
@@ -1631,16 +1631,16 @@
     "aula": 5,
     "tipo": "estatistica",
     "dificuldade": 1,
-    "tipoPedagogico": "bloom_lembrar",
+    "tipoPedagogico": "base",
     "bncc": "EF08MA25",
     "bncc_desc": "Média Aritmética",
     "display": "Calcule a média dos números 7, 8, 9 e 10.",
     "res": "8,5",
     "alternativas": [
       { "valor": "8,5", "tipo": "acerto" },
-      { "valor": "34", "tipo": "erro", "categoria": "procedimento" },
-      { "valor": "7,5", "tipo": "erro", "categoria": "calculo" },
-      { "valor": "9", "tipo": "erro", "categoria": "estrategia" }
+      { "valor": "34", "tipo": "erro", "categoria": "procedimento", "erro": "media_apenas_soma", "descricao": "Apenas somou e não dividiu.", "peso": 3 },
+      { "valor": "7,5", "tipo": "erro", "categoria": "calculo", "erro": "media_erro_divisao", "descricao": "Errou a divisão da soma por 4.", "peso": 1 },
+      { "valor": "9", "tipo": "erro", "categoria": "estrategia", "erro": "media_elege_valor_central", "descricao": "Escolheu um valor aleatório do conjunto.", "peso": 2 }
     ],
     "passo": "Somamos todos os valores e dividimos pela quantidade.",
     "dica": "Média é repartir igualmente."
@@ -1650,16 +1650,16 @@
     "aula": 5,
     "tipo": "probabilidade",
     "dificuldade": 2,
-    "tipoPedagogico": "bloom_aplicar",
+    "tipoPedagogico": "base",
     "bncc": "EF08MA26",
     "bncc_desc": "Probabilidade",
     "display": "Qual a probabilidade de sair um número par em um dado comum?",
     "res": "3/6",
     "alternativas": [
       { "valor": "3/6", "tipo": "acerto" },
-      { "valor": "1/6", "tipo": "erro", "categoria": "conceito" },
-      { "valor": "6/6", "tipo": "erro", "categoria": "procedimento" },
-      { "valor": "2/6", "tipo": "erro", "categoria": "calculo" }
+      { "valor": "1/6", "tipo": "erro", "categoria": "conceito", "erro": "probabilidade_evento_simples", "descricao": "Calculou a chance de sair apenas um número específico.", "peso": 3 },
+      { "valor": "6/6", "tipo": "erro", "categoria": "procedimento", "erro": "probabilidade_evento_certo", "descricao": "Considerou todos os números do dado.", "peso": 2 },
+      { "valor": "2/6", "tipo": "erro", "categoria": "calculo", "erro": "probabilidade_contagem_errada", "descricao": "Errou a contagem de pares.", "peso": 1 }
     ],
     "passo": "Os pares possíveis são 2, 4 e 6.",
     "dica": "Conte casos favoráveis e possíveis."
@@ -1669,16 +1669,16 @@
     "aula": 6,
     "tipo": "poligonos",
     "dificuldade": 1,
-    "tipoPedagogico": "bloom_lembrar",
+    "tipoPedagogico": "base",
     "bncc": "EF08MA15",
     "bncc_desc": "Polígonos",
     "display": "Quantos lados possui um hexágono?",
     "res": "6",
     "alternativas": [
       { "valor": "6", "tipo": "acerto" },
-      { "valor": "5", "tipo": "erro", "categoria": "conceito" },
-      { "valor": "7", "tipo": "erro", "categoria": "procedimento" },
-      { "valor": "8", "tipo": "erro", "categoria": "atencao" }
+      { "valor": "5", "tipo": "erro", "categoria": "conceito", "erro": "poligono_confunde_pentagono", "descricao": "Confundiu com pentágono.", "peso": 3 },
+      { "valor": "7", "tipo": "erro", "categoria": "procedimento", "erro": "poligono_confunde_heptagono", "descricao": "Confundiu com heptágono.", "peso": 2 },
+      { "valor": "8", "tipo": "erro", "categoria": "atencao", "erro": "poligono_confunde_octogono", "descricao": "Confundiu com octógono.", "peso": 1 }
     ],
     "passo": "Hexa significa seis.",
     "dica": "Lembre da palavra hexadecimal."
@@ -1688,16 +1688,16 @@
     "aula": 6,
     "tipo": "pitagoras",
     "dificuldade": 3,
-    "tipoPedagogico": "bloom_aplicar",
+    "tipoPedagogico": "base",
     "bncc": "EF09MA14",
     "bncc_desc": "Teorema de Pitágoras",
     "display": "Calcule a hipotenusa de um triângulo com catetos 3 e 4.",
     "res": "5",
     "alternativas": [
       { "valor": "5", "tipo": "acerto" },
-      { "valor": "7", "tipo": "erro", "categoria": "conceito" },
-      { "valor": "6", "tipo": "erro", "categoria": "procedimento" },
-      { "valor": "4", "tipo": "erro", "categoria": "calculo" }
+      { "valor": "7", "tipo": "erro", "categoria": "conceito", "erro": "pitagoras_soma_linear", "descricao": "Apenas somou os catetos sem elevar ao quadrado.", "peso": 3 },
+      { "valor": "6", "tipo": "erro", "categoria": "procedimento", "erro": "pitagoras_raiz_errada", "descricao": "Tirou a raiz quadrada de 25 de forma errada.", "peso": 2 },
+      { "valor": "4", "tipo": "erro", "categoria": "calculo", "erro": "pitagoras_subtrai_catetos", "descricao": "Subtraiu os catetos em vez de aplicar o teorema.", "peso": 1 }
     ],
     "passo": "3² + 4² = 9 + 16 = 25. √25 = 5.",
     "dica": "Use a² + b² = c²."
