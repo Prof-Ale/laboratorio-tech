@@ -19,8 +19,8 @@ export function validarQuestao(q) {
             if (alt.tipo === 'erro') {
                 if (!Object.values(CATEGORIAS).includes(alt.categoria)) 
                     erros.push(`Alt[${index}]: Categoria inválida (${alt.categoria})`);
-                if (!alt.erro) 
-                    erros.push(`Alt[${index}]: Slug de erro ausente`);
+               // if (!alt.erro) 
+                 //   erros.push(`Alt[${index}]: Slug de erro ausente`);
                 if (alt.peso && !Object.values(PESOS).includes(alt.peso))
                     erros.push(`Alt[${index}]: Peso inválido (${alt.peso})`);
             }
