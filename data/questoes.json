@@ -1397,5 +1397,310 @@
     ],
     "passo": "Condição de Existência: o maior lado (8) DEVE ser menor que a soma dos outros dois (3 + 4 = 7). Como 8 é maior que 7, a figura fica aberta.",
     "dica": "Imagine os dois palitos menores (3 e 4) deitados no chão. Se você tentar encostar as pontas deles, eles conseguem alcançar o tamanho do palito de 8?"
+  },
+    {
+    "id": "B3T1Q01",
+    "aula": 1,
+    "tipo": "valor_posicional",
+    "dificuldade": 1,
+    "tipoPedagogico": "bloom_lembrar",
+    "bncc": "EF06MA01",
+    "bncc_desc": "Valor Posicional",
+    "display": "Qual é o valor posicional do algarismo 7 no número 57.321?",
+    "res": "7.000",
+    "alternativas": [
+      { "valor": "7.000", "tipo": "acerto" },
+      { "valor": "700", "tipo": "erro", "categoria": "procedimento" },
+      { "valor": "70.000", "tipo": "erro", "categoria": "conceito" },
+      { "valor": "7", "tipo": "erro", "categoria": "atencao" }
+    ],
+    "passo": "O algarismo 7 ocupa a ordem das unidades de milhar.",
+    "dica": "Conte as casas da direita para a esquerda."
+  },
+  {
+    "id": "B3T1Q02",
+    "aula": 1,
+    "tipo": "primos",
+    "dificuldade": 1,
+    "tipoPedagogico": "bloom_lembrar",
+    "bncc": "EF06MA05",
+    "bncc_desc": "Números Primos",
+    "display": "Qual destes números é primo?",
+    "res": "13",
+    "alternativas": [
+      { "valor": "13", "tipo": "acerto" },
+      { "valor": "15", "tipo": "erro", "categoria": "conceito" },
+      { "valor": "21", "tipo": "erro", "categoria": "conceito" },
+      { "valor": "27", "tipo": "erro", "categoria": "procedimento" }
+    ],
+    "passo": "13 possui apenas dois divisores: 1 e 13.",
+    "dica": "Teste se o número aparece em outras tabuadas."
+  },
+  {
+    "id": "B3T1Q03",
+    "aula": 1,
+    "tipo": "potenciacao",
+    "dificuldade": 1,
+    "tipoPedagogico": "bloom_lembrar",
+    "bncc": "EF06MA06",
+    "bncc_desc": "Potenciação",
+    "display": "Quanto vale 8²?",
+    "res": "64",
+    "alternativas": [
+      { "valor": "64", "tipo": "acerto" },
+      { "valor": "16", "tipo": "erro", "categoria": "conceito" },
+      { "valor": "82", "tipo": "erro", "categoria": "procedimento" },
+      { "valor": "56", "tipo": "erro", "categoria": "calculo" }
+    ],
+    "passo": "8² significa 8 × 8.",
+    "dica": "Expoente 2 significa multiplicar o número por ele mesmo."
+  },
+  {
+    "id": "B3T1Q04",
+    "aula": 1,
+    "tipo": "mmc",
+    "dificuldade": 2,
+    "tipoPedagogico": "bloom_aplicar",
+    "bncc": "EF06MA05",
+    "bncc_desc": "MMC",
+    "display": "Determine o MMC entre 12 e 18.",
+    "res": "36",
+    "alternativas": [
+      { "valor": "36", "tipo": "acerto" },
+      { "valor": "6", "tipo": "erro", "categoria": "conceito" },
+      { "valor": "24", "tipo": "erro", "categoria": "procedimento" },
+      { "valor": "216", "tipo": "erro", "categoria": "estrategia" }
+    ],
+    "passo": "O primeiro múltiplo comum entre 12 e 18 é 36.",
+    "dica": "Liste os múltiplos dos dois números."
+  },
+  {
+    "id": "B3T1Q05",
+    "aula": 1,
+    "tipo": "mdc",
+    "dificuldade": 2,
+    "tipoPedagogico": "bloom_aplicar",
+    "bncc": "EF06MA05",
+    "bncc_desc": "MDC",
+    "display": "Determine o MDC entre 24 e 36.",
+    "res": "12",
+    "alternativas": [
+      { "valor": "12", "tipo": "acerto" },
+      { "valor": "6", "tipo": "erro", "categoria": "procedimento" },
+      { "valor": "72", "tipo": "erro", "categoria": "conceito" },
+      { "valor": "24", "tipo": "erro", "categoria": "atencao" }
+    ],
+    "passo": "12 é o maior número que divide 24 e 36 ao mesmo tempo.",
+    "dica": "Procure os divisores comuns."
+  },
+  {
+    "id": "B3T2Q01",
+    "aula": 2,
+    "tipo": "inteiros",
+    "dificuldade": 1,
+    "tipoPedagogico": "bloom_lembrar",
+    "bncc": "EF07MA02",
+    "bncc_desc": "Números Inteiros",
+    "display": "Qual é o oposto de -8?",
+    "res": "+8",
+    "alternativas": [
+      { "valor": "+8", "tipo": "acerto" },
+      { "valor": "-8", "tipo": "erro", "categoria": "conceito" },
+      { "valor": "0", "tipo": "erro", "categoria": "estrategia" },
+      { "valor": "-16", "tipo": "erro", "categoria": "procedimento" }
+    ],
+    "passo": "O oposto possui mesma distância do zero, mas lado contrário.",
+    "dica": "Troque apenas o sinal."
+  },
+  {
+    "id": "B3T2Q02",
+    "aula": 2,
+    "tipo": "fracoes",
+    "dificuldade": 2,
+    "tipoPedagogico": "bloom_compreender",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Frações",
+    "display": "Qual decimal representa a fração 3/4?",
+    "res": "0,75",
+    "alternativas": [
+      { "valor": "0,75", "tipo": "acerto" },
+      { "valor": "0,34", "tipo": "erro", "categoria": "procedimento" },
+      { "valor": "0,5", "tipo": "erro", "categoria": "conceito" },
+      { "valor": "1,25", "tipo": "erro", "categoria": "calculo" }
+    ],
+    "passo": "3 dividido por 4 resulta em 0,75.",
+    "dica": "Frações podem ser transformadas em divisão."
+  },
+  {
+    "id": "B3T2Q03",
+    "aula": 2,
+    "tipo": "proporcionalidade",
+    "dificuldade": 2,
+    "tipoPedagogico": "bloom_aplicar",
+    "bncc": "EF07MA08",
+    "bncc_desc": "Proporcionalidade",
+    "display": "Se 4 cadernos custam R$ 32, quanto custam 6 cadernos?",
+    "res": "48",
+    "alternativas": [
+      { "valor": "48", "tipo": "acerto" },
+      { "valor": "40", "tipo": "erro", "categoria": "procedimento" },
+      { "valor": "52", "tipo": "erro", "categoria": "calculo" },
+      { "valor": "64", "tipo": "erro", "categoria": "conceito" }
+    ],
+    "passo": "Cada caderno custa 8 reais. Multiplicando por 6: 48.",
+    "dica": "Primeiro descubra o valor unitário."
+  },
+  {
+    "id": "B3T3Q01",
+    "aula": 3,
+    "tipo": "area",
+    "dificuldade": 1,
+    "tipoPedagogico": "bloom_aplicar",
+    "bncc": "EF08MA19",
+    "bncc_desc": "Área",
+    "display": "Calcule a área de um retângulo de 8 cm por 5 cm.",
+    "res": "40 cm²",
+    "alternativas": [
+      { "valor": "40 cm²", "tipo": "acerto" },
+      { "valor": "26 cm²", "tipo": "erro", "categoria": "conceito" },
+      { "valor": "80 cm²", "tipo": "erro", "categoria": "procedimento" },
+      { "valor": "13 cm²", "tipo": "erro", "categoria": "calculo" }
+    ],
+    "passo": "Área do retângulo = base × altura.",
+    "dica": "Multiplique comprimento pela largura."
+  },
+  {
+    "id": "B3T3Q02",
+    "aula": 3,
+    "tipo": "conversao",
+    "dificuldade": 1,
+    "tipoPedagogico": "bloom_aplicar",
+    "bncc": "EF07MA29",
+    "bncc_desc": "Conversão de Medidas",
+    "display": "Converta 2,5 metros em centímetros.",
+    "res": "250 cm",
+    "alternativas": [
+      { "valor": "250 cm", "tipo": "acerto" },
+      { "valor": "25 cm", "tipo": "erro", "categoria": "procedimento" },
+      { "valor": "2.500 cm", "tipo": "erro", "categoria": "conceito" },
+      { "valor": "205 cm", "tipo": "erro", "categoria": "calculo" }
+    ],
+    "passo": "1 metro possui 100 centímetros.",
+    "dica": "Multiplique metros por 100."
+  },
+  {
+    "id": "B3T4Q01",
+    "aula": 4,
+    "tipo": "equacao",
+    "dificuldade": 2,
+    "tipoPedagogico": "bloom_aplicar",
+    "bncc": "EF08MA06",
+    "bncc_desc": "Equação do 1° Grau",
+    "display": "Resolva: 2x + 5 = 17.",
+    "res": "x = 6",
+    "alternativas": [
+      { "valor": "x = 6", "tipo": "acerto" },
+      { "valor": "x = 11", "tipo": "erro", "categoria": "procedimento" },
+      { "valor": "x = 12", "tipo": "erro", "categoria": "conceito" },
+      { "valor": "x = 7", "tipo": "erro", "categoria": "calculo" }
+    ],
+    "passo": "Primeiro isolamos o 2x: 17 - 5 = 12. Depois dividimos por 2.",
+    "dica": "Deixe a incógnita sozinha."
+  },
+  {
+    "id": "B3T4Q02",
+    "aula": 4,
+    "tipo": "inequacao",
+    "dificuldade": 3,
+    "tipoPedagogico": "bloom_analisar",
+    "bncc": "EF09MA09",
+    "bncc_desc": "Inequações",
+    "display": "Resolva: 3x < 18.",
+    "res": "x < 6",
+    "alternativas": [
+      { "valor": "x < 6", "tipo": "acerto" },
+      { "valor": "x > 6", "tipo": "erro", "categoria": "conceito" },
+      { "valor": "x = 6", "tipo": "erro", "categoria": "procedimento" },
+      { "valor": "x < 3", "tipo": "erro", "categoria": "calculo" }
+    ],
+    "passo": "Dividimos ambos os lados por 3.",
+    "dica": "A desigualdade continua igual porque dividimos por número positivo."
+  },
+  {
+    "id": "B3T5Q01",
+    "aula": 5,
+    "tipo": "estatistica",
+    "dificuldade": 1,
+    "tipoPedagogico": "bloom_lembrar",
+    "bncc": "EF08MA25",
+    "bncc_desc": "Média Aritmética",
+    "display": "Calcule a média dos números 7, 8, 9 e 10.",
+    "res": "8,5",
+    "alternativas": [
+      { "valor": "8,5", "tipo": "acerto" },
+      { "valor": "34", "tipo": "erro", "categoria": "procedimento" },
+      { "valor": "7,5", "tipo": "erro", "categoria": "calculo" },
+      { "valor": "9", "tipo": "erro", "categoria": "estrategia" }
+    ],
+    "passo": "Somamos todos os valores e dividimos pela quantidade.",
+    "dica": "Média é repartir igualmente."
+  },
+  {
+    "id": "B3T5Q02",
+    "aula": 5,
+    "tipo": "probabilidade",
+    "dificuldade": 2,
+    "tipoPedagogico": "bloom_aplicar",
+    "bncc": "EF08MA26",
+    "bncc_desc": "Probabilidade",
+    "display": "Qual a probabilidade de sair um número par em um dado comum?",
+    "res": "3/6",
+    "alternativas": [
+      { "valor": "3/6", "tipo": "acerto" },
+      { "valor": "1/6", "tipo": "erro", "categoria": "conceito" },
+      { "valor": "6/6", "tipo": "erro", "categoria": "procedimento" },
+      { "valor": "2/6", "tipo": "erro", "categoria": "calculo" }
+    ],
+    "passo": "Os pares possíveis são 2, 4 e 6.",
+    "dica": "Conte casos favoráveis e possíveis."
+  },
+  {
+    "id": "B3T6Q01",
+    "aula": 6,
+    "tipo": "poligonos",
+    "dificuldade": 1,
+    "tipoPedagogico": "bloom_lembrar",
+    "bncc": "EF08MA15",
+    "bncc_desc": "Polígonos",
+    "display": "Quantos lados possui um hexágono?",
+    "res": "6",
+    "alternativas": [
+      { "valor": "6", "tipo": "acerto" },
+      { "valor": "5", "tipo": "erro", "categoria": "conceito" },
+      { "valor": "7", "tipo": "erro", "categoria": "procedimento" },
+      { "valor": "8", "tipo": "erro", "categoria": "atencao" }
+    ],
+    "passo": "Hexa significa seis.",
+    "dica": "Lembre da palavra hexadecimal."
+  },
+  {
+    "id": "B3T6Q02",
+    "aula": 6,
+    "tipo": "pitagoras",
+    "dificuldade": 3,
+    "tipoPedagogico": "bloom_aplicar",
+    "bncc": "EF09MA14",
+    "bncc_desc": "Teorema de Pitágoras",
+    "display": "Calcule a hipotenusa de um triângulo com catetos 3 e 4.",
+    "res": "5",
+    "alternativas": [
+      { "valor": "5", "tipo": "acerto" },
+      { "valor": "7", "tipo": "erro", "categoria": "conceito" },
+      { "valor": "6", "tipo": "erro", "categoria": "procedimento" },
+      { "valor": "4", "tipo": "erro", "categoria": "calculo" }
+    ],
+    "passo": "3² + 4² = 9 + 16 = 25. √25 = 5.",
+    "dica": "Use a² + b² = c²."
   }
+]
 ]
