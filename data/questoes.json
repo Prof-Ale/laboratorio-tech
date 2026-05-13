@@ -1,0 +1,38 @@
+[
+  {
+    "id": "B1Q01",
+    "aula": 1,
+    "tipo": "reta",
+    "bncc": "EF07MA04",
+    "display": "Quanto é -2 + 5?",
+    "a": -2,
+    "b": 5,
+    "res": 3,
+    "dica": "Lembre-se, o sinal de mais indica um salto para a direita na reta.",
+    "passo": "Exato! Partindo do -2 e avançando 5 unidades positivas, chegamos ao 3.",
+    "alternativas": [
+      { "valor": 3, "tipo": "acerto" },
+      { "valor": -7, "categoria": "procedimento", "erro": "inteiros_confunde_sinal_adicao", "peso": 1 },
+      { "valor": 7, "categoria": "conceito", "erro": "valorposicional_ignora_ordem", "peso": 2 },
+      { "valor": -3, "categoria": "calculo", "erro": "calculo_basico", "peso": 1 }
+    ]
+  },
+  {
+    "id": "B1Q02",
+    "aula": 1,
+    "tipo": "reta",
+    "bncc": "EF07MA04",
+    "display": "Calcule a variação: de 4 para -1",
+    "a": 4,
+    "b": -5,
+    "res": -5,
+    "dica": "A variação é a diferença entre o destino e a origem. De 4 para -1, você desceu.",
+    "passo": "Perfeito. O deslocamento na reta foi de 5 unidades para a esquerda (-5).",
+    "alternativas": [
+      { "valor": -5, "tipo": "acerto" },
+      { "valor": 3, "categoria": "calculo", "erro": "calculo_basico", "peso": 1 },
+      { "valor": 5, "categoria": "procedimento", "erro": "inteiros_confunde_sinal_adicao", "peso": 1 },
+      { "valor": -3, "categoria": "calculo", "erro": "calculo_basico", "peso": 1 }
+    ]
+  }
+]
