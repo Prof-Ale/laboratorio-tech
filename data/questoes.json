@@ -599,7 +599,8 @@
       { "valor": "8/3", "tipo": "erro", "categoria": "conceito", "erro": "fracao_inverte_numerador_denominador", "descricao": "Inverteu a posição da parte (numerador) com o todo (denominador).", "peso": 3 },
       { "valor": "3/5", "tipo": "erro", "categoria": "procedimento", "erro": "fracao_usa_sobra_como_denominador", "descricao": "Usou a quantidade de fatias restantes como base da fração.", "peso": 2 },
       { "valor": "5/8", "tipo": "erro", "categoria": "interpretacao", "erro": "fracao_calcula_sobra", "descricao": "Identificou a fração do que sobrou, não do que foi comido.", "peso": 2 }
-    ],
+      },
+  ],
     "passo": "O número de baixo (denominador) indica o total de fatias (8). O de cima (numerador) o que foi pego (3).",
     "dica": "O denominador 'denomina' em quantas partes o todo foi dividido. Imagine ele no fundo da caixa!"
   },
@@ -613,11 +614,17 @@
       { "valor": "4/8", "tipo": "acerto" },
       { "valor": "1/4", "tipo": "erro", "categoria": "conceito", "erro": "fracao_aumenta_apenas_denominador", "descricao": "Aumentou o denominador mantendo o numerador, o que diminui o valor da fração.", "peso": 3 },
       { "valor": "2/8", "tipo": "erro", "categoria": "procedimento", "erro": "fracao_multiplicacao_assimetrica", "descricao": "Multiplicou numerador e denominador por números diferentes.", "peso": 2 },
-      { "valor": "3/8", "tipo": "erro", "categoria": "atencao", "erro": "fracao_estimativa_visual_falha", "descricao": "Escolheu um valor por semelhança visual sem testar a proporção.", "peso": 1 }
-    ],
-    "passo": "Para ser equivalente, multiplique em cima e em baixo pelo mesmo número. 1×4=4 e 2×4=8. Logo, 4/8.",
-    "dica": "Frações equivalentes são formas diferentes de dizer a mesma quantidade. 1 de 2 é o mesmo que 4 de 8!"
-  },
+      {
+  "valor": "3/8",
+  "tipo": "erro",
+  "categoria": "atencao",
+  "erro": "fracao_estimativa_visual_falha",
+  "descricao": "Escolheu uma fração visualmente próxima de 1/2, mas incorreta.",
+  "peso": 1
+],
+"passo": "Frações equivalentes representam a mesma quantidade. Multiplicando 1/2 por 4/4 temos 4/8.",
+"dica": "Multiplique numerador e denominador pelo MESMO número."
+},
  {
   "id": "B2T2Q11",
   "aula": 5,
