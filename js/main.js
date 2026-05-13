@@ -310,7 +310,9 @@ function renderQ(q) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => { // Adicione 'async' aqui
+    await carregarBancoDeQuestoes(); // <--- A IGNIÇÃO QUE FALTAVA!
+    initDebugMode();
     initDebugMode();
     on('btn-acessar', mostrarSeletorBlocos);
     [1,2,3,4,5,6].forEach(i => on(`btn-bloco-${i}`, () => iniciarBloco(i)));
