@@ -1,6 +1,6 @@
 [
   {
-    "id": "B1Q00", "aula": 1, "tipo": "aritmetica",
+    "id": "B1Q00", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 1, "tipoPedagogico": "recomposicao",
     "bncc": "EF06MA03", "bncc_desc": "Conceito de Reagrupamento (Dinheiro)",
     "display": "Você tem 1 nota de R$ 100 e precisa pagar R$ 8. Como você não tem troco, o que precisa fazer com a nota?",
@@ -15,7 +15,7 @@
     "dica": "Dica da ADA: Uma centena é como uma nota de 100. Você precisa trocá-la por 10 dezenas (notas de 10) para conseguir usar!"
   },
   {
-    "id": "B1T1Q01", "aula": 1, "tipo": "aritmetica",
+    "id": "B1T1Q01", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF06MA01", "bncc_desc": "Valor Posicional",
     "display": "Qual é o valor posicional do algarismo 4 no número 349.205?",
@@ -30,7 +30,7 @@
     "dica": "Imagine o número num quadro: cada casa para a esquerda vale 10 vezes mais!"
   },
   {
-    "id": "B1T1Q02", "aula": 1, "tipo": "aritmetica",
+    "id": "B1T1Q02", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF06MA01", "bncc_desc": "Valor Posicional",
     "display": "No número 5.847, quanto vale o algarismo 8?",
@@ -41,11 +41,11 @@
       { "valor": "80", "tipo": "erro", "categoria": "procedimento", "erro": "valorposicional_reduz_ordem", "descricao": "Atribuiu o valor de dezena em vez de centena.", "peso": 2 },
       { "valor": "8.000", "tipo": "erro", "categoria": "procedimento", "erro": "valorposicional_aumenta_ordem", "descricao": "Atribuiu o valor de milhar em vez de centena.", "peso": 2 }
     ],
-    "passo": "O 8 ocupa a terceira ordem (centenas). Ele representa 8 groups de 100.",
+    "passo": "O 8 ocupa a terceira ordem (centenas). Ele representa 8 grupos de 100.",
     "dica": "Conte da direita para a esquerda: Unidade, Dezena, Centena..."
   },
   {
-    "id": "B1T1Q03", "aula": 1, "tipo": "aritmetica",
+    "id": "B1T1Q03", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 1, "tipoPedagogico": "base",
     "bncc": "EF06MA01", "bncc_desc": "Leitura de Números",
     "display": "Como se lê corretamente o número 10.030?",
@@ -60,7 +60,7 @@
     "dica": "A primeira parte (antes do ponto) diz quantos milhares o número tem."
   },
   {
-    "id": "B1T1Q11", "aula": 2, "tipo": "aritmetica",
+    "id": "B1T1Q11", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF06MA03", "bncc_desc": "Adição com Reagrupamento",
     "display": "Calcule a soma: 1.245 + 879",
@@ -75,7 +75,7 @@
     "dica": "Não esqueça: sempre que passar de 9 em uma coluna, 1 dezena deve 'subir' para a próxima casa!"
   },
   {
-    "id": "B1T1Q12", "aula": 2, "tipo": "aritmetica",
+    "id": "B1T1Q12", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF06MA03", "bncc_desc": "Subtração com Reagrupamento",
     "display": "Resolva: 2.000 - 1.342",
@@ -90,7 +90,7 @@
     "dica": "Quando o vizinho é zero, você tem que ir até a primeira casa que tem valor para 'pedir emprestado'."
   },
   {
-    "id": "B1T1Q15", "aula": 2, "tipo": "contexto",
+    "id": "B1T1Q15", "aula": "aula 1", "tipo": "contexto",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF06MA03", "bncc_desc": "Adição — Contexto",
     "display": "Um atleta correu 1.250m na segunda e 350m A MAIS na terça. Qual o total percorrido nos dois dias?",
@@ -105,7 +105,7 @@
     "dica": "Cuidado! O problema pergunta o total dos DOIS dias combinados."
   },
   {
-    "id": "B1T1Q18", "aula": 2, "tipo": "conceito",
+    "id": "B1T1Q18", "aula": "aula 1", "tipo": "conceito",
     "dificuldade": 1, "tipoPedagogico": "base",
     "bncc": "EF06MA03", "bncc_desc": "Subtração — Sentido",
     "display": "Ao 'pedir emprestado' na subtração, o que acontece com a casa vizinha que cedeu o valor?",
@@ -120,7 +120,7 @@
     "dica": "É como trocar uma nota de 10 reais por 10 moedas de 1 real. Você ainda tem 10 reais, mas em formatos diferentes."
   },
   {
-    "id": "B1T1Q19", "aula": 2, "tipo": "conceito",
+    "id": "B1T1Q19", "aula": "aula 1", "tipo": "conceito",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF06MA03", "bncc_desc": "Operações Inversas",
     "display": "Como verificar se 1.600 - 937 = 663 está correto sem fazer a conta de menos de novo?",
@@ -135,7 +135,7 @@
     "dica": "A prova real é como 'voltar no tempo': use o sinal oposto para conferir."
   },
   {
-    "id": "B1T2Q01", "aula": 3, "tipo": "aritmetica",
+    "id": "B1T2Q01", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 1, "tipoPedagogico": "base",
     "bncc": "EF06MA03", "bncc_desc": "Multiplicação — Sentido",
     "display": "7 + 7 + 7 + 7 = ? Qual multiplicação representa essa soma?",
@@ -150,7 +150,7 @@
     "dica": "Conte quantas vezes o número se repete. Esse número de vezes será o seu multiplicador!"
   },
   {
-    "id": "B1T2Q02", "aula": 3, "tipo": "aritmetica",
+    "id": "B1T2Q02", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF06MA03", "bncc_desc": "Multiplicação — Algoritmo",
     "display": "Calcule: 24 × 5 = ?",
@@ -165,7 +165,7 @@
     "dica": "Multiplique o 5 pelas unidades (4) e depois pelas dezenas (2). Não esqueça do que 'sobe'!"
   },
   {
-    "id": "B1T2Q05", "aula": 3, "tipo": "aritmetica",
+    "id": "B1T2Q05", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF06MA03", "bncc_desc": "Multiplicação — Algoritmo",
     "display": "Resolva: 45 × 13 = ?",
@@ -180,7 +180,7 @@
     "dica": "Quando começar a multiplicar pelo '1' do 13, lembre-se de colocar um zero (ou pular a casa) das unidades!"
   },
   {
-    "id": "B1T2Q09", "aula": 4, "tipo": "aritmetica",
+    "id": "B1T2Q09", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF06MA03", "bncc_desc": "Divisão — Resto",
     "display": "Ao dividir 130 por 4, qual o quociente e o resto?",
@@ -195,7 +195,7 @@
     "dica": "O resto é o que 'sobra' da conta. Ele deve ser sempre menor que o número pelo qual você está dividindo."
   },
   {
-    "id": "B1T2Q10", "aula": 4, "tipo": "contexto",
+    "id": "B1T2Q10", "aula": "aula 1", "tipo": "contexto",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF06MA03", "bncc_desc": "Divisão — Contexto",
     "display": "4 amigos dividiram R$ 130 igualmente. Eles não usam moedas. Quanto cada um recebe e quanto sobra?",
@@ -210,7 +210,7 @@
     "dica": "Atenção à regra: 'sem moedas'. Isso significa que você deve parar a conta quando chegar no resto inteiro!"
   },
   {
-    "id": "B1T3Q01", "aula": 6, "tipo": "aritmetica",
+    "id": "B1T3Q01", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 1, "tipoPedagogico": "base",
     "bncc": "EF06MA05", "bncc_desc": "Critério de Divisibilidade por 2",
     "display": "Qual destes números NÃO é divisível por 2?",
@@ -225,7 +225,7 @@
     "dica": "Dica de Ouro: Olhe apenas para o último algarismo da direita. Ele é quem manda na regra do 2!"
   },
   {
-    "id": "B1T3Q02", "aula": 6, "tipo": "aritmetica",
+    "id": "B1T3Q02", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF06MA05", "bncc_desc": "Critério de Divisibilidade por 3",
     "display": "O número 471 é divisível por 3?",
@@ -240,7 +240,7 @@
     "dica": "A regra do 3 é diferente: você precisa 'quebrar' o número e somar todos os seus pedaços."
   },
   {
-    "id": "B1T3Q16", "aula": 6, "tipo": "aritmetica",
+    "id": "B1T3Q16", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF06MA05", "bncc_desc": "Divisibilidade — Algarismo Oculto",
     "display": "No número 5.4_2, qual algarismo completa o espaço para que ele seja múltiplo de 3?",
@@ -255,7 +255,7 @@
     "dica": "A soma total deve resultar em um número da tabuada do 3 (3, 6, 9, 12, 15, 18...)."
   },
   {
-    "id": "B1T3Q09", "aula": 7, "tipo": "aritmetica",
+    "id": "B1T3Q09", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF06MA05", "bncc_desc": "Divisores de um Número",
     "display": "Quais são todos os divisores naturais do número 12?",
@@ -270,7 +270,7 @@
     "dica": "Dica da ADA: Divisores sempre vêm em pares! Se você achou o 2, o 6 (12 ÷ 2) também tem de estar lá."
   },
   {
-    "id": "B1T3Q10", "aula": 7, "tipo": "aritmetica",
+    "id": "B1T3Q10", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF06MA05", "bncc_desc": "Número Primo",
     "display": "Qual destes números é um número PRIMO?",
@@ -285,7 +285,7 @@
     "dica": "Ser primo é ser 'exclusivo': só aceita ser dividido pelo 1 e por si mesmo. Se aparecer em outra tabuada, não é primo!"
   },
   {
-    "id": "B1T3Q20", "aula": 7, "tipo": "aritmetica",
+    "id": "B1T3Q20", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF06MA05", "bncc_desc": "Primos Gêmeos",
     "display": "Primos gêmeos são primos com diferença de 2 (ex: 3 e 5). Qual par é de gêmeos autênticos?",
@@ -300,7 +300,7 @@
     "dica": "Não basta ter distância 2; os DOIS números precisam ser primos de verdade!"
   },
   {
-    "id": "B1T4Q01", "aula": 8, "tipo": "aritmetica",
+    "id": "B1T4Q01", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF06MA05", "bncc_desc": "MMC — Conceito",
     "display": "Qual é o significado correto da afirmação MMC(8, 12) = 24?",
@@ -315,7 +315,7 @@
     "dica": "MMC é o 'primeiro encontro' das tabuadas dos dois números."
   },
   {
-    "id": "B1T4Q03", "aula": 8, "tipo": "contexto",
+    "id": "B1T4Q03", "aula": "aula 1", "tipo": "contexto",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF06MA05", "bncc_desc": "MMC — Aplicação (Ciclos)",
     "display": "O Ônibus A sai a cada 12 min e o B a cada 8 min. Se saíram juntos agora, em quanto tempo saem juntos novamente?",
@@ -330,7 +330,7 @@
     "dica": "Dica da ADA: Sempre que o problema falar de 'tempo para se encontrarem de novo', use o MMC!"
   },
   {
-    "id": "B1T4Q07", "aula": 9, "tipo": "aritmetica",
+    "id": "B1T4Q07", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF06MA05", "bncc_desc": "MDC — Conceito",
     "display": "O que significa afirmar que o MDC(36, 24) = 12?",
@@ -345,7 +345,7 @@
     "dica": "MDC serve para 'repartir' algo no maior tamanho possível sem sobrar nada."
   },
   {
-    "id": "B1T4Q08", "aula": 9, "tipo": "contexto",
+    "id": "B1T4Q08", "aula": "aula 1", "tipo": "contexto",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF06MA05", "bncc_desc": "MDC — Aplicação (Cortes)",
     "display": "Você quer cortar cordas de 36cm e 24cm em pedaços iguais e no maior tamanho possível. Qual será a medida?",
@@ -360,7 +360,7 @@
     "dica": "Sempre que precisar 'cortar em partes iguais' no 'maior tamanho', pense no MDC."
   },
   {
-    "id": "B1T4Q13", "aula": 10, "tipo": "aritmetica",
+    "id": "B1T4Q13", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF06MA06", "bncc_desc": "Potenciação — Conceito",
     "display": "Qual é o significado real da expressão 3⁴?",
@@ -375,7 +375,7 @@
     "dica": "Atenção: Potência NÃO é conta de vezes simples. É uma multiplicação em cascata!"
   },
   {
-    "id": "B1T4Q15", "aula": 10, "tipo": "aritmetica",
+    "id": "B1T4Q15", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF06MA06", "bncc_desc": "Potenciação — Expoente Zero",
     "display": "Qual é o valor numérico de 9⁰?",
@@ -390,7 +390,7 @@
     "dica": "Lembre-se da escada: 9²=81, 9¹=9, e o degrau final 9⁰ é sempre 1."
   },
   {
-    "id": "B1T4Q22", "aula": 10, "tipo": "aritmetica",
+    "id": "B1T4Q22", "aula": "aula 1", "tipo": "aritmetica",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF06MA06", "bncc_desc": "Potenciação — Propriedades",
     "display": "O dobro matemático da potência 2¹⁰ é igual a:",
@@ -405,7 +405,7 @@
     "dica": "Quando você multiplica potências de base igual, você apenas 'ganha' mais um no expoente!"
   },
   {
-    "id": "B1Q99", "aula": 10, "tipo": "contexto",
+    "id": "B1Q99", "aula": "aula 1", "tipo": "contexto",
     "dificuldade": 3, "tipoPedagogico": "investigacao",
     "bncc": "EF06MA05", "bncc_desc": "Lógica de Divisibilidade Combinada",
     "display": "Investigação: Se um número é divisível por 2 e também por 3 ao mesmo tempo, ele obrigatoriamente será divisível por:",
@@ -420,7 +420,7 @@
     "dica": "Pense num número que seja par (divide por 2) e esteja na tabuada do 3. Qual é a menor tabuada que todos esses números formam?"
   },
   {
-    "id": "B2Q00", "aula": 1, "tipo": "aritmetica",
+    "id": "B2Q00", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 1, "tipoPedagogico": "recomposicao",
     "bncc": "EF07MA02", "bncc_desc": "Conceito de Negativo (Termômetro)",
     "display": "Se a temperatura na cidade estava em 2°C positivos e caiu 5°C durante a noite, quanto o termômetro passou a marcar?",
@@ -435,7 +435,7 @@
     "dica": "Dica da ADA: Desenhe um termômetro em pé! Marque o 2 e desça 5 'degraus'. Onde você parou?"
   },
   {
-    "id": "B2T1Q01", "aula": 1, "tipo": "aritmetica",
+    "id": "B2T1Q01", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA02", "bncc_desc": "Números Inteiros — Reta Numérica",
     "display": "Na reta numérica, qual destes números está posicionado MAIS À ESQUERDA?",
@@ -450,7 +450,7 @@
     "dica": "Imagine um termômetro deitado: os números mais frios (negativos maiores) ficam bem longe à esquerda!"
   },
   {
-    "id": "B2T1Q03", "aula": 1, "tipo": "aritmetica",
+    "id": "B2T1Q03", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA02", "bncc_desc": "Valor Absoluto",
     "display": "Qual é o valor numérico exato de |-7| (módulo de menos sete)?",
@@ -465,7 +465,7 @@
     "dica": "O módulo funciona como uma 'limpadora de sinais': ele extrai apenas o tamanho do número, sempre positivo."
   },
   {
-    "id": "B2T1Q08", "aula": 2, "tipo": "sinais",
+    "id": "B2T1Q08", "aula": "aula 2", "tipo": "sinais",
     "dificuldade": 1, "tipoPedagogico": "base",
     "bncc": "EF07MA02", "bncc_desc": "Adição de Inteiros — Sinais Iguais",
     "display": "Resolva a operação: (-6) + (-4) = ?",
@@ -481,7 +481,7 @@
     "dica": "Pense em dinheiro: se você deve 6 e pede mais 4 emprestado, sua dívida aumenta para 10!"
   },
   {
-    "id": "B2T1Q09", "aula": 2, "tipo": "sinais",
+    "id": "B2T1Q09", "aula": "aula 2", "tipo": "sinais",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA02", "bncc_desc": "Adição de Inteiros — Sinais Diferentes",
     "display": "Qual o resultado de: (+10) + (-3) = ?",
@@ -497,7 +497,7 @@
     "dica": "Você tem 10 reais e gasta 3. O que sobra no seu bolso?"
   },
   {
-    "id": "B2T1Q14", "aula": 3, "tipo": "sinais",
+    "id": "B2T1Q14", "aula": "aula 2", "tipo": "sinais",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF07MA02", "bncc_desc": "Subtração — Truque do Oposto",
     "display": "Calcule o resultado de: (+6) - (-2) = ?",
@@ -513,7 +513,7 @@
     "dica": "Quando ver dois sinais de menos colados (- -), eles se transformam num sinal de MAIS (+)."
   },
   {
-    "id": "B2T1Q18", "aula": 3, "tipo": "sinais",
+    "id": "B2T1Q18", "aula": "aula 2", "tipo": "sinais",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF07MA02", "bncc_desc": "Diferença e Amplitude",
     "display": "Moscou registrou -12°C e São Paulo +28°C. Qual a DIFERENÇA de temperatura entre elas?",
@@ -529,7 +529,7 @@
     "dica": "Imagine subir um prédio: você sai do subsolo (-12) e vai até o 28º andar. Quantos andares subiu no total?"
   },
   {
-    "id": "B2T1Q20", "aula": 3, "tipo": "teoria",
+    "id": "B2T1Q20", "aula": "aula 2", "tipo": "teoria",
     "dificuldade": 3, "tipoPedagogico": "investigacao",
     "bncc": "EF07MA02", "bncc_desc": "Investigação Lógica",
     "display": "Investigação: É possível que a subtração de dois números NEGATIVOS resulte em um número POSITIVO?",
@@ -544,7 +544,7 @@
     "dica": "Lembre-se: subtrair um negativo grande é como receber um grande presente!"
   },
   {
-    "id": "B2T2Q01", "aula": 4, "tipo": "aritmetica",
+    "id": "B2T2Q01", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA02", "bncc_desc": "Multiplicação de Inteiros — Regra dos Sinais",
     "display": "Qual o resultado da operação: (+6) × (-4)?",
@@ -559,7 +559,7 @@
     "dica": "Dica da ADA: Na multiplicação e divisão, sinais diferentes são inimigos... o resultado é sempre negativo!"
   },
   {
-    "id": "B2T2Q02", "aula": 4, "tipo": "aritmetica",
+    "id": "B2T2Q02", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA02", "bncc_desc": "Multiplicação de Inteiros — Regra dos Sinais",
     "display": "Calcule o produto: (-3) × (-9) = ?",
@@ -574,7 +574,7 @@
     "dica": "Menos com Menos na multiplicação vira MAIS. Pense que os dois tracinhos se cruzam e formam uma cruz de positivo!"
   },
   {
-    "id": "B2T2Q05", "aula": 4, "tipo": "aritmetica",
+    "id": "B2T2Q05", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF07MA02", "bncc_desc": "Produto com Três Fatores — Sinal",
     "display": "Qual o valor de (-2) × (-3) × (-4)?",
@@ -589,7 +589,7 @@
     "dica": "Conte os sinais de menos: se for um número ímpar de sinais (como 3), o resultado final será negativo."
   },
   {
-    "id": "B2T2Q10", "aula": 5, "tipo": "aritmetica",
+    "id": "B2T2Q10", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 1, "tipoPedagogico": "base",
     "bncc": "EF07MA04", "bncc_desc": "Frações — Conceito",
     "display": "Uma pizza foi cortada em 8 fatias iguais. Pedro comeu 3. Que fração representa o que ele comeu?",
@@ -604,7 +604,7 @@
     "dica": "O denominador 'denomina' em quantas partes o todo foi dividido. Imagine ele no fundo da caixa!"
   },
   {
-    "id": "B2T2Q11", "aula": 5, "tipo": "aritmetica",
+    "id": "B2T2Q11", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA04", "bncc_desc": "Frações Equivalentes",
     "display": "Qual fração abaixo vale o mesmo que (é equivalente a) 1/2?",
@@ -619,7 +619,7 @@
     "dica": "Frações equivalentes são formas diferentes de dizer a mesma quantidade. 1 de 2 é o mesmo que 4 de 8!"
   },
   {
-    "id": "B2T2Q12", "aula": 5, "tipo": "aritmetica",
+    "id": "B2T2Q12", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA04", "bncc_desc": "Simplificação de Frações",
     "display": "Qual é a forma mais simples (irredutível) da fração 12/18?",
@@ -634,7 +634,7 @@
     "dica": "Simplificar é 'enxugar' a fração. Continue dividindo até que não exista mais nenhum número que divida os dois ao mesmo tempo."
   },
   {
-    "id": "B2T3Q01", "aula": 6, "tipo": "aritmetica",
+    "id": "B2T3Q01", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 1, "tipoPedagogico": "base",
     "bncc": "EF07MA04", "bncc_desc": "Adição de Frações — Mesmo Denominador",
     "display": "Calcule a soma: 3/8 + 2/8 = ?",
@@ -649,7 +649,7 @@
     "dica": "Pense em fatias: 3 fatias de uma pizza de 8 pedaços mais 2 fatias da mesma pizza continuam sendo fatias de oitavos!"
   },
   {
-    "id": "B2T3Q03", "aula": 6, "tipo": "aritmetica",
+    "id": "B2T3Q03", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF07MA04", "bncc_desc": "Adição de Frações — Denominadores Diferentes",
     "display": "Qual o resultado de 1/2 + 1/3?",
@@ -664,7 +664,7 @@
     "dica": "Você não pode somar 'bananas com maçãs'. Use o MMC para deixar os números de baixo iguais antes de somar!"
   },
   {
-    "id": "B2T3Q08", "aula": 7, "tipo": "aritmetica",
+    "id": "B2T3Q08", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA04", "bncc_desc": "Multiplicação de Frações",
     "display": "Resolva: 2/3 × 3/4 = ?",
@@ -679,7 +679,7 @@
     "dica": "Na multiplicação é 'frente com frente'! O de cima vezes o de cima, o de baixo vezes o de baixo."
   },
   {
-    "id": "B2T3Q09", "aula": 7, "tipo": "aritmetica",
+    "id": "B2T3Q09", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF07MA04", "bncc_desc": "Divisão de Frações",
     "display": "Calcule: 3/4 ÷ 1/2 = ?",
@@ -694,7 +694,7 @@
     "dica": "Regra da Ginástica: A segunda fração 'planta uma bananeira' (inverte) e a conta vira de vezes!"
   },
   {
-    "id": "B2T3Q14", "aula": 7, "tipo": "investigacao",
+    "id": "B2T3Q14", "aula": "aula 2", "tipo": "investigacao",
     "dificuldade": 3, "tipoPedagogico": "investigacao",
     "bncc": "EF07MA04", "bncc_desc": "Multiplicação de Frações Próprias",
     "display": "Investigação: Se multiplicarmos uma fração menor que 1 (ex: 1/2) por outra menor que 1, o resultado será:",
@@ -709,7 +709,7 @@
     "dica": "Pense: você quer a 'metade da metade'. Isso vai ser um pedaço maior ou menor do que você já tinha?"
   },
   {
-    "id": "B2T3Q15", "aula": 8, "tipo": "aritmetica",
+    "id": "B2T3Q15", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA04", "bncc_desc": "Fração para Decimal",
     "display": "Como escrevemos a fração 1/4 na forma decimal?",
@@ -724,7 +724,7 @@
     "dica": "Divida o número de cima pelo de baixo no rascunho para achar o decimal."
   },
   {
-    "id": "B2T3Q16", "aula": 8, "tipo": "aritmetica",
+    "id": "B2T3Q16", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF07MA04", "bncc_desc": "Decimal para Fração",
     "display": "O número 0,35 na forma de fração simplificada é:",
@@ -739,7 +739,7 @@
     "dica": "Duas casas depois da vírgula? Coloque sobre o 100 e depois simplifique na tabuada do 5."
   },
   {
-    "id": "B2T4Q01", "aula": 9, "tipo": "aritmetica",
+    "id": "B2T4Q01", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA04", "bncc_desc": "Adição de Decimais",
     "display": "Calcule a soma: 3,7 + 2,45 = ?",
@@ -754,7 +754,7 @@
     "dica": "Para não errar, complete o 3,7 com um zero (3,70) para ele ficar com o mesmo tamanho do 2,45!"
   },
   {
-    "id": "B2T4Q03", "aula": 9, "tipo": "aritmetica",
+    "id": "B2T4Q03", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF07MA04", "bncc_desc": "Multiplicação de Decimais",
     "display": "Qual o resultado de 1,5 × 2,4?",
@@ -762,14 +762,14 @@
     "alternativas": [
       { "valor": "3,6", "tipo": "acerto" },
       { "valor": "36", "tipo": "erro", "categoria": "conceito", "erro": "decimal_multiplicacao_ignora_casas_totais", "descricao": "Multiplicou como inteiros e não devolveu as casas decimais ao resultado final.", "peso": 3 },
-      { "valor": "0,36", "tipo": "erro", "categoria": "procedimento", "erro": "decimal_multiplicacao_excesso_casas", "descricao": "Aplicou mais casas decimais do que a soma das casas dos factors exigia.", "peso": 2 },
+      { "valor": "0,36", "tipo": "erro", "categoria": "procedimento", "erro": "decimal_multiplicacao_excesso_casas", "descricao": "Aplicou mais casas decimais do que a soma das casas dos fatores exigia.", "peso": 2 },
       { "valor": "3,06", "tipo": "erro", "categoria": "calculo", "erro": "decimal_multiplicacao_erro_tabuada", "descricao": "Erro aritmético básico durante o algoritmo de multiplicação.", "peso": 1 }
     ],
     "passo": "Multiplique 15 × 24 = 360. Como cada fator tem 1 casa (total 2), recue 2 casas no resultado: 3,60 (ou 3,6).",
     "dica": "Faça a conta de vezes normal. No final, conte os 'pulos' da vírgula e devolva eles no resultado!"
   },
   {
-    "id": "B2T4Q08", "aula": 9, "tipo": "investigacao",
+    "id": "B2T4Q08", "aula": "aula 2", "tipo": "investigacao",
     "dificuldade": 3, "tipoPedagogico": "investigacao",
     "bncc": "EF07MA04", "bncc_desc": "Decimais — Investigação",
     "display": "Investigação: Qual valor é MAIOR, a soma (0,1 + 0,1) ou o produto (0,1 × 0,1)?",
@@ -784,7 +784,7 @@
     "dica": "Atenção: no mundo dos decimais menores que 1, multiplicar pode ser o mesmo que 'dividir' o seu pedaço!"
   },
   {
-    "id": "B2T4Q11", "aula": 10, "tipo": "aritmetica",
+    "id": "B2T4Q11", "aula": "aula 2", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA04", "bncc_desc": "Proporção — Produto Cruzado",
     "display": "As frações 2/3 e 8/12 formam uma proporção válida?",
@@ -799,7 +799,7 @@
     "dica": "Desenhe um 'X' multiplicando o de cima de uma pelo de baixo da outra. Se der o mesmo valor, é proporção!"
   },
   {
-    "id": "B2T4Q14", "aula": 10, "tipo": "contexto",
+    "id": "B2T4Q14", "aula": "aula 2", "tipo": "contexto",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF07MA04", "bncc_desc": "Proporcionalidade Inversa",
     "display": "Um tanque é cheio por 4 torneiras em 6 horas. Quantas horas levaria se fossem 8 torneiras idênticas?",
@@ -814,7 +814,7 @@
     "dica": "Pense com a ADA: se você ligar MAIS torneiras, a piscina vai encher MAIS RÁPIDO. O tempo tem que diminuir!"
   },
   {
-    "id": "B2T4Q18", "aula": 10, "tipo": "conceito",
+    "id": "B2T4Q18", "aula": "aula 2", "tipo": "conceito",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA04", "bncc_desc": "Tipo de Proporcionalidade",
     "display": "Na economia, quando a cotação do dólar SOBE, com os mesmos 100 Reais você compra:",
@@ -829,7 +829,7 @@
     "dica": "É como o preço do pão: se o pão ficar mais caro, com a sua mesma moedinha você leva menos pães para casa."
   },
   {
-    "id": "B2Q99", "aula": 10, "tipo": "contexto",
+    "id": "B2Q99", "aula": "aula 2", "tipo": "contexto",
     "dificuldade": 3, "tipoPedagogico": "investigacao",
     "bncc": "EF07MA04", "bncc_desc": "Lógica de Proporção Composta",
     "display": "Investigação: Se 3 gatos caçam 3 ratos em exatamente 3 minutos. Em quanto tempo 100 gatos caçarão 100 ratos?",
@@ -844,7 +844,7 @@
     "dica": "Pense na ação individual: quanto tempo UM único gato leva para caçar UM rato? Se todos trabalharem juntos na mesma hora, o tempo não muda!"
   },
   {
-    "id": "B3Q00", "aula": 1, "tipo": "aritmetica",
+    "id": "B3Q00", "aula": "aula 3", "tipo": "aritmetica",
     "dificuldade": 1, "tipoPedagogico": "recomposicao",
     "bncc": "EF07MA20", "bncc_desc": "Conversão de Comprimento",
     "display": "Vamos relembrar a régua: Quantos centímetros (cm) cabem em exato 1 metro (m)?",
@@ -859,7 +859,7 @@
     "dica": "Dica da ADA: Lembre-se da palavra CENTÍMETRO. Ela já te dá a resposta: CENTO!"
   },
   {
-    "id": "B3Q01", "aula": 1, "tipo": "aritmetica",
+    "id": "B3Q01", "aula": "aula 3", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA20", "bncc_desc": "Conversão de Comprimento",
     "display": "Uma distância de 2,5 km equivale a quantos metros?",
@@ -874,7 +874,7 @@
     "dica": "Dica da ADA: O prefixo 'Quilo' sempre significa 1.000 vezes mais. Multiplique por mil!"
   },
   {
-    "id": "B3Q02", "aula": 1, "tipo": "aritmetica",
+    "id": "B3Q02", "aula": "aula 3", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA20", "bncc_desc": "Conversão de Comprimento",
     "display": "A medida de 350 cm equivale a quantos metros?",
@@ -889,7 +889,7 @@
     "dica": "Pense na fita métrica: 100 cm formam 1 metro. Então 300 cm são 3 metros, e 50 cm é a metade."
   },
   {
-    "id": "B3Q06", "aula": 3, "tipo": "aritmetica",
+    "id": "B3Q06", "aula": "aula 3", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA20", "bncc_desc": "Conversão de Tempo",
     "display": "Uma prova durou 2 horas e 45 minutos. Quantos minutos durou no total?",
@@ -904,7 +904,7 @@
     "dica": "Cuidado! O tempo não funciona de 100 em 100. O 'chefe' do tempo é o 60!"
   },
   {
-    "id": "B3Q08", "aula": 4, "tipo": "geometria",
+    "id": "B3Q08", "aula": "aula 3", "tipo": "geometria",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA20", "bncc_desc": "Perímetro de Retângulo",
     "display": "Qual é o perímetro de um jardim retangular com 8 m de comprimento e 5 m de largura?",
@@ -919,7 +919,7 @@
     "dica": "Imagine que você está caminhando sobre o muro do jardim. Você precisa percorrer os quatro lados para voltar ao início!"
   },
   {
-    "id": "B3Q13", "aula": 5, "tipo": "geometria",
+    "id": "B3Q13", "aula": "aula 3", "tipo": "geometria",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF08MA07", "bncc_desc": "Área de Triângulo",
     "display": "Um triângulo tem base de 10 cm e altura de 6 cm. Qual é a sua área?",
@@ -934,7 +934,7 @@
     "dica": "Todo triângulo é a METADE de um retângulo. Calcule a área total e depois 'corte' ao meio!"
   },
   {
-    "id": "B3Q15", "aula": 5, "tipo": "geometria",
+    "id": "B3Q15", "aula": "aula 3", "tipo": "geometria",
     "dificuldade": 3, "tipoPedagogico": "investigacao",
     "bncc": "EF08MA07", "bncc_desc": "Variação de Área",
     "display": "Investigação: Se você DOBRAR a medida dos lados de um quadrado, o que acontece com a área dele?",
@@ -949,7 +949,7 @@
     "dica": "Desenhe um quadradinho. Agora faça um quadrado com o dobro do lado. Quantos quadradinhos pequenos cabem dentro do novo? São 4!"
   },
   {
-    "id": "B3Q17", "aula": 6, "tipo": "geometria",
+    "id": "B3Q17", "aula": "aula 3", "tipo": "geometria",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF08MA07", "bncc_desc": "Volume de Cubo",
     "display": "Qual é o volume de um cubo cuja aresta (lado) mede 5 cm?",
@@ -964,7 +964,7 @@
     "dica": "Volume é 3D! Você precisa multiplicar as três dimensões: largura, comprimento e altura."
   },
   {
-    "id": "B3Q20", "aula": 8, "tipo": "contexto",
+    "id": "B3Q20", "aula": "aula 3", "tipo": "contexto",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF08MA07", "bncc_desc": "Grandezas — Problema Integrador",
     "display": "Vai colocar piso em uma sala de 4,5 m por 3 m. O piso custa R$ 45,00 o m². Qual o custo total?",
@@ -979,7 +979,7 @@
     "dica": "Primeiro veja quantos 'quadradinhos' de piso cabem no chão (Área). Depois veja quanto custa cada quadradinho!"
   },
   {
-    "id": "B4Q00", "aula": 1, "tipo": "aritmetica",
+    "id": "B4Q00", "aula": "aula 4", "tipo": "aritmetica",
     "dificuldade": 1, "tipoPedagogico": "recomposicao",
     "bncc": "EF08MA06", "bncc_desc": "Linguagem Algébrica",
     "display": "Na linguagem da álgebra, o que significa a expressão '3x'?",
@@ -994,7 +994,7 @@
     "dica": "Dica da ADA: Número colado na letra = Multiplicação! 3x é o mesmo que 3 vezes x."
   },
   {
-    "id": "B4Q01", "aula": 1, "tipo": "aritmetica",
+    "id": "B4Q01", "aula": "aula 4", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF08MA06", "bncc_desc": "Valor Numérico",
     "display": "Para x = 3, qual é o valor numérico da expressão 2x + 5?",
@@ -1009,7 +1009,7 @@
     "dica": "Lembre-se: quando um número está grudado na letra, eles estão se multiplicando!"
   },
   {
-    "id": "B4Q03", "aula": 1, "tipo": "aritmetica",
+    "id": "B4Q03", "aula": "aula 4", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF08MA06", "bncc_desc": "Simplificação Algébrica",
     "display": "Simplifique a expressão: 3x + 2x - x",
@@ -1024,7 +1024,7 @@
     "dica": "Dica da ADA: Toda letra sem número na frente tem um '1' invisível protegendo ela!"
   },
   {
-    "id": "B4Q05", "aula": 2, "tipo": "aritmetica",
+    "id": "B4Q05", "aula": "aula 4", "tipo": "aritmetica",
     "dificuldade": 1, "tipoPedagogico": "base",
     "bncc": "EF08MA06", "bncc_desc": "Equação — Transposição",
     "display": "Resolva a equação: x + 5 = 12",
@@ -1039,7 +1039,7 @@
     "dica": "Pense na balança: para equilibrar, o que você tira de um lado, tem que tirar do outro!"
   },
   {
-    "id": "B4Q09", "aula": 2, "tipo": "aritmetica",
+    "id": "B4Q09", "aula": "aula 4", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF08MA06", "bncc_desc": "Equação — Membros",
     "display": "Resolva: 5x - 3 = 2x + 9",
@@ -1054,7 +1054,7 @@
     "dica": "Cada um na sua casa! Letras para a esquerda, números para a direita. Quem muda de casa, muda de sinal!"
   },
   {
-    "id": "B4Q12", "aula": 3, "tipo": "contexto",
+    "id": "B4Q12", "aula": "aula 4", "tipo": "contexto",
     "dificuldade": 3, "tipoPedagogico": "investigacao",
     "bncc": "EF08MA06", "bncc_desc": "Lógica Algébrica",
     "display": "Investigação: 2 maçãs e 1 pera custam R$ 10. Se a pera custa R$ 4, qual o valor de 1 maçã?",
@@ -1069,7 +1069,7 @@
     "dica": "Pense como uma equação: 2x + 4 = 10. Tente descobrir o valor do x!"
   },
   {
-    "id": "B4Q14", "aula": 4, "tipo": "aritmetica",
+    "id": "B4Q14", "aula": "aula 4", "tipo": "aritmetica",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF08MA06", "bncc_desc": "Inequação — Regra do Negativo",
     "display": "Resolva a inequação: -2x > 8",
@@ -1077,14 +1077,14 @@
     "alternativas": [
       { "valor": "x < -4", "tipo": "acerto" },
       { "valor": "x > -4", "tipo": "erro", "categoria": "conceito", "erro": "inequacao_esquece_inversao_sinal", "descricao": "Dividiu pelo negativo mas não inverteu o sentido da desigualdade.", "peso": 3 },
-      { "valor": "x < 4", "tipo": "erro", "categoria": "procedimento", "erro": "inequacao_erro_sinal_numérico", "descricao": "Inverteu o sinal da desigualdade mas esqueceu o sinal negativo no 4.", "peso": 2 },
+      { "valor": "x < 4", "tipo": "erro", "categoria": "procedimento", "erro": "inequacao_erro_sinal_numerico", "descricao": "Inverteu o sinal da desigualdade mas esqueceu o sinal negativo no 4.", "peso": 2 },
       { "valor": "x > 4", "tipo": "erro", "categoria": "estrategia", "erro": "inequacao_trata_como_natural", "descricao": "Ignorou todas as regras de sinais e inversão.", "peso": 3 }
     ],
     "passo": "Ao dividir por um número negativo (-2), o sinal da desigualdade DEVE virar. 8 ÷ (-2) = -4. Então x < -4.",
     "dica": "Cuidado! Sempre que multiplicar ou dividir por número NEGATIVO, a boca do jacaré (>) tem que virar pro outro lado (<)!"
   },
   {
-    "id": "B4Q16", "aula": 5, "tipo": "padrao",
+    "id": "B4Q16", "aula": "aula 4", "tipo": "padrao",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF08MA08", "bncc_desc": "Padrões — Generalização",
     "display": "1 quadrado usa 4 palitos. 2 quadrados grudados usam 7. 3 grudados usam 10. Qual a fórmula para 'n' quadrados?",
@@ -1099,7 +1099,7 @@
     "dica": "Veja de quanto em quanto o número de palitos aumenta. Esse número fica grudado no 'n'!"
   },
   {
-    "id": "B4Q18", "aula": 6, "tipo": "geometria",
+    "id": "B4Q18", "aula": "aula 4", "tipo": "geometria",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF08MA08", "bncc_desc": "Modelagem de Área",
     "display": "Um retângulo tem largura (x) e comprimento (x + 5). Qual expressão representa sua ÁREA?",
@@ -1114,7 +1114,7 @@
     "dica": "A área é o produto dos lados. Use o 'chuveirinho' para multiplicar o x por todo mundo que está no parênteses!"
   },
   {
-    "id": "B5Q00", "aula": 1, "tipo": "aritmetica",
+    "id": "B5Q00", "aula": "aula 5", "tipo": "aritmetica",
     "dificuldade": 1, "tipoPedagogico": "recomposicao",
     "bncc": "EF08MA22", "bncc_desc": "Conceito de Média",
     "display": "Três amigos têm 2, 3 e 4 balas. Eles juntam todas as balas e dividem em partes iguais. Quantas balas cada um recebe?",
@@ -1129,7 +1129,7 @@
     "dica": "Dica da ADA: Média é sobre justiça! Some tudo o que você tem e divida igualmente pela quantidade de pessoas."
   },
   {
-    "id": "B5Q01", "aula": 1, "tipo": "aritmetica",
+    "id": "B5Q01", "aula": "aula 5", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF08MA22", "bncc_desc": "Média Aritmética",
     "display": "As notas de um aluno foram: 6, 8, 7, 9 e 5. Qual é a média final?",
@@ -1144,7 +1144,7 @@
     "dica": "A média é o 'ponto de equilíbrio'. Some tudo e divida o resultado pela quantidade de notas!"
   },
   {
-    "id": "B5Q04", "aula": 2, "tipo": "aritmetica",
+    "id": "B5Q04", "aula": "aula 5", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF08MA22", "bncc_desc": "Mediana — Conceito",
     "display": "Qual é a mediana do conjunto de dados: 3, 7, 2, 9, 5, 8, 4?",
@@ -1159,7 +1159,7 @@
     "dica": "Dica de Ouro: Mediana exige ordem! Coloque os números na fila (do menor para o maior) antes de achar o centro."
   },
   {
-    "id": "B5Q07", "aula": 2, "tipo": "critica",
+    "id": "B5Q07", "aula": "aula 5", "tipo": "critica",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF08MA22", "bncc_desc": "Análise de Outliers",
     "display": "Salários de uma empresa: R$ 1.000, R$ 1.000, R$ 1.200, R$ 1.500 e R$ 10.000. Qual medida melhor representa o 'salário comum' desse grupo?",
@@ -1174,7 +1174,7 @@
     "dica": "ADA explica: Se o Bill Gates entrar em um bar, a 'média' de dinheiro de todos sobe para milhões, mas ninguém ficou rico. Use a mediana nesses casos!"
   },
   {
-    "id": "B5Q20", "aula": 3, "tipo": "critica",
+    "id": "B5Q20", "aula": "aula 5", "tipo": "critica",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF09MA20", "bncc_desc": "Gráficos Enganosos",
     "display": "Um gráfico de barras que compara vendas começa o eixo vertical no número 98 em vez de 0. Qual o efeito visual disso?",
@@ -1189,7 +1189,7 @@
     "dica": "Olho vivo! Se o gráfico não começar do ZERO, ele pode estar tentando transformar uma faísca em um incêndio!"
   },
   {
-    "id": "B5Q11", "aula": 4, "tipo": "aritmetica",
+    "id": "B5Q11", "aula": "aula 5", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF09MA20", "bncc_desc": "Probabilidade Clássica",
     "display": "Ao lançar um dado de 6 faces, qual a probabilidade de sair um número PAR?",
@@ -1204,7 +1204,7 @@
     "dica": "A fórmula é simples: o que eu quero (3 números) dividido pelo que pode acontecer (6 números)."
   },
   {
-    "id": "B5Q22", "aula": 4, "tipo": "critica",
+    "id": "B5Q22", "aula": "aula 5", "tipo": "critica",
     "dificuldade": 3, "tipoPedagogico": "investigacao",
     "bncc": "EF09MA20", "bncc_desc": "Probabilidade Composta",
     "display": "Investigação: Se você lançar DUAS moedas para cima, qual a probabilidade de ambas caírem em 'Cara'?",
@@ -1219,7 +1219,7 @@
     "dica": "Multiplique as chances! Se a chance da primeira é 1/2 e a da segunda é 1/2, então 1/2 × 1/2 = 1/4."
   },
   {
-    "id": "B5Q15", "aula": 5, "tipo": "critica",
+    "id": "B5Q15", "aula": "aula 5", "tipo": "critica",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF09MA20", "bncc_desc": "Interpretação de Amostras",
     "display": "Um comercial diz: '90% aprovam o produto!', mas a pesquisa ouviu apenas 10 pessoas. Essa afirmação é confiável?",
@@ -1234,7 +1234,7 @@
     "dica": "Estatística séria precisa de uma amostra grande e diversa. Cuidado com o 'Poder dos Pequenos Números'!"
   },
   {
-    "id": "B6Q00", "aula": 1, "tipo": "conceito",
+    "id": "B6Q00", "aula": "aula 6", "tipo": "conceito",
     "dificuldade": 1, "tipoPedagogico": "recomposicao",
     "bncc": "EF07MA21", "bncc_desc": "Conceito de Giro e Ângulo Raso",
     "display": "Se você der uma volta completa no próprio eixo, girou 360°. Se der apenas MEIA volta, quantos graus você girou?",
@@ -1249,7 +1249,7 @@
     "dica": "Dica da ADA: Pense numa pizza cortada exatamente ao meio. Se a pizza inteira tem 360 fatias, quantas tem a metade?"
   },
   {
-    "id": "B6Q01", "aula": 1, "tipo": "conceito",
+    "id": "B6Q01", "aula": "aula 6", "tipo": "conceito",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA21", "bncc_desc": "Classificação de Ângulos",
     "display": "Um ângulo que mede exatos 120° é classificado como:",
@@ -1264,7 +1264,7 @@
     "dica": "Pense na abertura: se ele for mais 'aberto' que o canto de um quadrado (90°), ele é obtuso."
   },
   {
-    "id": "B6Q02", "aula": 1, "tipo": "aritmetica",
+    "id": "B6Q02", "aula": "aula 6", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA21", "bncc_desc": "Ângulos Complementares e Suplementares",
     "display": "Qual é o valor do ângulo suplementar de 70°?",
@@ -1279,7 +1279,7 @@
     "dica": "Suplementar é o que falta para completar uma linha reta (180°)."
   },
   {
-    "id": "B6Q03", "aula": 2, "tipo": "conceito",
+    "id": "B6Q03", "aula": "aula 6", "tipo": "conceito",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA21", "bncc_desc": "Retas Paralelas Cortadas por Transversal",
     "display": "Em retas paralelas cortadas por uma transversal, os ângulos ALTERNOS INTERNOS são sempre:",
@@ -1294,7 +1294,7 @@
     "dica": "Imagine a letra 'Z'. Os ângulos que ficam 'dentro' das curvas da letra Z são sempre iguais."
   },
   {
-    "id": "B6Q04", "aula": 3, "tipo": "conceito",
+    "id": "B6Q04", "aula": "aula 6", "tipo": "conceito",
     "dificuldade": 1, "tipoPedagogico": "base",
     "bncc": "EF07MA22", "bncc_desc": "Classificação de Triângulos",
     "display": "Um triângulo que possui todos os três lados com medidas DIFERENTES é chamado de:",
@@ -1309,7 +1309,7 @@
     "dica": "Escaleno rima com 'pleno de diferenças'. Nenhum lado é igual ao outro."
   },
   {
-    "id": "B6Q05", "aula": 4, "tipo": "aritmetica",
+    "id": "B6Q05", "aula": "aula 6", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA22", "bncc_desc": "Soma dos Ângulos Internos do Triângulo",
     "display": "Dois ângulos de um triângulo medem 50° e 70°. Quanto mede o terceiro ângulo?",
@@ -1324,7 +1324,7 @@
     "dica": "Pense: os três juntos devem formar uma linha reta (180°). Quanto falta para chegar lá?"
   },
   {
-    "id": "B6Q06", "aula": 5, "tipo": "conceito",
+    "id": "B6Q06", "aula": "aula 6", "tipo": "conceito",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA23", "bncc_desc": "Propriedades dos Quadriláteros",
     "display": "Qual quadrilátero possui os 4 lados iguais, mas NÃO exige ângulos retos (90°)?",
@@ -1339,7 +1339,7 @@
     "dica": "Lembre da forma amarela na nossa bandeira do Brasil: lados iguais, mas os cantos não são retos."
   },
   {
-    "id": "B6Q07", "aula": 6, "tipo": "aritmetica",
+    "id": "B6Q07", "aula": "aula 6", "tipo": "aritmetica",
     "dificuldade": 2, "tipoPedagogico": "base",
     "bncc": "EF07MA23", "bncc_desc": "Soma dos Ângulos Internos de Polígonos",
     "display": "Qual é a soma dos ângulos internos de um Pentágono (polígono de 5 lados)?",
@@ -1354,7 +1354,7 @@
     "dica": "Imagine dividir o pentágono em triângulos: se você traçar linhas a partir de um canto, consegue formar 3 triângulos lá dentro."
   },
   {
-    "id": "B6Q10", "aula": 6, "tipo": "critica",
+    "id": "B6Q10", "aula": "aula 6", "tipo": "critica",
     "dificuldade": 3, "tipoPedagogico": "investigacao",
     "bncc": "EF07MA23", "bncc_desc": "Ângulos Externos de Polígonos",
     "display": "Investigação: A soma dos ângulos INTERNOS aumenta com os lados. Mas qual é a soma dos ângulos EXTERNOS de qualquer polígono?",
@@ -1369,7 +1369,7 @@
     "dica": "Não importa o formato da pista. Se você der uma volta completa nela e retornar à mesma direção, você girou exatamente uma volta inteira!"
   },
   {
-    "id": "B6Q08", "aula": 9, "tipo": "aritmetica",
+    "id": "B6Q08", "aula": "aula 6", "tipo": "aritmetica",
     "dificuldade": 3, "tipoPedagogico": "base",
     "bncc": "EF07MA24", "bncc_desc": "Teorema de Pitágoras — Aplicação",
     "display": "Em um triângulo retângulo, os catetos medem 3 e 4. Quanto mede a hipotenusa?",
@@ -1384,7 +1384,7 @@
     "dica": "Lembre-se da fórmula mágica! Você precisa elevar ao quadrado, somar e depois tirar a raiz quadrada do final."
   },
   {
-    "id": "B6Q12", "aula": 9, "tipo": "critica",
+    "id": "B6Q12", "aula": "aula 6", "tipo": "critica",
     "dificuldade": 3, "tipoPedagogico": "investigacao",
     "bncc": "EF07MA24", "bncc_desc": "Condição de Existência do Triângulo",
     "display": "Investigação: Se você tentar montar um triângulo usando palitos de medidas 3 cm, 4 cm e 8 cm, o que acontecerá?",
@@ -1399,13 +1399,9 @@
     "dica": "Imagine os dois palitos menores (3 e 4) deitados no chão. Se você tentar encostar as pontas deles, eles conseguem alcançar o tamanho do palito de 8?"
   },
   {
-    "id": "B3T1Q01",
-    "aula": 1,
-    "tipo": "valor_posicional",
-    "dificuldade": 1,
-    "tipoPedagogico": "base",
-    "bncc": "EF06MA01",
-    "bncc_desc": "Valor Posicional",
+    "id": "B3T1Q01", "aula": "aula 1", "tipo": "aritmetica",
+    "dificuldade": 1, "tipoPedagogico": "base",
+    "bncc": "EF06MA01", "bncc_desc": "Valor Posicional",
     "display": "Qual é o valor posicional do algarismo 7 no número 57.321?",
     "res": "7.000",
     "alternativas": [
@@ -1418,13 +1414,9 @@
     "dica": "Conte as casas da direita para a esquerda."
   },
   {
-    "id": "B3T1Q02",
-    "aula": 1,
-    "tipo": "primos",
-    "dificuldade": 1,
-    "tipoPedagogico": "base",
-    "bncc": "EF06MA05",
-    "bncc_desc": "Números Primos",
+    "id": "B3T1Q02", "aula": "aula 1", "tipo": "aritmetica",
+    "dificuldade": 1, "tipoPedagogico": "base",
+    "bncc": "EF06MA05", "bncc_desc": "Números Primos",
     "display": "Qual destes números é primo?",
     "res": "13",
     "alternativas": [
@@ -1437,13 +1429,9 @@
     "dica": "Teste se o número aparece em outras tabuadas."
   },
   {
-    "id": "B3T1Q03",
-    "aula": 1,
-    "tipo": "potenciacao",
-    "dificuldade": 1,
-    "tipoPedagogico": "base",
-    "bncc": "EF06MA06",
-    "bncc_desc": "Potenciação",
+    "id": "B3T1Q03", "aula": "aula 1", "tipo": "aritmetica",
+    "dificuldade": 1, "tipoPedagogico": "base",
+    "bncc": "EF06MA06", "bncc_desc": "Potenciação",
     "display": "Quanto vale 8²?",
     "res": "64",
     "alternativas": [
@@ -1456,13 +1444,9 @@
     "dica": "Expoente 2 significa multiplicar o número por ele mesmo."
   },
   {
-    "id": "B3T1Q04",
-    "aula": 1,
-    "tipo": "mmc",
-    "dificuldade": 2,
-    "tipoPedagogico": "base",
-    "bncc": "EF06MA05",
-    "bncc_desc": "MMC",
+    "id": "B3T1Q04", "aula": "aula 1", "tipo": "aritmetica",
+    "dificuldade": 2, "tipoPedagogico": "base",
+    "bncc": "EF06MA05", "bncc_desc": "MMC",
     "display": "Determine o MMC entre 12 e 18.",
     "res": "36",
     "alternativas": [
@@ -1475,13 +1459,9 @@
     "dica": "Liste os múltiplos dos dois números."
   },
   {
-    "id": "B3T1Q05",
-    "aula": 1,
-    "tipo": "mdc",
-    "dificuldade": 2,
-    "tipoPedagogico": "base",
-    "bncc": "EF06MA05",
-    "bncc_desc": "MDC",
+    "id": "B3T1Q05", "aula": "aula 1", "tipo": "aritmetica",
+    "dificuldade": 2, "tipoPedagogico": "base",
+    "bncc": "EF06MA05", "bncc_desc": "MDC",
     "display": "Determine o MDC entre 24 e 36.",
     "res": "12",
     "alternativas": [
@@ -1494,13 +1474,9 @@
     "dica": "Procure os divisores comuns."
   },
   {
-    "id": "B3T2Q01",
-    "aula": 2,
-    "tipo": "inteiros",
-    "dificuldade": 1,
-    "tipoPedagogico": "base",
-    "bncc": "EF07MA02",
-    "bncc_desc": "Números Inteiros",
+    "id": "B3T2Q01", "aula": "aula 2", "tipo": "aritmetica",
+    "dificuldade": 1, "tipoPedagogico": "base",
+    "bncc": "EF07MA02", "bncc_desc": "Números Inteiros",
     "display": "Qual é o oposto de -8?",
     "res": "+8",
     "alternativas": [
@@ -1513,13 +1489,9 @@
     "dica": "Troque apenas o sinal."
   },
   {
-    "id": "B3T2Q02",
-    "aula": 2,
-    "tipo": "fracoes",
-    "dificuldade": 2,
-    "tipoPedagogico": "base",
-    "bncc": "EF07MA04",
-    "bncc_desc": "Frações",
+    "id": "B3T2Q02", "aula": "aula 2", "tipo": "aritmetica",
+    "dificuldade": 2, "tipoPedagogico": "base",
+    "bncc": "EF07MA04", "bncc_desc": "Frações",
     "display": "Qual decimal representa a fração 3/4?",
     "res": "0,75",
     "alternativas": [
@@ -1532,13 +1504,9 @@
     "dica": "Frações podem ser transformadas em divisão."
   },
   {
-    "id": "B3T2Q03",
-    "aula": 2,
-    "tipo": "proporcionalidade",
-    "dificuldade": 2,
-    "tipoPedagogico": "base",
-    "bncc": "EF07MA08",
-    "bncc_desc": "Proporcionalidade",
+    "id": "B3T2Q03", "aula": "aula 2", "tipo": "contexto",
+    "dificuldade": 2, "tipoPedagogico": "base",
+    "bncc": "EF07MA08", "bncc_desc": "Proporcionalidade",
     "display": "Se 4 cadernos custam R$ 32, quanto custam 6 cadernos?",
     "res": "48",
     "alternativas": [
@@ -1551,13 +1519,9 @@
     "dica": "Primeiro descubra o valor unitário."
   },
   {
-    "id": "B3T3Q01",
-    "aula": 3,
-    "tipo": "area",
-    "dificuldade": 1,
-    "tipoPedagogico": "base",
-    "bncc": "EF08MA19",
-    "bncc_desc": "Área",
+    "id": "B3T3Q01", "aula": "aula 3", "tipo": "geometria",
+    "dificuldade": 1, "tipoPedagogico": "base",
+    "bncc": "EF08MA19", "bncc_desc": "Área",
     "display": "Calcule a área de um retângulo de 8 cm por 5 cm.",
     "res": "40 cm²",
     "alternativas": [
@@ -1570,13 +1534,9 @@
     "dica": "Multiplique comprimento pela largura."
   },
   {
-    "id": "B3T3Q02",
-    "aula": 3,
-    "tipo": "conversao",
-    "dificuldade": 1,
-    "tipoPedagogico": "base",
-    "bncc": "EF07MA29",
-    "bncc_desc": "Conversão de Medidas",
+    "id": "B3T3Q02", "aula": "aula 3", "tipo": "aritmetica",
+    "dificuldade": 1, "tipoPedagogico": "base",
+    "bncc": "EF07MA29", "bncc_desc": "Conversão de Medidas",
     "display": "Converta 2,5 metros em centímetros.",
     "res": "250 cm",
     "alternativas": [
@@ -1589,13 +1549,9 @@
     "dica": "Multiplique metros por 100."
   },
   {
-    "id": "B3T4Q01",
-    "aula": 4,
-    "tipo": "equacao",
-    "dificuldade": 2,
-    "tipoPedagogico": "base",
-    "bncc": "EF08MA06",
-    "bncc_desc": "Equação do 1° Grau",
+    "id": "B3T4Q01", "aula": "aula 4", "tipo": "aritmetica",
+    "dificuldade": 2, "tipoPedagogico": "base",
+    "bncc": "EF08MA06", "bncc_desc": "Equação do 1° Grau",
     "display": "Resolva: 2x + 5 = 17.",
     "res": "x = 6",
     "alternativas": [
@@ -1608,13 +1564,9 @@
     "dica": "Deixe a incógnita sozinha."
   },
   {
-    "id": "B3T4Q02",
-    "aula": 4,
-    "tipo": "inequacao",
-    "dificuldade": 3,
-    "tipoPedagogico": "base",
-    "bncc": "EF09MA09",
-    "bncc_desc": "Inequações",
+    "id": "B3T4Q02", "aula": "aula 4", "tipo": "aritmetica",
+    "dificuldade": 3, "tipoPedagogico": "base",
+    "bncc": "EF09MA09", "bncc_desc": "Inequações",
     "display": "Resolva: 3x < 18.",
     "res": "x < 6",
     "alternativas": [
@@ -1627,13 +1579,9 @@
     "dica": "A desigualdade continua igual porque dividimos por número positivo."
   },
   {
-    "id": "B3T5Q01",
-    "aula": 5,
-    "tipo": "estatistica",
-    "dificuldade": 1,
-    "tipoPedagogico": "base",
-    "bncc": "EF08MA25",
-    "bncc_desc": "Média Aritmética",
+    "id": "B3T5Q01", "aula": "aula 5", "tipo": "aritmetica",
+    "dificuldade": 1, "tipoPedagogico": "base",
+    "bncc": "EF08MA25", "bncc_desc": "Média Aritmética",
     "display": "Calcule a média dos números 7, 8, 9 e 10.",
     "res": "8,5",
     "alternativas": [
@@ -1646,13 +1594,9 @@
     "dica": "Média é repartir igualmente."
   },
   {
-    "id": "B3T5Q02",
-    "aula": 5,
-    "tipo": "probabilidade",
-    "dificuldade": 2,
-    "tipoPedagogico": "base",
-    "bncc": "EF08MA26",
-    "bncc_desc": "Probabilidade",
+    "id": "B3T5Q02", "aula": "aula 5", "tipo": "aritmetica",
+    "dificuldade": 2, "tipoPedagogico": "base",
+    "bncc": "EF08MA26", "bncc_desc": "Probabilidade",
     "display": "Qual a probabilidade de sair um número par em um dado comum?",
     "res": "3/6",
     "alternativas": [
@@ -1665,13 +1609,9 @@
     "dica": "Conte casos favoráveis e possíveis."
   },
   {
-    "id": "B3T6Q01",
-    "aula": 6,
-    "tipo": "poligonos",
-    "dificuldade": 1,
-    "tipoPedagogico": "base",
-    "bncc": "EF08MA15",
-    "bncc_desc": "Polígonos",
+    "id": "B3T6Q01", "aula": "aula 6", "tipo": "conceito",
+    "dificuldade": 1, "tipoPedagogico": "base",
+    "bncc": "EF08MA15", "bncc_desc": "Polígonos",
     "display": "Quantos lados possui um hexágono?",
     "res": "6",
     "alternativas": [
@@ -1684,13 +1624,9 @@
     "dica": "Lembre da palavra hexadecimal."
   },
   {
-    "id": "B3T6Q02",
-    "aula": 6,
-    "tipo": "pitagoras",
-    "dificuldade": 3,
-    "tipoPedagogico": "base",
-    "bncc": "EF09MA14",
-    "bncc_desc": "Teorema de Pitágoras",
+    "id": "B3T6Q02", "aula": "aula 6", "tipo": "aritmetica",
+    "dificuldade": 3, "tipoPedagogico": "base",
+    "bncc": "EF09MA14", "bncc_desc": "Teorema de Pitágoras",
     "display": "Calcule a hipotenusa de um triângulo com catetos 3 e 4.",
     "res": "5",
     "alternativas": [
