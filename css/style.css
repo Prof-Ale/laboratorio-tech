@@ -158,9 +158,43 @@ html, body {
 .mc { background: var(--bg-dark); border: 2px solid var(--choco-gold); border-radius: 25px; padding: 30px; position: relative; width: 100%; max-width: 450px; text-align: center; }
 .mx { position: absolute; top: 15px; right: 20px; background: none; border: none; color: var(--neon-red); font-size: 32px; cursor: pointer; }
 
-#ada-command-post { position: fixed; bottom: 20px; right: 20px; width: 250px; height: 250px; z-index: 50; pointer-events: none; }
-.ada-box { width: 100%; height: 100%; border-radius: 50%; border: 4px solid var(--neon-cyan); overflow: hidden; position: relative; }
-.ada-asset { position: absolute; width: 100%; height: 100%; object-fit: cover; }
+#ada-command-post { 
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    width: 320px;  /* Proporção 16:9 ideal para o seu vídeo de 1280x720 */
+    height: 180px; 
+    z-index: 50; 
+    pointer-events: none; 
+}
+
+.ada-box { 
+    width: 100%; 
+    height: 100%; 
+    border-radius: 16px; /* Remove o corte do círculo e cria bordas arredondadas modernas */
+    border: 2px solid var(--neon-cyan); 
+    overflow: hidden; 
+    position: relative; 
+    background: #000;
+    box-shadow: 0 0 20px rgba(0, 234, 255, 0.2); /* Efeito neon sutil no card */
+}
+
+.ada-asset { 
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; /* Faz o vídeo e a imagem se adaptarem perfeitamente sem esticar */
+}
+
 .avh { opacity: 0 !important; }
 
-@media (max-width: 600px) { .blocks-grid { grid-template-columns: 1fr; } #ada-command-post { width: 150px; height: 150px; } }
+@media (max-width: 600px) { 
+    .blocks-grid { grid-template-columns: 1fr; } 
+    
+    #ada-command-post { 
+        width: 200px; 
+        height: 112px; /* Mantém a proporção 16:9 correta em telas de celulares */
+        bottom: 10px;
+        right: 10px;
+    } 
+}
