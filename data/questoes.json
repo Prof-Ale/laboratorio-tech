@@ -1974,5 +1974,538 @@
     ],
     "passo": "Condição de Existência: o maior lado (8) DEVE ser menor que a soma dos outros dois (3 + 4 = 7). Como 8 é maior que 7, a figura fica aberta.",
     "dica": "Imagine os dois palitos menores (3 e 4) deitados no chão. Se você tentar encostar as pontas deles, eles conseguem alcançar o tamanho do palito de 8?"
+  },
+  {
+    "id": "B3T1Q01",
+    "aula": 3,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA01",
+    "bncc_desc": "Valor Posicional",
+    "display": "Qual é o valor posicional do algarismo 7 no número 57.321?",
+    "res": "7.000",
+    "alternativas": [
+      { "valor": "7.000", "tipo": "acerto" },
+      { "valor": "700", "tipo": "erro", "categoria": "procedimento", "erro": "valorposicional_reduz_ordem", "descricao": "Confundiu unidade de milhar com centena.", "peso": 2 },
+      { "valor": "70.000", "tipo": "erro", "categoria": "conceito", "erro": "valorposicional_aumenta_ordem", "descricao": "Confundiu unidade de milhar com dezena de milhar.", "peso": 3 },
+      { "valor": "7", "tipo": "erro", "categoria": "atencao", "erro": "valorposicional_valor_absoluto", "descricao": "Indicou o valor absoluto do algarismo isolado.", "peso": 1 }
+    ],
+    "passo": "O algarismo 7 ocupa a ordem das unidades de milhar.",
+    "dica": "Conte as casas da direita para a esquerda."
+  },
+  {
+    "id": "B3T1Q02",
+    "aula": 3,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA05",
+    "bncc_desc": "Números Primos",
+    "display": "Qual destes números é primo?",
+    "res": "13",
+    "alternativas": [
+      { "valor": "13", "tipo": "acerto" },
+      { "valor": "15", "tipo": "erro", "categoria": "conceito", "erro": "primo_confunde_com_impar_15", "descricao": "Classificou um múltiplo de 3 e 5 como primo por ser ímpar.", "peso": 3 },
+      { "valor": "21", "tipo": "erro", "categoria": "conceito", "erro": "primo_confunde_com_impar_21", "descricao": "Classificou um múltiplo de 3 e 7 como primo por ser ímpar.", "peso": 3 },
+      { "valor": "27", "tipo": "erro", "categoria": "procedimento", "erro": "primo_confunde_com_impar_27", "descricao": "Classificou um cubo perfeito (3³) como primo.", "peso": 2 }
+    ],
+    "passo": "13 possui apenas dois divisores: 1 e 13.",
+    "dica": "Teste se o número aparece em outras tabuadas."
+  },
+  {
+    "id": "B3T1Q03",
+    "aula": 3,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA06",
+    "bncc_desc": "Potenciação",
+    "display": "Quanto vale 8²?",
+    "res": "64",
+    "alternativas": [
+      { "valor": "64", "tipo": "acerto" },
+      { "valor": "16", "tipo": "erro", "categoria": "conceito", "erro": "potenciacao_multiplica_base_expoente", "descricao": "Multiplicou a base pelo expoente (8x2).", "peso": 3 },
+      { "valor": "82", "tipo": "erro", "categoria": "procedimento", "erro": "potenciacao_justapoe_numeros", "descricao": "Apenas juntou os algarismos 8 e 2.", "peso": 2 },
+      { "valor": "56", "tipo": "erro", "categoria": "calculo", "erro": "potenciacao_erro_tabuada", "descricao": "Errou a tabuada do 8.", "peso": 1 }
+    ],
+    "passo": "8² significa 8 × 8.",
+    "dica": "Expoente 2 significa multiplicar o número por ele mesmo."
+  },
+  {
+    "id": "B3T1Q04",
+    "aula": 3,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA05",
+    "bncc_desc": "MMC",
+    "display": "Determine o MMC entre 12 e 18.",
+    "res": "36",
+    "alternativas": [
+      { "valor": "36", "tipo": "acerto" },
+      { "valor": "6", "tipo": "erro", "categoria": "conceito", "erro": "mmc_confunde_com_mdc", "descricao": "Calculou o Máximo Divisor Comum em vez do Mínimo Múltiplo.", "peso": 3 },
+      { "valor": "24", "tipo": "erro", "categoria": "procedimento", "erro": "mmc_multiplo_comum_incompleto", "descricao": "Encontrou um múltiplo, mas não considerou os dois números.", "peso": 2 },
+      { "valor": "216", "tipo": "erro", "categoria": "estrategia", "erro": "mmc_multiplica_direto", "descricao": "Multiplicou os números entre si desnecessariamente.", "peso": 2 }
+    ],
+    "passo": "O primeiro múltiplo comum entre 12 e 18 é 36.",
+    "dica": "Liste os múltiplos dos dois números."
+  },
+  {
+    "id": "B3T1Q05",
+    "aula": 3,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA05",
+    "bncc_desc": "MDC",
+    "display": "Determine o MDC entre 24 e 36.",
+    "res": "12",
+    "alternativas": [
+      { "valor": "12", "tipo": "acerto" },
+      { "valor": "6", "tipo": "erro", "categoria": "procedimento", "erro": "mdc_divisor_comum_menor", "descricao": "Encontrou um divisor comum, mas não o máximo.", "peso": 2 },
+      { "valor": "72", "tipo": "erro", "categoria": "conceito", "erro": "mdc_confunde_com_mmc", "descricao": "Calculou o MMC em vez do MDC.", "peso": 3 },
+      { "valor": "24", "tipo": "erro", "categoria": "atencao", "erro": "mdc_elege_menor_numero", "descricao": "Apenas repetiu o menor número da questão.", "peso": 1 }
+    ],
+    "passo": "12 é o maior número que divide 24 e 36 ao mesmo tempo.",
+    "dica": "Procure os divisores comuns."
+  },
+  {
+    "id": "B3T2Q01",
+    "aula": 3,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA02",
+    "bncc_desc": "Números Inteiros",
+    "display": "Qual é o oposto de -8?",
+    "res": "+8",
+    "alternativas": [
+      { "valor": "+8", "tipo": "acerto" },
+      { "valor": "-8", "tipo": "erro", "categoria": "conceito", "erro": "oposto_mantem_sinal", "descricao": "Manteve o sinal negativo.", "peso": 3 },
+      { "valor": "0", "tipo": "erro", "categoria": "estrategia", "erro": "oposto_confunde_com_nulo", "descricao": "Assumiu que o oposto zera o valor.", "peso": 2 },
+      { "valor": "-16", "tipo": "erro", "categoria": "procedimento", "erro": "oposto_dobra_valor", "descricao": "Dobrou o valor e manteve o sinal.", "peso": 2 }
+    ],
+    "passo": "O oposto possui mesma distância do zero, mas lado contrário.",
+    "dica": "Troque apenas o sinal."
+  },
+  {
+    "id": "B3T2Q02",
+    "aula": 3,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Frações",
+    "display": "Qual decimal representa a fração 3/4?",
+    "res": "0,75",
+    "alternativas": [
+      { "valor": "0,75", "tipo": "acerto" },
+      { "valor": "0,34", "tipo": "erro", "categoria": "procedimento", "erro": "fracao_justapoe_algarismos", "descricao": "Apenas colocou os números da fração após a vírgula.", "peso": 2 },
+      { "valor": "0,5", "tipo": "erro", "categoria": "conceito", "erro": "fracao_confunde_meio", "descricao": "Assumiu o valor decimal da fração 1/2.", "peso": 3 },
+      { "valor": "1,25", "tipo": "erro", "categoria": "calculo", "erro": "fracao_inverte_divisao", "descricao": "Dividiu 4 por 3 em vez de 3 por 4.", "peso": 1 }
+    ],
+    "passo": "3 dividido por 4 resulta em 0,75.",
+    "dica": "Frações podem ser transformadas em divisão."
+  },
+  {
+    "id": "B3T2Q03",
+    "aula": 3,
+    "tipo": "contexto",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA08",
+    "bncc_desc": "Proporcionalidade",
+    "display": "Se 4 cadernos custam R$ 32, quanto custam 6 cadernos?",
+    "res": "48",
+    "alternativas": [
+      { "valor": "48", "tipo": "acerto" },
+      { "valor": "40", "tipo": "erro", "categoria": "procedimento", "erro": "proporcao_calculo_linear_errado", "descricao": "Somou o valor de 1 caderno ao total.", "peso": 2 },
+      { "valor": "52", "tipo": "erro", "categoria": "calculo", "erro": "proporcao_erro_tabuada", "descricao": "Errou a multiplicação básica.", "peso": 1 },
+      { "valor": "64", "tipo": "erro", "categoria": "conceito", "erro": "proporcao_dobra_valor", "descricao": "Dobrou o valor assumindo erroneamente que os cadernos dobraram.", "peso": 3 }
+    ],
+    "passo": "Cada caderno custa 8 reais. Multiplicando por 6: 48.",
+    "dica": "Primeiro descubra o valor unitário."
+  },
+  {
+    "id": "B3T3Q01",
+    "aula": 3,
+    "tipo": "geometria",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA19",
+    "bncc_desc": "Área",
+    "display": "Calcule a área de um retângulo de 8 cm por 5 cm.",
+    "res": "40 cm²",
+    "alternativas": [
+      { "valor": "40 cm²", "tipo": "acerto" },
+      { "valor": "26 cm²", "tipo": "erro", "categoria": "conceito", "erro": "area_calcula_perimetro", "descricao": "Calculou o perímetro em vez da área.", "peso": 3 },
+      { "valor": "80 cm²", "tipo": "erro", "categoria": "procedimento", "erro": "area_dobra_produto", "descricao": "Multiplicou a área por 2 desnecessariamente.", "peso": 2 },
+      { "valor": "13 cm²", "tipo": "erro", "categoria": "calculo", "erro": "area_soma_simples", "descricao": "Apenas somou a base e a altura.", "peso": 1 }
+    ],
+    "passo": "Área do retângulo = base × altura.",
+    "dica": "Multiplique comprimento pela largura."
+  },
+  {
+    "id": "B3T3Q02",
+    "aula": 3,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA29",
+    "bncc_desc": "Conversão de Medidas",
+    "display": "Converta 2,5 metros em centímetros.",
+    "res": "250 cm",
+    "alternativas": [
+      { "valor": "250 cm", "tipo": "acerto" },
+      { "valor": "25 cm", "tipo": "erro", "categoria": "procedimento", "erro": "conversao_fator_10", "descricao": "Multiplicou por 10 em vez de 100.", "peso": 2 },
+      { "valor": "2.500 cm", "tipo": "erro", "categoria": "conceito", "erro": "conversao_fator_1000", "descricao": "Multiplicou por 1000, confundindo com milímetros.", "peso": 3 },
+      { "valor": "205 cm", "tipo": "erro", "categoria": "calculo", "erro": "conversao_erro_posicao_virgula", "descricao": "Errou a conversão esquecendo um zero.", "peso": 1 }
+    ],
+    "passo": "1 metro possui 100 centímetros.",
+    "dica": "Multiplique metros por 100."
+  },
+  {
+    "id": "B4T4Q01",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA06",
+    "bncc_desc": "Equação do 1° Grau",
+    "display": "Resolva: 2x + 5 = 17.",
+    "res": "x = 6",
+    "alternativas": [
+      { "valor": "x = 6", "tipo": "acerto" },
+      { "valor": "x = 11", "tipo": "erro", "categoria": "procedimento", "erro": "equacao_soma_em_vez_subtrair", "descricao": "Somou o 5 ao 17 ao mudar de lado.", "peso": 2 },
+      { "valor": "x = 12", "tipo": "erro", "categoria": "conceito", "erro": "equacao_subtrai_multiplicador", "descricao": "Subtraiu o 2x do 17 de forma errada.", "peso": 3 },
+      { "valor": "x = 7", "tipo": "erro", "categoria": "calculo", "erro": "equacao_erro_divisao", "descricao": "Errou a divisão de 12 por 2.", "peso": 1 }
+    ],
+    "passo": "Primeiro isolamos o 2x: 17 - 5 = 12. Depois dividimos por 2.",
+    "dica": "Deixe a incógnita sozinha."
+  },
+  {
+    "id": "B4T4Q02",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF09MA09",
+    "bncc_desc": "Inequações",
+    "display": "Resolva: 3x < 18.",
+    "res": "x < 6",
+    "alternativas": [
+      { "valor": "x < 6", "tipo": "acerto" },
+      { "valor": "x > 6", "tipo": "erro", "categoria": "conceito", "erro": "inequacao_inverte_sinal_indevidamente", "descricao": "Inverteu a desigualdade ao dividir por um número positivo.", "peso": 3 },
+      { "valor": "x = 6", "tipo": "erro", "categoria": "procedimento", "erro": "inequacao_transforma_em_equacao", "descricao": "Trocou o sinal de menor pelo de igual.", "peso": 2 },
+      { "valor": "x < 3", "tipo": "erro", "categoria": "calculo", "erro": "inequacao_erro_divisao", "descricao": "Errou a divisão básica.", "peso": 1 }
+    ],
+    "passo": "Dividimos ambos os lados por 3.",
+    "dica": "A desigualdade continua igual porque dividimos por número positivo."
+  },
+  {
+    "id": "B5T5Q01",
+    "aula": 5,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA25",
+    "bncc_desc": "Média Aritmética",
+    "display": "Calcule a média dos números 7, 8, 9 e 10.",
+    "res": "8,5",
+    "alternativas": [
+      { "valor": "8,5", "tipo": "acerto" },
+      { "valor": "34", "tipo": "erro", "categoria": "procedimento", "erro": "media_apenas_soma", "descricao": "Apenas somou e não dividiu.", "peso": 3 },
+      { "valor": "7,5", "tipo": "erro", "categoria": "calculo", "erro": "media_erro_divisao", "descricao": "Errou a divisão da soma por 4.", "peso": 1 },
+      { "valor": "9", "tipo": "erro", "categoria": "estrategia", "erro": "media_elege_valor_central", "descricao": "Escolheu um valor aleatório do conjunto.", "peso": 2 }
+    ],
+    "passo": "Somamos todos os valores e dividimos pela quantidade.",
+    "dica": "Média é repartir igualmente."
+  },
+  {
+    "id": "B5T5Q02",
+    "aula": 5,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA26",
+    "bncc_desc": "Probabilidade",
+    "display": "Qual a probabilidade de sair um número par em um dado comum?",
+    "res": "3/6",
+    "alternativas": [
+      { "valor": "3/6", "tipo": "acerto" },
+      { "valor": "1/6", "tipo": "erro", "categoria": "conceito", "erro": "probabilidade_evento_simples", "descricao": "Calculou a chance de sair apenas um número específico.", "peso": 3 },
+      { "valor": "6/6", "tipo": "erro", "categoria": "procedimento", "erro": "probabilidade_evento_certo", "descricao": "Considerou todos os números do dado.", "peso": 2 },
+      { "valor": "2/6", "tipo": "erro", "categoria": "calculo", "erro": "probabilidade_contagem_errada", "descricao": "Errou a contagem de pares.", "peso": 1 }
+    ],
+    "passo": "Os pares possíveis são 2, 4 e 6.",
+    "dica": "Conte casos favoráveis e possíveis."
+  },
+  {
+    "id": "B6T6Q01",
+    "aula": 6,
+    "tipo": "conceito",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA15",
+    "bncc_desc": "Polígonos",
+    "display": "Quantos lados possui um hexágono?",
+    "res": "6",
+    "alternativas": [
+      { "valor": "6", "tipo": "acerto" },
+      { "valor": "5", "tipo": "erro", "categoria": "conceito", "erro": "poligono_confunde_pentagono", "descricao": "Confundiu com pentágono.", "peso": 3 },
+      { "valor": "7", "tipo": "erro", "categoria": "procedimento", "erro": "poligono_confunde_heptagono", "descricao": "Confundiu com heptágono.", "peso": 2 },
+      { "valor": "8", "tipo": "erro", "categoria": "atencao", "erro": "poligono_confunde_octogono", "descricao": "Confundiu com octógono.", "peso": 1 }
+    ],
+    "passo": "Hexa significa seis.",
+    "dica": "Lembre da palavra hexadecimal."
+  },
+  {
+    "id": "B6T6Q02",
+    "aula": 6,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF09MA14",
+    "bncc_desc": "Teorema de Pitágoras",
+    "display": "Calcule a hipotenusa de um triângulo com catetos 3 e 4.",
+    "res": "5",
+    "alternativas": [
+      { "valor": "5", "tipo": "acerto" },
+      { "valor": "7", "tipo": "erro", "categoria": "conceito", "erro": "pitagoras_soma_linear", "descricao": "Apenas somou os catetos sem elevar ao quadrado.", "peso": 3 },
+      { "valor": "6", "tipo": "erro", "categoria": "procedimento", "erro": "pitagoras_raiz_errada", "descricao": "Tirou a raiz quadrada de 25 de forma errada.", "peso": 2 },
+      { "valor": "4", "tipo": "erro", "categoria": "calculo", "erro": "pitagoras_subtrai_catetos", "descricao": "Subtraiu os catetos em vez de aplicar o teorema.", "peso": 1 }
+    ],
+    "passo": "3² + 4² = 9 + 16 = 25. √25 = 5.",
+    "dica": "Use a² + b² = c²."
+  },
+  {
+    "id": "B1A01",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA05",
+    "bncc_desc": "Potenciacao",
+    "display": "Calcule o valor de 5 ao cubo (5³).",
+    "res": "125",
+    "alternativas": [
+      { "valor": "125", "tipo": "acerto" },
+      { "valor": "15", "tipo": "erro", "categoria": "conceito", "erro": "potencia_multiplica_base_expoente", "descricao": "Multiplicou a base pelo expoente em vez de usar a base como fator.", "peso": 3 },
+      { "valor": "25", "tipo": "erro", "categoria": "procedimento", "erro": "potencia_falta_fator", "descricao": "Elevou ao quadrado em vez de ao cubo.", "peso": 2 },
+      { "valor": "8", "tipo": "erro", "categoria": "atencao", "erro": "potencia_soma_base_expoente", "descricao": "Somou a base com o expoente.", "peso": 1 }
+    ],
+    "passo": "O expoente 3 indica que a base 5 deve ser multiplicada por ela mesma três vezes: 5 × 5 × 5 = 125.",
+    "dica": "Lembre-se: potência não é tabuada de vezes. É o número vezes ele mesmo!"
+  },
+  {
+    "id": "B1A04",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA05",
+    "bncc_desc": "Multiplicacao com Zeros",
+    "display": "Calcule: 400 × 30",
+    "res": "12.000",
+    "alternativas": [
+      { "valor": "12.000", "tipo": "acerto" },
+      { "valor": "1.200", "tipo": "erro", "categoria": "procedimento", "erro": "multiplicacao_omite_zero", "descricao": "Esqueceu de incluir um dos zeros no final.", "peso": 2 },
+      { "valor": "120.000", "tipo": "erro", "categoria": "procedimento", "erro": "multiplicacao_adiciona_zero", "descricao": "Colocou um zero a mais na resposta.", "peso": 2 },
+      { "valor": "430", "tipo": "erro", "categoria": "conceito", "erro": "multiplicacao_confunde_com_soma", "descricao": "Somou os valores em vez de multiplicar.", "peso": 3 }
+    ],
+    "passo": "Multiplique os números sem os zeros: 4 × 3 = 12. Depois, conte todos os zeros e coloque no final.",
+    "dica": "Multiplique a parte que não é zero e depois devolva todos os zeros para a resposta!"
+  },
+  {
+    "id": "B2A01",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA09",
+    "bncc_desc": "Adicao de Fracoes",
+    "display": "Calcule a soma das frações: 1/4 + 2/4",
+    "res": "3/4",
+    "alternativas": [
+      { "valor": "3/4", "tipo": "acerto" },
+      { "valor": "3/8", "tipo": "erro", "categoria": "conceito", "erro": "fracao_soma_denominadores", "descricao": "Somou tanto os numeradores quanto os denominadores.", "peso": 3 },
+      { "valor": "2/16", "tipo": "erro", "categoria": "procedimento", "erro": "fracao_multiplica_em_vez_de_somar", "descricao": "Multiplicou as frações em vez de somar.", "peso": 2 },
+      { "valor": "1/4", "tipo": "erro", "categoria": "atencao", "erro": "fracao_subtrai_em_vez_de_somar", "descricao": "Fez a subtração dos numeradores por desatenção ao sinal.", "peso": 1 }
+    ],
+    "passo": "Quando os denominadores são iguais, mantemos o denominador e somamos apenas os numeradores.",
+    "dica": "Pense em fatias de pizza: 1 fatia de quatro + 2 fatias de quatro = 3 fatias de quatro!"
+  },
+  {
+    "id": "B2A04",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA10",
+    "bncc_desc": "Divisao de Fracoes",
+    "display": "Calcule: (1/2) ÷ (1/4)",
+    "res": "2",
+    "alternativas": [
+      { "valor": "2", "tipo": "acerto" },
+      { "valor": "1/8", "tipo": "erro", "categoria": "conceito", "erro": "divisao_fracoes_multiplica_direto", "descricao": "Multiplicou as frações diretamente sem inverter a segunda.", "peso": 3 },
+      { "valor": "1/2", "tipo": "erro", "categoria": "procedimento", "erro": "divisao_fracoes_mantem_denominador", "descricao": "Dividiu apenas os denominadores sem lógica.", "peso": 2 },
+      { "valor": "4", "tipo": "erro", "categoria": "calculo", "erro": "divisao_inverte_primeira", "descricao": "Inverteu a primeira fração em vez da segunda.", "peso": 2 }
+    ],
+    "passo": "Para dividir frações, mantemos a primeira e multiplicamos pelo inverso da segunda.",
+    "dica": "Divisão de frações: repete a primeira e multiplica pela segunda de cabeça pra baixo!"
+  },
+  {
+    "id": "B3A01",
+    "aula": 3,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA31",
+    "bncc_desc": "Area de Retangulo",
+    "display": "Calcule a área de um retângulo que tem 8m de base e 5m de altura.",
+    "res": "40 m²",
+    "alternativas": [
+      { "valor": "40 m²", "tipo": "acerto" },
+      { "valor": "13 m²", "tipo": "erro", "categoria": "conceito", "erro": "area_soma_dimensoes", "descricao": "Somou a base com a altura em vez de multiplicar.", "peso": 3 },
+      { "valor": "26 m²", "tipo": "erro", "categoria": "procedimento", "erro": "area_confunde_com_perimetro", "descricao": "Calculou o perímetro do retângulo em vez da área.", "peso": 3 },
+      { "valor": "40 m", "tipo": "erro", "categoria": "atencao", "erro": "area_unidade_medida_errada", "descricao": "Calculou certo, mas usou medida linear em vez de quadrada.", "peso": 1 }
+    ],
+    "passo": "Multiplicamos a base pela altura: 8 × 5 = 40.",
+    "dica": "Área é o espaço dentro da figura!"
+  },
+  {
+    "id": "B3A04",
+    "aula": 3,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA19",
+    "bncc_desc": "Volume do Cubo",
+    "display": "Qual é o volume de um cubo com 3 cm de aresta?",
+    "res": "27 cm³",
+    "alternativas": [
+      { "valor": "27 cm³", "tipo": "acerto" },
+      { "valor": "9 cm³", "tipo": "erro", "categoria": "conceito", "erro": "volume_calcula_area_face", "descricao": "Calculou a área de uma face (3x3) em vez do volume.", "peso": 3 },
+      { "valor": "27 cm²", "tipo": "erro", "categoria": "atencao", "erro": "volume_unidade_errada", "descricao": "Acertou o número, mas errou a unidade de medida.", "peso": 1 },
+      { "valor": "12 cm³", "tipo": "erro", "categoria": "procedimento", "erro": "volume_multiplica_por_quatro", "descricao": "Multiplicou a aresta por 4.", "peso": 2 }
+    ],
+    "passo": "Volume = 3 × 3 × 3 = 27 cm³.",
+    "dica": "Volume envolve três dimensões!"
+  },
+  {
+    "id": "B4A01",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA18",
+    "bncc_desc": "Equacao do 1 Grau",
+    "display": "Resolva a equação: 2x = 10",
+    "res": "x = 5",
+    "alternativas": [
+      { "valor": "x = 5", "tipo": "acerto" },
+      { "valor": "x = 12", "tipo": "erro", "categoria": "conceito", "erro": "equacao_soma_em_vez_de_dividir", "descricao": "Passou o 2 somando.", "peso": 3 },
+      { "valor": "x = 8", "tipo": "erro", "categoria": "procedimento", "erro": "equacao_subtrai_em_vez_de_dividir", "descricao": "Passou o 2 subtraindo.", "peso": 2 },
+      { "valor": "x = 20", "tipo": "erro", "categoria": "interpretacao", "erro": "equacao_multiplica_inverso", "descricao": "Multiplicou os valores.", "peso": 2 }
+    ],
+    "passo": "x = 10 ÷ 2 = 5.",
+    "dica": "O contrário de multiplicar é dividir!"
+  },
+  {
+    "id": "B4A04",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA18",
+    "bncc_desc": "Equacao com Subtracao",
+    "display": "Resolva a equação: x + 8 = 12",
+    "res": "x = 4",
+    "alternativas": [
+      { "valor": "x = 4", "tipo": "acerto" },
+      { "valor": "x = 20", "tipo": "erro", "categoria": "conceito", "erro": "equacao_soma_dois_lados", "descricao": "Somou o 8 ao 12.", "peso": 3 },
+      { "valor": "x = -4", "tipo": "erro", "categoria": "procedimento", "erro": "equacao_inverte_sinal_errado", "descricao": "Fez 8 - 12.", "peso": 2 },
+      { "valor": "x = 96", "tipo": "erro", "categoria": "interpretacao", "erro": "equacao_multiplica_termos", "descricao": "Multiplicou os termos.", "peso": 1 }
+    ],
+    "passo": "x = 12 - 8 = 4.",
+    "dica": "Trocou de lado, trocou de sinal!"
+  },
+  {
+    "id": "B5A01",
+    "aula": 5,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA22",
+    "bncc_desc": "Media Simples",
+    "display": "Calcule a média aritmética entre os números 4, 6 e 8.",
+    "res": "6",
+    "alternativas": [
+      { "valor": "6", "tipo": "acerto" },
+      { "valor": "18", "tipo": "erro", "categoria": "conceito", "erro": "media_apenas_soma", "descricao": "Somou mas esqueceu de dividir.", "peso": 3 },
+      { "valor": "9", "tipo": "erro", "categoria": "procedimento", "erro": "media_divide_por_dois", "descricao": "Dividiu por 2 em vez de 3.", "peso": 2 },
+      { "valor": "8", "tipo": "erro", "categoria": "interpretacao", "erro": "media_confunde_com_maximo", "descricao": "Pegou o maior valor.", "peso": 1 }
+    ],
+    "passo": "(4+6+8) ÷ 3 = 6.",
+    "dica": "Média é repartir igualmente."
+  },
+  {
+    "id": "B5A02",
+    "aula": 5,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA22",
+    "bncc_desc": "Moda",
+    "display": "Dada a lista de valores (2, 3, 3, 5, 7), qual é a moda?",
+    "res": "3",
+    "alternativas": [
+      { "valor": "3", "tipo": "acerto" },
+      { "valor": "4", "tipo": "erro", "categoria": "conceito", "erro": "moda_confunde_com_media", "descricao": "Calculou a média.", "peso": 3 },
+      { "valor": "2", "tipo": "erro", "categoria": "procedimento", "erro": "moda_escolhe_primeiro", "descricao": "Escolheu o primeiro valor.", "peso": 2 },
+      { "valor": "5", "tipo": "erro", "categoria": "interpretacao", "erro": "moda_escolhe_mediana", "descricao": "Escolheu a mediana.", "peso": 2 }
+    ],
+    "passo": "O 3 se repete mais vezes.",
+    "dica": "Moda é o que mais aparece!"
+  },
+  {
+    "id": "B6A01",
+    "aula": 6,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF09MA14",
+    "bncc_desc": "Teorema de Pitagoras",
+    "display": "Em um triângulo retângulo, os catetos medem 6 e 8. Quanto mede a hipotenusa?",
+    "res": "10",
+    "alternativas": [
+      { "valor": "10", "tipo": "acerto" },
+      { "valor": "14", "tipo": "erro", "categoria": "conceito", "erro": "pitagoras_soma_linear", "descricao": "Somou 6+8.", "peso": 3 },
+      { "valor": "100", "tipo": "erro", "categoria": "procedimento", "erro": "pitagoras_esquece_raiz", "descricao": "Esqueceu de tirar a raiz quadrada.", "peso": 2 },
+      { "valor": "48", "tipo": "erro", "categoria": "calculo", "erro": "pitagoras_multiplica_catetos", "descricao": "Multiplicou os catetos.", "peso": 2 }
+    ],
+    "passo": "6² + 8² = 36 + 64 = 100. √100 = 10.",
+    "dica": "Eleve ao quadrado, some e tire a raiz!"
+  },
+  {
+    "id": "B6A02",
+    "aula": 6,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA24",
+    "bncc_desc": "Soma dos Angulos do Triangulo",
+    "display": "Se dois ângulos de um triângulo medem 50° e 60°, quanto mede o terceiro ângulo?",
+    "res": "70°",
+    "alternativas": [
+      { "valor": "70°", "tipo": "acerto" },
+      { "valor": "110°", "tipo": "erro", "categoria": "conceito", "erro": "angulos_soma_incompleta", "descricao": "Apenas somou os dois ângulos.", "peso": 3 },
+      { "valor": "250°", "tipo": "erro", "categoria": "procedimento", "erro": "angulos_referencia_circulo", "descricao": "Subtraiu de 360°.", "peso": 2 },
+      { "valor": "90°", "tipo": "erro", "categoria": "interpretacao", "erro": "angulos_chute_retangulo", "descricao": "Chutou 90°.", "peso": 1 }
+    ],
+    "passo": "180 - (50 + 60) = 70.",
+    "dica": "A soma tem que dar 180!"
   }
+]
 ]
