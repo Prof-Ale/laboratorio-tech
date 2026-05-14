@@ -1,8 +1,12 @@
 [
   {
-    "id": "B1Q00", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 1, "tipoPedagogico": "recomposicao",
-    "bncc": "EF06MA03", "bncc_desc": "Conceito de Reagrupamento (Dinheiro)",
+    "id": "B1Q00",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "recomposicao",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Conceito de Reagrupamento (Dinheiro)",
     "display": "Você tem 1 nota de R$ 100 e precisa pagar R$ 8. Como você não tem troco, o que precisa fazer com a nota?",
     "res": "Trocar por notas menores (ex: 10 de R$ 10)",
     "alternativas": [
@@ -15,9 +19,13 @@
     "dica": "Dica da ADA: Uma centena é como uma nota de 100. Você precisa trocá-la por 10 dezenas (notas de 10) para conseguir usar!"
   },
   {
-    "id": "B1T1Q01", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF06MA01", "bncc_desc": "Valor Posicional",
+    "id": "B1T1Q01",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA01",
+    "bncc_desc": "Valor Posicional",
     "display": "Qual é o valor posicional do algarismo 4 no número 349.205?",
     "res": "40.000",
     "alternativas": [
@@ -30,9 +38,13 @@
     "dica": "Imagine o número num quadro: cada casa para a esquerda vale 10 vezes mais!"
   },
   {
-    "id": "B1T1Q02", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF06MA01", "bncc_desc": "Valor Posicional",
+    "id": "B1T1Q02",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA01",
+    "bncc_desc": "Valor Posicional",
     "display": "No número 5.847, quanto vale o algarismo 8?",
     "res": "800",
     "alternativas": [
@@ -45,9 +57,13 @@
     "dica": "Conte da direita para a esquerda: Unidade, Dezena, Centena..."
   },
   {
-    "id": "B1T1Q03", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 1, "tipoPedagogico": "base",
-    "bncc": "EF06MA01", "bncc_desc": "Leitura de Números",
+    "id": "B1T1Q03",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA01",
+    "bncc_desc": "Leitura de Números",
     "display": "Como se lê corretamente o número 10.030?",
     "res": "Dez mil e trinta",
     "alternativas": [
@@ -60,24 +76,32 @@
     "dica": "A primeira parte (antes do ponto) diz quantos milhares o número tem."
   },
   {
-    "id": "B1T1Q11", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF06MA03", "bncc_desc": "Adição com Reagrupamento",
+    "id": "B1T1Q11",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Adição com Reagrupamento",
     "display": "Calcule a soma: 1.245 + 879",
     "res": "2.124",
     "alternativas": [
       { "valor": "2.124", "tipo": "acerto" },
       { "valor": "2.024", "tipo": "erro", "categoria": "procedimento", "erro": "adicao_falha_reagrupamento_centena", "descricao": "Esqueceu de somar a reserva (o 'vai um') na coluna das centenas.", "peso": 2 },
       { "valor": "1.124", "tipo": "erro", "categoria": "conceito", "erro": "adicao_ignora_reagrupamento_milhar", "descricao": "Não converteu 10 centenas em 1 unidade de milhar no final da conta.", "peso": 3 },
-      { "valor": "2.114", "tipo": "erro", "categoria": "calculo", "erro": "adicao_erro_tabuada", "descricao": "Cometeu um erro de soma simples em uma das colunas.", "peso": 1 }
+      { "valor": "2.114", "tipo": "erro", "categoria": "calculo", "erro": "adicao_erro_tabuada", "descricao": "Cometeu um error de soma simples em uma das colunas.", "peso": 1 }
     ],
     "passo": "5+9=14 (sobe 1). 4+7+1=12 (sobe 1). 2+8+1=11 (sobe 1). 1+1=2. Total: 2.124.",
     "dica": "Não esqueça: sempre que passar de 9 em uma coluna, 1 dezena deve 'subir' para a próxima casa!"
   },
   {
-    "id": "B1T1Q12", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF06MA03", "bncc_desc": "Subtração com Reagrupamento",
+    "id": "B1T1Q12",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Subtração com Reagrupamento",
     "display": "Resolva: 2.000 - 1.342",
     "res": "658",
     "alternativas": [
@@ -90,9 +114,13 @@
     "dica": "Quando o vizinho é zero, você tem que ir até a primeira casa que tem valor para 'pedir emprestado'."
   },
   {
-    "id": "B1T1Q15", "aula": 1, "tipo": "contexto",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF06MA03", "bncc_desc": "Adição — Contexto",
+    "id": "B1T1Q15",
+    "aula": 1,
+    "tipo": "contexto",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Adição — Contexto",
     "display": "Um atleta correu 1.250m na segunda e 350m A MAIS na terça. Qual o total percorrido nos dois dias?",
     "res": "2.850 m",
     "alternativas": [
@@ -105,9 +133,13 @@
     "dica": "Cuidado! O problema pergunta o total dos DOIS dias combinados."
   },
   {
-    "id": "B1T1Q18", "aula": 1, "tipo": "conceito",
-    "dificuldade": 1, "tipoPedagogico": "base",
-    "bncc": "EF06MA03", "bncc_desc": "Subtração — Sentido",
+    "id": "B1T1Q18",
+    "aula": 1,
+    "tipo": "conceito",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Subtração — Sentido",
     "display": "Ao 'pedir emprestado' na subtração, o que acontece com a casa vizinha que cedeu o valor?",
     "res": "Ela diminui em 1",
     "alternativas": [
@@ -120,9 +152,13 @@
     "dica": "É como trocar uma nota de 10 reais por 10 moedas de 1 real. Você ainda tem 10 reais, mas em formatos diferentes."
   },
   {
-    "id": "B1T1Q19", "aula": 1, "tipo": "conceito",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF06MA03", "bncc_desc": "Operações Inversas",
+    "id": "B1T1Q19",
+    "aula": 1,
+    "tipo": "conceito",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Operações Inversas",
     "display": "Como verificar se 1.600 - 937 = 663 está correto sem fazer a conta de menos de novo?",
     "res": "Somar 663 + 937",
     "alternativas": [
@@ -135,9 +171,13 @@
     "dica": "A prova real é como 'voltar no tempo': use o sinal oposto para conferir."
   },
   {
-    "id": "B1T2Q01", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 1, "tipoPedagogico": "base",
-    "bncc": "EF06MA03", "bncc_desc": "Multiplicação — Sentido",
+    "id": "B1T2Q01",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Multiplicação — Sentido",
     "display": "7 + 7 + 7 + 7 = ? Qual multiplicação representa essa soma?",
     "res": "4 × 7",
     "alternativas": [
@@ -150,9 +190,13 @@
     "dica": "Conte quantas vezes o número se repete. Esse número de vezes será o seu multiplicador!"
   },
   {
-    "id": "B1T2Q02", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF06MA03", "bncc_desc": "Multiplicação — Algoritmo",
+    "id": "B1T2Q02",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Multiplicação — Algoritmo",
     "display": "Calcule: 24 × 5 = ?",
     "res": "120",
     "alternativas": [
@@ -165,9 +209,13 @@
     "dica": "Multiplique o 5 pelas unidades (4) e depois pelas dezenas (2). Não esqueça do que 'sobe'!"
   },
   {
-    "id": "B1T2Q05", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF06MA03", "bncc_desc": "Multiplicação — Algoritmo",
+    "id": "B1T2Q05",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Multiplicação — Algoritmo",
     "display": "Resolva: 45 × 13 = ?",
     "res": "585",
     "alternativas": [
@@ -180,9 +228,13 @@
     "dica": "Quando começar a multiplicar pelo '1' do 13, lembre-se de colocar um zero (ou pular a casa) das unidades!"
   },
   {
-    "id": "B1T2Q09", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF06MA03", "bncc_desc": "Divisão — Resto",
+    "id": "B1T2Q09",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Divisão — Resto",
     "display": "Ao dividir 130 por 4, qual o quociente e o resto?",
     "res": "32 com resto 2",
     "alternativas": [
@@ -195,9 +247,13 @@
     "dica": "O resto é o que 'sobra' da conta. Ele deve ser sempre menor que o número pelo qual você está dividindo."
   },
   {
-    "id": "B1T2Q10", "aula": 1, "tipo": "contexto",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF06MA03", "bncc_desc": "Divisão — Contexto",
+    "id": "B1T2Q10",
+    "aula": 1,
+    "tipo": "contexto",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Divisão — Contexto",
     "display": "4 amigos dividiram R$ 130 igualmente. Eles não usam moedas. Quanto cada um recebe e quanto sobra?",
     "res": "R$ 32 e sobram R$ 2",
     "alternativas": [
@@ -210,9 +266,13 @@
     "dica": "Atenção à regra: 'sem moedas'. Isso significa que você deve parar a conta quando chegar no resto inteiro!"
   },
   {
-    "id": "B1T3Q01", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 1, "tipoPedagogico": "base",
-    "bncc": "EF06MA05", "bncc_desc": "Critério de Divisibilidade por 2",
+    "id": "B1T3Q01",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA05",
+    "bncc_desc": "Critério de Divisibilidade por 2",
     "display": "Qual destes números NÃO é divisível por 2?",
     "res": "77",
     "alternativas": [
@@ -225,9 +285,13 @@
     "dica": "Dica de Ouro: Olhe apenas para o último algarismo da direita. Ele é quem manda na regra do 2!"
   },
   {
-    "id": "B1T3Q02", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF06MA05", "bncc_desc": "Critério de Divisibilidade por 3",
+    "id": "B1T3Q02",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA05",
+    "bncc_desc": "Critério de Divisibilidade por 3",
     "display": "O número 471 é divisível por 3?",
     "res": "Sim (4+7+1=12)",
     "alternativas": [
@@ -240,9 +304,13 @@
     "dica": "A regra do 3 é diferente: você precisa 'quebrar' o número e somar todos os seus pedaços."
   },
   {
-    "id": "B1T3Q16", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF06MA05", "bncc_desc": "Divisibilidade — Algarismo Oculto",
+    "id": "B1T3Q16",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA05",
+    "bncc_desc": "Divisibilidade — Algarismo Oculto",
     "display": "No número 5.4_2, qual algarismo completa o espaço para que ele seja múltiplo de 3?",
     "res": "1",
     "alternativas": [
@@ -255,9 +323,13 @@
     "dica": "A soma total deve resultar em um número da tabuada do 3 (3, 6, 9, 12, 15, 18...)."
   },
   {
-    "id": "B1T3Q09", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF06MA05", "bncc_desc": "Divisores de um Número",
+    "id": "B1T3Q09",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA05",
+    "bncc_desc": "Divisores de um Número",
     "display": "Quais são todos os divisores naturais do número 12?",
     "res": "{1, 2, 3, 4, 6, 12}",
     "alternativas": [
@@ -270,9 +342,13 @@
     "dica": "Dica da ADA: Divisores sempre vêm em pares! Se você achou o 2, o 6 (12 ÷ 2) também tem de estar lá."
   },
   {
-    "id": "B1T3Q10", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF06MA05", "bncc_desc": "Número Primo",
+    "id": "B1T3Q10",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA05",
+    "bncc_desc": "Número Primo",
     "display": "Qual destes números é um número PRIMO?",
     "res": "11",
     "alternativas": [
@@ -285,9 +361,13 @@
     "dica": "Ser primo é ser 'exclusivo': só aceita ser dividido pelo 1 e por si mesmo. Se aparecer em outra tabuada, não é primo!"
   },
   {
-    "id": "B1T3Q20", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF06MA05", "bncc_desc": "Primos Gêmeos",
+    "id": "B1T3Q20",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA05",
+    "bncc_desc": "Primos Gêmeos",
     "display": "Primos gêmeos são primos com diferença de 2 (ex: 3 e 5). Qual par é de gêmeos autênticos?",
     "res": "17 e 19",
     "alternativas": [
@@ -300,9 +380,13 @@
     "dica": "Não basta ter distância 2; os DOIS números precisam ser primos de verdade!"
   },
   {
-    "id": "B1T4Q01", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF06MA05", "bncc_desc": "MMC — Conceito",
+    "id": "B1T4Q01",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA05",
+    "bncc_desc": "MMC — Conceito",
     "display": "Qual é o significado correto da afirmação MMC(8, 12) = 24?",
     "res": "24 é o menor múltiplo comum",
     "alternativas": [
@@ -315,9 +399,13 @@
     "dica": "MMC é o 'primeiro encontro' das tabuadas dos dois números."
   },
   {
-    "id": "B1T4Q03", "aula": 1, "tipo": "contexto",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF06MA05", "bncc_desc": "MMC — Aplicação (Ciclos)",
+    "id": "B1T4Q03",
+    "aula": 1,
+    "tipo": "contexto",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA05",
+    "bncc_desc": "MMC — Aplicação (Ciclos)",
     "display": "O Ônibus A sai a cada 12 min e o B a cada 8 min. Se saíram juntos agora, em quanto tempo saem juntos novamente?",
     "res": "Em 24 minutos",
     "alternativas": [
@@ -330,9 +418,13 @@
     "dica": "Dica da ADA: Sempre que o problema falar de 'tempo para se encontrarem de novo', use o MMC!"
   },
   {
-    "id": "B1T4Q07", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF06MA05", "bncc_desc": "MDC — Conceito",
+    "id": "B1T4Q07",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA05",
+    "bncc_desc": "MDC — Conceito",
     "display": "O que significa afirmar que o MDC(36, 24) = 12?",
     "res": "12 é o maior que divide os dois exatamente",
     "alternativas": [
@@ -345,9 +437,13 @@
     "dica": "MDC serve para 'repartir' algo no maior tamanho possível sem sobrar nada."
   },
   {
-    "id": "B1T4Q08", "aula": 1, "tipo": "contexto",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF06MA05", "bncc_desc": "MDC — Aplicação (Cortes)",
+    "id": "B1T4Q08",
+    "aula": 1,
+    "tipo": "contexto",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA05",
+    "bncc_desc": "MDC — Aplicação (Cortes)",
     "display": "Você quer cortar cordas de 36cm e 24cm em pedaços iguais e no maior tamanho possível. Qual será a medida?",
     "res": "12 cm",
     "alternativas": [
@@ -360,9 +456,13 @@
     "dica": "Sempre que precisar 'cortar em partes iguais' no 'maior tamanho', pense no MDC."
   },
   {
-    "id": "B1T4Q13", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF06MA06", "bncc_desc": "Potenciação — Conceito",
+    "id": "B1T4Q13",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA06",
+    "bncc_desc": "Potenciação — Conceito",
     "display": "Qual é o significado real da expressão 3⁴?",
     "res": "3 × 3 × 3 × 3",
     "alternativas": [
@@ -375,9 +475,13 @@
     "dica": "Atenção: Potência NÃO é conta de vezes simples. É uma multiplicação em cascata!"
   },
   {
-    "id": "B1T4Q15", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF06MA06", "bncc_desc": "Potenciação — Expoente Zero",
+    "id": "B1T4Q15",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA06",
+    "bncc_desc": "Potenciação — Expoente Zero",
     "display": "Qual é o valor numérico de 9⁰?",
     "res": "1",
     "alternativas": [
@@ -390,9 +494,13 @@
     "dica": "Lembre-se da escada: 9²=81, 9¹=9, e o degrau final 9⁰ é sempre 1."
   },
   {
-    "id": "B1T4Q22", "aula": 1, "tipo": "aritmetica",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF06MA06", "bncc_desc": "Potenciação — Propriedades",
+    "id": "B1T4Q22",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA06",
+    "bncc_desc": "Potenciação — Propriedades",
     "display": "O dobro matemático da potência 2¹⁰ é igual a:",
     "res": "2¹¹",
     "alternativas": [
@@ -405,9 +513,13 @@
     "dica": "Quando você multiplica potências de base igual, você apenas 'ganha' mais um no expoente!"
   },
   {
-    "id": "B1Q99", "aula": 1, "tipo": "contexto",
-    "dificuldade": 3, "tipoPedagogico": "investigacao",
-    "bncc": "EF06MA05", "bncc_desc": "Lógica de Divisibilidade Combinada",
+    "id": "B1Q99",
+    "aula": 1,
+    "tipo": "contexto",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF06MA05",
+    "bncc_desc": "Lógica de Divisibilidade Combinada",
     "display": "Investigação: Se um número é divisível por 2 e também por 3 ao mesmo tempo, ele obrigatoriamente será divisível por:",
     "res": "6",
     "alternativas": [
@@ -420,9 +532,32 @@
     "dica": "Pense num número que seja par (divide por 2) e esteja na tabuada do 3. Qual é a menor tabuada que todos esses números formam?"
   },
   {
-    "id": "B2Q00", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 1, "tipoPedagogico": "recomposicao",
-    "bncc": "EF07MA02", "bncc_desc": "Conceito de Negativo (Termômetro)",
+    "id": "B1C01",
+    "aula": 1,
+    "tipo": "contexto",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Subtração - Contexto Financeiro",
+    "display": "Uma pessoa tem R$ 500 na conta e faz uma compra de R$ 180. Depois, recebe um depósito de R$ 50. Qual o saldo final?",
+    "res": "R$ 370",
+    "alternativas": [
+      { "valor": "R$ 370", "tipo": "acerto" },
+      { "valor": "R$ 320", "tipo": "erro", "categoria": "procedimento", "erro": "calc_esquece_deposito", "descricao": "Subtraiu a compra mas esqueceu de somar o depósito.", "peso": 2 },
+      { "valor": "R$ 630", "tipo": "erro", "categoria": "conceito", "erro": "calc_soma_tudo", "descricao": "Somou todos os valores ignorando que a compra é uma saída.", "peso": 3 },
+      { "valor": "R$ 270", "tipo": "erro", "categoria": "calculo", "erro": "calc_erro_subtracao", "descricao": "Cometeu erro básico na conta de 500 - 180.", "peso": 1 }
+    ],
+    "passo": "500 - 180 = 320. Depois 320 + 50 = 370.",
+    "dica": "Dinheiro saindo é conta de menos, dinheiro entrando é conta de mais!"
+  },
+  {
+    "id": "B2Q00",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "recomposicao",
+    "bncc": "EF07MA02",
+    "bncc_desc": "Conceito de Negativo (Termômetro)",
     "display": "Se a temperatura na cidade estava em 2°C positivos e caiu 5°C durante a noite, quanto o termômetro passou a marcar?",
     "res": "-3°C",
     "alternativas": [
@@ -435,9 +570,13 @@
     "dica": "Dica da ADA: Desenhe um termômetro em pé! Marque o 2 e desça 5 'degraus'. Onde você parou?"
   },
   {
-    "id": "B2T1Q01", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA02", "bncc_desc": "Números Inteiros — Reta Numérica",
+    "id": "B2T1Q01",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA02",
+    "bncc_desc": "Números Inteiros — Reta Numérica",
     "display": "Na reta numérica, qual destes números está posicionado MAIS À ESQUERDA?",
     "res": "-8",
     "alternativas": [
@@ -450,9 +589,13 @@
     "dica": "Imagine um termômetro deitado: os números mais frios (negativos maiores) ficam bem longe à esquerda!"
   },
   {
-    "id": "B2T1Q03", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA02", "bncc_desc": "Valor Absoluto",
+    "id": "B2T1Q03",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA02",
+    "bncc_desc": "Valor Absoluto",
     "display": "Qual é o valor numérico exato de |-7| (módulo de menos sete)?",
     "res": "7",
     "alternativas": [
@@ -465,11 +608,14 @@
     "dica": "O módulo funciona como uma 'limpadora de sinais': ele extrai apenas o tamanho do número, sempre positivo."
   },
   {
-    "id": "B2T1Q08", "aula": 2, "tipo": "sinais",
-    "dificuldade": 1, "tipoPedagogico": "base",
-    "bncc": "EF07MA02", "bncc_desc": "Adição de Inteiros — Sinais Iguais",
+    "id": "B2T1Q08",
+    "aula": 2,
+    "tipo": "sinais",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA02",
+    "bncc_desc": "Adição de Inteiros — Sinais Iguais",
     "display": "Resolva a operação: (-6) + (-4) = ?",
-    "a": -6, "b": -4,
     "res": "-10",
     "alternativas": [
       { "valor": "-10", "tipo": "acerto" },
@@ -481,11 +627,14 @@
     "dica": "Pense em dinheiro: se você deve 6 e pede mais 4 emprestado, sua dívida aumenta para 10!"
   },
   {
-    "id": "B2T1Q09", "aula": 2, "tipo": "sinais",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA02", "bncc_desc": "Adição de Inteiros — Sinais Diferentes",
+    "id": "B2T1Q09",
+    "aula": 2,
+    "tipo": "sinais",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA02",
+    "bncc_desc": "Adição de Inteiros — Sinais Diferentes",
     "display": "Qual o resultado de: (+10) + (-3) = ?",
-    "a": 10, "b": -3,
     "res": "+7",
     "alternativas": [
       { "valor": "+7", "tipo": "acerto" },
@@ -497,11 +646,14 @@
     "dica": "Você tem 10 reais e gasta 3. O que sobra no seu bolso?"
   },
   {
-    "id": "B2T1Q14", "aula": 2, "tipo": "sinais",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF07MA02", "bncc_desc": "Subtração — Truque do Oposto",
+    "id": "B2T1Q14",
+    "aula": 2,
+    "tipo": "sinais",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA02",
+    "bncc_desc": "Subtração — Truque do Oposto",
     "display": "Calcule o resultado de: (+6) - (-2) = ?",
-    "a": 6, "b": 2,
     "res": "+8",
     "alternativas": [
       { "valor": "+8", "tipo": "acerto" },
@@ -513,11 +665,14 @@
     "dica": "Quando ver dois sinais de menos colados (- -), eles se transformam num sinal de MAIS (+)."
   },
   {
-    "id": "B2T1Q18", "aula": 2, "tipo": "sinais",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF07MA02", "bncc_desc": "Diferença e Amplitude",
+    "id": "B2T1Q18",
+    "aula": 2,
+    "tipo": "sinais",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA02",
+    "bncc_desc": "Diferença e Amplitude",
     "display": "Moscou registrou -12°C e São Paulo +28°C. Qual a DIFERENÇA de temperatura entre elas?",
-    "a": -12, "b": 40,
     "res": "40°C",
     "alternativas": [
       { "valor": "40°C", "tipo": "acerto" },
@@ -529,9 +684,13 @@
     "dica": "Imagine subir um prédio: você sai do subsolo (-12) e vai até o 28º andar. Quantos andares subiu no total?"
   },
   {
-    "id": "B2T1Q20", "aula": 2, "tipo": "teoria",
-    "dificuldade": 3, "tipoPedagogico": "investigacao",
-    "bncc": "EF07MA02", "bncc_desc": "Investigação Lógica",
+    "id": "B2T1Q20",
+    "aula": 2,
+    "tipo": "teoria",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF07MA02",
+    "bncc_desc": "Investigação Lógica",
     "display": "Investigação: É possível que a subtração de dois números NEGATIVOS resulte em um número POSITIVO?",
     "res": "Sim. Ex: (-3) - (-8) = +5",
     "alternativas": [
@@ -544,9 +703,13 @@
     "dica": "Lembre-se: subtrair um negativo grande é como receber um grande presente!"
   },
   {
-    "id": "B2T2Q01", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA02", "bncc_desc": "Multiplicação de Inteiros — Regra dos Sinais",
+    "id": "B2T2Q01",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA02",
+    "bncc_desc": "Multiplicação de Inteiros — Regra dos Sinais",
     "display": "Qual o resultado da operação: (+6) × (-4)?",
     "res": "-24",
     "alternativas": [
@@ -559,9 +722,13 @@
     "dica": "Dica da ADA: Na multiplicação e divisão, sinais diferentes são inimigos... o resultado é sempre negativo!"
   },
   {
-    "id": "B2T2Q02", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA02", "bncc_desc": "Multiplicação de Inteiros — Regra dos Sinais",
+    "id": "B2T2Q02",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA02",
+    "bncc_desc": "Multiplicação de Inteiros — Regra dos Sinais",
     "display": "Calcule o produto: (-3) × (-9) = ?",
     "res": "+27",
     "alternativas": [
@@ -574,9 +741,13 @@
     "dica": "Menos com Menos na multiplicação vira MAIS. Pense que os dois tracinhos se cruzam e formam uma cruz de positivo!"
   },
   {
-    "id": "B2T2Q05", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF07MA02", "bncc_desc": "Produto com Três Fatores — Sinal",
+    "id": "B2T2Q05",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA02",
+    "bncc_desc": "Produto com Três Fatores — Sinal",
     "display": "Qual o valor de (-2) × (-3) × (-4)?",
     "res": "-24",
     "alternativas": [
@@ -589,9 +760,13 @@
     "dica": "Conte os sinais de menos: se for um número ímpar de sinais (como 3), o resultado final será negativo."
   },
   {
-    "id": "B2T2Q10", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 1, "tipoPedagogico": "base",
-    "bncc": "EF07MA04", "bncc_desc": "Frações — Conceito",
+    "id": "B2T2Q10",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Frações — Conceito",
     "display": "Uma pizza foi cortada em 8 fatias iguais. Pedro comeu 3. Que fração representa o que ele comeu?",
     "res": "3/8",
     "alternativas": [
@@ -604,9 +779,13 @@
     "dica": "O denominador 'denomina' em quantas partes o todo foi dividido. Imagine ele no fundo da caixa!"
   },
   {
-    "id": "B2T2Q11", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA04", "bncc_desc": "Frações Equivalentes",
+    "id": "B2T2Q11",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Frações Equivalentes",
     "display": "Qual fração abaixo vale o mesmo que (é equivalente a) 1/2?",
     "res": "4/8",
     "alternativas": [
@@ -619,9 +798,13 @@
     "dica": "Frações equivalentes são formas diferentes de dizer a mesma quantidade. 1 de 2 é o mesmo que 4 de 8!"
   },
   {
-    "id": "B2T2Q12", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA04", "bncc_desc": "Simplificação de Frações",
+    "id": "B2T2Q12",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Simplificação de Frações",
     "display": "Qual é a forma mais simples (irredutível) da fração 12/18?",
     "res": "2/3",
     "alternativas": [
@@ -634,9 +817,13 @@
     "dica": "Simplificar é 'enxugar' a fração. Continue dividindo até que não exista mais nenhum número que divida os dois ao mesmo tempo."
   },
   {
-    "id": "B2T3Q01", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 1, "tipoPedagogico": "base",
-    "bncc": "EF07MA04", "bncc_desc": "Adição de Frações — Mesmo Denominador",
+    "id": "B2T3Q01",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Adição de Frações — Mesmo Denominador",
     "display": "Calcule a soma: 3/8 + 2/8 = ?",
     "res": "5/8",
     "alternativas": [
@@ -649,9 +836,13 @@
     "dica": "Pense em fatias: 3 fatias de uma pizza de 8 pedaços mais 2 fatias da mesma pizza continuam sendo fatias de oitavos!"
   },
   {
-    "id": "B2T3Q03", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF07MA04", "bncc_desc": "Adição de Frações — Denominadores Diferentes",
+    "id": "B2T3Q03",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Adição de Frações — Denominadores Diferentes",
     "display": "Qual o resultado de 1/2 + 1/3?",
     "res": "5/6",
     "alternativas": [
@@ -664,9 +855,13 @@
     "dica": "Você não pode somar 'bananas com maçãs'. Use o MMC para deixar os números de baixo iguais antes de somar!"
   },
   {
-    "id": "B2T3Q08", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA04", "bncc_desc": "Multiplicação de Frações",
+    "id": "B2T3Q08",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Multiplicação de Frações",
     "display": "Resolva: 2/3 × 3/4 = ?",
     "res": "1/2",
     "alternativas": [
@@ -679,9 +874,13 @@
     "dica": "Na multiplicação é 'frente com frente'! O de cima vezes o de cima, o de baixo vezes o de baixo."
   },
   {
-    "id": "B2T3Q09", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF07MA04", "bncc_desc": "Divisão de Frações",
+    "id": "B2T3Q09",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Divisão de Frações",
     "display": "Calcule: 3/4 ÷ 1/2 = ?",
     "res": "3/2",
     "alternativas": [
@@ -694,9 +893,13 @@
     "dica": "Regra da Ginástica: A segunda fração 'planta uma bananeira' (inverte) e a conta vira de vezes!"
   },
   {
-    "id": "B2T3Q14", "aula": 2, "tipo": "investigacao",
-    "dificuldade": 3, "tipoPedagogico": "investigacao",
-    "bncc": "EF07MA04", "bncc_desc": "Multiplicação de Frações Próprias",
+    "id": "B2T3Q14",
+    "aula": 2,
+    "tipo": "investigacao",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Multiplicação de Frações Próprias",
     "display": "Investigação: Se multiplicarmos uma fração menor que 1 (ex: 1/2) por outra menor que 1, o resultado será:",
     "res": "Menor que as frações originais",
     "alternativas": [
@@ -709,9 +912,13 @@
     "dica": "Pense: você quer a 'metade da metade'. Isso vai ser um pedaço maior ou menor do que você já tinha?"
   },
   {
-    "id": "B2T3Q15", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA04", "bncc_desc": "Fração para Decimal",
+    "id": "B2T3Q15",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Fração para Decimal",
     "display": "Como escrevemos a fração 1/4 na forma decimal?",
     "res": "0,25",
     "alternativas": [
@@ -724,9 +931,13 @@
     "dica": "Divida o número de cima pelo de baixo no rascunho para achar o decimal."
   },
   {
-    "id": "B2T3Q16", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF07MA04", "bncc_desc": "Decimal para Fração",
+    "id": "B2T3Q16",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Decimal para Fração",
     "display": "O número 0,35 na forma de fração simplificada é:",
     "res": "7/20",
     "alternativas": [
@@ -739,9 +950,13 @@
     "dica": "Duas casas depois da vírgula? Coloque sobre o 100 e depois simplifique na tabuada do 5."
   },
   {
-    "id": "B2T4Q01", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA04", "bncc_desc": "Adição de Decimais",
+    "id": "B2T4Q01",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Adição de Decimais",
     "display": "Calcule a soma: 3,7 + 2,45 = ?",
     "res": "6,15",
     "alternativas": [
@@ -754,9 +969,13 @@
     "dica": "Para não errar, complete o 3,7 com um zero (3,70) para ele ficar com o mesmo tamanho do 2,45!"
   },
   {
-    "id": "B2T4Q03", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF07MA04", "bncc_desc": "Multiplicação de Decimais",
+    "id": "B2T4Q03",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Multiplicação de Decimais",
     "display": "Qual o resultado de 1,5 × 2,4?",
     "res": "3,6",
     "alternativas": [
@@ -769,9 +988,13 @@
     "dica": "Faça a conta de vezes normal. No final, conte os 'pulos' da vírgula e devolva eles no resultado!"
   },
   {
-    "id": "B2T4Q08", "aula": 2, "tipo": "investigacao",
-    "dificuldade": 3, "tipoPedagogico": "investigacao",
-    "bncc": "EF07MA04", "bncc_desc": "Decimais — Investigação",
+    "id": "B2T4Q08",
+    "aula": 2,
+    "tipo": "investigacao",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Decimais — Investigação",
     "display": "Investigação: Qual valor é MAIOR, a soma (0,1 + 0,1) ou o produto (0,1 × 0,1)?",
     "res": "A soma (0,2 > 0,01)",
     "alternativas": [
@@ -784,9 +1007,13 @@
     "dica": "Atenção: no mundo dos decimais menores que 1, multiplicar pode ser o mesmo que 'dividir' o seu pedaço!"
   },
   {
-    "id": "B2T4Q11", "aula": 2, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA04", "bncc_desc": "Proporção — Produto Cruzado",
+    "id": "B2T4Q11",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Proporção — Produto Cruzado",
     "display": "As frações 2/3 e 8/12 formam uma proporção válida?",
     "res": "Sim (2×12 = 3×8)",
     "alternativas": [
@@ -799,9 +1026,13 @@
     "dica": "Desenhe um 'X' multiplicando o de cima de uma pelo de baixo da outra. Se der o mesmo valor, é proporção!"
   },
   {
-    "id": "B2T4Q14", "aula": 2, "tipo": "contexto",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF07MA04", "bncc_desc": "Proporcionalidade Inversa",
+    "id": "B2T4Q14",
+    "aula": 2,
+    "tipo": "contexto",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Proporcionalidade Inversa",
     "display": "Um tanque é cheio por 4 torneiras em 6 horas. Quantas horas levaria se fossem 8 torneiras idênticas?",
     "res": "3 horas",
     "alternativas": [
@@ -814,9 +1045,13 @@
     "dica": "Pense com a ADA: se você ligar MAIS torneiras, a piscina vai encher MAIS RÁPIDO. O tempo tem que diminuir!"
   },
   {
-    "id": "B2T4Q18", "aula": 2, "tipo": "conceito",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA04", "bncc_desc": "Tipo de Proporcionalidade",
+    "id": "B2T4Q18",
+    "aula": 2,
+    "tipo": "conceito",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Tipo de Proporcionalidade",
     "display": "Na economia, quando a cotação do dólar SOBE, com os mesmos 100 Reais você compra:",
     "res": "Menos dólares (Inversa)",
     "alternativas": [
@@ -829,9 +1064,13 @@
     "dica": "É como o preço do pão: se o pão ficar mais caro, com a sua mesma moedinha você leva menos pães para casa."
   },
   {
-    "id": "B2Q99", "aula": 2, "tipo": "contexto",
-    "dificuldade": 3, "tipoPedagogico": "investigacao",
-    "bncc": "EF07MA04", "bncc_desc": "Lógica de Proporção Composta",
+    "id": "B2Q99",
+    "aula": 2,
+    "tipo": "contexto",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF07MA04",
+    "bncc_desc": "Lógica de Proporção Composta",
     "display": "Investigação: Se 3 gatos caçam 3 ratos em exatamente 3 minutos. Em quanto tempo 100 gatos caçarão 100 ratos?",
     "res": "3 minutos",
     "alternativas": [
@@ -844,9 +1083,13 @@
     "dica": "Pense na ação individual: quanto tempo UM único gato leva para caçar UM rato? Se todos trabalharem juntos na mesma hora, o tempo não muda!"
   },
   {
-    "id": "B3Q00", "aula": 3, "tipo": "aritmetica",
-    "dificuldade": 1, "tipoPedagogico": "recomposicao",
-    "bncc": "EF07MA20", "bncc_desc": "Conversão de Comprimento",
+    "id": "B3Q00",
+    "aula": 3,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "recomposicao",
+    "bncc": "EF07MA20",
+    "bncc_desc": "Conversão de Comprimento",
     "display": "Vamos relembrar a régua: Quantos centímetros (cm) cabem em exato 1 metro (m)?",
     "res": "100 cm",
     "alternativas": [
@@ -859,9 +1102,13 @@
     "dica": "Dica da ADA: Lembre-se da palavra CENTÍMETRO. Ela já te dá a resposta: CENTO!"
   },
   {
-    "id": "B3Q01", "aula": 3, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA20", "bncc_desc": "Conversão de Comprimento",
+    "id": "B3Q01",
+    "aula": 3,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA20",
+    "bncc_desc": "Conversão de Comprimento",
     "display": "Uma distância de 2,5 km equivale a quantos metros?",
     "res": "2.500 m",
     "alternativas": [
@@ -874,9 +1121,13 @@
     "dica": "Dica da ADA: O prefixo 'Quilo' sempre significa 1.000 vezes mais. Multiplique por mil!"
   },
   {
-    "id": "B3Q02", "aula": 3, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA20", "bncc_desc": "Conversão de Comprimento",
+    "id": "B3Q02",
+    "aula": 3,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA20",
+    "bncc_desc": "Conversão de Comprimento",
     "display": "A medida de 350 cm equivale a quantos metros?",
     "res": "3,5 m",
     "alternativas": [
@@ -889,9 +1140,13 @@
     "dica": "Pense na fita métrica: 100 cm formam 1 metro. Então 300 cm são 3 metros, e 50 cm é a metade."
   },
   {
-    "id": "B3Q06", "aula": 3, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA20", "bncc_desc": "Conversão de Tempo",
+    "id": "B3Q06",
+    "aula": 3,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA20",
+    "bncc_desc": "Conversão de Tempo",
     "display": "Uma prova durou 2 horas e 45 minutos. Quantos minutos durou no total?",
     "res": "165 min",
     "alternativas": [
@@ -904,9 +1159,13 @@
     "dica": "Cuidado! O tempo não funciona de 100 em 100. O 'chefe' do tempo é o 60!"
   },
   {
-    "id": "B3Q08", "aula": 3, "tipo": "geometria",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA20", "bncc_desc": "Perímetro de Retângulo",
+    "id": "B3Q08",
+    "aula": 3,
+    "tipo": "geometria",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA20",
+    "bncc_desc": "Perímetro de Retângulo",
     "display": "Qual é o perímetro de um jardim retangular com 8 m de comprimento e 5 m de largura?",
     "res": "26 m",
     "alternativas": [
@@ -919,9 +1178,13 @@
     "dica": "Imagine que você está caminhando sobre o muro do jardim. Você precisa percorrer os quatro lados para voltar ao início!"
   },
   {
-    "id": "B3Q13", "aula": 3, "tipo": "geometria",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF08MA07", "bncc_desc": "Área de Triângulo",
+    "id": "B3Q13",
+    "aula": 3,
+    "tipo": "geometria",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA07",
+    "bncc_desc": "Área de Triângulo",
     "display": "Um triângulo tem base de 10 cm e altura de 6 cm. Qual é a sua área?",
     "res": "30 cm²",
     "alternativas": [
@@ -934,9 +1197,13 @@
     "dica": "Todo triângulo é a METADE de um retângulo. Calcule a área total e depois 'corte' ao meio!"
   },
   {
-    "id": "B3Q15", "aula": 3, "tipo": "geometria",
-    "dificuldade": 3, "tipoPedagogico": "investigacao",
-    "bncc": "EF08MA07", "bncc_desc": "Variação de Área",
+    "id": "B3Q15",
+    "aula": 3,
+    "tipo": "geometria",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF08MA07",
+    "bncc_desc": "Variação de Área",
     "display": "Investigação: Se você DOBRAR a medida dos lados de um quadrado, o que acontece com a área dele?",
     "res": "Fica 4 vezes maior",
     "alternativas": [
@@ -949,9 +1216,13 @@
     "dica": "Desenhe um quadradinho. Agora faça um quadrado com o dobro do lado. Quantos quadradinhos pequenos cabem dentro do novo? São 4!"
   },
   {
-    "id": "B3Q17", "aula": 3, "tipo": "geometria",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF08MA07", "bncc_desc": "Volume de Cubo",
+    "id": "B3Q17",
+    "aula": 3,
+    "tipo": "geometria",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA07",
+    "bncc_desc": "Volume de Cubo",
     "display": "Qual é o volume de um cubo cuja aresta (lado) mede 5 cm?",
     "res": "125 cm³",
     "alternativas": [
@@ -964,9 +1235,13 @@
     "dica": "Volume é 3D! Você precisa multiplicar as três dimensões: largura, comprimento e altura."
   },
   {
-    "id": "B3Q20", "aula": 3, "tipo": "contexto",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF08MA07", "bncc_desc": "Grandezas — Problema Integrador",
+    "id": "B3Q20",
+    "aula": 3,
+    "tipo": "contexto",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA07",
+    "bncc_desc": "Grandezas — Problema Integrador",
     "display": "Vai colocar piso em uma sala de 4,5 m por 3 m. O piso custa R$ 45,00 o m². Qual o custo total?",
     "res": "R$ 607,50",
     "alternativas": [
@@ -979,9 +1254,13 @@
     "dica": "Primeiro veja quantos 'quadradinhos' de piso cabem no chão (Área). Depois veja quanto custa cada quadradinho!"
   },
   {
-    "id": "B4Q00", "aula": 4, "tipo": "aritmetica",
-    "dificuldade": 1, "tipoPedagogico": "recomposicao",
-    "bncc": "EF08MA06", "bncc_desc": "Linguagem Algébrica",
+    "id": "B4Q00",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "recomposicao",
+    "bncc": "EF08MA06",
+    "bncc_desc": "Linguagem Algébrica",
     "display": "Na linguagem da álgebra, o que significa a expressão '3x'?",
     "res": "3 vezes o valor de x",
     "alternativas": [
@@ -994,9 +1273,13 @@
     "dica": "Dica da ADA: Número colado na letra = Multiplicação! 3x é o mesmo que 3 vezes x."
   },
   {
-    "id": "B4Q01", "aula": 4, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF08MA06", "bncc_desc": "Valor Numérico",
+    "id": "B4Q01",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA06",
+    "bncc_desc": "Valor Numérico",
     "display": "Para x = 3, qual é o valor numérico da expressão 2x + 5?",
     "res": "11",
     "alternativas": [
@@ -1009,9 +1292,13 @@
     "dica": "Lembre-se: quando um número está grudado na letra, eles estão se multiplicando!"
   },
   {
-    "id": "B4Q03", "aula": 4, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF08MA06", "bncc_desc": "Simplificação Algébrica",
+    "id": "B4Q03",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA06",
+    "bncc_desc": "Simplificação Algébrica",
     "display": "Simplifique a expressão: 3x + 2x - x",
     "res": "4x",
     "alternativas": [
@@ -1024,9 +1311,13 @@
     "dica": "Dica da ADA: Toda letra sem número na frente tem um '1' invisível protegendo ela!"
   },
   {
-    "id": "B4Q05", "aula": 4, "tipo": "aritmetica",
-    "dificuldade": 1, "tipoPedagogico": "base",
-    "bncc": "EF08MA06", "bncc_desc": "Equação — Transposição",
+    "id": "B4Q05",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA06",
+    "bncc_desc": "Equação — Transposição",
     "display": "Resolva a equação: x + 5 = 12",
     "res": "x = 7",
     "alternativas": [
@@ -1039,9 +1330,13 @@
     "dica": "Pense na balança: para equilibrar, o que você tira de um lado, tem que tirar do outro!"
   },
   {
-    "id": "B4Q09", "aula": 4, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF08MA06", "bncc_desc": "Equação — Membros",
+    "id": "B4Q09",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA06",
+    "bncc_desc": "Equação — Membros",
     "display": "Resolva: 5x - 3 = 2x + 9",
     "res": "x = 4",
     "alternativas": [
@@ -1054,9 +1349,13 @@
     "dica": "Cada um na sua casa! Letras para a esquerda, números para a direita. Quem muda de casa, muda de sinal!"
   },
   {
-    "id": "B4Q12", "aula": 4, "tipo": "contexto",
-    "dificuldade": 3, "tipoPedagogico": "investigacao",
-    "bncc": "EF08MA06", "bncc_desc": "Lógica Algébrica",
+    "id": "B4Q12",
+    "aula": 4,
+    "tipo": "contexto",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF08MA06",
+    "bncc_desc": "Lógica Algébrica",
     "display": "Investigação: 2 maçãs e 1 pera custam R$ 10. Se a pera custa R$ 4, qual o valor de 1 maçã?",
     "res": "R$ 3",
     "alternativas": [
@@ -1069,9 +1368,13 @@
     "dica": "Pense como uma equação: 2x + 4 = 10. Tente descobrir o valor do x!"
   },
   {
-    "id": "B4Q14", "aula": 4, "tipo": "aritmetica",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF08MA06", "bncc_desc": "Inequação — Regra do Negativo",
+    "id": "B4Q14",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA06",
+    "bncc_desc": "Inequação — Regra do Negativo",
     "display": "Resolva a inequação: -2x > 8",
     "res": "x < -4",
     "alternativas": [
@@ -1084,9 +1387,13 @@
     "dica": "Cuidado! Sempre que multiplicar ou dividir por número NEGATIVO, a boca do jacaré (>) tem que virar pro outro lado (<)!"
   },
   {
-    "id": "B4Q16", "aula": 4, "tipo": "padrao",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF08MA08", "bncc_desc": "Padrões — Generalização",
+    "id": "B4Q16",
+    "aula": 4,
+    "tipo": "padrao",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA08",
+    "bncc_desc": "Padrões — Generalização",
     "display": "1 quadrado usa 4 palitos. 2 quadrados grudados usam 7. 3 grudados usam 10. Qual a fórmula para 'n' quadrados?",
     "res": "3n + 1",
     "alternativas": [
@@ -1099,9 +1406,13 @@
     "dica": "Veja de quanto em quanto o número de palitos aumenta. Esse número fica grudado no 'n'!"
   },
   {
-    "id": "B4Q18", "aula": 4, "tipo": "geometria",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF08MA08", "bncc_desc": "Modelagem de Área",
+    "id": "B4Q18",
+    "aula": 4,
+    "tipo": "geometria",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA08",
+    "bncc_desc": "Modelagem de Área",
     "display": "Um retângulo tem largura (x) e comprimento (x + 5). Qual expressão representa sua ÁREA?",
     "res": "x² + 5x",
     "alternativas": [
@@ -1114,9 +1425,13 @@
     "dica": "A área é o produto dos lados. Use o 'chuveirinho' para multiplicar o x por todo mundo que está no parênteses!"
   },
   {
-    "id": "B5Q00", "aula": 5, "tipo": "aritmetica",
-    "dificuldade": 1, "tipoPedagogico": "recomposicao",
-    "bncc": "EF08MA22", "bncc_desc": "Conceito de Média",
+    "id": "B5Q00",
+    "aula": 5,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "recomposicao",
+    "bncc": "EF08MA22",
+    "bncc_desc": "Conceito de Média",
     "display": "Três amigos têm 2, 3 e 4 balas. Eles juntam todas as balas e dividem em partes iguais. Quantas balas cada um recebe?",
     "res": "3",
     "alternativas": [
@@ -1129,9 +1444,13 @@
     "dica": "Dica da ADA: Média é sobre justiça! Some tudo o que você tem e divida igualmente pela quantidade de pessoas."
   },
   {
-    "id": "B5Q01", "aula": 5, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF08MA22", "bncc_desc": "Média Aritmética",
+    "id": "B5Q01",
+    "aula": 5,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA22",
+    "bncc_desc": "Média Aritmética",
     "display": "As notas de um aluno foram: 6, 8, 7, 9 e 5. Qual é a média final?",
     "res": "7",
     "alternativas": [
@@ -1144,9 +1463,13 @@
     "dica": "A média é o 'ponto de equilíbrio'. Some tudo e divida o resultado pela quantidade de notas!"
   },
   {
-    "id": "B5Q04", "aula": 5, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF08MA22", "bncc_desc": "Mediana — Conceito",
+    "id": "B5Q04",
+    "aula": 5,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA22",
+    "bncc_desc": "Mediana — Conceito",
     "display": "Qual é a mediana do conjunto de dados: 3, 7, 2, 9, 5, 8, 4?",
     "res": "5",
     "alternativas": [
@@ -1159,9 +1482,13 @@
     "dica": "Dica de Ouro: Mediana exige ordem! Coloque os números na fila (do menor para o maior) antes de achar o centro."
   },
   {
-    "id": "B5Q07", "aula": 5, "tipo": "critica",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF08MA22", "bncc_desc": "Análise de Outliers",
+    "id": "B5Q07",
+    "aula": 5,
+    "tipo": "critica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA22",
+    "bncc_desc": "Análise de Outliers",
     "display": "Salários de uma empresa: R$ 1.000, R$ 1.000, R$ 1.200, R$ 1.500 e R$ 10.000. Qual medida melhor representa o 'salário comum' desse grupo?",
     "res": "Mediana (R$ 1.200)",
     "alternativas": [
@@ -1174,9 +1501,13 @@
     "dica": "ADA explica: Se o Bill Gates entrar em um bar, a 'média' de dinheiro de todos sobe para milhões, mas ninguém ficou rico. Use a mediana nesses casos!"
   },
   {
-    "id": "B5Q20", "aula": 5, "tipo": "critica",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF09MA20", "bncc_desc": "Gráficos Enganosos",
+    "id": "B5Q20",
+    "aula": 5,
+    "tipo": "critica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF09MA20",
+    "bncc_desc": "Gráficos Enganosos",
     "display": "Um gráfico de barras que compara vendas começa o eixo vertical no número 98 em vez de 0. Qual o efeito visual disso?",
     "res": "Exagera pequenas diferenças",
     "alternativas": [
@@ -1189,9 +1520,13 @@
     "dica": "Olho vivo! Se o gráfico não começar do ZERO, ele pode estar tentando transformar uma faísca em um incêndio!"
   },
   {
-    "id": "B5Q11", "aula": 5, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF09MA20", "bncc_desc": "Probabilidade Clássica",
+    "id": "B5Q11",
+    "aula": 5,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF09MA20",
+    "bncc_desc": "Probabilidade Clássica",
     "display": "Ao lançar um dado de 6 faces, qual a probabilidade de sair um número PAR?",
     "res": "1/2",
     "alternativas": [
@@ -1204,9 +1539,13 @@
     "dica": "A fórmula é simples: o que eu quero (3 números) dividido pelo que pode acontecer (6 números)."
   },
   {
-    "id": "B5Q22", "aula": 5, "tipo": "critica",
-    "dificuldade": 3, "tipoPedagogico": "investigacao",
-    "bncc": "EF09MA20", "bncc_desc": "Probabilidade Composta",
+    "id": "B5Q22",
+    "aula": 5,
+    "tipo": "critica",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF09MA20",
+    "bncc_desc": "Probabilidade Composta",
     "display": "Investigação: Se você lançar DUAS moedas para cima, qual a probabilidade de ambas caírem em 'Cara'?",
     "res": "1/4",
     "alternativas": [
@@ -1219,9 +1558,13 @@
     "dica": "Multiplique as chances! Se a chance da primeira é 1/2 e a da segunda é 1/2, então 1/2 × 1/2 = 1/4."
   },
   {
-    "id": "B5Q15", "aula": 5, "tipo": "critica",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF09MA20", "bncc_desc": "Interpretação de Amostras",
+    "id": "B5Q15",
+    "aula": 5,
+    "tipo": "critica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF09MA20",
+    "bncc_desc": "Interpretação de Amostras",
     "display": "Um comercial diz: '90% aprovam o produto!', mas a pesquisa ouviu apenas 10 pessoas. Essa afirmação é confiável?",
     "res": "Não",
     "alternativas": [
@@ -1234,9 +1577,203 @@
     "dica": "Estatística séria precisa de uma amostra grande e diversa. Cuidado com o 'Poder dos Pequenos Números'!"
   },
   {
-    "id": "B6Q00", "aula": 6, "tipo": "conceito",
-    "dificuldade": 1, "tipoPedagogico": "recomposicao",
-    "bncc": "EF07MA21", "bncc_desc": "Conceito de Giro e Ângulo Raso",
+    "id": "B5A03",
+    "aula": 5,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA22",
+    "bncc_desc": "Média Aritmética - Valores Decimais",
+    "display": "Um cientista mediu a temperatura de uma reação três vezes: 20,5°C, 21°C e 21,5°C. Qual a média dessas medidas?",
+    "res": "21°C",
+    "alternativas": [
+      { "valor": "21°C", "tipo": "acerto" },
+      { "valor": "20,5°C", "tipo": "erro", "categoria": "procedimento", "erro": "media_elege_valor_minimo", "descricao": "Selecionou o menor valor do conjunto.", "peso": 1 },
+      { "valor": "63°C", "tipo": "erro", "categoria": "conceito", "erro": "media_apenas_soma", "descricao": "Somou os valores decimais mas esqueceu de dividir por 3.", "peso": 3 },
+      { "valor": "21,5°C", "tipo": "erro", "categoria": "procedimento", "erro": "media_elege_valor_maximo", "descricao": "Selecionou o maior valor do conjunto.", "peso": 1 }
+    ],
+    "passo": "Soma: 20,5 + 21 + 21,5 = 63. Média: 63 ÷ 3 = 21.",
+    "dica": "Mesmo com números 'quebrados', a regra é a mesma: some todos e divida pela quantidade de medidas!"
+  },
+  {
+    "id": "B5A04",
+    "aula": 5,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA22",
+    "bncc_desc": "Mediana - Conjunto Par",
+    "display": "Qual é la mediana deste conjunto de idades: 10, 12, 14, 16?",
+    "res": "13",
+    "alternativas": [
+      { "valor": "13", "tipo": "acerto" },
+      { "valor": "12", "tipo": "erro", "categoria": "procedimento", "erro": "mediana_escolhe_primeiro_central", "descricao": "Escolheu o primeiro valor central sem fazer a média entre eles.", "peso": 2 },
+      { "valor": "14", "tipo": "erro", "categoria": "procedimento", "erro": "mediana_escolhe_segundo_central", "descricao": "Escolheu o segundo valor central.", "peso": 2 },
+      { "valor": "52", "tipo": "erro", "categoria": "conceito", "erro": "mediana_soma_total", "descricao": "Somou todos os valores do conjunto.", "peso": 3 }
+    ],
+    "passo": "Quando o conjunto é par, pegamos os dois do meio (12 e 14) e tiramos a média entre eles: (12+14) ÷ 2 = 13.",
+    "dica": "ADA Alerta: Se não houver um único número no meio, você deve somar os dois centrais e dividir por 2!"
+  },
+  {
+    "id": "B5C04",
+    "aula": 5,
+    "tipo": "contexto",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF09MA20",
+    "bncc_desc": "Probabilidade - Sorteio",
+    "display": "Em uma rifa de 1 a 100, qual a probabilidade de o número sorteado ser um múltiplo de 10?",
+    "res": "10/100 (ou 10%)",
+    "alternativas": [
+      { "valor": "10/100 (ou 10%)", "tipo": "acerto" },
+      { "valor": "1/100", "tipo": "erro", "categoria": "conceito", "erro": "prob_foco_um_numero", "descricao": "Calculou a chance de sair apenas um número específico.", "peso": 3 },
+      { "valor": "50/100", "tipo": "erro", "categoria": "interpretacao", "erro": "prob_chute_metade", "descricao": "Assumiu 50% de chance sem analisar os múltiplos.", "peso": 2 },
+      { "valor": "10/10", "tipo": "erro", "categoria": "procedimento", "erro": "prob_erro_espaco_amostral", "descricao": "Errou o total de números disponíveis na rifa.", "peso": 2 }
+    ],
+    "passo": "Os múltiplos de 10 até 100 são: 10, 20, 30, 40, 50, 60, 70, 80, 90 e 100 (total de 10 números). Probabilidade: 10 em 100.",
+    "dica": "Múltiplos de 10 são fáceis: são todos os números que terminam em zero!"
+  },
+  {
+    "id": "B5C05",
+    "aula": 5,
+    "tipo": "contexto",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF09MA21",
+    "bncc_desc": "Análise de Gráficos de Setores",
+    "display": "Um gráfico de setores (pizza) mostra que 25% dos alunos preferem Matemática. Se a turma tem 40 alunos, quantos preferem Matemática?",
+    "res": "10",
+    "alternativas": [
+      { "valor": "10", "tipo": "acerto" },
+      { "valor": "25", "tipo": "erro", "categoria": "conceito", "erro": "grafico_confunde_porcentagem_valor", "descricao": "Confundiu a porcentagem (25%) com a quantidade real de pessoas.", "peso": 3 },
+      { "valor": "4", "tipo": "erro", "categoria": "procedimento", "erro": "grafico_divisao_errada", "descricao": "Dividiu 40 por 10 em vez de calcular 25%.", "peso": 2 },
+      { "valor": "20", "tipo": "erro", "categoria": "atencao", "erro": "grafico_assume_metade", "descricao": "Calculou 50% da turma por erro visual.", "peso": 1 }
+    ],
+    "passo": "25% é o mesmo que a quarta parte (1/4). 40 ÷ 4 = 10 alunos.",
+    "dica": "Lembre-se: 25% é sempre a metade da metade!"
+  },
+  {
+    "id": "B5N04",
+    "aula": 5,
+    "tipo": "conceito",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA35",
+    "bncc_desc": "Amplitude de Dados",
+    "display": "Em Estatística, o que chamamos de 'Amplitude' de um conjunto de dados?",
+    "res": "A diferença entre o maior e o menor valor",
+    "alternativas": [
+      { "valor": "A diferença entre o maior e o menor valor", "tipo": "acerto" },
+      { "valor": "A soma de todos os valores", "tipo": "erro", "categoria": "conceito", "erro": "amplitude_confunde_soma", "descricao": "Confundiu amplitude com somatório total.", "peso": 3 },
+      { "valor": "O valor que fica no meio da lista", "tipo": "erro", "categoria": "procedimento", "erro": "amplitude_confunde_mediana", "descricao": "Confundiu amplitude com mediana.", "peso": 2 },
+      { "valor": "A quantidade de números na lista", "tipo": "erro", "categoria": "interpretacao", "erro": "amplitude_confunde_frequencia", "descricao": "Confundiu amplitude com o tamanho da amostra.", "peso": 1 }
+    ],
+    "passo": "Amplitude mostra o 'tamanho do intervalo' dos dados. Subtraímos o menor valor do maior.",
+    "dica": "É como medir a altura de uma pessoa: você vê a diferença entre o chão e o topo da cabeça!"
+  },
+  {
+    "id": "B5N05",
+    "aula": 5,
+    "tipo": "conceito",
+    "dificuldade": 1,
+    "tipoPedagogico": "recomposicao",
+    "bncc": "EF09MA20",
+    "bncc_desc": "Evento Impossível",
+    "display": "Qual é a probabilidade de um 'Evento Impossível' acontecer?",
+    "res": "0 (ou 0%)",
+    "alternativas": [
+      { "valor": "0 (ou 0%)", "tipo": "acerto" },
+      { "valor": "1 (ou 100%)", "tipo": "erro", "categoria": "conceito", "erro": "prob_confunde_impossivel_certo", "descricao": "Confundiu evento impossível com evento certo.", "peso": 3 },
+      { "valor": "0,5 (ou 50%)", "tipo": "erro", "categoria": "procedimento", "erro": "prob_assume_duvida", "descricao": "Atribuiu chance de meio a meio para algo impossível.", "peso": 2 },
+      { "valor": "Depende do dia", "tipo": "erro", "categoria": "interpretacao", "erro": "prob_fuga_logica", "descricao": "Ignorou o rigor matemático da probabilidade.", "peso": 1 }
+    ],
+    "passo": "Se algo é impossível (como tirar o número 7 em um dado de 6 faces), a chance é zero.",
+    "dica": "Probabilidade 0 significa: 'Esqueça, isso nunca vai acontecer!'."
+  },
+  {
+    "id": "B5C06",
+    "aula": 5,
+    "tipo": "contexto",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF08MA25",
+    "bncc_desc": "Média com Valor Oculto",
+    "display": "A média de 3 números é 10. Se dois números são 8 e 12, qual é o terceiro número?",
+    "res": "10",
+    "alternativas": [
+      { "valor": "10", "tipo": "acerto" },
+      { "valor": "30", "tipo": "erro", "categoria": "conceito", "erro": "media_valor_total", "descricao": "Indicou a soma total necessária, não o valor do número faltante.", "peso": 3 },
+      { "valor": "20", "tipo": "erro", "categoria": "procedimento", "erro": "media_soma_parcial", "descricao": "Somou os dois números conhecidos e parou a conta.", "peso": 2 },
+      { "valor": "5", "tipo": "erro", "categoria": "calculo", "erro": "media_chute_baixo", "descricao": "Tentou um valor aleatório sem compensar a média.", "peso": 1 }
+    ],
+    "passo": "Se a média de 3 números é 10, a soma total deve ser 30 (3x10). Já temos 8 + 12 = 20. Para chegar em 30, faltam 10.",
+    "dica": "Truque da ADA: Multiplique a média pela quantidade de números para saber qual deve ser o valor total da soma!"
+  },
+  {
+    "id": "B5N06",
+    "aula": 5,
+    "tipo": "conceito",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA23",
+    "bncc_desc": "Variáveis Qualitativas e Quantitativas",
+    "display": "Qual destes é um exemplo de 'Variável Qualitativa'?",
+    "res": "Cor favorita",
+    "alternativas": [
+      { "valor": "Cor favorita", "tipo": "acerto" },
+      { "valor": "Altura em centímetros", "tipo": "erro", "categoria": "conceito", "erro": "variavel_confunde_quali_quanti", "descricao": "Selecionou uma variável numérica (quantitativa).", "peso": 3 },
+      { "valor": "Idade em anos", "tipo": "erro", "categoria": "conceito", "erro": "variavel_quantidade_idade", "descricao": "Selecionou uma contagem numérica.", "peso": 2 },
+      { "valor": "Número de irmãos", "tipo": "erro", "categoria": "procedimento", "erro": "variavel_contagem_discreta", "descricao": "Confundiu qualidade com contagem discreta.", "peso": 2 }
+    ],
+    "passo": "Qualitativa refere-se a uma qualidade ou categoria (não é número). Quantitativa refere-se a quantidades (números).",
+    "dica": "Pense assim: Se a resposta for uma palavra (azul, feliz, aprovado), é QUALITATIVA. Se for um número, é QUANTITATIVA."
+  },
+  {
+    "id": "B5A05",
+    "aula": 5,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "recomposicao",
+    "bncc": "EF06MA24",
+    "bncc_desc": "Leitura de Frequência",
+    "display": "Em uma pesquisa com 20 pessoas, 4 responderam 'SIM'. Qual a frequência relativa do 'SIM'?",
+    "res": "20% (ou 0,2)",
+    "alternativas": [
+      { "valor": "20% (ou 0,2)", "tipo": "acerto" },
+      { "valor": "4%", "tipo": "erro", "categoria": "conceito", "erro": "freq_usa_valor_absoluto", "descricao": "Usou o número de respostas como se fosse a porcentagem direta.", "peso": 3 },
+      { "valor": "40%", "tipo": "erro", "categoria": "procedimento", "erro": "freq_erro_escala", "descricao": "Errou a conversão da fração para a base 100.", "peso": 2 },
+      { "valor": "16%", "tipo": "erro", "categoria": "interpretacao", "erro": "freq_calcula_oposto", "descricao": "Tentou calcular a frequência de quem respondeu 'não'.", "peso": 2 }
+    ],
+    "passo": "Frequência relativa é a parte dividida pelo todo: 4 ÷ 20 = 0,2. Multiplicando por 100 para ter a porcentagem: 20%.",
+    "dica": "Frequência relativa é apenas uma porcentagem! É o 'tamanho' do grupo em relação ao total."
+  },
+  {
+    "id": "B5C07",
+    "aula": 5,
+    "tipo": "contexto",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF09MA20",
+    "bncc_desc": "Espaço Amostral Combinado",
+    "display": "Investigação: Se você lançar um dado e uma moeda, quantos resultados diferentes podem acontecer no total?",
+    "res": "12 resultados",
+    "alternativas": [
+      { "valor": "12 resultados", "tipo": "acerto" },
+      { "valor": "8 resultados", "tipo": "erro", "categoria": "conceito", "erro": "prob_soma_espacos", "descricao": "Somou as possibilidades (6+2) em vez de multiplicá-las.", "peso": 3 },
+      { "valor": "6 resultados", "tipo": "erro", "categoria": "procedimento", "erro": "prob_ignora_um_evento", "descricao": "Considerou apenas os resultados do dado.", "peso": 2 },
+      { "valor": "36 resultados", "tipo": "erro", "categoria": "atencao", "erro": "prob_potencia_errada", "descricao": "Calculou como se fossem dois dados (6x6).", "peso": 2 }
+    ],
+    "passo": "Princípio Multiplicativo: 6 opções do dado × 2 opções da moeda = 12 combinações possíveis.",
+    "dica": "Para cada número do dado (1 a 6), você pode tirar Cara ou Coroa. 6 vezes 2!"
+  },
+  {
+    "id": "B6Q00",
+    "aula": 6,
+    "tipo": "conceito",
+    "dificuldade": 1,
+    "tipoPedagogico": "recomposicao",
+    "bncc": "EF07MA21",
+    "bncc_desc": "Conceito de Giro e Ângulo Raso",
     "display": "Se você der uma volta completa no próprio eixo, girou 360°. Se der apenas MEIA volta, quantos graus você girou?",
     "res": "180°",
     "alternativas": [
@@ -1249,9 +1786,13 @@
     "dica": "Dica da ADA: Pense numa pizza cortada exatamente ao meio. Se a pizza inteira tem 360 fatias, quantas tem a metade?"
   },
   {
-    "id": "B6Q01", "aula": 6, "tipo": "conceito",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA21", "bncc_desc": "Classificação de Ângulos",
+    "id": "B6Q01",
+    "aula": 6,
+    "tipo": "conceito",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA21",
+    "bncc_desc": "Classificação de Ângulos",
     "display": "Um ângulo que mede exatos 120° é classificado como:",
     "res": "Obtuso",
     "alternativas": [
@@ -1264,9 +1805,13 @@
     "dica": "Pense na abertura: se ele for mais 'aberto' que o canto de um quadrado (90°), ele é obtuso."
   },
   {
-    "id": "B6Q02", "aula": 6, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA21", "bncc_desc": "Ângulos Complementares e Suplementares",
+    "id": "B6Q02",
+    "aula": 6,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA21",
+    "bncc_desc": "Ângulos Complementares e Suplementares",
     "display": "Qual é o valor do ângulo suplementar de 70°?",
     "res": "110°",
     "alternativas": [
@@ -1279,9 +1824,13 @@
     "dica": "Suplementar é o que falta para completar uma linha reta (180°)."
   },
   {
-    "id": "B6Q03", "aula": 6, "tipo": "conceito",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA21", "bncc_desc": "Retas Paralelas Cortadas por Transversal",
+    "id": "B6Q03",
+    "aula": 6,
+    "tipo": "conceito",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA21",
+    "bncc_desc": "Retas Paralelas Cortadas por Transversal",
     "display": "Em retas paralelas cortadas por uma transversal, os ângulos ALTERNOS INTERNOS são sempre:",
     "res": "Iguais",
     "alternativas": [
@@ -1291,12 +1840,16 @@
       { "valor": "Diferentes", "tipo": "erro", "categoria": "interpretacao", "erro": "paralelas_nao_identifica_congruencia", "descricao": "Não reconheceu a igualdade de medidas entre os pares de ângulos alternos.", "peso": 2 }
     ],
     "passo": "Ângulos alternos internos ficam em lados opostos da linha transversal, entre as paralelas, e têm a mesma medida.",
-    "dica": "Imagine a letra 'Z'. Os ângulos que ficam 'dentro' das curvas da letra Z são sempre iguais."
+    "dica": "Imagine la letra 'Z'. Os ângulos que ficam 'dentro' das curvas da letra Z são sempre iguais."
   },
   {
-    "id": "B6Q04", "aula": 6, "tipo": "conceito",
-    "dificuldade": 1, "tipoPedagogico": "base",
-    "bncc": "EF07MA22", "bncc_desc": "Classificação de Triângulos",
+    "id": "B6Q04",
+    "aula": 6,
+    "tipo": "conceito",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA22",
+    "bncc_desc": "Classificação de Triângulos",
     "display": "Um triângulo que possui todos os três lados com medidas DIFERENTES é chamado de:",
     "res": "Escaleno",
     "alternativas": [
@@ -1309,9 +1862,13 @@
     "dica": "Escaleno rima com 'pleno de diferenças'. Nenhum lado é igual ao outro."
   },
   {
-    "id": "B6Q05", "aula": 6, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA22", "bncc_desc": "Soma dos Ângulos Internos do Triângulo",
+    "id": "B6Q05",
+    "aula": 6,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA22",
+    "bncc_desc": "Soma dos Ângulos Internos do Triângulo",
     "display": "Dois ângulos de um triângulo medem 50° e 70°. Quanto mede o terceiro ângulo?",
     "res": "60°",
     "alternativas": [
@@ -1324,9 +1881,13 @@
     "dica": "Pense: os três juntos devem formar uma linha reta (180°). Quanto falta para chegar lá?"
   },
   {
-    "id": "B6Q06", "aula": 6, "tipo": "conceito",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA23", "bncc_desc": "Propriedades dos Quadriláteros",
+    "id": "B6Q06",
+    "aula": 6,
+    "tipo": "conceito",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA23",
+    "bncc_desc": "Propriedades dos Quadriláteros",
     "display": "Qual quadrilátero possui os 4 lados iguais, mas NÃO exige ângulos retos (90°)?",
     "res": "Losango",
     "alternativas": [
@@ -1339,9 +1900,13 @@
     "dica": "Lembre da forma amarela na nossa bandeira do Brasil: lados iguais, mas os cantos não são retos."
   },
   {
-    "id": "B6Q07", "aula": 6, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA23", "bncc_desc": "Soma dos Ângulos Internos de Polígonos",
+    "id": "B6Q07",
+    "aula": 6,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA23",
+    "bncc_desc": "Soma dos Ângulos Internos de Polígonos",
     "display": "Qual é a soma dos ângulos internos de um Pentágono (polígono de 5 lados)?",
     "res": "540°",
     "alternativas": [
@@ -1354,9 +1919,13 @@
     "dica": "Imagine dividir o pentágono em triângulos: se você traçar linhas a partir de um canto, consegue formar 3 triângulos lá dentro."
   },
   {
-    "id": "B6Q10", "aula": 6, "tipo": "critica",
-    "dificuldade": 3, "tipoPedagogico": "investigacao",
-    "bncc": "EF07MA23", "bncc_desc": "Ângulos Externos de Polígonos",
+    "id": "B6Q10",
+    "aula": 6,
+    "tipo": "critica",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF07MA23",
+    "bncc_desc": "Ângulos Externos de Polígonos",
     "display": "Investigação: A soma dos ângulos INTERNOS aumenta com os lados. Mas qual é a soma dos ângulos EXTERNOS de qualquer polígono?",
     "res": "Sempre 360°",
     "alternativas": [
@@ -1369,9 +1938,13 @@
     "dica": "Não importa o formato da pista. Se você der uma volta completa nela e retornar à mesma direção, você girou exatamente uma volta inteira!"
   },
   {
-    "id": "B6Q08", "aula": 6, "tipo": "aritmetica",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF07MA24", "bncc_desc": "Teorema de Pitágoras — Aplicação",
+    "id": "B6Q08",
+    "aula": 6,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA24",
+    "bncc_desc": "Teorema de Pitágoras — Aplicação",
     "display": "Em um triângulo retângulo, os catetos medem 3 e 4. Quanto mede a hipotenusa?",
     "res": "5",
     "alternativas": [
@@ -1384,9 +1957,13 @@
     "dica": "Lembre-se da fórmula mágica! Você precisa elevar ao quadrado, somar e depois tirar a raiz quadrada do final."
   },
   {
-    "id": "B6Q12", "aula": 6, "tipo": "critica",
-    "dificuldade": 3, "tipoPedagogico": "investigacao",
-    "bncc": "EF07MA24", "bncc_desc": "Condição de Existência do Triângulo",
+    "id": "B6Q12",
+    "aula": 6,
+    "tipo": "critica",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF07MA24",
+    "bncc_desc": "Condição de Existência do Triângulo",
     "display": "Investigação: Se você tentar montar um triângulo usando palitos de medidas 3 cm, 4 cm e 8 cm, o que acontecerá?",
     "res": "Não formará um triângulo",
     "alternativas": [
@@ -1397,1385 +1974,5 @@
     ],
     "passo": "Condição de Existência: o maior lado (8) DEVE ser menor que a soma dos outros dois (3 + 4 = 7). Como 8 é maior que 7, a figura fica aberta.",
     "dica": "Imagine os dois palitos menores (3 e 4) deitados no chão. Se você tentar encostar as pontas deles, eles conseguem alcançar o tamanho do palito de 8?"
-  },
-  {
-    "id": "B3T1Q01", "aula": 3, "tipo": "aritmetica",
-    "dificuldade": 1, "tipoPedagogico": "base",
-    "bncc": "EF06MA01", "bncc_desc": "Valor Posicional",
-    "display": "Qual é o valor posicional do algarismo 7 no número 57.321?",
-    "res": "7.000",
-    "alternativas": [
-      { "valor": "7.000", "tipo": "acerto" },
-      { "valor": "700", "tipo": "erro", "categoria": "procedimento", "erro": "valorposicional_reduz_ordem", "descricao": "Confundiu unidade de milhar com centena.", "peso": 2 },
-      { "valor": "70.000", "tipo": "erro", "categoria": "conceito", "erro": "valorposicional_aumenta_ordem", "descricao": "Confundiu unidade de milhar com dezena de milhar.", "peso": 3 },
-      { "valor": "7", "tipo": "erro", "categoria": "atencao", "erro": "valorposicional_valor_absoluto", "descricao": "Indicou o valor absoluto do algarismo isolado.", "peso": 1 }
-    ],
-    "passo": "O algarismo 7 ocupa a ordem das unidades de milhar.",
-    "dica": "Conte as casas da direita para a esquerda."
-  },
-  {
-    "id": "B3T1Q02", "aula": 3, "tipo": "aritmetica",
-    "dificuldade": 1, "tipoPedagogico": "base",
-    "bncc": "EF06MA05", "bncc_desc": "Números Primos",
-    "display": "Qual destes números é primo?",
-    "res": "13",
-    "alternativas": [
-      { "valor": "13", "tipo": "acerto" },
-      { "valor": "15", "tipo": "erro", "categoria": "conceito", "erro": "primo_confunde_com_impar_15", "descricao": "Classificou um múltiplo de 3 e 5 como primo por ser ímpar.", "peso": 3 },
-      { "valor": "21", "tipo": "erro", "categoria": "conceito", "erro": "primo_confunde_com_impar_21", "descricao": "Classificou um múltiplo de 3 e 7 como primo por ser ímpar.", "peso": 3 },
-      { "valor": "27", "tipo": "erro", "categoria": "procedimento", "erro": "primo_confunde_com_impar_27", "descricao": "Classificou um cubo perfeito (3³) como primo.", "peso": 2 }
-    ],
-    "passo": "13 possui apenas dois divisores: 1 e 13.",
-    "dica": "Teste se o número aparece em outras tabuadas."
-  },
-  {
-    "id": "B3T1Q03", "aula": 3, "tipo": "aritmetica",
-    "dificuldade": 1, "tipoPedagogico": "base",
-    "bncc": "EF06MA06", "bncc_desc": "Potenciação",
-    "display": "Quanto vale 8²?",
-    "res": "64",
-    "alternativas": [
-      { "valor": "64", "tipo": "acerto" },
-      { "valor": "16", "tipo": "erro", "categoria": "conceito", "erro": "potenciacao_multiplica_base_expoente", "descricao": "Multiplicou a base pelo expoente (8x2).", "peso": 3 },
-      { "valor": "82", "tipo": "erro", "categoria": "procedimento", "erro": "potenciacao_justapoe_numeros", "descricao": "Apenas juntou os algarismos 8 e 2.", "peso": 2 },
-      { "valor": "56", "tipo": "erro", "categoria": "calculo", "erro": "potenciacao_erro_tabuada", "descricao": "Errou a tabuada do 8.", "peso": 1 }
-    ],
-    "passo": "8² significa 8 × 8.",
-    "dica": "Expoente 2 significa multiplicar o número por ele mesmo."
-  },
-  {
-    "id": "B3T1Q04", "aula": 3, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF06MA05", "bncc_desc": "MMC",
-    "display": "Determine o MMC entre 12 e 18.",
-    "res": "36",
-    "alternativas": [
-      { "valor": "36", "tipo": "acerto" },
-      { "valor": "6", "tipo": "erro", "categoria": "conceito", "erro": "mmc_confunde_com_mdc", "descricao": "Calculou o Máximo Divisor Comum em vez do Mínimo Múltiplo.", "peso": 3 },
-      { "valor": "24", "tipo": "erro", "categoria": "procedimento", "erro": "mmc_multiplo_comum_incompleto", "descricao": "Encontrou um múltiplo, mas não considerou os dois números.", "peso": 2 },
-      { "valor": "216", "tipo": "erro", "categoria": "estrategia", "erro": "mmc_multiplica_direto", "descricao": "Multiplicou os números entre si desnecessariamente.", "peso": 2 }
-    ],
-    "passo": "O primeiro múltiplo comum entre 12 e 18 é 36.",
-    "dica": "Liste os múltiplos dos dois números."
-  },
-  {
-    "id": "B3T1Q05", "aula": 3, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF06MA05", "bncc_desc": "MDC",
-    "display": "Determine o MDC entre 24 e 36.",
-    "res": "12",
-    "alternativas": [
-      { "valor": "12", "tipo": "acerto" },
-      { "valor": "6", "tipo": "erro", "categoria": "procedimento", "erro": "mdc_divisor_comum_menor", "descricao": "Encontrou um divisor comum, mas não o máximo.", "peso": 2 },
-      { "valor": "72", "tipo": "erro", "categoria": "conceito", "erro": "mdc_confunde_com_mmc", "descricao": "Calculou o MMC em vez do MDC.", "peso": 3 },
-      { "valor": "24", "tipo": "erro", "categoria": "atencao", "erro": "mdc_elege_menor_numero", "descricao": "Apenas repetiu o menor número da questão.", "peso": 1 }
-    ],
-    "passo": "12 é o maior número que divide 24 e 36 ao mesmo tempo.",
-    "dica": "Procure os divisores comuns."
-  },
-  {
-    "id": "B3T2Q01", "aula": 3, "tipo": "aritmetica",
-    "dificuldade": 1, "tipoPedagogico": "base",
-    "bncc": "EF07MA02", "bncc_desc": "Números Inteiros",
-    "display": "Qual é o oposto de -8?",
-    "res": "+8",
-    "alternativas": [
-      { "valor": "+8", "tipo": "acerto" },
-      { "valor": "-8", "tipo": "erro", "categoria": "conceito", "erro": "oposto_mantem_sinal", "descricao": "Manteve o sinal negativo.", "peso": 3 },
-      { "valor": "0", "tipo": "erro", "categoria": "estrategia", "erro": "oposto_confunde_com_nulo", "descricao": "Assumiu que o oposto zera o valor.", "peso": 2 },
-      { "valor": "-16", "tipo": "erro", "categoria": "procedimento", "erro": "oposto_dobra_valor", "descricao": "Dobrou o valor e manteve o sinal.", "peso": 2 }
-    ],
-    "passo": "O oposto possui mesma distância do zero, mas lado contrário.",
-    "dica": "Troque apenas o sinal."
-  },
-  {
-    "id": "B3T2Q02", "aula": 3, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA04", "bncc_desc": "Frações",
-    "display": "Qual decimal representa a fração 3/4?",
-    "res": "0,75",
-    "alternativas": [
-      { "valor": "0,75", "tipo": "acerto" },
-      { "valor": "0,34", "tipo": "erro", "categoria": "procedimento", "erro": "fracao_justapoe_algarismos", "descricao": "Apenas colocou os números da fração após a vírgula.", "peso": 2 },
-      { "valor": "0,5", "tipo": "erro", "categoria": "conceito", "erro": "fracao_confunde_meio", "descricao": "Assumiu o valor decimal da fração 1/2.", "peso": 3 },
-      { "valor": "1,25", "tipo": "erro", "categoria": "calculo", "erro": "fracao_inverte_divisao", "descricao": "Dividiu 4 por 3 em vez de 3 por 4.", "peso": 1 }
-    ],
-    "passo": "3 dividido por 4 resulta em 0,75.",
-    "dica": "Frações podem ser transformadas em divisão."
-  },
-  {
-    "id": "B3T2Q03", "aula": 3, "tipo": "contexto",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF07MA08", "bncc_desc": "Proporcionalidade",
-    "display": "Se 4 cadernos custam R$ 32, quanto custam 6 cadernos?",
-    "res": "48",
-    "alternativas": [
-      { "valor": "48", "tipo": "acerto" },
-      { "valor": "40", "tipo": "erro", "categoria": "procedimento", "erro": "proporcao_calculo_linear_errado", "descricao": "Somou o valor de 1 caderno ao total.", "peso": 2 },
-      { "valor": "52", "tipo": "erro", "categoria": "calculo", "erro": "proporcao_erro_tabuada", "descricao": "Errou a multiplicação básica.", "peso": 1 },
-      { "valor": "64", "tipo": "erro", "categoria": "conceito", "erro": "proporcao_dobra_valor", "descricao": "Dobrou o valor assumindo erroneamente que os cadernos dobraram.", "peso": 3 }
-    ],
-    "passo": "Cada caderno custa 8 reais. Multiplicando por 6: 48.",
-    "dica": "Primeiro descubra o valor unitário."
-  },
-  {
-    "id": "B3T3Q01", "aula": 3, "tipo": "geometria",
-    "dificuldade": 1, "tipoPedagogico": "base",
-    "bncc": "EF08MA19", "bncc_desc": "Área",
-    "display": "Calcule a área de um retângulo de 8 cm por 5 cm.",
-    "res": "40 cm²",
-    "alternativas": [
-      { "valor": "40 cm²", "tipo": "acerto" },
-      { "valor": "26 cm²", "tipo": "erro", "categoria": "conceito", "erro": "area_calcula_perimetro", "descricao": "Calculou o perímetro em vez da área.", "peso": 3 },
-      { "valor": "80 cm²", "tipo": "erro", "categoria": "procedimento", "erro": "area_dobra_produto", "descricao": "Multiplicou a área por 2 desnecessariamente.", "peso": 2 },
-      { "valor": "13 cm²", "tipo": "erro", "categoria": "calculo", "erro": "area_soma_simples", "descricao": "Apenas somou a base e a altura.", "peso": 1 }
-    ],
-    "passo": "Área do retângulo = base × altura.",
-    "dica": "Multiplique comprimento pela largura."
-  },
-  {
-    "id": "B3T3Q02", "aula": 3, "tipo": "aritmetica",
-    "dificuldade": 1, "tipoPedagogico": "base",
-    "bncc": "EF07MA29", "bncc_desc": "Conversão de Medidas",
-    "display": "Converta 2,5 metros em centímetros.",
-    "res": "250 cm",
-    "alternativas": [
-      { "valor": "250 cm", "tipo": "acerto" },
-      { "valor": "25 cm", "tipo": "erro", "categoria": "procedimento", "erro": "conversao_fator_10", "descricao": "Multiplicou por 10 em vez de 100.", "peso": 2 },
-      { "valor": "2.500 cm", "tipo": "erro", "categoria": "conceito", "erro": "conversao_fator_1000", "descricao": "Multiplicou por 1000, confundindo com milímetros.", "peso": 3 },
-      { "valor": "205 cm", "tipo": "erro", "categoria": "calculo", "erro": "conversao_erro_posicao_virgula", "descricao": "Errou a conversão esquecendo um zero.", "peso": 1 }
-    ],
-    "passo": "1 metro possui 100 centímetros.",
-    "dica": "Multiplique metros por 100."
-  },
-  {
-    "id": "B3T4Q01", "aula": 4, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF08MA06", "bncc_desc": "Equação do 1° Grau",
-    "display": "Resolva: 2x + 5 = 17.",
-    "res": "x = 6",
-    "alternativas": [
-      { "valor": "x = 6", "tipo": "acerto" },
-      { "valor": "x = 11", "tipo": "erro", "categoria": "procedimento", "erro": "equacao_soma_em_vez_subtrair", "descricao": "Somou o 5 ao 17 ao mudar de lado.", "peso": 2 },
-      { "valor": "x = 12", "tipo": "erro", "categoria": "conceito", "erro": "equacao_subtrai_multiplicador", "descricao": "Subtraiu o 2x do 17 de forma errada.", "peso": 3 },
-      { "valor": "x = 7", "tipo": "erro", "categoria": "calculo", "erro": "equacao_erro_divisao", "descricao": "Errou a divisão de 12 por 2.", "peso": 1 }
-    ],
-    "passo": "Primeiro isolamos o 2x: 17 - 5 = 12. Depois dividimos por 2.",
-    "dica": "Deixe a incógnita sozinha."
-  },
-  {
-    "id": "B3T4Q02", "aula": 4, "tipo": "aritmetica",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF09MA09", "bncc_desc": "Inequações",
-    "display": "Resolva: 3x < 18.",
-    "res": "x < 6",
-    "alternativas": [
-      { "valor": "x < 6", "tipo": "acerto" },
-      { "valor": "x > 6", "tipo": "erro", "categoria": "conceito", "erro": "inequacao_inverte_sinal_indevidamente", "descricao": "Inverteu a desigualdade ao dividir por um número positivo.", "peso": 3 },
-      { "valor": "x = 6", "tipo": "erro", "categoria": "procedimento", "erro": "inequacao_transforma_em_equacao", "descricao": "Trocou o sinal de menor pelo de igual.", "peso": 2 },
-      { "valor": "x < 3", "tipo": "erro", "categoria": "calculo", "erro": "inequacao_erro_divisao", "descricao": "Errou a divisão básica.", "peso": 1 }
-    ],
-    "passo": "Dividimos ambos os lados por 3.",
-    "dica": "A desigualdade continua igual porque dividimos por número positivo."
-  },
-  {
-    "id": "B3T5Q01", "aula": 5, "tipo": "aritmetica",
-    "dificuldade": 1, "tipoPedagogico": "base",
-    "bncc": "EF08MA25", "bncc_desc": "Média Aritmética",
-    "display": "Calcule a média dos números 7, 8, 9 e 10.",
-    "res": "8,5",
-    "alternativas": [
-      { "valor": "8,5", "tipo": "acerto" },
-      { "valor": "34", "tipo": "erro", "categoria": "procedimento", "erro": "media_apenas_soma", "descricao": "Apenas somou e não dividiu.", "peso": 3 },
-      { "valor": "7,5", "tipo": "erro", "categoria": "calculo", "erro": "media_erro_divisao", "descricao": "Errou a divisão da soma por 4.", "peso": 1 },
-      { "valor": "9", "tipo": "erro", "categoria": "estrategia", "erro": "media_elege_valor_central", "descricao": "Escolheu um valor aleatório do conjunto.", "peso": 2 }
-    ],
-    "passo": "Somamos todos os valores e dividimos pela quantidade.",
-    "dica": "Média é repartir igualmente."
-  },
-  {
-    "id": "B3T5Q02", "aula": 5, "tipo": "aritmetica",
-    "dificuldade": 2, "tipoPedagogico": "base",
-    "bncc": "EF08MA26", "bncc_desc": "Probabilidade",
-    "display": "Qual a probabilidade de sair um número par em um dado comum?",
-    "res": "3/6",
-    "alternativas": [
-      { "valor": "3/6", "tipo": "acerto" },
-      { "valor": "1/6", "tipo": "erro", "categoria": "conceito", "erro": "probabilidade_evento_simples", "descricao": "Calculou a chance de sair apenas um número específico.", "peso": 3 },
-      { "valor": "6/6", "tipo": "erro", "categoria": "procedimento", "erro": "probabilidade_evento_certo", "descricao": "Considerou todos os números do dado.", "peso": 2 },
-      { "valor": "2/6", "tipo": "erro", "categoria": "calculo", "erro": "probabilidade_contagem_errada", "descricao": "Errou a contagem de pares.", "peso": 1 }
-    ],
-    "passo": "Os pares possíveis são 2, 4 e 6.",
-    "dica": "Conte casos favoráveis e possíveis."
-  },
-  {
-    "id": "B3T6Q01", "aula": 6, "tipo": "conceito",
-    "dificuldade": 1, "tipoPedagogico": "base",
-    "bncc": "EF08MA15", "bncc_desc": "Polígonos",
-    "display": "Quantos lados possui um hexágono?",
-    "res": "6",
-    "alternativas": [
-      { "valor": "6", "tipo": "acerto" },
-      { "valor": "5", "tipo": "erro", "categoria": "conceito", "erro": "poligono_confunde_pentagono", "descricao": "Confundiu com pentágono.", "peso": 3 },
-      { "valor": "7", "tipo": "erro", "categoria": "procedimento", "erro": "poligono_confunde_heptagono", "descricao": "Confundiu com heptágono.", "peso": 2 },
-      { "valor": "8", "tipo": "erro", "categoria": "atencao", "erro": "poligono_confunde_octogono", "descricao": "Confundiu com octógono.", "peso": 1 }
-    ],
-    "passo": "Hexa significa seis.",
-    "dica": "Lembre da palavra hexadecimal."
-  },
-  {
-    "id": "B3T6Q02", "aula": 6, "tipo": "aritmetica",
-    "dificuldade": 3, "tipoPedagogico": "base",
-    "bncc": "EF09MA14", "bncc_desc": "Teorema de Pitágoras",
-    "display": "Calcule a hipotenusa de um triângulo com catetos 3 e 4.",
-    "res": "5",
-    "alternativas": [
-      { "valor": "5", "tipo": "acerto" },
-      { "valor": "7", "tipo": "erro", "categoria": "conceito", "erro": "pitagoras_soma_linear", "descricao": "Apenas somou os catetos sem elevar ao quadrado.", "peso": 3 },
-      { "valor": "6", "tipo": "erro", "categoria": "procedimento", "erro": "pitagoras_raiz_errada", "descricao": "Tirou a raiz quadrada de 25 de forma errada.", "peso": 2 },
-      { "valor": "4", "tipo": "erro", "categoria": "calculo", "erro": "pitagoras_subtrai_catetos", "descricao": "Subtraiu os catetos em vez de aplicar o teorema.", "peso": 1 }
-    ],
-    "passo": "3² + 4² = 9 + 16 = 25. √25 = 5.",
-    "dica": "Use a² + b² = c²."
-  },
-  {
-"id": "B1A01",
-"aula": 1,
-"tipo": "aritmetica",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF06MA05",
-"bncc_desc": "Potenciacao",
-"display": "Calcule o valor de 5 ao cubo (5³).",
-"res": "125",
-"alternativas": [
-{ "valor": "125", "tipo": "acerto" },
-{ "valor": "15", "tipo": "erro", "categoria": "conceito", "erro": "potencia_multiplica_base_expoente", "descricao": "Multiplicou a base pelo expoente em vez de usar a base como fator.", "peso": 3 },
-{ "valor": "25", "tipo": "erro", "categoria": "procedimento", "erro": "potencia_falta_fator", "descricao": "Elevou ao quadrado em vez de ao cubo.", "peso": 2 },
-{ "valor": "8", "tipo": "erro", "categoria": "atencao", "erro": "potencia_soma_base_expoente", "descricao": "Somou a base com o expoente.", "peso": 1 }
-],
-"passo": "O expoente 3 indica que a base 5 deve ser multiplicada por ela mesma três vezes: 5 × 5 × 5 = 125.",
-"dica": "Lembre-se: potência não é tabuada de vezes. É o número vezes ele mesmo!"
-},
-{
-"id": "B1A02",
-"aula": 1,
-"tipo": "aritmetica",
-"dificuldade": 2,
-"tipoPedagogico": "recomposicao",
-"bncc": "EF06MA06",
-"bncc_desc": "MMC",
-"display": "Qual é o Mínimo Múltiplo Comum (MMC) entre 4 e 6?",
-"res": "12",
-"alternativas": [
-{ "valor": "12", "tipo": "acerto" },
-{ "valor": "24", "tipo": "erro", "categoria": "procedimento", "erro": "mmc_produto_direto", "descricao": "Apenas multiplicou os dois números sem procurar o menor múltiplo.", "peso": 2 },
-{ "valor": "2", "tipo": "erro", "categoria": "conceito", "erro": "mmc_confunde_com_mdc", "descricao": "Encontrou o Máximo Divisor Comum (MDC) em vez do MMC.", "peso": 3 },
-{ "valor": "10", "tipo": "erro", "categoria": "calculo", "erro": "mmc_soma_valores", "descricao": "Somou os valores em vez de encontrar os múltiplos.", "peso": 1 }
-],
-"passo": "Os múltiplos de 4 são 4, 8, 12, 16... Os múltiplos de 6 são 6, 12, 18... O menor em comum é 12.",
-"dica": "Faça a tabuada dos dois números e veja qual é o primeiro resultado igual que aparece."
-},
-{
-"id": "B1A03",
-"aula": 1,
-"tipo": "aritmetica",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF06MA06",
-"bncc_desc": "MDC",
-"display": "Qual é o Máximo Divisor Comum (MDC) entre 12 e 18?",
-"res": "6",
-"alternativas": [
-{ "valor": "6", "tipo": "acerto" },
-{ "valor": "36", "tipo": "erro", "categoria": "conceito", "erro": "mdc_confunde_com_mmc", "descricao": "Calculou o MMC em vez do MDC.", "peso": 3 },
-{ "valor": "2", "tipo": "erro", "categoria": "procedimento", "erro": "mdc_fator_incompleto", "descricao": "Encontrou um divisor comum, mas não o máximo.", "peso": 2 },
-{ "valor": "3", "tipo": "erro", "categoria": "procedimento", "erro": "mdc_fator_impar", "descricao": "Encontrou outro divisor comum menor e ignorou o fator 2.", "peso": 2 }
-],
-"passo": "Divisores de 12: 1, 2, 3, 4, 6, 12. Divisores de 18: 1, 2, 3, 6, 9, 18. O maior em comum é 6.",
-"dica": "Procure o maior número que consegue dividir o 12 e o 18 ao mesmo tempo, sem deixar resto."
-},
-{
-"id": "B2A01",
-"aula": 2,
-"tipo": "aritmetica",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA09",
-"bncc_desc": "Adicao de Fracoes",
-"display": "Calcule a soma das frações: 1/4 + 2/4",
-"res": "3/4",
-"alternativas": [
-{ "valor": "3/4", "tipo": "acerto" },
-{ "valor": "3/8", "tipo": "erro", "categoria": "conceito", "erro": "fracao_soma_denominadores", "descricao": "Somou tanto os numeradores quanto os denominadores.", "peso": 3 },
-{ "valor": "2/16", "tipo": "erro", "categoria": "procedimento", "erro": "fracao_multiplica_em_vez_de_somar", "descricao": "Multiplicou as frações em vez de somar.", "peso": 2 },
-{ "valor": "1/4", "tipo": "erro", "categoria": "atencao", "erro": "fracao_subtrai_em_vez_de_somar", "descricao": "Fez a subtração dos numeradores por desatenção ao sinal.", "peso": 1 }
-],
-"passo": "Quando os denominadores (números de baixo) são iguais, mantemos o denominador e somamos apenas os numeradores (de cima): 1 + 2 = 3.",
-"dica": "Pense em fatias de pizza: 1 fatia de quatro + 2 fatias de quatro = 3 fatias de quatro!"
-},
-{
-"id": "B2A02",
-"aula": 2,
-"tipo": "aritmetica",
-"dificuldade": 2,
-"tipoPedagogico": "recomposicao",
-"bncc": "EF07MA04",
-"bncc_desc": "Subtracao de Numeros Inteiros",
-"display": "Resolva: -5 - 3",
-"res": "-8",
-"alternativas": [
-{ "valor": "-8", "tipo": "acerto" },
-{ "valor": "-2", "tipo": "erro", "categoria": "conceito", "erro": "inteiros_regra_sinal_errada", "descricao": "Subtraiu os valores absolutos mantendo o sinal do maior, como se fosse adição de sinais diferentes.", "peso": 3 },
-{ "valor": "2", "tipo": "erro", "categoria": "procedimento", "erro": "inteiros_inverte_operacao", "descricao": "Subtraiu os valores absolutos e inverteu o sinal.", "peso": 2 },
-{ "valor": "15", "tipo": "erro", "categoria": "atencao", "erro": "inteiros_multiplica_em_vez_de_somar", "descricao": "Multiplicou os números ignorando que é uma subtração.", "peso": 1 }
-],
-"passo": "Se você deve 5 e adquire outra dívida de 3, sua dívida total aumenta para 8. Portanto, -8.",
-"dica": "Sinais iguais na soma/subtração: você junta os valores e repete o sinal. Pense sempre em dívidas!"
-},
-{
-"id": "B2A03",
-"aula": 2,
-"tipo": "aritmetica",
-"dificuldade": 3,
-"tipoPedagogico": "base",
-"bncc": "EF07MA08",
-"bncc_desc": "Razao",
-"display": "Qual a razão entre 15 e 45, na sua forma mais simples?",
-"res": "1/3",
-"alternativas": [
-{ "valor": "1/3", "tipo": "acerto" },
-{ "valor": "3/1", "tipo": "erro", "categoria": "conceito", "erro": "razao_inverte_ordem", "descricao": "Inverteu a ordem pedida no enunciado.", "peso": 3 },
-{ "valor": "15/45", "tipo": "erro", "categoria": "procedimento", "erro": "razao_nao_simplificada", "descricao": "Montou a razão corretamente mas não a simplificou.", "peso": 2 },
-{ "valor": "1/2", "tipo": "erro", "categoria": "calculo", "erro": "razao_erro_simplificacao", "descricao": "Errou a tabuada na hora de dividir os termos.", "peso": 1 }
-],
-"passo": "A razão é a divisão do primeiro pelo segundo: 15/45. Dividindo ambos por 15, chegamos a 1/3.",
-"dica": "A ordem importa muito! O primeiro número sempre fica em cima (numerador)."
-},
-{
-"id": "B3A01",
-"aula": 3,
-"tipo": "aritmetica",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA31",
-"bncc_desc": "Area de Retangulo",
-"display": "Calcule a área de um retângulo que tem 8m de base e 5m de altura.",
-"res": "40 m²",
-"alternativas": [
-{ "valor": "40 m²", "tipo": "acerto" },
-{ "valor": "13 m²", "tipo": "erro", "categoria": "conceito", "erro": "area_soma_dimensoes", "descricao": "Somou a base com a altura em vez de multiplicar.", "peso": 3 },
-{ "valor": "26 m²", "tipo": "erro", "categoria": "procedimento", "erro": "area_confunde_com_perimetro", "descricao": "Calculou o perímetro do retângulo em vez da área.", "peso": 3 },
-{ "valor": "40 m", "tipo": "erro", "categoria": "atencao", "erro": "area_unidade_medida_errada", "descricao": "Calculou certo, mas usou medida linear em vez de quadrada.", "peso": 1 }
-],
-"passo": "Para achar a área do retângulo, multiplicamos a base pela altura: 8 × 5 = 40. A unidade fica ao quadrado.",
-"dica": "Área é o espaço dentro da figura! É sempre uma conta de 'vezes' entre os lados diferentes."
-},
-{
-"id": "B3A02",
-"aula": 3,
-"tipo": "aritmetica",
-"dificuldade": 1,
-"tipoPedagogico": "base",
-"bncc": "EF07MA31",
-"bncc_desc": "Perimetro de Quadrado",
-"display": "Qual é o perímetro de um quadrado com 6 cm de lado?",
-"res": "24 cm",
-"alternativas": [
-{ "valor": "24 cm", "tipo": "acerto" },
-{ "valor": "36 cm", "tipo": "erro", "categoria": "conceito", "erro": "perimetro_confunde_com_area", "descricao": "Calculou a área (6x6) em vez de somar os lados.", "peso": 3 },
-{ "valor": "12 cm", "tipo": "erro", "categoria": "procedimento", "erro": "perimetro_soma_apenas_dois_lados", "descricao": "Somou apenas dois lados do quadrado.", "peso": 2 },
-{ "valor": "24 cm²", "tipo": "erro", "categoria": "atencao", "erro": "perimetro_unidade_quadrada", "descricao": "Errou a unidade de medida colocando quadrado em perímetro.", "peso": 1 }
-],
-"passo": "O perímetro é a soma de todos os lados. Um quadrado tem 4 lados iguais, então: 6 + 6 + 6 + 6 = 24 cm.",
-"dica": "Imagine que você está caminhando ao redor de toda a borda da figura. Some todos os contornos!"
-},
-{
-"id": "B3A03",
-"aula": 3,
-"tipo": "aritmetica",
-"dificuldade": 2,
-"tipoPedagogico": "recomposicao",
-"bncc": "EF06MA24",
-"bncc_desc": "Conversao de Medidas",
-"display": "Converta 2,5 metros para centímetros.",
-"res": "250 cm",
-"alternativas": [
-{ "valor": "250 cm", "tipo": "acerto" },
-{ "valor": "25 cm", "tipo": "erro", "categoria": "procedimento", "erro": "conversao_multiplica_por_dez", "descricao": "Multiplicou por 10 em vez de 100, transformando em decímetros.", "peso": 2 },
-{ "valor": "0,025 cm", "tipo": "erro", "categoria": "conceito", "erro": "conversao_divide_em_vez_de_multiplicar", "descricao": "Dividiu por 100, invertendo o sentido da conversão.", "peso": 3 },
-{ "valor": "2500 cm", "tipo": "erro", "categoria": "atencao", "erro": "conversao_excesso_zeros", "descricao": "Multiplicou por 1000, transformando para milímetros.", "peso": 1 }
-],
-"passo": "Como 1 metro tem 100 centímetros, basta multiplicar o valor em metros por 100. Deslocamos a vírgula duas casas: 2,5 × 100 = 250.",
-"dica": "Metro (m) para centímetro (cm): lembre do 'cem'. Multiplique por 100!"
-},
-{
-"id": "B4A01",
-"aula": 4,
-"tipo": "aritmetica",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA18",
-"bncc_desc": "Equacao do 1 Grau",
-"display": "Resolva a equação: 2x = 10",
-"res": "x = 5",
-"alternativas": [
-{ "valor": "x = 5", "tipo": "acerto" },
-{ "valor": "x = 12", "tipo": "erro", "categoria": "conceito", "erro": "equacao_soma_em_vez_de_dividir", "descricao": "Passou o 2 somando para o outro lado.", "peso": 3 },
-{ "valor": "x = 8", "tipo": "erro", "categoria": "procedimento", "erro": "equacao_subtrai_em_vez_de_dividir", "descricao": "Passou o 2 subtraindo.", "peso": 2 },
-{ "valor": "x = 20", "tipo": "erro", "categoria": "interpretacao", "erro": "equacao_multiplica_inverso", "descricao": "Multiplicou os valores em vez de aplicar a operação inversa.", "peso": 2 }
-],
-"passo": "O 2 está multiplicando o 'x'. Para isolar o 'x', passamos o 2 para o outro lado dividindo: x = 10 ÷ 2 = 5.",
-"dica": "Sempre faça a operação inversa quando pular o sinal de igual. O contrário de multiplicar é dividir!"
-},
-{
-"id": "B4A02",
-"aula": 4,
-"tipo": "aritmetica",
-"dificuldade": 3,
-"tipoPedagogico": "base",
-"bncc": "EF08MA06",
-"bncc_desc": "Valor Numerico",
-"display": "Qual o valor da expressão 3x + 2 para x = 4?",
-"res": "14",
-"alternativas": [
-{ "valor": "14", "tipo": "acerto" },
-{ "valor": "36", "tipo": "erro", "categoria": "conceito", "erro": "expressao_junta_algarismo", "descricao": "Substituiu o x juntando os números formando 34, e depois somou 2.", "peso": 3 },
-{ "valor": "18", "tipo": "erro", "categoria": "procedimento", "erro": "expressao_ordem_operacoes", "descricao": "Somou o 4 com o 2 primeiro, depois multiplicou por 3.", "peso": 3 },
-{ "valor": "9", "tipo": "erro", "categoria": "calculo", "erro": "expressao_soma_tudo", "descricao": "Apenas somou 3 + 4 + 2.", "peso": 2 }
-],
-"passo": "Substituímos o x por 4. Primeiro a multiplicação: 3 × 4 = 12. Depois a adição: 12 + 2 = 14.",
-"dica": "Lembre que número grudado com letra significa multiplicação (3x é o mesmo que 3 vezes x). E faça a multiplicação antes da soma!"
-},
-{
-"id": "B4A03",
-"aula": 4,
-"tipo": "aritmetica",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA18",
-"bncc_desc": "Equacao do 1 Grau com Adicao",
-"display": "Encontre o valor de x na equação: x - 7 = 15",
-"res": "x = 22",
-"alternativas": [
-{ "valor": "x = 22", "tipo": "acerto" },
-{ "valor": "x = 8", "tipo": "erro", "categoria": "conceito", "erro": "equacao_mantem_operacao", "descricao": "Manteve a subtração ao passar o 7 para o outro lado (15 - 7).", "peso": 3 },
-{ "valor": "x = -8", "tipo": "erro", "categoria": "procedimento", "erro": "equacao_inverte_ordem_subtracao", "descricao": "Fez 7 - 15 e errou o sinal.", "peso": 2 },
-{ "valor": "x = 21", "tipo": "erro", "categoria": "calculo", "erro": "equacao_erro_soma_simples", "descricao": "Fez a operação inversa certa, mas errou a soma básica.", "peso": 1 }
-],
-"passo": "O 7 está subtraindo de um lado. Passamos para o outro lado fazendo a operação inversa (adição): x = 15 + 7. Logo, x = 22.",
-"dica": "Trocou de lado, trocou de sinal! O que era menos vira mais."
-},
-{
-"id": "B5A01",
-"aula": 5,
-"tipo": "aritmetica",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF08MA22",
-"bncc_desc": "Media Simples",
-"display": "Calcule a média aritmética entre os números 4, 6 e 8.",
-"res": "6",
-"alternativas": [
-{ "valor": "6", "tipo": "acerto" },
-{ "valor": "18", "tipo": "erro", "categoria": "conceito", "erro": "media_apenas_soma", "descricao": "Somou os valores mas esqueceu de dividir pela quantidade.", "peso": 3 },
-{ "valor": "9", "tipo": "erro", "categoria": "procedimento", "erro": "media_divide_por_dois", "descricao": "Somou e dividiu por 2 em vez de dividir por 3 (quantidade de termos).", "peso": 2 },
-{ "valor": "8", "tipo": "erro", "categoria": "interpretacao", "erro": "media_confunde_com_maximo", "descricao": "Pegou o maior valor do conjunto achando ser a média.", "peso": 1 }
-],
-"passo": "Primeiro, some todos os números: 4 + 6 + 8 = 18. Como temos 3 números, dividimos o total por 3: 18 ÷ 3 = 6.",
-"dica": "A média é justa: junta tudo e divide em partes iguais para todos os participantes."
-},
-{
-"id": "B5A02",
-"aula": 5,
-"tipo": "aritmetica",
-"dificuldade": 1,
-"tipoPedagogico": "base",
-"bncc": "EF08MA22",
-"bncc_desc": "Moda",
-"display": "Dada a lista de valores (2, 3, 3, 5, 7), qual é a moda?",
-"res": "3",
-"alternativas": [
-{ "valor": "3", "tipo": "acerto" },
-{ "valor": "4", "tipo": "erro", "categoria": "conceito", "erro": "moda_confunde_com_media", "descricao": "Calculou a média dos valores em vez de achar a moda.", "peso": 3 },
-{ "valor": "2", "tipo": "erro", "categoria": "procedimento", "erro": "moda_escolhe_primeiro", "descricao": "Escolheu o primeiro valor do conjunto.", "peso": 2 },
-{ "valor": "5", "tipo": "erro", "categoria": "interpretacao", "erro": "moda_escolhe_mediana", "descricao": "Escolheu o termo central (mediana) em vez de quem mais repete.", "peso": 2 }
-],
-"passo": "A moda é o número que aparece mais vezes. Na lista, o número 3 aparece duas vezes e os outros apenas uma.",
-"dica": "Lembre de 'estar na moda': é aquilo que você vê todo mundo usando (o que mais se repete)!"
-},
-{
-"id": "B6A01",
-"aula": 6,
-"tipo": "aritmetica",
-"dificuldade": 3,
-"tipoPedagogico": "base",
-"bncc": "EF09MA14",
-"bncc_desc": "Teorema de Pitagoras",
-"display": "Em um triângulo retângulo, os catetos medem 6 e 8. Quanto mede a hipotenusa?",
-"res": "10",
-"alternativas": [
-{ "valor": "10", "tipo": "acerto" },
-{ "valor": "14", "tipo": "erro", "categoria": "conceito", "erro": "pitagoras_soma_linear", "descricao": "Apenas somou os catetos sem elevar ao quadrado e extrair a raiz.", "peso": 3 },
-{ "valor": "100", "tipo": "erro", "categoria": "procedimento", "erro": "pitagoras_esquece_raiz", "descricao": "Elevou ao quadrado e somou, mas esqueceu de tirar a raiz quadrada final.", "peso": 2 },
-{ "valor": "48", "tipo": "erro", "categoria": "calculo", "erro": "pitagoras_multiplica_catetos", "descricao": "Multiplicou os catetos simulando o cálculo de área.", "peso": 2 }
-],
-"passo": "A fórmula é a² = b² + c². Elevando os catetos: 6² = 36 e 8² = 64. Somando: 36 + 64 = 100. A raiz de 100 é 10.",
-"dica": "No teorema de Pitágoras você precisa elevar tudo ao quadrado primeiro, somar, e no fim, tirar a raiz quadrada."
-},
-{
-"id": "B6A02",
-"aula": 6,
-"tipo": "aritmetica",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA24",
-"bncc_desc": "Soma dos Angulos do Triangulo",
-"display": "Se dois ângulos de um triângulo medem 50° e 60°, quanto mede o terceiro ângulo?",
-"res": "70°",
-"alternativas": [
-{ "valor": "70°", "tipo": "acerto" },
-{ "valor": "110°", "tipo": "erro", "categoria": "conceito", "erro": "angulos_soma_incompleta", "descricao": "Apenas somou os dois ângulos dados e parou.", "peso": 3 },
-{ "valor": "250°", "tipo": "erro", "categoria": "procedimento", "erro": "angulos_referencia_circulo", "descricao": "Subtraiu a soma de 360° em vez de 180°.", "peso": 2 },
-{ "valor": "90°", "tipo": "erro", "categoria": "interpretacao", "erro": "angulos_chute_retangulo", "descricao": "Assumiu que era um triângulo retângulo sem embasamento.", "peso": 1 }
-],
-"passo": "A soma de todos os ângulos de qualquer triângulo é sempre 180°. Somando os dados: 50 + 60 = 110°. Para 180° faltam 70°.",
-"dica": "O triângulo perfeito tem que fechar a conta sempre em 180 graus. Subtraia o que você já tem de 180!"
-},
-{
-"id": "B1A04",
-"aula": 1,
-"tipo": "aritmetica",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF06MA05",
-"bncc_desc": "Multiplicacao com Zeros",
-"display": "Calcule: 400 × 30",
-"res": "12.000",
-"alternativas": [
-{ "valor": "12.000", "tipo": "acerto" },
-{ "valor": "1.200", "tipo": "erro", "categoria": "procedimento", "erro": "multiplicacao_omite_zero", "descricao": "Esqueceu de incluir um dos zeros no final.", "peso": 2 },
-{ "valor": "120.000", "tipo": "erro", "categoria": "procedimento", "erro": "multiplicacao_adiciona_zero", "descricao": "Colocou um zero a mais na resposta.", "peso": 2 },
-{ "valor": "430", "tipo": "erro", "categoria": "conceito", "erro": "multiplicacao_confunde_com_soma", "descricao": "Somou os valores em vez de multiplicar.", "peso": 3 }
-],
-"passo": "Multiplique os números sem os zeros: 4 × 3 = 12. Depois, conte todos os zeros (dois no 400 e um no 30 = três zeros) e coloque no final: 12.000.",
-"dica": "Multiplique a parte que não é zero e depois devolva todos os zeros para a resposta!"
-},
-{
-"id": "B2A04",
-"aula": 2,
-"tipo": "aritmetica",
-"dificuldade": 3,
-"tipoPedagogico": "base",
-"bncc": "EF07MA10",
-"bncc_desc": "Divisao de Fracoes",
-"display": "Calcule: (1/2) ÷ (1/4)",
-"res": "2",
-"alternativas": [
-{ "valor": "2", "tipo": "acerto" },
-{ "valor": "1/8", "tipo": "erro", "categoria": "conceito", "erro": "divisao_fracoes_multiplica_direto", "descricao": "Multiplicou as frações diretamente sem inverter a segunda.", "peso": 3 },
-{ "valor": "1/2", "tipo": "erro", "categoria": "procedimento", "erro": "divisao_fracoes_mantem_denominador", "descricao": "Dividiu apenas os denominadores sem lógica.", "peso": 2 },
-{ "valor": "4", "tipo": "erro", "categoria": "calculo", "erro": "divisao_inverte_primeira", "descricao": "Inverteu a primeira fração em vez da segunda.", "peso": 2 }
-],
-"passo": "Para dividir frações, mantemos a primeira e multiplicamos pelo inverso da segunda: (1/2) × (4/1) = 4/2 = 2.",
-"dica": "Divisão de frações: repete a primeira e multiplica pela segunda de cabeça pra baixo!"
-},
-{
-"id": "B3A04",
-"aula": 3,
-"tipo": "aritmetica",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF08MA19",
-"bncc_desc": "Volume do Cubo",
-"display": "Qual é o volume de um cubo com 3 cm de aresta?",
-"res": "27 cm³",
-"alternativas": [
-{ "valor": "27 cm³", "tipo": "acerto" },
-{ "valor": "9 cm³", "tipo": "erro", "categoria": "conceito", "erro": "volume_calcula_area_face", "descricao": "Calculou a área de uma face (3x3) em vez do volume.", "peso": 3 },
-{ "valor": "27 cm²", "tipo": "erro", "categoria": "atencao", "erro": "volume_unidade_errada", "descricao": "Acertou o número, mas errou a unidade de medida colocando quadrado.", "peso": 1 },
-{ "valor": "12 cm³", "tipo": "erro", "categoria": "procedimento", "erro": "volume_multiplica_por_quatro", "descricao": "Multiplicou a aresta por 4 como se fosse o perímetro de uma face.", "peso": 2 }
-],
-"passo": "O volume do cubo é calculado multiplicando comprimento × largura × altura. Como todos são iguais a 3: 3 × 3 × 3 = 27 cm³.",
-"dica": "Volume envolve três dimensões. Lembre do número 3! Multiplique a aresta por ela mesma três vezes."
-},
-{
-"id": "B4A04",
-"aula": 4,
-"tipo": "aritmetica",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA18",
-"bncc_desc": "Equacao com Subtracao",
-"display": "Resolva a equação: x + 8 = 12",
-"res": "x = 4",
-"alternativas": [
-{ "valor": "x = 4", "tipo": "acerto" },
-{ "valor": "x = 20", "tipo": "erro", "categoria": "conceito", "erro": "equacao_soma_dois_lados", "descricao": "Somou o 8 ao 12 ao passá-lo de lado.", "peso": 3 },
-{ "valor": "x = -4", "tipo": "erro", "categoria": "procedimento", "erro": "equacao_inverte_sinal_errado", "descricao": "Passou o 12 para o outro lado, fazendo 8 - 12.", "peso": 2 },
-{ "valor": "x = 96", "tipo": "erro", "categoria": "interpretacao", "erro": "equacao_multiplica_termos", "descricao": "Multiplicou os termos em vez de fazer subtração.", "peso": 1 }
-],
-"passo": "O 8 está somando. Para isolar o x, passamos o 8 para o outro lado subtraindo: x = 12 - 8. Resultado: 4.",
-"dica": "Equação é uma balança! Se você quer deixar o X sozinho, tem que tirar o 8. E tirar do outro lado também."
-},
-{
-"id": "B1C01",
-"aula": 1,
-"tipo": "contexto",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF06MA06",
-"bncc_desc": "Problema de MMC",
-"display": "Dois ônibus saem do terminal juntos. O ônibus A passa a cada 10 min e o B a cada 15 min. Em quantos minutos eles sairão juntos novamente?",
-"res": "30 min",
-"alternativas": [
-{ "valor": "30 min", "tipo": "acerto" },
-{ "valor": "25 min", "tipo": "erro", "categoria": "conceito", "erro": "problema_soma_tempos", "descricao": "Apenas somou os tempos dos dois ônibus.", "peso": 3 },
-{ "valor": "150 min", "tipo": "erro", "categoria": "procedimento", "erro": "problema_multiplica_tempos", "descricao": "Multiplicou diretamente e não encontrou o mínimo.", "peso": 2 },
-{ "valor": "5 min", "tipo": "erro", "categoria": "interpretacao", "erro": "problema_calculou_mdc", "descricao": "Calculou o MDC interpretando o problema como divisão de partes.", "peso": 3 }
-],
-"passo": "Encontramos o MMC de 10 e 15. Múltiplos de 10: 10, 20, 30... Múltiplos de 15: 15, 30... O encontro ocorre nos 30 minutos.",
-"dica": "Problemas sobre 'quando as coisas vão acontecer juntas novamente' são resolvidos com o MMC!"
-},
-{
-"id": "B1C02",
-"aula": 1,
-"tipo": "contexto",
-"dificuldade": 3,
-"tipoPedagogico": "base",
-"bncc": "EF06MA06",
-"bncc_desc": "Problema de MDC",
-"display": "Uma costureira tem fitas de 20 cm e 30 cm. Ela quer cortar ambas em pedaços iguais, do maior tamanho possível. Qual será o tamanho de cada pedaço?",
-"res": "10 cm",
-"alternativas": [
-{ "valor": "10 cm", "tipo": "acerto" },
-{ "valor": "60 cm", "tipo": "erro", "categoria": "conceito", "erro": "problema_calculou_mmc", "descricao": "Calculou o MMC, o que não faz sentido para corte de fitas.", "peso": 3 },
-{ "valor": "5 cm", "tipo": "erro", "categoria": "procedimento", "erro": "problema_divisor_nao_maximo", "descricao": "Encontrou um divisor comum, mas não o máximo.", "peso": 2 },
-{ "valor": "50 cm", "tipo": "erro", "categoria": "interpretacao", "erro": "problema_somou_fitas", "descricao": "Somou as fitas acreditando ser o tamanho do pedaço.", "peso": 1 }
-],
-"passo": "Para dividir no maior tamanho possível sem sobrar, usamos o MDC de 20 e 30. O maior número que divide os dois é 10.",
-"dica": "Palavras como 'dividir', 'cortar partes iguais' e 'maior tamanho' indicam que você deve usar o MDC!"
-},
-{
-"id": "B1C03",
-"aula": 1,
-"tipo": "contexto",
-"dificuldade": 1,
-"tipoPedagogico": "recomposicao",
-"bncc": "EF06MA03",
-"bncc_desc": "Subtracao e Dinheiro",
-"display": "Você comprou um lanche de R$ 12 e pagou com uma nota de R$ 50. Quanto receberá de troco?",
-"res": "R$ 38",
-"alternativas": [
-{ "valor": "R$ 38", "tipo": "acerto" },
-{ "valor": "R$ 42", "tipo": "erro", "categoria": "conceito", "erro": "troco_falha_reagrupamento", "descricao": "Subtraiu 0-2 invertendo para 2-0, errando a dezena.", "peso": 3 },
-{ "valor": "R$ 28", "tipo": "erro", "categoria": "procedimento", "erro": "troco_erro_emprestimo", "descricao": "Tirou 1 da dezena mas errou a conta na unidade.", "peso": 2 },
-{ "valor": "R$ 62", "tipo": "erro", "categoria": "interpretacao", "erro": "troco_somou_valores", "descricao": "Somou o valor da nota com a compra em vez de subtrair.", "peso": 2 }
-],
-"passo": "Para achar o troco, subtraímos o valor gasto da nota: 50 - 12. O zero empresta do 5 e vira 10. 10 - 2 = 8, 4 - 1 = 3. Troco: 38.",
-"dica": "O troco é sempre uma conta de menos (subtração) entre o que você deu e o que o produto custa."
-},
-{
-"id": "B2C01",
-"aula": 2,
-"tipo": "contexto",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA09",
-"bncc_desc": "Fracoes Pizza",
-"display": "João comeu 1/4 de uma pizza e Maria comeu 2/4. Qual fração da pizza eles comeram juntos?",
-"res": "3/4",
-"alternativas": [
-{ "valor": "3/4", "tipo": "acerto" },
-{ "valor": "3/8", "tipo": "erro", "categoria": "conceito", "erro": "fracao_contexto_soma_denominador", "descricao": "Somou denominadores acreditando que os pedaços mudam de tamanho.", "peso": 3 },
-{ "valor": "1/4", "tipo": "erro", "categoria": "interpretacao", "erro": "fracao_contexto_subtraiu", "descricao": "Fez a diferença entre quem comeu mais e menos.", "peso": 1 },
-{ "valor": "2/16", "tipo": "erro", "categoria": "procedimento", "erro": "fracao_contexto_multiplicou", "descricao": "Multiplicou as frações do contexto.", "peso": 2 }
-],
-"passo": "Somamos as frações com o mesmo denominador. Mantém-se o 4 em baixo e soma 1 + 2 em cima: 3/4.",
-"dica": "O tamanho do pedaço (número de baixo) não muda. Você só soma a quantidade de pedaços que eles comeram!"
-},
-{
-"id": "B2C02",
-"aula": 2,
-"tipo": "contexto",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA04",
-"bncc_desc": "Temperatura",
-"display": "A temperatura era de -3°C de manhã e à tarde subiu 8°C. Qual passou a ser a temperatura?",
-"res": "5°C",
-"alternativas": [
-{ "valor": "5°C", "tipo": "acerto" },
-{ "valor": "11°C", "tipo": "erro", "categoria": "conceito", "erro": "temperatura_ignora_negativo", "descricao": "Tratou a temperatura negativa como positiva e somou (3+8).", "peso": 3 },
-{ "valor": "-11°C", "tipo": "erro", "categoria": "procedimento", "erro": "temperatura_soma_negativa", "descricao": "Juntou as temperaturas mantendo o sinal negativo.", "peso": 2 },
-{ "valor": "-5°C", "tipo": "erro", "categoria": "atencao", "erro": "temperatura_erro_sinal", "descricao": "Errou qual sinal permanece após a operação na reta.", "peso": 1 }
-],
-"passo": "Iniciando no -3 na reta numérica, ao subir 8 graus, andamos 3 casas até o zero e sobram 5 casas positivas. Resultado: 5°C.",
-"dica": "Pense num termômetro: você sai lá do fundo do zero (-3) e vai subindo. Passa pelo zero e continua subindo mais 5!"
-},
-{
-"id": "B2C03",
-"aula": 2,
-"tipo": "contexto",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA17",
-"bncc_desc": "Proporcionalidade Receita",
-"display": "Uma receita usa 2 copos de farinha para fazer 10 pães. Quantos copos são necessários para 30 pães?",
-"res": "6 copos",
-"alternativas": [
-{ "valor": "6 copos", "tipo": "acerto" },
-{ "valor": "4 copos", "tipo": "erro", "categoria": "conceito", "erro": "proporcao_aditiva", "descricao": "Somou 20 aos pães e somou 2 à farinha, quebrando a proporção multiplicativa.", "peso": 3 },
-{ "valor": "60 copos", "tipo": "erro", "categoria": "procedimento", "erro": "proporcao_multiplica_direto", "descricao": "Multiplicou os pães (30) pela quantidade de farinha base (2) ignorando a base de 10.", "peso": 2 },
-{ "valor": "5 copos", "tipo": "erro", "categoria": "calculo", "erro": "proporcao_calculo_errado", "descricao": "Errou a regra de 3 ou a percepção da multiplicação.", "peso": 1 }
-],
-"passo": "Para ir de 10 pães para 30, multiplicamos a quantidade por 3. Então, a farinha também deve ser multiplicada por 3: 2 × 3 = 6.",
-"dica": "Se a quantidade de pães triplicou, todos os ingredientes precisam triplicar na mesma proporção!"
-},
-{
-"id": "B3C01",
-"aula": 3,
-"tipo": "contexto",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA31",
-"bncc_desc": "Area Pintura",
-"display": "Para pintar uma parede de 4m de largura por 3m de altura, quantos metros quadrados (m²) de tinta a área exige?",
-"res": "12 m²",
-"alternativas": [
-{ "valor": "12 m²", "tipo": "acerto" },
-{ "valor": "14 m²", "tipo": "erro", "categoria": "conceito", "erro": "area_contexto_perimetro", "descricao": "Calculou o perímetro em vez da área (4+4+3+3).", "peso": 3 },
-{ "valor": "7 m²", "tipo": "erro", "categoria": "procedimento", "erro": "area_contexto_somou_lados", "descricao": "Apenas somou a largura e altura.", "peso": 2 },
-{ "valor": "24 m²", "tipo": "erro", "categoria": "interpretacao", "erro": "area_contexto_dobro_pintura", "descricao": "Multiplicou por 2 assumindo frentes diferentes, sem instrução no texto.", "peso": 1 }
-],
-"passo": "A área é o espaço preenchido pela parede. Para o formato retângulo: base × altura. Logo, 4 × 3 = 12 m².",
-"dica": "Para cobrir a superfície (como pintar), multiplicamos os dois lados da parede para saber todo o espaço nela."
-},
-{
-"id": "B3C02",
-"aula": 3,
-"tipo": "contexto",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA31",
-"bncc_desc": "Perimetro Cerca",
-"display": "Um fazendeiro precisa cercar um terreno quadrado de 10m de lado. Quantos metros de cerca ele usará?",
-"res": "40 m",
-"alternativas": [
-{ "valor": "40 m", "tipo": "acerto" },
-{ "valor": "100 m", "tipo": "erro", "categoria": "conceito", "erro": "perimetro_contexto_area", "descricao": "Calculou a área (10x10) do terreno em vez do contorno para a cerca.", "peso": 3 },
-{ "valor": "20 m", "tipo": "erro", "categoria": "procedimento", "erro": "perimetro_contexto_dois_lados", "descricao": "Somou apenas a largura e comprimento (2 lados).", "peso": 2 },
-{ "valor": "10 m", "tipo": "erro", "categoria": "interpretacao", "erro": "perimetro_nao_somou", "descricao": "Achou que a medida do lado já representava a cerca inteira.", "peso": 1 }
-],
-"passo": "Cercar algo significa contornar suas beiradas (perímetro). Como o terreno é quadrado, possui 4 lados de 10m. Logo, 10 + 10 + 10 + 10 = 40m.",
-"dica": "Cerca contorna os limites do terreno! Some a medida de todos os lados."
-},
-{
-"id": "B4C01",
-"aula": 4,
-"tipo": "contexto",
-"dificuldade": 3,
-"tipoPedagogico": "base",
-"bncc": "EF08MA06",
-"bncc_desc": "Modelagem Taxi",
-"display": "Um táxi cobra R$ 5 de bandeirada fixa mais R$ 2 por km rodado. Se uma corrida custou R$ 25, quantos km foram percorridos?",
-"res": "10 km",
-"alternativas": [
-{ "valor": "10 km", "tipo": "acerto" },
-{ "valor": "15 km", "tipo": "erro", "categoria": "conceito", "erro": "modelagem_ignora_bandeirada", "descricao": "Dividiu 25 por 2, ignorando que os 5 reais iniciais devem ser descontados primeiro.", "peso": 3 },
-{ "valor": "12,5 km", "tipo": "erro", "categoria": "procedimento", "erro": "modelagem_dividiu_total", "descricao": "Fez 25 dividido por 2, esquecendo a lógica da modelagem linear.", "peso": 2 },
-{ "valor": "5 km", "tipo": "erro", "categoria": "calculo", "erro": "modelagem_subtraiu_errado", "descricao": "Tirou os 5 reais e depois dividiu errado.", "peso": 1 }
-],
-"passo": "Modelamos como: 5 + 2x = 25. Tiramos os 5 fixos do total: 25 - 5 = 20 reais sobraram para os quilômetros. Dividindo por 2 reais cada km: 20 ÷ 2 = 10.",
-"dica": "Retire o valor fixo da bandeirada do total antes de dividir pelo valor do quilômetro!"
-},
-{
-"id": "B4C02",
-"aula": 4,
-"tipo": "contexto",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA18",
-"bncc_desc": "Equacao Idade",
-"display": "A idade de Pedro somada a 12 anos resulta em 30. Qual é a idade de Pedro?",
-"res": "18 anos",
-"alternativas": [
-{ "valor": "18 anos", "tipo": "acerto" },
-{ "valor": "42 anos", "tipo": "erro", "categoria": "conceito", "erro": "equacao_contexto_somou_novamente", "descricao": "Somou os 12 à idade alvo em vez de subtrair para achar a original.", "peso": 3 },
-{ "valor": "15 anos", "tipo": "erro", "categoria": "procedimento", "erro": "equacao_contexto_dividiu", "descricao": "Dividiu por 2, fugindo do modelo de equação aditiva.", "peso": 2 },
-{ "valor": "20 anos", "tipo": "erro", "categoria": "calculo", "erro": "equacao_contexto_erro_conta", "descricao": "Errou a conta básica de menos (30 - 12).", "peso": 1 }
-],
-"passo": "Equacionamos o problema: x + 12 = 30. Para isolar o x, passamos 12 subtraindo: x = 30 - 12. x = 18.",
-"dica": "Escreva o problema em matemática: Alguma coisa + 12 tem que dar 30. Qual conta desfaz isso?"
-},
-{
-"id": "B5C01",
-"aula": 5,
-"tipo": "contexto",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF08MA22",
-"bncc_desc": "Media Notas",
-"display": "Um aluno tirou 5 na primeira prova e 9 na segunda. Qual foi a sua média no semestre?",
-"res": "7",
-"alternativas": [
-{ "valor": "7", "tipo": "acerto" },
-{ "valor": "14", "tipo": "erro", "categoria": "conceito", "erro": "media_contexto_so_soma", "descricao": "Somou as duas notas e esqueceu de dividir pelo número de provas.", "peso": 3 },
-{ "valor": "4", "tipo": "erro", "categoria": "procedimento", "erro": "media_contexto_diferenca", "descricao": "Tirou a diferença entre as notas.", "peso": 2 },
-{ "valor": "8", "tipo": "erro", "categoria": "calculo", "erro": "media_contexto_calculo", "descricao": "Errou na soma mental e divisão final.", "peso": 1 }
-],
-"passo": "Soma das notas: 5 + 9 = 14. Como foram 2 provas, divide-se por 2: 14 ÷ 2 = 7.",
-"dica": "Some tudo que ganhou nas provas e divida pela quantidade de avaliações. Essa é a nota que resume tudo!"
-},
-{
-"id": "B5C02",
-"aula": 5,
-"tipo": "contexto",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF08MA22",
-"bncc_desc": "Probabilidade Bolinhas",
-"display": "Em um saco há 3 bolas azuis e 7 bolas vermelhas. Puxando uma bola ao acaso, qual a probabilidade de ela ser azul?",
-"res": "3/10 (ou 30%)",
-"alternativas": [
-{ "valor": "3/10 (ou 30%)", "tipo": "acerto" },
-{ "valor": "3/7", "tipo": "erro", "categoria": "conceito", "erro": "prob_contexto_casos_falhos", "descricao": "Criou uma razão entre as azuis e as vermelhas (favorável x desfavorável), sem considerar o total.", "peso": 3 },
-{ "valor": "7/10", "tipo": "erro", "categoria": "interpretacao", "erro": "prob_contexto_evento_errado", "descricao": "Calculou a probabilidade do evento oposto (bola vermelha).", "peso": 2 },
-{ "valor": "1/3", "tipo": "erro", "categoria": "procedimento", "erro": "prob_contexto_chute", "descricao": "Chutou um valor aleatório ignorando a regra de frações do espaço amostral.", "peso": 1 }
-],
-"passo": "Total de bolas = 3 + 7 = 10. A probabilidade é a divisão dos casos que você quer (3) pelo total de casos (10).",
-"dica": "A probabilidade é uma fração onde a parte de baixo é sempre o TOTAL de coisas, e a de cima é só o que você quer pegar."
-},
-{
-"id": "B6C01",
-"aula": 6,
-"tipo": "contexto",
-"dificuldade": 3,
-"tipoPedagogico": "base",
-"bncc": "EF09MA14",
-"bncc_desc": "Pitagoras Escada",
-"display": "Uma escada de 5m está encostada numa parede. O pé da escada está a 3m da parede. A que altura a escada toca a parede?",
-"res": "4m",
-"alternativas": [
-{ "valor": "4m", "tipo": "acerto" },
-{ "valor": "8m", "tipo": "erro", "categoria": "conceito", "erro": "pitagoras_contexto_soma_direta", "descricao": "Somou o comprimento e a distância.", "peso": 3 },
-{ "valor": "34m", "tipo": "erro", "categoria": "procedimento", "erro": "pitagoras_contexto_somou_quadrados", "descricao": "Somou os quadrados (25+9=34) considerando os dados como catetos, sendo a escada a hipotenusa.", "peso": 2 },
-{ "valor": "2m", "tipo": "erro", "categoria": "interpretacao", "erro": "pitagoras_contexto_subtracao_linear", "descricao": "Apenas subtraiu 5 - 3 sem elevar ao quadrado.", "peso": 1 }
-],
-"passo": "A escada é a hipotenusa (5), a distância o cateto (3), buscamos o cateto da parede (x). 5² = 3² + x² -> 25 = 9 + x² -> x² = 16 -> x = 4.",
-"dica": "Desenhe um triângulo! A escada inclinada é sempre o lado maior, a hipotenusa."
-},
-{
-"id": "B6C02",
-"aula": 6,
-"tipo": "contexto",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF08MA15",
-"bncc_desc": "Poligonos Mosaico",
-"display": "Um mosaico é feito com pequenos polígonos regulares que têm 6 lados. Qual é o nome dessa figura?",
-"res": "Hexágono",
-"alternativas": [
-{ "valor": "Hexágono", "tipo": "acerto" },
-{ "valor": "Pentágono", "tipo": "erro", "categoria": "conceito", "erro": "poligono_contexto_nome", "descricao": "Confundiu com o polígono de 5 lados.", "peso": 3 },
-{ "valor": "Heptágono", "tipo": "erro", "categoria": "procedimento", "erro": "poligono_contexto_prefixo", "descricao": "Confundiu com o polígono de 7 lados.", "peso": 2 },
-{ "valor": "Quadrado", "tipo": "erro", "categoria": "interpretacao", "erro": "poligono_contexto_chute", "descricao": "Citou um polígono não correspondente aos 6 lados.", "peso": 1 }
-],
-"passo": "O prefixo 'hexa' significa seis, e 'gono' significa ângulos/lados. Portanto, polígono de 6 lados é o hexágono.",
-"dica": "Lembre do futebol: uma equipe que ganha 6 vezes é 'hexacampeã'."
-},
-{
-"id": "B1C04",
-"aula": 1,
-"tipo": "contexto",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF06MA03",
-"bncc_desc": "Multiplicacao Teatro",
-"display": "Um teatro tem 15 fileiras de cadeiras, com 20 cadeiras em cada fileira. Quantas pessoas cabem sentadas?",
-"res": "300 pessoas",
-"alternativas": [
-{ "valor": "300 pessoas", "tipo": "acerto" },
-{ "valor": "35 pessoas", "tipo": "erro", "categoria": "conceito", "erro": "multiplicacao_contexto_soma", "descricao": "Somou as fileiras com as cadeiras (15+20).", "peso": 3 },
-{ "valor": "3.000 pessoas", "tipo": "erro", "categoria": "procedimento", "erro": "multiplicacao_contexto_zero_extra", "descricao": "Colocou um zero a mais na multiplicação.", "peso": 2 },
-{ "valor": "150 pessoas", "tipo": "erro", "categoria": "calculo", "erro": "multiplicacao_contexto_erro_base", "descricao": "Errou o produto de 15 x 2.", "peso": 1 }
-],
-"passo": "Multiplicamos o número de fileiras pelo número de assentos em cada uma: 15 × 20. Fazemos 15 × 2 = 30, e adicionamos o zero do 20: 300.",
-"dica": "A organização em linhas e colunas (fileiras e cadeiras) sempre é calculada usando multiplicação!"
-},
-{
-"id": "B2C04",
-"aula": 2,
-"tipo": "contexto",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA09",
-"bncc_desc": "Proporcao Fotografia",
-"display": "Uma foto retangular tem lados na razão de 2 para 3. Se o lado menor é 10 cm, quanto mede o lado maior?",
-"res": "15 cm",
-"alternativas": [
-{ "valor": "15 cm", "tipo": "acerto" },
-{ "valor": "20 cm", "tipo": "erro", "categoria": "conceito", "erro": "proporcao_contexto_dobro", "descricao": "Apenas dobrou o valor em vez de seguir a razão 3.", "peso": 3 },
-{ "valor": "30 cm", "tipo": "erro", "categoria": "procedimento", "erro": "proporcao_contexto_multiplica_direto", "descricao": "Multiplicou o lado dado pela proporção final sem dividir.", "peso": 2 },
-{ "valor": "13 cm", "tipo": "erro", "categoria": "interpretacao", "erro": "proporcao_contexto_soma_razao", "descricao": "Somou o 3 ao número 10.", "peso": 1 }
-],
-"passo": "A razão 2 para 3 significa que a cada 2cm de um lado, há 3cm do outro. Se o menor é 10cm, o fator multiplicador é 5 (10/2). Multiplicamos o outro lado por 5: 3 × 5 = 15.",
-"dica": "Descubra quantas vezes a medida real aumentou em relação à razão. Depois aumente o outro lado na mesma quantidade!"
-},
-{
-"id": "B3C03",
-"aula": 3,
-"tipo": "contexto",
-"dificuldade": 3,
-"tipoPedagogico": "base",
-"bncc": "EF08MA19",
-"bncc_desc": "Volume Aquario",
-"display": "Um aquário em forma de bloco retangular tem 5m de comprimento, 2m de largura e 3m de altura. Qual seu volume em m³?",
-"res": "30 m³",
-"alternativas": [
-{ "valor": "30 m³", "tipo": "acerto" },
-{ "valor": "10 m³", "tipo": "erro", "categoria": "conceito", "erro": "volume_contexto_soma", "descricao": "Somou as três dimensões (5+2+3).", "peso": 3 },
-{ "valor": "25 m³", "tipo": "erro", "categoria": "procedimento", "erro": "volume_contexto_falsa_multiplicacao", "descricao": "Multiplicou apenas duas medidas.", "peso": 2 },
-{ "valor": "60 m³", "tipo": "erro", "categoria": "calculo", "erro": "volume_contexto_dobro", "descricao": "Multiplicou o resultado final por dois.", "peso": 1 }
-],
-"passo": "Para calcular o volume do bloco retangular, multiplicamos as três dimensões juntas: Comprimento × Largura × Altura. 5 × 2 = 10; 10 × 3 = 30.",
-"dica": "Para achar a quantidade de espaço interno (volume) em caixas e aquários, faça 'lado vezes lado vezes lado'!"
-},
-{
-"id": "B4C03",
-"aula": 4,
-"tipo": "contexto",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA18",
-"bncc_desc": "Equacao Livros",
-"display": "Ana tem o dobro de livros de Bia. Juntas elas têm 24 livros. Quantos livros Bia tem?",
-"res": "8 livros",
-"alternativas": [
-{ "valor": "8 livros", "tipo": "acerto" },
-{ "valor": "12 livros", "tipo": "erro", "categoria": "conceito", "erro": "equacao_contexto_divisao_metade", "descricao": "Dividiu os 24 livros igualmente por 2, ignorando a relação de dobro.", "peso": 3 },
-{ "valor": "16 livros", "tipo": "erro", "categoria": "interpretacao", "erro": "equacao_contexto_confunde_pessoas", "descricao": "Calculou os livros de Bia corretamente e marcou a quantidade da Ana (o dobro).", "peso": 2 },
-{ "valor": "6 livros", "tipo": "erro", "categoria": "calculo", "erro": "equacao_contexto_divide_quatro", "descricao": "Dividiu o total por 4.", "peso": 1 }
-],
-"passo": "Livros de Bia = x. Livros de Ana = 2x. A equação é: x + 2x = 24. Portanto 3x = 24. Dividindo: x = 8.",
-"dica": "Traduza o texto: se Ana tem 2 partes e Bia tem 1, no total as duas juntas têm 3 partes! Divida o total em 3."
-},
-{
-"id": "B5C03",
-"aula": 5,
-"tipo": "contexto",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF08MA22",
-"bncc_desc": "Estatistica Vendas",
-"display": "Uma loja vendeu 10, 15, 20, e 15 sapatos na semana. Qual foi a mediana das vendas?",
-"res": "15",
-"alternativas": [
-{ "valor": "15", "tipo": "acerto" },
-{ "valor": "20", "tipo": "erro", "categoria": "conceito", "erro": "mediana_contexto_maior_valor", "descricao": "Escolheu o maior valor achando que mediana trata do topo de dados.", "peso": 3 },
-{ "valor": "17,5", "tipo": "erro", "categoria": "procedimento", "erro": "mediana_contexto_nao_ordenou", "descricao": "Pegou os dois do meio sem colocar em ordem e fez a média (15 e 20).", "peso": 2 },
-{ "valor": "10", "tipo": "erro", "categoria": "interpretacao", "erro": "mediana_contexto_minimo", "descricao": "Escolheu o menor valor.", "peso": 1 }
-],
-"passo": "Para a mediana, primeiro colocamos em ordem: 10, 15, 15, 20. Sendo 4 valores (par), somamos os dois centrais (15 e 15) e dividimos por 2, que dá 15.",
-"dica": "Regra número um da mediana: SEMPRE organize do menor para o maior antes de olhar para o meio!"
-},
-{
-"id": "B6C03",
-"aula": 6,
-"tipo": "contexto",
-"dificuldade": 3,
-"tipoPedagogico": "base",
-"bncc": "EF09MA14",
-"bncc_desc": "Geometria Diagonal Terreno",
-"display": "Um terreno retangular mede 30m por 40m. Se você andar em linha reta de uma ponta à outra atravessando o meio (diagonal), quantos metros andará?",
-"res": "50 m",
-"alternativas": [
-{ "valor": "50 m", "tipo": "acerto" },
-{ "valor": "70 m", "tipo": "erro", "categoria": "conceito", "erro": "diagonal_contexto_soma_borda", "descricao": "Andou pela borda somando 30 + 40 em vez de usar Pitágoras para a diagonal.", "peso": 3 },
-{ "valor": "100 m", "tipo": "erro", "categoria": "procedimento", "erro": "diagonal_contexto_falta_raiz", "descricao": "Calculou a soma dos quadrados como 900+1600=2500, e errou a raiz brutalmente.", "peso": 2 },
-{ "valor": "35 m", "tipo": "erro", "categoria": "calculo", "erro": "diagonal_contexto_media_lados", "descricao": "Fez a média dos lados.", "peso": 1 }
-],
-"passo": "A diagonal do retângulo forma um triângulo retângulo. Usamos Pitágoras: d² = 30² + 40². d² = 900 + 1600 = 2500. Raiz de 2500 é 50.",
-"dica": "Sempre que cortar um retângulo pelo meio, lembre-se do triângulo retângulo e aplique a fórmula de Pitágoras."
-},
-{
-"id": "B1N01",
-"aula": 1,
-"tipo": "conceito",
-"dificuldade": 1,
-"tipoPedagogico": "base",
-"bncc": "EF06MA05",
-"bncc_desc": "O que e Numero Primo",
-"display": "Um número é considerado PRIMO quando:",
-"res": "É divisível apenas por 1 e por ele mesmo",
-"alternativas": [
-{ "valor": "É divisível apenas por 1 e por ele mesmo", "tipo": "acerto" },
-{ "valor": "Termina em 1, 3, 5, 7 ou 9", "tipo": "erro", "categoria": "conceito", "erro": "conceito_primo_confunde_impar", "descricao": "Acreditou que todos os números ímpares são primos.", "peso": 3 },
-{ "valor": "Pode ser dividido por qualquer número sem deixar resto", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_primo_falsa_divisibilidade", "descricao": "Confundiu com as propriedades de números muito compostos e pares.", "peso": 2 },
-{ "valor": "Sempre tem raiz quadrada exata", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_primo_confunde_quadrado_perfeito", "descricao": "Confundiu primos com quadrados perfeitos.", "peso": 1 }
-],
-"passo": "A definição de número primo é clara: ele possui exatamente dois divisores, que são o número 1 e ele mesmo.",
-"dica": "O número 2 é o único primo que é par. Todos os outros não entram em tabuadas que não a sua."
-},
-{
-"id": "B1N02",
-"aula": 1,
-"tipo": "conceito",
-"dificuldade": 1,
-"tipoPedagogico": "base",
-"bncc": "EF06MA05",
-"bncc_desc": "Divisibilidade por 5",
-"display": "Qual a regra para descobrir se um número é divisível por 5 sem fazer a conta?",
-"res": "Ele deve terminar em 0 ou 5",
-"alternativas": [
-{ "valor": "Ele deve terminar em 0 ou 5", "tipo": "acerto" },
-{ "valor": "A soma de seus números deve ser 5", "tipo": "erro", "categoria": "conceito", "erro": "conceito_regra_cinco_aplica_tres", "descricao": "Usou a lógica da regra do 3, somando os algarismos.", "peso": 3 },
-{ "valor": "Ele deve ser um número ímpar", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_regra_cinco_falsa_impar", "descricao": "Generalizou que divisíveis por 5 são ímpares, ignorando os que terminam em 0.", "peso": 2 },
-{ "valor": "Ele deve terminar apenas em 5", "tipo": "erro", "categoria": "atencao", "erro": "conceito_regra_cinco_esquece_zero", "descricao": "Esqueceu que a dezena cheia também é divisível por 5.", "peso": 1 }
-],
-"passo": "Se você escrever a tabuada do 5 (5, 10, 15, 20...), verá que todos os resultados acabam com 0 ou com 5.",
-"dica": "Olhe só para o final do número. Se não for 0 nem 5, o 5 não divide ele!"
-},
-{
-"id": "B1N03",
-"aula": 1,
-"tipo": "conceito",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF06MA05",
-"bncc_desc": "Expoente Zero",
-"display": "Na potenciação, o que acontece quando qualquer número (diferente de zero) é elevado ao expoente 0?",
-"res": "O resultado é sempre 1",
-"alternativas": [
-{ "valor": "O resultado é sempre 1", "tipo": "acerto" },
-{ "valor": "O resultado é sempre 0", "tipo": "erro", "categoria": "conceito", "erro": "conceito_potencia_zero_zera", "descricao": "Acreditou que o expoente zera a conta como na multiplicação por zero.", "peso": 3 },
-{ "valor": "O resultado é o próprio número da base", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_potencia_zero_base", "descricao": "Confundiu com a regra do expoente 1, onde a base se repete.", "peso": 2 },
-{ "valor": "Não existe resposta", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_potencia_zero_falsa_impossibilidade", "descricao": "Achou que é impossível calcular, confundindo com divisão por zero.", "peso": 1 }
-],
-"passo": "Pela regra das potências da matemática, todo número natural diferente de zero elevado ao expoente 0 tem como resultado o número 1.",
-"dica": "Isso é uma regra de ouro: Base qualquer com numerozinho 0 em cima? Resposta direta: 1!"
-},
-{
-"id": "B2N01",
-"aula": 2,
-"tipo": "conceito",
-"dificuldade": 1,
-"tipoPedagogico": "base",
-"bncc": "EF07MA08",
-"bncc_desc": "Definicao Razao",
-"display": "Na matemática, o que a palavra 'razão' entre dois números significa na prática?",
-"res": "Uma divisão entre eles",
-"alternativas": [
-{ "valor": "Uma divisão entre eles", "tipo": "acerto" },
-{ "valor": "Uma soma entre eles", "tipo": "erro", "categoria": "conceito", "erro": "conceito_razao_soma", "descricao": "Confundiu razão com adição ou proporção agregada.", "peso": 3 },
-{ "valor": "A diferença entre o maior e o menor", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_razao_subtracao", "descricao": "Assumiu sentido coloquial de razão comparativa por subtração.", "peso": 2 },
-{ "valor": "O processo de multiplicar", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_razao_multiplicacao", "descricao": "Confundiu as operações básicas ao descrever o formato.", "peso": 1 }
-],
-"passo": "Razão é a forma de comparar duas quantidades calculando a divisão de uma pela outra. Geralmente escrevemos em formato de fração.",
-"dica": "Quando o professor disser 'A razão de X para Y', lembre-se: é só fazer X dividido por Y!"
-},
-{
-"id": "B2N02",
-"aula": 2,
-"tipo": "conceito",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA04",
-"bncc_desc": "Regra de Sinais Multiplicacao",
-"display": "Na multiplicação de números inteiros, qual é a regra ao multiplicar dois números negativos?",
-"res": "O resultado fica positivo",
-"alternativas": [
-{ "valor": "O resultado fica positivo", "tipo": "acerto" },
-{ "valor": "O resultado fica negativo", "tipo": "erro", "categoria": "conceito", "erro": "conceito_sinal_multiplica_mantem_negativo", "descricao": "Trouxe a regra da adição (soma de dívidas) para a multiplicação.", "peso": 3 },
-{ "valor": "O resultado fica neutro (zero)", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_sinal_anula", "descricao": "Achou que dois sinais iguais se cancelam deixando a conta nula.", "peso": 2 },
-{ "valor": "O sinal vai depender do maior número", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_sinal_regra_maior", "descricao": "Confundiu de novo com a regra de sinais da soma ou subtração.", "peso": 2 }
-],
-"passo": "A regra de sinais na multiplicação e divisão diz que sinais iguais resultam em número positivo (menos com menos = mais).",
-"dica": "O inimigo do meu inimigo é meu amigo: Negativo vezes Negativo dá POSITIVO!"
-},
-{
-"id": "B2N03",
-"aula": 2,
-"tipo": "conceito",
-"dificuldade": 1,
-"tipoPedagogico": "base",
-"bncc": "EF07MA09",
-"bncc_desc": "Fracoes Equivalentes",
-"display": "O que significa dizer que duas frações são 'equivalentes'?",
-"res": "Que elas representam a mesma quantidade",
-"alternativas": [
-{ "valor": "Que elas representam a mesma quantidade", "tipo": "acerto" },
-{ "valor": "Que os números de cima e de baixo são idênticos", "tipo": "erro", "categoria": "conceito", "erro": "conceito_equivalente_igualdade_visual", "descricao": "Achou que os números devem ser visualmente os mesmos (frações iguais, não equivalentes).", "peso": 3 },
-{ "valor": "Que a soma delas dá um número inteiro", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_equivalente_soma_inteira", "descricao": "Confundiu equivalência com frações complementares.", "peso": 2 },
-{ "valor": "Que o numerador é maior que o denominador", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_equivalente_fracao_impropria", "descricao": "Confundiu o conceito com o de fração imprópria.", "peso": 1 }
-],
-"passo": "Frações equivalentes escrevem a mesma porção usando fatias diferentes. Exemplo: 1/2 pizza é a mesma coisa que 2/4 pizza.",
-"dica": "Elas escrevem com números diferentes o mesmo tamanho de pedaço que vai pro seu prato."
-},
-{
-"id": "B3N01",
-"aula": 3,
-"tipo": "conceito",
-"dificuldade": 1,
-"tipoPedagogico": "base",
-"bncc": "EF07MA31",
-"bncc_desc": "Diferenca Area e Perimetro",
-"display": "Qual a principal diferença entre medir o Perímetro e medir a Área de um retângulo?",
-"res": "O perímetro é o contorno e a área é a superfície interna",
-"alternativas": [
-{ "valor": "O perímetro é o contorno e a área é a superfície interna", "tipo": "acerto" },
-{ "valor": "O perímetro é a superfície interna e a área é o contorno", "tipo": "erro", "categoria": "conceito", "erro": "conceito_area_perimetro_invertido", "descricao": "Inverteu completamente as duas definições.", "peso": 3 },
-{ "valor": "Ambos medem a mesma coisa, mas em unidades diferentes", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_area_perimetro_iguais", "descricao": "Acreditou que são o mesmo cálculo com unidades mudadas.", "peso": 2 },
-{ "valor": "Área é em 3D e perímetro é em 2D", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_area_volume_confusao", "descricao": "Envolveu o conceito de volume sem necessidade.", "peso": 1 }
-],
-"passo": "Perímetro (borda) usa linhas simples e foca no comprimento total de fora. Área foca em quantos quadrados de espaço cabem dentro da figura.",
-"dica": "Perímetro é o rodapé da parede. Área é toda a parede sendo pintada!"
-},
-{
-"id": "B3N02",
-"aula": 3,
-"tipo": "conceito",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF08MA19",
-"bncc_desc": "Unidades de Volume",
-"display": "Qual dessas unidades é usada para medir Volumes?",
-"res": "Metros cúbicos (m³)",
-"alternativas": [
-{ "valor": "Metros cúbicos (m³)", "tipo": "acerto" },
-{ "valor": "Metros quadrados (m²)", "tipo": "erro", "categoria": "conceito", "erro": "conceito_unidade_area", "descricao": "Apontou a medida de área para medir espaço em 3 dimensões.", "peso": 3 },
-{ "valor": "Quilômetros (km)", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_unidade_linear", "descricao": "Apontou unidade de comprimento simples.", "peso": 2 },
-{ "valor": "Graus Celsius (°C)", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_unidade_temperatura", "descricao": "Apontou uma unidade que mede temperatura.", "peso": 1 }
-],
-"passo": "O volume mede espaço de 3 dimensões (comprimento, largura, altura), então a unidade padrão ganha o número 3 no final, virando 'cúbica'.",
-"dica": "Área tem o 2zinho em cima (m²). Volume tem o 3zinho em cima (m³) pois são 3 dimensões da caixa!"
-},
-{
-"id": "B4N01",
-"aula": 4,
-"tipo": "conceito",
-"dificuldade": 1,
-"tipoPedagogico": "base",
-"bncc": "EF07MA18",
-"bncc_desc": "O que e Incognita",
-"display": "Nas equações matemáticas, o que a letra (como o 'x' ou 'y') representa?",
-"res": "Um valor desconhecido que precisamos descobrir",
-"alternativas": [
-{ "valor": "Um valor desconhecido que precisamos descobrir", "tipo": "acerto" },
-{ "valor": "Sempre um sinal de multiplicação", "tipo": "erro", "categoria": "conceito", "erro": "conceito_incognita_multiplicacao", "descricao": "Confundiu o x da álgebra com o símbolo da conta de vezes.", "peso": 3 },
-{ "valor": "Uma letra que não interfere na conta e pode ser ignorada", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_incognita_irrelevante", "descricao": "Achou que a letra é puro enfeite matemático.", "peso": 2 },
-{ "valor": "Uma abreviação do nome do autor da questão", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_incognita_chute", "descricao": "Criou uma definição irreal para a álgebra.", "peso": 1 }
-],
-"passo": "A letra (incógnita) é um espaço reservado para um número que vai equilibrar a conta. A missão na equação é achar que número é esse.",
-"dica": "A letra é só um esconderijo de um número tímido. Nossa missão é desenrolar a conta até ele aparecer!"
-},
-{
-"id": "B4N02",
-"aula": 4,
-"tipo": "conceito",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA18",
-"bncc_desc": "Diferenca Equacao e Inequacao",
-"display": "Enquanto uma Equação tem o sinal de igual (=), o que aparece numa Inequação?",
-"res": "Sinais de maior (>) ou menor (<)",
-"alternativas": [
-{ "valor": "Sinais de maior (>) ou menor (<)", "tipo": "acerto" },
-{ "valor": "Sinal de mais (+) obrigatório", "tipo": "erro", "categoria": "conceito", "erro": "conceito_inequacao_confunde_soma", "descricao": "Achou que a diferença estaria na operação aritmética.", "peso": 3 },
-{ "valor": "Sinal de igual com duas barras horizontais", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_inequacao_confunde_simbolo", "descricao": "Não conheceu o símbolo usado em inequações.", "peso": 2 },
-{ "valor": "Apenas letras, sem números", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_inequacao_pura_letra", "descricao": "Falsa generalização sobre a ausência de números.", "peso": 1 }
-],
-"passo": "A equação trata de igualdades perfeitas (=). A inequação indica que um lado é maior, menor, ou diferente do outro lado (> ou <).",
-"dica": "Equação é balança equilibrada. Inequação é balança torta, onde um lado pesa mais (> ou <) que o outro."
-},
-{
-"id": "B5N01",
-"aula": 5,
-"tipo": "conceito",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF08MA22",
-"bncc_desc": "Diferenca Media e Mediana",
-"display": "Qual a diferença principal entre calcular Média e Mediana?",
-"res": "A Média soma e divide; a Mediana pega o valor bem do meio da fila",
-"alternativas": [
-{ "valor": "A Média soma e divide; a Mediana pega o valor bem do meio da fila", "tipo": "acerto" },
-{ "valor": "A Média é do meio, a Mediana soma e divide", "tipo": "erro", "categoria": "conceito", "erro": "conceito_media_mediana_invertido", "descricao": "Inverteu a lógica de cálculo de cada uma.", "peso": 3 },
-{ "valor": "São a mesma coisa, apenas nomes diferentes", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_media_mediana_iguais", "descricao": "Achou que não havia diferença estatística.", "peso": 2 },
-{ "valor": "A Média só serve para notas de escola", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_media_exclusividade_notas", "descricao": "Limitou a estatística a um exemplo do dia a dia.", "peso": 1 }
-],
-"passo": "Média = somar tudo e dividir pela quantidade. Mediana = colocar todos em ordem e apontar o valor exato no centro da distribuição.",
-"dica": "A palavra Mediana lembra o 'Meio'. Já a Média lembra fechar a nota do bimestre!"
-},
-{
-"id": "B5N02",
-"aula": 5,
-"tipo": "conceito",
-"dificuldade": 1,
-"tipoPedagogico": "base",
-"bncc": "EF08MA22",
-"bncc_desc": "O que e Moda",
-"display": "Em Estatística, qual é a definição de 'Moda' numa lista de números?",
-"res": "É o número que mais se repete na lista",
-"alternativas": [
-{ "valor": "É o número que mais se repete na lista", "tipo": "acerto" },
-{ "valor": "É o maior número da lista", "tipo": "erro", "categoria": "conceito", "erro": "conceito_moda_maior_numero", "descricao": "Assumiu que estar na moda é ser o número mais alto.", "peso": 3 },
-{ "valor": "É a diferença entre o maior e o menor", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_moda_amplitude", "descricao": "Confundiu a definição de Moda com a definição de Amplitude.", "peso": 2 },
-{ "valor": "É a soma de tudo dividido por dois", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_moda_falsa_media", "descricao": "Criou uma falsa fórmula baseada no conceito de média.", "peso": 1 }
-],
-"passo": "A moda é simplesmente a contagem: o valor que aparecer mais vezes é eleito a moda do conjunto de dados.",
-"dica": "O que é 'estar na moda' no dia a dia? É ver várias pessoas usando a mesma coisa. Na matemática é igual, o número que aparece mais!"
-},
-{
-"id": "B6N01",
-"aula": 6,
-"tipo": "conceito",
-"dificuldade": 1,
-"tipoPedagogico": "base",
-"bncc": "EF07MA24",
-"bncc_desc": "Soma Angulos Triangulo",
-"display": "Uma das regras mais famosas da Geometria é que a soma dos ângulos internos de qualquer triângulo é sempre:",
-"res": "180 graus",
-"alternativas": [
-{ "valor": "180 graus", "tipo": "acerto" },
-{ "valor": "360 graus", "tipo": "erro", "categoria": "conceito", "erro": "conceito_soma_triangulo_quadrilatero", "descricao": "Usou a regra do círculo ou do quadrilátero (360) para o triângulo.", "peso": 3 },
-{ "valor": "90 graus", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_soma_triangulo_retangulo", "descricao": "Usou o valor de um único ângulo reto para a soma inteira.", "peso": 2 },
-{ "valor": "100 graus", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_soma_triangulo_cem", "descricao": "Tentou usar a base 100 comum à porcentagem e sistemas decimais.", "peso": 1 }
-],
-"passo": "Esta é uma propriedade fundamental: não importa o formato do triângulo, se você somar os 3 ângulos de dentro, baterá exatos 180°.",
-"dica": "Um círculo completo tem 360 graus. O triângulo sempre tem exatamente a metade de um círculo: 180 graus!"
-},
-{
-"id": "B6N02",
-"aula": 6,
-"tipo": "conceito",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF09MA14",
-"bncc_desc": "O que e Hipotenusa",
-"display": "No estudo do Teorema de Pitágoras, como identificamos qual lado é a 'Hipotenusa'?",
-"res": "É o lado maior e fica de frente para o ângulo de 90°",
-"alternativas": [
-{ "valor": "É o lado maior e fica de frente para o ângulo de 90°", "tipo": "acerto" },
-{ "valor": "É o lado que fica na base, encostado no chão", "tipo": "erro", "categoria": "conceito", "erro": "conceito_hipotenusa_base", "descricao": "Achou que a posição define a hipotenusa e não a relação aos ângulos.", "peso": 3 },
-{ "valor": "É o lado menor do triângulo", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_hipotenusa_menor", "descricao": "Inverteu a propriedade geométrica do maior lado.", "peso": 2 },
-{ "valor": "É a soma dos outros dois lados", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_hipotenusa_confusao_teorema", "descricao": "Confundiu a definição visual do lado com o cálculo do teorema em si.", "peso": 1 }
-],
-"passo": "A hipotenusa sempre tem essas duas características obrigatórias: é a linha mais comprida da figura e nunca encosta no ângulo reto (de 90 graus), ficando oposta a ele.",
-"dica": "Procure o 'quadradinho' do ângulo de 90 graus. A hipotenusa é sempre a linha inclinada que está apontando para fora dele."
-},
-{
-"id": "B6N03",
-"aula": 6,
-"tipo": "conceito",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF08MA15",
-"bncc_desc": "Poligono Regular",
-"display": "Na geometria, quando um polígono ganha o título de 'Polígono Regular'?",
-"res": "Quando ele possui todos os lados e ângulos iguais",
-"alternativas": [
-{ "valor": "Quando ele possui todos os lados e ângulos iguais", "tipo": "acerto" },
-{ "valor": "Quando ele não tem pontas", "tipo": "erro", "categoria": "conceito", "erro": "conceito_poligono_regular_curvas", "descricao": "Confundiu a figura geométrica plana com formas circulares.", "peso": 3 },
-{ "valor": "Quando é desenhado numa folha com régua", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_poligono_regular_instrumento", "descricao": "Ligou a palavra regularidade a fazer algo manualmente bem-feito.", "peso": 2 },
-{ "valor": "Quando tem no mínimo 5 lados", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_poligono_regular_tamanho", "descricao": "Limitou os polígonos a partir do pentágono, esquecendo quadrados e triângulos.", "peso": 1 }
-],
-"passo": "Um polígono é chamado regular quando apresenta equilátero (lados de mesma medida) e equiângulo (ângulos internos idênticos). O quadrado é um ótimo exemplo.",
-"dica": "Pense no quadrado perfeito! Todos os 4 lados têm o mesmo tamanho e todos os cantinhos formam o mesmo L. Isso é ser Regular!"
-},
-{
-"id": "B1N04",
-"aula": 1,
-"tipo": "conceito",
-"dificuldade": 1,
-"tipoPedagogico": "base",
-"bncc": "EF06MA01",
-"bncc_desc": "Sistema Decimal",
-"display": "Por que o nosso sistema de contagem é chamado de 'Sistema Decimal'?",
-"res": "Porque contamos agrupando de 10 em 10",
-"alternativas": [
-{ "valor": "Porque contamos agrupando de 10 em 10", "tipo": "acerto" },
-{ "valor": "Porque usamos números com vírgula (decimais)", "tipo": "erro", "categoria": "conceito", "erro": "conceito_decimal_confunde_virgula", "descricao": "Focou na palavra decimal ligada à vírgula (quebrados) em vez do sistema de base.", "peso": 3 },
-{ "valor": "Porque os números acabam em 10", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_decimal_finito", "descricao": "Assumiu que os números têm fim no número 10.", "peso": 2 },
-{ "valor": "Porque as calculadoras só aceitam 10 dígitos", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_decimal_tecnologia", "descricao": "Criou uma regra tecnológica fictícia para justificar a história da matemática.", "peso": 1 }
-],
-"passo": "O sistema tem a palavra 'deci' (dez) porque, sempre que juntamos 10 elementos, formamos uma nova ordem (10 unidades viram 1 dezena, 10 dezenas viram 1 centena).",
-"dica": "Lembre de quantos dedos temos nas duas mãos! Nossos antepassados usavam as mãos, e agrupavam a contagem exatamente de 10 em 10."
-},
-{
-"id": "B2N04",
-"aula": 2,
-"tipo": "conceito",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA04",
-"bncc_desc": "Modulo de Inteiro",
-"display": "Em números inteiros, o que significa o 'Módulo' (ou valor absoluto) de um número negativo, como |-7|?",
-"res": "Apenas a distância dele até o zero, que fica 7",
-"alternativas": [
-{ "valor": "Apenas a distância dele até o zero, que fica 7", "tipo": "acerto" },
-{ "valor": "Ele dobra e vira -14", "tipo": "erro", "categoria": "conceito", "erro": "conceito_modulo_dobro", "descricao": "Achou que as barras verticais do módulo dobravam o número.", "peso": 3 },
-{ "valor": "Ele continua negativo, -7", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_modulo_ignora", "descricao": "Acreditou que o módulo não tem efeito nenhum em números negativos.", "peso": 2 },
-{ "valor": "Ele vira um número par, 8", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_modulo_soma_chute", "descricao": "Sem base, apenas transformou num número par próximo.", "peso": 1 }
-],
-"passo": "O módulo mede uma distância do número até a origem (o zero). Como não existe distância negativa de algo no mundo real, o módulo de -7 vira apenas 7 positivo.",
-"dica": "As barrinhas do módulo são mágicas: se entrar alguém positivo ou negativo lá dentro, sairá sempre um valor puro e sem o sinal de menos!"
-},
-{
-"id": "B3N03",
-"aula": 3,
-"tipo": "conceito",
-"dificuldade": 1,
-"tipoPedagogico": "base",
-"bncc": "EF06MA24",
-"bncc_desc": "Prefixo Quilo",
-"display": "No sistema de medidas, o que o prefixo 'Quilo' (k) de quilômetro ou quilograma significa?",
-"res": "Significa mil (1.000)",
-"alternativas": [
-{ "valor": "Significa mil (1.000)", "tipo": "acerto" },
-{ "valor": "Significa peso pesado", "tipo": "erro", "categoria": "conceito", "erro": "conceito_quilo_focado_peso", "descricao": "Achou que é usado apenas para a balança, ignorando a tradução exata.", "peso": 3 },
-{ "valor": "Significa cem (100)", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_quilo_cem", "descricao": "Confundiu os prefixos, atribuindo ao quilo o valor do 'centi'.", "peso": 2 },
-{ "valor": "Significa dez mil (10.000)", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_quilo_dez_mil", "descricao": "Aumentou o grau do prefixo sem base matemática.", "peso": 1 }
-],
-"passo": "O prefixo do grego 'Kilo' representa a multiplicação da medida base por 1000. Assim, Quilograma são 1000 gramas, e Quilômetro são 1000 metros.",
-"dica": "Quando você vê a letra K na internet com seguidores (como 2k), lembra do quê? De mil! Kilo é igual a 1000."
-},
-{
-"id": "B4N03",
-"aula": 4,
-"tipo": "conceito",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF07MA18",
-"bncc_desc": "O que e Expressao Algebrica",
-"display": "O que diferencia uma Expressão Algébrica (como 2x + 3) de uma Equação (2x + 3 = 10)?",
-"res": "A expressão não tem o sinal de igual nem a intenção de achar um número escondido",
-"alternativas": [
-{ "valor": "A expressão não tem o sinal de igual nem a intenção de achar um número escondido", "tipo": "acerto" },
-{ "valor": "A expressão só usa a letra x, e a equação usa a letra y", "tipo": "erro", "categoria": "conceito", "erro": "conceito_expressao_depende_letra", "descricao": "Diferenciou pelo tipo da letra do alfabeto em vez da estrutura matemática.", "peso": 3 },
-{ "valor": "A expressão não tem letras", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_expressao_exclui_letras", "descricao": "Ignorou o que significa ser 'algébrica' e retirou o x da definição.", "peso": 2 },
-{ "valor": "Nenhuma, elas são o mesmo assunto com nomes diferentes", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_expressao_equacao_iguais", "descricao": "Equiparou os assuntos esquecendo a igualdade matemática.", "peso": 1 }
-],
-"passo": "A expressão algébrica apenas representa uma frase em forma de matemática, um padrão numérico. A equação já faz uma pergunta direta montando uma igualdade que exige resposta.",
-"dica": "A expressão só modela a frase. A equação te obriga a puxar os números para achar quem é o x!"
-},
-{
-"id": "B5N03",
-"aula": 5,
-"tipo": "conceito",
-"dificuldade": 2,
-"tipoPedagogico": "base",
-"bncc": "EF08MA22",
-"bncc_desc": "Espaco Amostral",
-"display": "No estudo da probabilidade de eventos aleatórios, o que significa o 'Espaço Amostral'?",
-"res": "A lista de todos os resultados possíveis de acontecer",
-"alternativas": [
-{ "valor": "A lista de todos os resultados possíveis de acontecer", "tipo": "acerto" },
-{ "valor": "Apenas o resultado vencedor que queremos achar", "tipo": "erro", "categoria": "conceito", "erro": "conceito_amostral_evento", "descricao": "Confundiu o espaço de possibilidades com o evento isolado.", "peso": 3 },
-{ "valor": "O lugar físico onde o evento e o sorteio acontecem", "tipo": "erro", "categoria": "procedimento", "erro": "conceito_amostral_literal_espaco", "descricao": "Fez interpretação puramente textual da palavra 'espaço'.", "peso": 2 },
-{ "valor": "A amostra de testes com erro na pesquisa", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_amostral_falso_tecnico", "descricao": "Confundiu probabilidade com as margens de erro de estatísticas.", "peso": 1 }
-],
-"passo": "Ao jogar um dado, todas as faces do dado (1,2,3,4,5,6) compõem o quadro geral de opções. O Espaço Amostral é o conjunto geral de tudo o que pode acontecer.",
-"dica": "Pense no menu inteiro de um restaurante! O espaço amostral não é o prato que você escolheu, e sim tudo o que tinha disponível para escolher."
-}
+  }
 ]
