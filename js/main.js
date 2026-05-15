@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initDebugMode();
   
     on('btn-acessar', mostrarSeletorBlocos);
-    [1,2,3,4,5,6].forEach(i => on(`btn-bloco-${i}`, () => iniciarBloco(i)));
+    [1,2,3,4,5,6,7].forEach(i => on(`btn-bloco-${i}`, () => iniciarBloco(i)));
     
     on('btn-prox', proximaQ);
     on('btn-musica', () => AudioCtrl.toggle('btn-musica', 'tsom'));
