@@ -2821,5 +2821,5 @@
     "alternativas": [
       { "valor": "Raso", "tipo": "acerto" },
       { "valor": "Reto", "tipo": "erro", "categoria": "conceito", "erro": "ang_reto"
-      },
+      }
 ]
