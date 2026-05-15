@@ -3646,8 +3646,7 @@
     "passo": "Uma semana tem 7 dias. 50 dividido por 7 dá 7 semanas completas e resta 1 dia. Sexta-feira + 1 dia = Sábado.",
     "dica": "Pense no múltiplo de 7 mais próximo de 50. O dia da semana se repete nele. Depois, conte o que sobrou."
   },
-  [
-  {
+    {
     "id": "OLIMP_A7_11",
     "aula": 7,
     "tipo": "aritmetica",
