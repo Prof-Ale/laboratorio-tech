@@ -2620,5 +2620,100 @@
     ],
     "passo": "Seno é sempre o lado que está 'na frente' (oposto) dividido pelo lado maior (hipotenusa).",
     "dica": "Lembre-se da música: 'Soh-Cah-Toa'. SOH significa Seno = Oposto / Hipotenusa!"
+  },
+  {
+    "id": "FINAL_QA_01",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Divisão com Resto",
+    "display": "Em uma divisão de 45 por 6, qual é o resto?",
+    "res": "3",
+    "alternativas": [
+      { "valor": "3", "tipo": "acerto" },
+      { "valor": "7", "tipo": "erro", "categoria": "conceito", "erro": "div_confunde_quociente", "descricao": "Indicou o quociente em vez do resto.", "peso": 2 },
+      { "valor": "0", "tipo": "erro", "categoria": "procedimento", "erro": "div_assume_exata", "descricao": "Assumiu que a divisão era exata.", "peso": 2 },
+      { "valor": "5", "tipo": "erro", "categoria": "calculo", "erro": "div_erro_subtracao", "descricao": "Errou a conta de 45 - 42.", "peso": 1 }
+    ],
+    "passo": "6 x 7 = 42. Para chegar em 45, faltam 3.",
+    "dica": "O resto é o que 'sobra' quando não dá mais para dividir por inteiro."
+  },
+  {
+    "id": "FINAL_QA_02",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA09",
+    "bncc_desc": "Fração de Quantidade",
+    "display": "Quanto é 2/5 de 100 reais?",
+    "res": "40",
+    "alternativas": [
+      { "valor": "40", "tipo": "acerto" },
+      { "valor": "20", "tipo": "erro", "categoria": "procedimento", "erro": "frac_apenas_divide", "descricao": "Dividiu pelo denominador mas esqueceu de multiplicar pelo numerador.", "peso": 2 },
+      { "valor": "50", "tipo": "erro", "categoria": "conceito", "erro": "frac_confunde_metade", "descricao": "Confundiu com a metade do valor.", "peso": 3 },
+      { "valor": "25", "tipo": "erro", "categoria": "calculo", "erro": "frac_inverte_operacao", "descricao": "Dividiu 100 por 4.", "peso": 1 }
+    ],
+    "passo": "100 dividido por 5 é 20. 20 vezes 2 é 40.",
+    "dica": "Divida pelo de baixo e multiplique pelo de cima!"
+  },
+  {
+    "id": "FINAL_QA_03",
+    "aula": 3,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA12",
+    "bncc_desc": "Porcentagem",
+    "display": "Quanto é 25% de 200?",
+    "res": "50",
+    "alternativas": [
+      { "valor": "50", "tipo": "acerto" },
+      { "valor": "25", "tipo": "erro", "categoria": "atencao", "erro": "porc_repete_valor", "descricao": "Apenas repetiu o número da porcentagem.", "peso": 1 },
+      { "valor": "100", "tipo": "erro", "categoria": "procedimento", "erro": "porc_confunde_metade", "descricao": "Calculou 50% em vez de 25%.", "peso": 2 },
+      { "valor": "75", "tipo": "erro", "categoria": "calculo", "erro": "porc_erro_divisao", "descricao": "Errou a divisão por 4.", "peso": 1 }
+    ],
+    "passo": "25% é o mesmo que dividir por 4. 200 ÷ 4 = 50.",
+    "dica": "25% é a quarta parte de algo."
+  },
+  {
+    "id": "FINAL_QA_04",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA15",
+    "bncc_desc": "Problemas com Equações",
+    "display": "O triplo de um número menos 5 é igual a 10. Que número é esse?",
+    "res": "5",
+    "alternativas": [
+      { "valor": "5", "tipo": "acerto" },
+      { "valor": "15", "tipo": "erro", "categoria": "interpretacao", "erro": "equa_soma_direto", "descricao": "Achou que o número era a soma final.", "peso": 2 },
+      { "valor": "3", "tipo": "erro", "categoria": "procedimento", "erro": "equa_inverte_operacao", "descricao": "Fez operações na ordem errada.", "peso": 3 },
+      { "valor": "4", "tipo": "erro", "categoria": "calculo", "erro": "equa_erro_divisao_final", "descricao": "Errou a divisão de 15 por 3.", "peso": 1 }
+    ],
+    "passo": "3x - 5 = 10 -> 3x = 15 -> x = 5.",
+    "dica": "Escreva a frase como uma conta: 3x - 5 = 10."
+  },
+  {
+    "id": "FINAL_QA_05",
+    "aula": 5,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA35",
+    "bncc_desc": "Média de Temperatura",
+    "display": "Se as temperaturas da semana foram 20°C, 22°C e 24°C, qual a média?",
+    "res": "22°C",
+    "alternativas": [
+      { "valor": "22°C", "tipo": "acerto" },
+      { "valor": "66°C", "tipo": "erro", "categoria": "procedimento", "erro": "med_esquece_dividir", "descricao": "Somou as temperaturas mas não dividiu pela quantidade.", "peso": 3 },
+      { "valor": "20°C", "tipo": "erro", "categoria": "atencao", "erro": "med_pega_minima", "descricao": "Indicou o menor valor como média.", "peso": 1 },
+      { "valor": "24°C", "tipo": "erro", "categoria": "atencao", "erro": "med_pega_maxima", "descricao": "Indicou o maior valor como média.", "peso": 1 }
+    ],
+    "passo": "(20 + 22 + 24) = 66. 66 ÷ 3 = 22.",
+    "dica": "A média de três valores seguidos e constantes é sempre o valor do meio!"
   }
 ]
