@@ -4975,5 +4975,195 @@
 ],
 "passo": "Para extrair o valor absoluto, calculamos a porcentagem sobre o total do servidor: 35% de 2.000 = 0,35 x 2.000 = 700 GB.",
 "dica": "Você precisa calcular quanto vale 35% de 2.000. Uma maneira fácil é descobrir quanto vale 10% ou 1% primeiro e depois multiplicar!"
-}
+},
+  {
+    "id": "A6_EXP_01",
+    "aula": 6,
+    "tipo": "geometria",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA18",
+    "bncc_desc": "Ângulos Complementares",
+    "display": "Um braço mecânico de precisão programado para soldagem realiza um movimento inicial de 55° e precisa completar um giro que atinja um ângulo reto perfeito (90°) em relação à sua base original. Quantos graus faltam para o robô completar esse movimento?",
+    "res": "35°",
+    "alternativas": [
+      { "valor": "35°", "tipo": "acerto" },
+      { "valor": "45°", "tipo": "erro", "categoria": "atencao", "erro": "ang_subtracao_rapida", "descricao": "Errou a conta rápida de subtração mental de 90 - 55 por falta de atenção.", "peso": 1 },
+      { "valor": "125°", "tipo": "erro", "categoria": "conceito", "erro": "ang_suplementar_errado", "descricao": "Calculou o suplemento baseado em 180° em vez do complemento baseado em 90°.", "peso": 3 },
+      { "valor": "145°", "tipo": "erro", "categoria": "procedimento", "erro": "ang_soma_valores", "descricao": "Somou os valores numéricos (90 + 55) em vez de calcular a diferença pendente.", "peso": 2 }
+    ],
+    "passo": "Um ângulo reto mede 90°. Subtraindo o movimento já realizado: 90° - 55° = 35°.",
+    "dica": "Ângulos que juntos formam um ângulo reto de 90° são complementares. Subtraia o valor conhecido de 90!"
+  },
+  {
+    "id": "A6_EXP_02",
+    "aula": 6,
+    "tipo": "geometria",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA28",
+    "bncc_desc": "Vistas Ortogonais",
+    "display": "Um engenheiro projeta um componente no formato de uma pirâmide de base quadrada perfeita. Se um estudante olhar para essa peça exatamente de cima para baixo (vista superior ortogonal), que figura plana ele verá desenhada?",
+    "res": "Um quadrado com duas diagonais cruzadas",
+    "alternativas": [
+      { "valor": "Um quadrado com duas diagonais cruzadas", "tipo": "acerto" },
+      { "valor": "Apenas um quadrado limpo", "tipo": "erro", "categoria": "atencao", "erro": "vista_esqueceu_vertice", "descricao": "Esqueceu de projetar o vértice do topo e as arestas laterais inclinadas na vista superior.", "peso": 1 },
+      { "valor": "Um triângulo isósceles", "tipo": "erro", "categoria": "conceito", "erro": "vista_confundiu_frontal", "descricao": "Identificou a vista frontal ou lateral da pirâmide em vez da vista superior pedida.", "peso": 3 },
+      { "valor": "Um círculo perfeito", "tipo": "erro", "categoria": "interpretacao", "erro": "vista_confundiu_solido", "descricao": "Confundiu a pirâmide quadrada com um cone circular na projeção geométrica.", "peso": 2 }
+    ],
+    "passo": "A base quadrada forma o contorno externo. As quatro faces triangulares sobem em direção ao ponto central do topo, gerando duas linhas diagonais cruzadas na vista superior.",
+    "dica": "Imagine que você está voando bem acima da pirâmide. Você verá a base plana, mas também verá as quinas subindo até o topo exatamente no centro!"
+  },
+  {
+    "id": "A6_EXP_03",
+    "aula": 6,
+    "tipo": "geometria",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF07MA24",
+    "bncc_desc": "Ângulos Internos do Triângulo",
+    "display": "Na construção de uma treliça metálica de suporte em formato triangular, dois de seus ângulos internos de fixação medem exatamente 45° e 75°. Qual deve ser a medida do terceiro ângulo interno dessa estrutura para garantir sua estabilidade?",
+    "res": "60°",
+    "alternativas": [
+      { "valor": "60°", "tipo": "acerto" },
+      { "valor": "120°", "tipo": "erro", "categoria": "atencao", "erro": "ang_parou_na_soma", "descricao": "Calculou apenas a soma dos dois ângulos conhecidos, esquecendo de subtrair do total de um triângulo.", "peso": 1 },
+      { "valor": "80°", "tipo": "erro", "categoria": "calculo", "erro": "ang_erro_subtracao_total", "descricao": "Errou a operação de subtração ao deduzir os valores acumulados de 180°.", "peso": 1 },
+      { "valor": "300°", "tipo": "erro", "categoria": "conceito", "erro": "ang_soma_circulo", "descricao": "Utilizou 360° como a soma dos ângulos internos de um triângulo, confundindo com quadriláteros.", "peso": 3 }
+    ],
+    "passo": "A soma dos ângulos internos de qualquer triângulo é sempre 180°. Soma dos conhecidos: 45° + 75° = 120°. Terceiro ângulo: 180° - 120° = 60°.",
+    "dica": "Lembre-se da regra de ouro: não importa o formato do triângulo, a soma dos três cantos de dentro sempre dá 180°!"
+  },
+  {
+    "id": "A6_EXP_04",
+    "aula": 6,
+    "tipo": "geometria",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF09MA14",
+    "bncc_desc": "Teorema de Pitágoras",
+    "display": "Um técnico utiliza um nível a laser fixado no chão, a 12 metros de distância horizontal da parede de um prédio. O feixe atinge o topo de um painel posicionado exatamente a 9 metros de altura vertical na parede. Qual é o comprimento do feixe de laser emitido?",
+    "res": "15",
+    "alternativas": [
+      { "valor": "15", "tipo": "acerto" },
+      { "valor": "21", "tipo": "erro", "categoria": "procedimento", "erro": "pit_soma_linear", "descricao": "Somou as duas distâncias lineares diretamente, ignorando a propriedade dos quadrados dos lados.", "peso": 2 },
+      { "valor": "3", "tipo": "erro", "categoria": "atencao", "erro": "pit_subtracao_linear", "descricao": "Subtraiu os valores numéricos lineares das distâncias por descuido.", "peso": 1 },
+      { "valor": "225", "tipo": "erro", "categoria": "conceito", "erro": "pit_esqueceu_raiz", "descricao": "Calculou corretamente a soma dos quadrados dos catetos, mas esqueceu de extrair a raiz quadrada final.", "peso": 3 }
+    ],
+    "passo": "Aplicando o Teorema de Pitágoras: Hipotenusa² = 12² + 9² -> H² = 144 + 81 -> H² = 225. Extraindo a raiz: H = √225 = 15 metros.",
+    "dica": "A distância horizontal e a altura vertical formam um ângulo reto de 90°. O laser é a hipotenusa! Eleve os dois lados ao quadrado, some-os e tire a raiz."
+  },
+  {
+    "id": "A6_EXP_05",
+    "aula": 6,
+    "tipo": "geometria",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF08MA16",
+    "bncc_desc": "Diagonais de Polígonos",
+    "display": "Uma rede de computadores interliga 6 servidores posicionados como os vértices de um hexágono regular. Para garantir a segurança, cada servidor possui conexões físicas diretas por cabos exclusivos com todos os servidores não vizinhos (diagonais). Quantos cabos diagonais existem nessa rede?",
+    "res": "9",
+    "alternativas": [
+      { "valor": "9", "tipo": "acerto" },
+      { "valor": "15", "tipo": "erro", "categoria": "procedimento", "erro": "diag_contou_lados", "descricao": "Calculou o número total de conexões possíveis incluindo as conexões com os servidores vizinhos (lados).", "peso": 2 },
+      { "valor": "6", "tipo": "erro", "categoria": "atencao", "erro": "diag_copiou_vertices", "descricao": "Assumiu que a quantidade de diagonais é igual ao número de vértices ou lados da figura por distração.", "peso": 1 },
+      { "valor": "18", "tipo": "erro", "categoria": "conceito", "erro": "diag_esqueceu_dividir", "descricao": "Aplicou a multiplicação simples n(n-3) mas esqueceu de dividir por 2 para eliminar conexões duplicadas.", "peso": 3 }
+    ],
+    "passo": "Fórmula das diagonais: d = n(n - 3) / 2. Para um hexágono (n=6): d = 6 x (6 - 3) / 2 -> d = 6 x 3 / 2 -> d = 18 / 2 = 9 diagonais.",
+    "dica": "Cada servidor manda conexões para os outros, exceto para ele mesmo e para os 2 vizinhos do lado. Lembre-se de dividir por 2 para não contar o mesmo cabo duas vezes!"
+  },
+  {
+    "id": "A6_EXP_06",
+    "aula": 6,
+    "tipo": "geometria",
+    "dificuldade": 2,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF07MA27",
+    "bncc_desc": "Simetria no Plano Cartesiano",
+    "display": "No desenvolvimento de uma interface gráfica, um ponto de ancoragem possui as coordenadas cartesianas A(3, 4). O sistema aplica uma simetria de reflexão (espelhamento) exata em relação ao eixo horizontal X. Qual será a coordenada do novo ponto refletido?",
+    "res": "(3, -4)",
+    "alternativas": [
+      { "valor": "(3, -4)", "tipo": "acerto" },
+      { "valor": "(-3, 4)", "tipo": "erro", "categoria": "conceito", "erro": "sim_eixo_errado_y", "descricao": "Inverteu o sinal da coordenada X, realizando uma reflexão em relação ao eixo vertical Y.", "peso": 3 },
+      { "valor": "(-3, -4)", "tipo": "erro", "categoria": "procedimento", "erro": "sim_reflexao_origem", "descricao": "Inverteu ambos os sinais cartesianos de uma só vez, gerando uma simetria em relação à origem.", "peso": 2 },
+      { "valor": "(4, 3)", "tipo": "erro", "categoria": "interpretacao", "erro": "sim_inversao_eixos", "descricao": "Trocou as posições das coordenadas X e Y confundindo espelhamento com rotação.", "peso": 2 }
+    ],
+    "passo": "Na reflexão em relação ao eixo X, a distância horizontal (X) permanece idêntica e a posição vertical (Y) é espelhada para o lado oposto, trocando de sinal: (3, 4) vira (3, -4).",
+    "dica": "Imagine o eixo X como um espelho deitado no chão. O ponto está acima dele. O reflexo vai ficar na mesma direção horizontal, mas para baixo!"
+  },
+  {
+    "id": "A6_EXP_07",
+    "aula": 6,
+    "tipo": "geometria",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA15",
+    "bncc_desc": "Retas Paralelas e Transversais",
+    "display": "Duas esteiras industriais paralelas de triagem de componentes são cortadas transversalmente por um duto inclinado. Se um dos ângulos colaterais internos formados mede exatamente 110°, qual deve ser a medida do outro ângulo colateral interno para que as esteiras mantenham o paralelismo?",
+    "res": "70°",
+    "alternativas": [
+      { "valor": "70°", "tipo": "acerto" },
+      { "valor": "110°", "tipo": "erro", "categoria": "atencao", "erro": "paral_ang_congruente", "descricao": "Assumiu erroneamente que os ângulos colaterais internos são iguais (congruentes).", "peso": 1 },
+      { "valor": "180°", "tipo": "erro", "categoria": "conceito", "erro": "paral_soma_total", "descricao": "Indicou o valor total da propriedade de soma de ângulos colaterais em vez do ângulo procurado.", "peso": 3 },
+      { "valor": "20°", "tipo": "erro", "categoria": "calculo", "erro": "paral_erro_subtracao", "descricao": "Cometeu um erro de cálculo operacional na subtração básica dos valores angulares.", "peso": 1 }
+    ],
+    "passo": "Ângulos colaterais internos situam-se do mesmo lado da transversal e são suplementares, ou seja, sua soma é igual a 180°. Logo: 180° - 110° = 70°.",
+    "dica": "Os ângulos colaterais internos estão 'presos' do mesmo lado da linha de corte. Juntos, eles formam uma linha reta perfeita de 180 graus!"
+  },
+  {
+    "id": "A6_EXP_08",
+    "aula": 6,
+    "tipo": "geometria",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF09MA12",
+    "bncc_desc": "Teorema de Tales",
+    "display": "Três feixes paralelos de um sensor laser cortam duas linhas de calibração divergentes na tela de um maquinário. Na primeira linha, os feixes delimitam segmentos que medem 3 cm e 6 cm. Na segunda linha, o primeiro segmento mede 4 cm. Qual é a medida do segundo segmento proporcional na segunda linha?",
+    "res": "8",
+    "alternativas": [
+      { "valor": "8", "tipo": "acerto" },
+      { "valor": "7", "tipo": "erro", "categoria": "atencao", "erro": "tales_soma_linear", "descricao": "Somou 1 unidade baseado de forma simplória na diferença vista no primeiro segmento (4 - 3 = 1).", "peso": 1 },
+      { "valor": "5", "tipo": "erro", "categoria": "calculo", "erro": "tales_erro_proporcao", "descricao": "Errou a operação aritmética da regra de três simples durante a multiplicação cruzada.", "peso": 1 },
+      { "valor": "2", "tipo": "erro", "categoria": "conceito", "erro": "tales_inversao_razao", "descricao": "Inverteu a razão de proporcionalidade direta estabelecida pelo Teorema de Tales.", "peso": 3 }
+    ],
+    "passo": "Pelo Teorema de Tales, os segmentos são proporcionais: 3 / 6 = 4 / x. Simplificando a primeira fração: 1 / 2 = 4 / x. Multiplicando cruzado: 1 x x = 2 x 4 -> x = 8 cm.",
+    "dica": "Olhe o padrão na primeira linha: o segundo pedaço (6) é o dobro do primeiro (3). O mesmo comportamento deve acontecer na segunda linha!"
+  },
+  {
+    "id": "A6_EXP_09",
+    "aula": 6,
+    "tipo": "geometria",
+    "dificuldade": 1,
+    "tipoPedagogico": "recomposicao",
+    "bncc": "EF07MA23",
+    "bncc_desc": "Classificação de Triângulos",
+    "display": "O sistema de visão computacional de um robô escaneia uma peça triangular e registra que todos os seus 3 lados possuem medidas de comprimentos completamente diferentes entre si. Como esse triângulo deve ser classificado?",
+    "res": "Escaleno",
+    "alternativas": [
+      { "valor": "Escaleno", "tipo": "acerto" },
+      { "valor": "Isósceles", "tipo": "erro", "categoria": "conceito", "erro": "class_confundiu_isoceles", "descricao": "Confundiu a definição, achando que o triângulo isósceles possui todos os lados diferentes (ele possui dois iguais).", "peso": 3 },
+      { "valor": "Equilátero", "tipo": "erro", "categoria": "interpretacao", "erro": "class_confundiu_equilatero", "descricao": "Indicou a classificação correspondente a uma figura com três lados perfeitamente idênticos.", "peso": 2 },
+      { "valor": "Retângulo", "tipo": "erro", "categoria": "procedimento", "erro": "class_criterio_angular", "descricao": "Classificou a figura com base nas propriedades dos ângulos internos e não na medida dos lados.", "peso": 2 }
+    ],
+    "passo": "Triângulos são classificados pelos lados em: Equilátero (3 lados iguais), Isósceles (2 lados iguais) e Escaleno (todos os 3 lados diferentes). Peça escaneada: Escaleno.",
+    "dica": "Pense em uma escada torta onde cada degrau tem um tamanho diferente. Esse nome lembra essa situação!"
+  },
+  {
+    "id": "A6_EXP_10",
+    "aula": 6,
+    "tipo": "geometria",
+    "dificuldade": 3,
+    "tipoPedagogico": "recomposicao",
+    "bncc": "EF09MA15",
+    "bncc_desc": "Ângulos na Circunferência",
+    "display": "Em um programa de desenho técnico, um projetista desenha uma engrenagem circular. Um ângulo inscrito posicionado na borda dessa engrenagem abre um arco circular que mede exatamente 120°. Qual é a medida em graus desse ângulo inscrito?",
+    "res": "60°",
+    "alternativas": [
+      { "valor": "60°", "tipo": "acerto" },
+      { "valor": "120°", "tipo": "erro", "categoria": "conceito", "erro": "circ_confundiu_central", "descricao": "Confundiu ângulo inscrito com ângulo central, assumindo que possuía a mesma medida do arco.", "peso": 3 },
+      { "valor": "240°", "tipo": "erro", "categoria": "procedimento", "erro": "circ_dobrou_arco", "descricao": "Multiplicou a medida do arco por 2 em vez de realizar a divisão por 2.", "peso": 2 },
+      { "valor": "30°", "tipo": "erro", "categoria": "calculo", "erro": "circ_divisao_excesso", "descricao": "Dividiu o valor do arco por 4 por confusão com os quadrantes simétricos da circunferência.", "peso": 1 }
+    ],
+    "passo": "A propriedade geométrica dita que a medida de um ângulo inscrito em uma circunferência equivale à metade da medida do arco correspondente. Logo: 120° ÷ 2 = 60°.",
+    "dica": "O ângulo inscrito fica na 'casca' do círculo e abre as pernas até o arco. Ele sempre mede exatamente a metade do valor do arco que ele abraça!"
+  }
 ]
