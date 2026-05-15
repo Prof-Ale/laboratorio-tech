@@ -2820,5 +2820,6 @@
     "display": "Um ângulo de 180 graus é chamado de:", "res": "Raso",
     "alternativas": [
       { "valor": "Raso", "tipo": "acerto" },
-      { "valor": "Reto", "tipo": "erro", "categoria": "conceito", "erro": "ang_reto
+      { "valor": "Reto", "tipo": "erro", "categoria": "conceito", "erro": "ang_reto"
+      },
 ]
