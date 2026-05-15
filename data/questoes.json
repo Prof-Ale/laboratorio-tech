@@ -3835,5 +3835,195 @@
     ],
     "passo": "A razão entre os lados do menor para o maior é 2:5. Para áreas, a razão fica ao quadrado: 4:25. Se 4 partes correspondem a 12 cm², então 1 parte corresponde a 3 cm². O triângulo maior tem 25 partes: 25 × 3 = 75 cm².",
     "dica": "Em figuras semelhantes, áreas não seguem a razão dos lados; seguem o quadrado dessa razão."
+  },
+    {
+    "id": "OLIMP_A7_21",
+    "aula": 7,
+    "tipo": "logica",
+    "dificuldade": 4,
+    "tipoPedagogico": "desafio",
+    "bncc": "EF07MA05",
+    "bncc_desc": "Raciocínio Lógico e Relações de Ordem",
+    "display": "Em uma final de xadrez, Caio, Bia e Davi ficaram nas três primeiras posições, sem empates. Sabe-se que Caio não ficou em 1º lugar, Bia ficou à frente de Davi e Davi não ficou em 3º lugar. Quem ficou em 1º lugar?",
+    "res": "Bia",
+    "alternativas": [
+      { "valor": "Bia", "tipo": "acerto" },
+      { "valor": "Caio", "tipo": "erro", "categoria": "atencao", "erro": "olimp_ignora_restricao_caio", "descricao": "Desconsiderou a informação de que Caio não ficou em 1º lugar.", "peso": 1 },
+      { "valor": "Davi", "tipo": "erro", "categoria": "conceito", "erro": "olimp_inverte_ordem_relativa", "descricao": "Interpretou que Davi ficou à frente de Bia, invertendo a relação dada.", "peso": 3 },
+      { "valor": "Não é possível determinar", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_nao_cruza_restricoes", "descricao": "Não combinou todas as pistas para eliminar as possibilidades inválidas.", "peso": 2 }
+    ],
+    "passo": "Como Davi não ficou em 3º, ele pode estar em 1º ou 2º. Mas Bia ficou à frente de Davi, então Davi não pode estar em 1º. Logo, Davi ficou em 2º e Bia ficou em 1º. Caio ficou em 3º.",
+    "dica": "Use primeiro a pista que compara duas pessoas: Bia ficou antes de Davi."
+  },
+  {
+    "id": "OLIMP_A7_22",
+    "aula": 7,
+    "tipo": "combinatoria",
+    "dificuldade": 4,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA14",
+    "bncc_desc": "Contagem com Restrições",
+    "display": "Um código de duas letras deve ser formado usando as letras M, N, P e Q. As duas letras devem ser diferentes e a letra M não pode aparecer na segunda posição. Quantos códigos podem ser formados?",
+    "res": "9",
+    "alternativas": [
+      { "valor": "9", "tipo": "acerto" },
+      { "valor": "12", "tipo": "erro", "categoria": "conceito", "erro": "olimp_ignora_posicao_proibida", "descricao": "Contou todos os pares de letras diferentes, sem aplicar a restrição sobre a segunda posição.", "peso": 3 },
+      { "valor": "6", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_proibe_m_totalmente", "descricao": "Retirou a letra M de todas as posições, quando ela só era proibida na segunda.", "peso": 2 },
+      { "valor": "8", "tipo": "erro", "categoria": "calculo", "erro": "olimp_erra_caso_primeira_m", "descricao": "Separou os casos, mas contou incorretamente os códigos que começam com M.", "peso": 1 }
+    ],
+    "passo": "Se a primeira letra for M, a segunda pode ser N, P ou Q: 3 códigos. Se a primeira letra for N, P ou Q, há 3 escolhas para a primeira posição e, para cada uma, a segunda pode ser uma das outras duas letras que não sejam M: 2 escolhas. Assim, 3 + 3 × 2 = 9.",
+    "dica": "Separe o caso em que o código começa com M dos casos em que começa com outra letra."
+  },
+  {
+    "id": "OLIMP_A7_23",
+    "aula": 7,
+    "tipo": "padroes",
+    "dificuldade": 4,
+    "tipoPedagogico": "desafio",
+    "bncc": "EF07MA15",
+    "bncc_desc": "Padrões Ocultos em Sequências",
+    "display": "Observe a sequência: 4, 9, 19, 34, 54. As diferenças entre termos aumentam sempre do mesmo modo. Qual é o próximo termo?",
+    "res": "79",
+    "alternativas": [
+      { "valor": "79", "tipo": "acerto" },
+      { "valor": "74", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_repete_ultima_diferenca", "descricao": "Somou novamente 20, sem perceber que as diferenças também seguem um padrão.", "peso": 2 },
+      { "valor": "84", "tipo": "erro", "categoria": "calculo", "erro": "olimp_soma_diferenca_excessiva", "descricao": "Identificou que a diferença aumentava, mas acrescentou 30 em vez de 25.", "peso": 1 },
+      { "valor": "69", "tipo": "erro", "categoria": "conceito", "erro": "olimp_supoe_padrao_linear_simples", "descricao": "Tentou usar uma diferença constante aproximada, ignorando o crescimento das diferenças.", "peso": 3 }
+    ],
+    "passo": "As diferenças são 5, 10, 15 e 20. Elas aumentam de 5 em 5. Portanto, a próxima diferença deve ser 25. Assim, o próximo termo é 54 + 25 = 79.",
+    "dica": "Não olhe só os termos; observe também as diferenças entre eles."
+  },
+  {
+    "id": "OLIMP_A7_24",
+    "aula": 7,
+    "tipo": "aritmetica",
+    "dificuldade": 4,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA06",
+    "bncc_desc": "Divisibilidade e Análise de Possibilidades",
+    "display": "Um número de dois algarismos tem soma dos algarismos igual a 11 e é divisível por 4. Qual é esse número?",
+    "res": "56",
+    "alternativas": [
+      { "valor": "56", "tipo": "acerto" },
+      { "valor": "65", "tipo": "erro", "categoria": "atencao", "erro": "olimp_inverte_algarismos", "descricao": "Encontrou algarismos com soma 11, mas inverteu a ordem e obteve um número que não é divisível por 4.", "peso": 1 },
+      { "valor": "92", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_verifica_soma_sem_divisibilidade", "descricao": "Escolheu um número cuja soma dos algarismos é 11, mas não conferiu a divisibilidade por 4.", "peso": 2 },
+      { "valor": "44", "tipo": "erro", "categoria": "conceito", "erro": "olimp_confunde_soma_com_produto", "descricao": "Usou um critério inadequado, escolhendo um número divisível por 4 sem respeitar a soma dos algarismos.", "peso": 3 }
+    ],
+    "passo": "Os números de dois algarismos com soma 11 incluem 29, 38, 47, 56, 65, 74, 83 e 92. Testando a divisibilidade por 4, apenas 56 é divisível por 4, pois 56 ÷ 4 = 14.",
+    "dica": "Liste os números cuja soma dos algarismos é 11 e depois teste quais são múltiplos de 4."
+  },
+  {
+    "id": "OLIMP_A7_25",
+    "aula": 7,
+    "tipo": "algebra",
+    "dificuldade": 4,
+    "tipoPedagogico": "desafio",
+    "bncc": "EF08MA06",
+    "bncc_desc": "Expressões Algébricas e Operadores Fictícios",
+    "display": "Defina a operação a ★ b = 2a + b - 3. Qual é o valor de 5 ★ (4 ★ 2)?",
+    "res": "14",
+    "alternativas": [
+      { "valor": "12", "tipo": "acerto" },
+      { "valor": "15", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_ignora_parenteses_operador", "descricao": "Calculou 5 ★ 4 primeiro, sem respeitar os parênteses indicados.", "peso": 3 },
+      { "valor": "10", "tipo": "erro", "categoria": "calculo", "erro": "olimp_erro_subtracao_final", "descricao": "Aplicou a operação na ordem correta, mas errou a subtração no cálculo final.", "peso": 1 },
+      { "valor": "17", "tipo": "erro", "categoria": "conceito", "erro": "olimp_trata_estrela_como_multiplicacao", "descricao": "Interpretou o símbolo ★ como uma multiplicação comum ou misturou a regra com produto.", "peso": 3 }
+    ],
+    "passo": "Primeiro calcule o que está entre parênteses: 4 ★ 2 = 2 × 4 + 2 - 3 = 7. Depois calcule 5 ★ 7 = 2 × 5 + 7 - 3 = 14.",
+    "dica": "O símbolo ★ não é multiplicação: use exatamente a regra dada."
+  },
+  {
+    "id": "OLIMP_A7_26",
+    "aula": 7,
+    "tipo": "geometria",
+    "dificuldade": 5,
+    "tipoPedagogico": "desafio",
+    "bncc": "EF07MA21",
+    "bncc_desc": "Ângulos, Simetria e Raciocínio Geométrico",
+    "display": "Um ponteiro gira sempre 45° no sentido horário a cada comando. Ele começa apontando para o Norte. Após 11 comandos, para qual direção ele aponta?",
+    "res": "Sudeste",
+    "alternativas": [
+      { "valor": "Noroeste", "tipo": "acerto" },
+      { "valor": "Sudoeste", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_conta_giros_sem_resto", "descricao": "Avançou as direções na ordem correta, mas errou a redução após completar uma volta.", "peso": 2 },
+      { "valor": "Nordeste", "tipo": "erro", "categoria": "atencao", "erro": "olimp_usa_sentido_anti_horario", "descricao": "Fez os giros no sentido contrário ao indicado no enunciado.", "peso": 1 },
+      { "valor": "Oeste", "tipo": "erro", "categoria": "conceito", "erro": "olimp_confunde_45_com_90_graus", "descricao": "Tratou cada comando como giro de 90°, usando apenas direções cardeais.", "peso": 3 }
+    ],
+    "passo": "Cada giro de 45° avança uma posição entre as 8 direções principais. Após 8 comandos, o ponteiro volta ao Norte. Como 11 deixa resto 3 na divisão por 8, basta avançar 3 posições no sentido horário: Nordeste, Leste, Sudeste. Portanto, ele aponta para Sudeste.",
+    "dica": "Uma volta completa tem 8 giros de 45°. Use o resto da divisão por 8."
+  },
+  {
+    "id": "OLIMP_A7_27",
+    "aula": 7,
+    "tipo": "logica",
+    "dificuldade": 5,
+    "tipoPedagogico": "desafio",
+    "bncc": "EF08MA10",
+    "bncc_desc": "Pensamento Algorítmico e Invariantes",
+    "display": "Em um jogo, há 6 fichas viradas para cima. Em cada jogada, Pedro deve virar exatamente 4 fichas: as que estavam para cima ficam para baixo, e as que estavam para baixo ficam para cima. É possível, depois de algumas jogadas, deixar exatamente 1 ficha virada para cima?",
+    "res": "Não",
+    "alternativas": [
+      { "valor": "Não", "tipo": "acerto" },
+      { "valor": "Sim", "tipo": "erro", "categoria": "conceito", "erro": "olimp_ignora_paridade", "descricao": "Pensou apenas em tentar jogadas, sem perceber uma propriedade que nunca muda.", "peso": 3 },
+      { "valor": "Só em 2 jogadas", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_supoe_caminho_curto", "descricao": "Estimou uma quantidade de jogadas sem verificar todas as mudanças possíveis.", "peso": 2 },
+      { "valor": "Só se virar todas no final", "tipo": "erro", "categoria": "interpretacao", "erro": "olimp_altera_regra_jogo", "descricao": "Introduziu uma jogada diferente da regra, como virar todas as fichas de uma vez.", "peso": 2 }
+    ],
+    "passo": "No início há 6 fichas para cima, um número par. Ao virar 4 fichas, se k delas estavam para cima, então k ficam para baixo e 4 - k ficam para cima. A quantidade de fichas para cima muda em 4 - 2k, que é sempre um número par. Portanto, a paridade continua par. Como 1 é ímpar, não é possível chegar a exatamente 1 ficha para cima.",
+    "dica": "Observe se a quantidade de fichas viradas para cima muda de par para ímpar ou permanece com a mesma paridade."
+  },
+  {
+    "id": "OLIMP_A7_28",
+    "aula": 7,
+    "tipo": "probabilidade",
+    "dificuldade": 4,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA22",
+    "bncc_desc": "Probabilidade e Contagem de Casos",
+    "display": "Dois dados comuns são lançados. Qual é a probabilidade de a soma dos resultados ser 9?",
+    "res": "1/9",
+    "alternativas": [
+      { "valor": "1/9", "tipo": "acerto" },
+      { "valor": "4/12", "tipo": "erro", "categoria": "conceito", "erro": "olimp_usa_total_de_somas", "descricao": "Considerou 12 como total de possibilidades, confundindo valores de soma com pares ordenados dos dados.", "peso": 3 },
+      { "valor": "3/36", "tipo": "erro", "categoria": "atencao", "erro": "olimp_esquece_um_par_ordenado", "descricao": "Listou apenas três pares que somam 9, esquecendo uma possibilidade.", "peso": 1 },
+      { "valor": "5/36", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_inclui_par_invalido", "descricao": "Incluiu uma combinação impossível ou uma soma que não resulta em 9.", "peso": 2 }
+    ],
+    "passo": "Há 36 resultados possíveis ao lançar dois dados. As somas 9 ocorrem nos pares ordenados (3,6), (4,5), (5,4) e (6,3), totalizando 4 casos. Assim, a probabilidade é 4/36 = 1/9.",
+    "dica": "Liste os pares ordenados, pois tirar 3 no primeiro dado e 6 no segundo é diferente de tirar 6 no primeiro e 3 no segundo."
+  },
+  {
+    "id": "OLIMP_A7_29",
+    "aula": 7,
+    "tipo": "geometria",
+    "dificuldade": 4,
+    "tipoPedagogico": "base",
+    "bncc": "EF09MA16",
+    "bncc_desc": "Relações Métricas e Raciocínio Espacial",
+    "display": "Um cubo foi montado com 27 cubinhos iguais, formando uma estrutura 3 × 3 × 3. Depois, todos os cubinhos que ficam nos cantos do cubo grande foram retirados. Quantos cubinhos restaram?",
+    "res": "19",
+    "alternativas": [
+      { "valor": "19", "tipo": "acerto" },
+      { "valor": "21", "tipo": "erro", "categoria": "atencao", "erro": "olimp_retira_apenas_seis_cantos", "descricao": "Confundiu os cantos do cubo com as seis faces e retirou apenas 6 cubinhos.", "peso": 1 },
+      { "valor": "18", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_retira_centro_das_faces", "descricao": "Retirou também cubinhos que não são cantos, como centros de faces.", "peso": 2 },
+      { "valor": "23", "tipo": "erro", "categoria": "conceito", "erro": "olimp_confunde_cantos_com_vertices_visiveis", "descricao": "Contou apenas 4 cantos, como se o cubo tivesse somente os vértices da frente.", "peso": 3 }
+    ],
+    "passo": "Um cubo tem 8 cantos. A estrutura possui 27 cubinhos no total. Retirando os 8 cubinhos localizados nos cantos, restam 27 - 8 = 19 cubinhos.",
+    "dica": "Pense nos vértices de um cubo: há cantos na frente e também atrás."
+  },
+  {
+    "id": "OLIMP_A7_30",
+    "aula": 7,
+    "tipo": "aritmetica",
+    "dificuldade": 5,
+    "tipoPedagogico": "desafio",
+    "bncc": "EF09MA04",
+    "bncc_desc": "Raciocínio Numérico e Congruências Simples",
+    "display": "Um número natural deixa resto 2 quando dividido por 5 e resto 1 quando dividido por 3. Qual é o menor número natural maior que 20 que satisfaz essas condições?",
+    "res": "22",
+    "alternativas": [
+      { "valor": "22", "tipo": "acerto" },
+      { "valor": "17", "tipo": "erro", "categoria": "atencao", "erro": "olimp_ignora_maior_que_vinte", "descricao": "Encontrou um número que satisfaz os restos, mas esqueceu a condição de ser maior que 20.", "peso": 1 },
+      { "valor": "27", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_testa_apenas_resto_por_cinco", "descricao": "Escolheu um número que deixa resto 2 na divisão por 5, mas não verificou o resto na divisão por 3.", "peso": 2 },
+      { "valor": "31", "tipo": "erro", "categoria": "conceito", "erro": "olimp_soma_restos_indevidamente", "descricao": "Tentou combinar os restos por uma regra direta, sem testar as duas divisões.", "peso": 3 }
+    ],
+    "passo": "Os números maiores que 20 que deixam resto 2 na divisão por 5 são 22, 27, 32, 37, ... Testando a divisão por 3: 22 deixa resto 1, pois 22 = 3 × 7 + 1. Portanto, o menor número é 22.",
+    "dica": "Comece pelos números que deixam resto 2 ao dividir por 5 e teste a outra condição."
   }
 ]
