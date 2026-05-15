@@ -4025,5 +4025,195 @@
     ],
     "passo": "Os números maiores que 20 que deixam resto 2 na divisão por 5 são 22, 27, 32, 37, ... Testando a divisão por 3: 22 deixa resto 1, pois 22 = 3 × 7 + 1. Portanto, o menor número é 22.",
     "dica": "Comece pelos números que deixam resto 2 ao dividir por 5 e teste a outra condição."
-  }
+  },
+{
+"id": "A2_EXP_01",
+"aula": 2,
+"tipo": "aritmetica",
+"dificuldade": 2,
+"tipoPedagogico": "base",
+"bncc": "EF06MA03",
+"bncc_desc": "Equivalência de Operações",
+"display": "Em uma balança digital, três símbolos iguais '▲' somados a um peso estável de 15g equilibram perfeitamente com um único '▲' somado a um peso de 35g. Qual é o valor numérico de cada símbolo ▲?",
+"res": "10",
+"alternativas": [
+{ "valor": "10", "tipo": "acerto" },
+{ "valor": "25", "tipo": "erro", "categoria": "atencao", "erro": "balanca_subtraiu_errado", "descricao": "Subtraiu 35 - 10 de forma descuidada sem isolar os símbolos corretamente.", "peso": 1 },
+{ "valor": "50", "tipo": "erro", "categoria": "procedimento", "erro": "balanca_soma_inversa", "descricao": "Somou os valores numéricos (35 + 15) em vez de subtrair para achar a diferença.", "peso": 2 },
+{ "valor": "20", "tipo": "erro", "categoria": "calculo", "erro": "balanca_esqueceu_divisao", "descricao": "Encontrou a diferença total de peso (20g) mas esqueceu de dividir pela quantidade de símbolos restantes.", "peso": 1 }
+],
+"passo": "Retirando um ▲ de cada lado, ficamos com 2▲ + 15 = 35. Logo, 2▲ = 35 - 15 -> 2▲ = 20 -> ▲ = 10.",
+"dica": "Se você tirar um triângulo de cada lado da balança, ela continua equilibrada. Use isso para simplificar a conta!"
+},
+{
+"id": "A2_EXP_02",
+"aula": 2,
+"tipo": "aritmetica",
+"dificuldade": 2,
+"tipoPedagogico": "base",
+"bncc": "EF06MA09",
+"bncc_desc": "Divisão de Frações",
+"display": "Um chef de cozinha tem uma receita que exige exatamente 3/4 de xícara de óleo vegetal. Como ele vai preparar apenas metade da receita original, que fração de xícara ele deve utilizar?",
+"res": "3/8",
+"alternativas": [
+{ "valor": "3/8", "tipo": "acerto" },
+{ "valor": "3/2", "tipo": "erro", "categoria": "conceito", "erro": "frac_multiplicou_denominador", "descricao": "Multiplicou a fração por 2 em vez de dividir por 2.", "peso": 3 },
+{ "valor": "6/4", "tipo": "erro", "categoria": "procedimento", "erro": "frac_dobrou_numerador", "descricao": "Dobrou o numerador da fração ao tentar fracionar a receita ao meio.", "peso": 2 },
+{ "valor": "1/4", "tipo": "erro", "categoria": "interpretacao", "erro": "frac_subtracao_direta", "descricao": "Interpretou a 'metade' como subtrair 2 ou 2/4 do total.", "peso": 2 }
+],
+"passo": "Metade de uma fração é o mesmo que multiplicá-la por 1/2. Assim, (3/4) x (1/2) = (3x1) / (4x2) = 3/8.",
+"dica": "Para achar a metade de uma fração, você só precisa dobrar o número que fica na parte de baixo!"
+},
+{
+"id": "A2_EXP_03",
+"aula": 2,
+"tipo": "aritmetica",
+"dificuldade": 3,
+"tipoPedagogico": "investigacao",
+"bncc": "EF06MA03",
+"bncc_desc": "Criptoaritmética Operacional",
+"display": "Na operação matemática secreta AB × 6 = BBB, as letras A e B representam algarismos totalmente diferentes. Qual é o valor correto do algarismo A?",
+"res": "7",
+"alternativas": [
+{ "valor": "7", "tipo": "acerto" },
+{ "valor": "4", "tipo": "erro", "categoria": "interpretacao", "erro": "cripto_confundiu_letras", "descricao": "Identificou corretamente o valor de B (4), mas trocou com o valor pedido de A.", "peso": 2 },
+{ "valor": "6", "tipo": "erro", "categoria": "atencao", "erro": "cripto_repetiu_multiplicador", "descricao": "Repetiu o número multiplicador por falta de análise das casas das dezenas.", "peso": 1 },
+{ "valor": "5", "tipo": "erro", "categoria": "calculo", "erro": "cripto_erro_multiplicacao", "descricao": "Errou a tabuada básica ou a estimativa do produto final.", "peso": 1 }
+],
+"passo": "O único valor de B que multiplicado por 6 termina em B é 4 (4x6=24). Se B=4, o produto é 444. Dividindo 444 por 6, encontramos 74. Logo, A=7.",
+"dica": "Descubra primeiro o valor de B olhando para a unidade: qual número vezes 6 termina com ele mesmo?"
+},
+{
+"id": "A2_EXP_04",
+"aula": 2,
+"tipo": "aritmetica",
+"dificuldade": 2,
+"tipoPedagogico": "base",
+"bncc": "EF06MA11",
+"bncc_desc": "Operações com Decimais",
+"display": "Uma impressora 3D de alta precisão leva exatamente 0,4 horas para concluir a impressão de uma engrenagem de teste. Quantos minutos são necessários para imprimir 5 dessas engrenagens sem interrupções?",
+"res": "120",
+"alternativas": [
+{ "valor": "120", "tipo": "acerto" },
+{ "valor": "200", "tipo": "erro", "categoria": "conceito", "erro": "decimal_hora_cem_minutos", "descricao": "Considerou erroneamente que uma hora possui 100 minutos, calculando 40 minutos por peça.", "peso": 3 },
+{ "valor": "20", "tipo": "erro", "categoria": "atencao", "erro": "decimal_esqueceu_conversao", "descricao": "Calculou o tempo total em formato de horas decimais (2 horas) mas não converteu para minutos.", "peso": 1 },
+{ "valor": "60", "tipo": "erro", "categoria": "procedimento", "erro": "decimal_calculo_unitario", "descricao": "Calculou corretamente o tempo de apenas uma engrenagem (24 minutos) e esqueceu de multiplicar por 5.", "peso": 2 }
+],
+"passo": "Tempo total em horas: 0,4 x 5 = 2 horas. Convertendo para minutos: 2 horas x 60 minutos = 120 minutos.",
+"dica": "Lembre-se de que 0,1 hora equivale a 6 minutos. Descubra o tempo de uma peça em minutos primeiro!"
+},
+{
+"id": "A2_EXP_05",
+"aula": 2,
+"tipo": "aritmetica",
+"dificuldade": 3,
+"tipoPedagogico": "recomposicao",
+"bncc": "EF07MA04",
+"bncc_desc": "Operações com Inteiros",
+"display": "Um drone submarino de pesquisa está mapeando uma fenda a -150 metros em relação ao nível do mar. Ele executa uma manobra de subida de 80 metros, mas logo em seguida desce o triplo da distância que havia acabado de subir. Qual é a nova posição altimétrica do drone?",
+"res": "-310",
+"alternativas": [
+{ "valor": "-310", "tipo": "acerto" },
+{ "valor": "-390", "tipo": "erro", "categoria": "procedimento", "erro": "inteiros_triplicou_inicial", "descricao": "Aplicou o triplo sobre a profundidade inicial e não sobre o deslocamento da subida.", "peso": 2 },
+{ "valor": "-160", "tipo": "erro", "categoria": "calculo", "erro": "inteiros_soma_sinais", "descricao": "Errou a conta aritmética envolvendo a soma de números com sinais opostos.", "peso": 1 },
+{ "valor": "-70", "tipo": "erro", "categoria": "atencao", "erro": "inteiros_parou_subida", "descricao": "Calculou apenas a primeira parada após a subida e desconsiderou a descida final.", "peso": 1 }
+],
+"passo": "Posição inicial: -150. Após subir 80m: -150 + 80 = -70m. Descida: o triplo de 80m é 240m (logo, -240). Posição final: -70 - 240 = -310 metros.",
+"dica": "Subir é uma operação de mais (+), descer é uma operação de menos (-). Faça um passo de cada vez!"
+},
+{
+"id": "A2_EXP_06",
+"aula": 2,
+"tipo": "aritmetica",
+"dificuldade": 2,
+"tipoPedagogico": "investigacao",
+"bncc": "EF06MA12",
+"bncc_desc": "Porcentagem de Porcentagem",
+"display": "Um grande reservatório industrial operava com 80% de sua capacidade máxima de armazenamento. Devido a uma falha na válvula, ele perdeu 25% da água que estava guardada em seu interior. Qual porcentagem da capacidade total do reservatório restou?",
+"res": "60%",
+"alternativas": [
+{ "valor": "60%", "tipo": "acerto" },
+{ "valor": "55%", "tipo": "erro", "categoria": "interpretacao", "erro": "porcent_subtracao_direta", "descricao": "Subtraiu as porcentagens de forma direta (80% - 25%), ignorando que a perda era sobre o volume real.", "peso": 2 },
+{ "valor": "20%", "tipo": "erro", "categoria": "atencao", "erro": "porcent_calculou_perda", "descricao": "Calculou corretamente a quantidade de água perdida, mas esqueceu de subtrair para achar o que restou.", "peso": 1 },
+{ "valor": "75%", "tipo": "erro", "categoria": "calculo", "erro": "porcent_erro_fracao", "descricao": "Errou a divisão ou o cálculo de um quarto (25%) do valor inicial armazenado.", "peso": 1 }
+],
+"passo": "A perda foi de 25% de 80%. Como 25% é o mesmo que 1/4, a perda foi de 80% ÷ 4 = 20%. Portanto, restaram 80% - 20% = 60%.",
+"dica": "O reservatório não perdeu 25% do total dele, perdeu 25% da água que estava lá dentro. 25% é a quarta parte!"
+},
+{
+"id": "A2_EXP_07",
+"aula": 2,
+"tipo": "aritmetica",
+"dificuldade": 2,
+"tipoPedagogico": "base",
+"bncc": "EF06MA03",
+"bncc_desc": "Problemas com Operações",
+"display": "Quatro cientistas alugaram um laboratório compartilhado por R$ 120,00 e planejavam dividir o custo igualmente. No dia do experimento, dois deles adoeceram e não puderam ir. Os cientistas presentes dividiram o valor total entre si. Quantos reais A MAIS cada um teve que pagar?",
+"res": "30",
+"alternativas": [
+{ "valor": "30", "tipo": "acerto" },
+{ "valor": "60", "tipo": "erro", "categoria": "atencao", "erro": "divisao_total_individual", "descricao": "Indicou o valor final que cada presente pagou, em vez do valor do acréscimo solicitado.", "peso": 1 },
+{ "valor": "15", "tipo": "erro", "categoria": "procedimento", "erro": "divisao_inversa_cota", "descricao": "Dividiu o valor do acréscimo de forma errada utilizando o número antigo de participantes.", "peso": 2 },
+{ "valor": "40", "tipo": "erro", "categoria": "calculo", "erro": "divisao_aritmetica_base", "descricao": "Fez a divisão de 120 por 3 ou errou a subtração básica das cotas individuais.", "peso": 1 }
+],
+"passo": "Planejado: 120 ÷ 4 = R$ 30 por pessoa. Realizado: 120 ÷ 2 = R$ 60 por pessoa. Valor a mais: 60 - 30 = R$ 30,00.",
+"dica": "Calcule quanto cada um pagaria com o grupo cheio e quanto pagou com o grupo vazio, depois ache a diferença!"
+},
+{
+"id": "A2_EXP_08",
+"aula": 2,
+"tipo": "aritmetica",
+"dificuldade": 3,
+"tipoPedagogico": "investigacao",
+"bncc": "EF06MA05",
+"bncc_desc": "Restos e Ciclos",
+"display": "Um lote de 52 componentes eletrônicos é distribuído um por um para um grupo de computadores dispostos em círculo em uma rede de testes. Se a distribuição começa no Computador 1 e o último componente é entregue exatamente para o Computador 4, quantos computadores formam essa rede?",
+"res": "8",
+"alternativas": [
+{ "valor": "8", "tipo": "acerto" },
+{ "valor": "4", "tipo": "erro", "categoria": "atencao", "erro": "ciclo_copiou_fim", "descricao": "Apenas usou o número do computador final como a resposta do problema por distração.", "peso": 1 },
+{ "valor": "13", "tipo": "erro", "categoria": "conceito", "erro": "ciclo_divisao_exata", "descricao": "Dividiu 52 por 4 achando que o quociente exato representava o número de computadores.", "peso": 3 },
+{ "valor": "7", "tipo": "erro", "categoria": "calculo", "erro": "ciclo_erro_resto", "descricao": "Errou a operação de divisão ou a estimativa do resto do ciclo numérico.", "peso": 1 }
+],
+"passo": "Se o último componente parou no 4º computador, significa que 52 dividido pelo número de computadores deixa resto 4. Testando as opções, 52 ÷ 8 dá 6 voltas completas e sobra um resto exato de 4.",
+"dica": "O número total de componentes menos 4 (ou seja, 48) precisa ser dividido perfeitamente pelo número de computadores!"
+},
+{
+"id": "A2_EXP_09",
+"aula": 2,
+"tipo": "aritmetica",
+"dificuldade": 3,
+"tipoPedagogico": "investigacao",
+"bncc": "EF06MA03",
+"bncc_desc": "Pensamento Algorítmico",
+"display": "Neste sistema lógico, a operação '[ x ]' significa que você deve calcular 'o dobro do valor de x e depois subtrair 3'. Seguindo estritamente esse algoritmo composto, qual é o valor final da expressão combinada [ [ 5 ] ]?",
+"res": "11",
+"alternativas": [
+{ "valor": "11", "tipo": "acerto" },
+{ "valor": "14", "tipo": "erro", "categoria": "procedimento", "erro": "algo_dobrou_sem_subtrair", "descricao": "Calculou a primeira etapa mas apenas dobrou o valor na segunda sem aplicar a subtração de 3.", "peso": 2 },
+{ "valor": "7", "tipo": "erro", "categoria": "atencao", "erro": "algo_parou_primeira_fase", "descricao": "Resolveu apenas o operador interno [ 5 ] e desconsiderou o operador externo.", "peso": 1 },
+{ "valor": "17", "tipo": "erro", "categoria": "calculo", "erro": "algo_somou_em_vez_subtrair", "descricao": "Fez a inversão dos sinais aritméticos somando 3 em vez de subtrair na última operação.", "peso": 1 }
+],
+"passo": "Primeiro resolvemos o interior: [ 5 ] = (2 x 5) - 3 = 10 - 3 = 7. Depois aplicamos o operador externo ao resultado: [ 7 ] = (2 x 7) - 3 = 14 - 3 = 11.",
+"dica": "O operador está em camadas! Resolva primeiro a conta de dentro e use o resultado para fazer a conta de fora."
+},
+{
+"id": "A2_EXP_10",
+"aula": 2,
+"tipo": "aritmetica",
+"dificuldade": 2,
+"tipoPedagogico": "recomposicao",
+"bncc": "EF06MA07",
+"bncc_desc": "Soma de Frações",
+"display": "Em um projeto escolar, 1/3 de um mural tecnológico foi preenchido com circuitos azuis e 2/5 foi coberto com fiação verde. O restante do espaço foi deixado em branco. Que fração do mural corresponde à área deixada em branco?",
+"res": "4/15",
+"alternativas": [
+{ "valor": "4/15", "tipo": "acerto" },
+{ "valor": "3/8", "tipo": "erro", "categoria": "conceito", "erro": "frac_soma_direta_abas", "descricao": "Somou numeradores e denominadores diretamente (1+2)/(3+5), que é um erro conceitual grave.", "peso": 3 },
+{ "valor": "11/15", "tipo": "erro", "categoria": "atencao", "erro": "frac_indicou_preenchido", "descricao": "Calculou corretamente a parte que foi preenchida, mas esqueceu de achar o resto em branco.", "peso": 1 },
+{ "valor": "2/15", "tipo": "erro", "categoria": "calculo", "erro": "frac_subtracao_inteiro", "descricao": "Errou o MMC das frações ou a subtração final em relação ao mural inteiro (15/15).", "peso": 1 }
+],
+"passo": "Soma das partes ocupadas: 1/3 + 2/5 = 5/15 + 6/15 = 11/15. O total do mural é 15/15. Parte em branco: 15/15 - 11/15 = 4/15.",
+"dica": "Para somar frações com denominadores diferentes, você precisa achar o MMC deles antes de descobrir o total ocupado!"
+}
 ]
