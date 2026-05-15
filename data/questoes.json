@@ -3645,5 +3645,196 @@
     ],
     "passo": "Uma semana tem 7 dias. 50 dividido por 7 dá 7 semanas completas e resta 1 dia. Sexta-feira + 1 dia = Sábado.",
     "dica": "Pense no múltiplo de 7 mais próximo de 50. O dia da semana se repete nele. Depois, conte o que sobrou."
+  },
+  [
+  {
+    "id": "OLIMP_A7_11",
+    "aula": 7,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA14",
+    "bncc_desc": "Contagem e Princípio Multiplicativo",
+    "display": "Uma senha tem 3 símbolos, escolhidos entre A, B, C e D. Símbolos vizinhos não podem ser iguais. Quantas senhas diferentes podem ser formadas?",
+    "res": "36",
+    "alternativas": [
+      { "valor": "36", "tipo": "acerto" },
+      { "valor": "64", "tipo": "erro", "categoria": "conceito", "erro": "olimp_permite_vizinhos_iguais", "descricao": "Considerou que qualquer símbolo poderia aparecer em qualquer posição, permitindo repetições consecutivas.", "peso": 3 },
+      { "valor": "24", "tipo": "erro", "categoria": "interpretacao", "erro": "olimp_proibe_toda_repeticao", "descricao": "Entendeu que nenhum símbolo poderia se repetir, embora a regra proíba apenas repetições vizinhas.", "peso": 2 },
+      { "valor": "12", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_fixa_primeira_posicao", "descricao": "Contou apenas as senhas que começam com uma letra específica.", "peso": 1 }
+    ],
+    "passo": "Para o primeiro símbolo há 4 escolhas. Para o segundo, há 3 escolhas, pois ele não pode ser igual ao primeiro. Para o terceiro, novamente há 3 escolhas, pois ele só não pode ser igual ao segundo. Assim, 4 × 3 × 3 = 36.",
+    "dica": "A restrição depende apenas do símbolo imediatamente anterior."
+  },
+  {
+    "id": "OLIMP_A7_12",
+    "aula": 7,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA05",
+    "bncc_desc": "Múltiplos, Divisores e Inclusão",
+    "display": "Em uma fila de cartões numerados de 1 a 30, Ana marca todos os múltiplos de 2 e depois todos os múltiplos de 3. Quantos cartões ficam marcados ao final?",
+    "res": "20",
+    "alternativas": [
+      { "valor": "20", "tipo": "acerto" },
+      { "valor": "25", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_conta_intersecao_duas_vezes", "descricao": "Somou os múltiplos de 2 e de 3 sem retirar os múltiplos de 6, que foram contados duas vezes.", "peso": 3 },
+      { "valor": "15", "tipo": "erro", "categoria": "atencao", "erro": "olimp_conta_apenas_multiplos_de_2", "descricao": "Considerou somente os múltiplos de 2 e ignorou a segunda marcação.", "peso": 1 },
+      { "valor": "5", "tipo": "erro", "categoria": "conceito", "erro": "olimp_conta_apenas_intersecao", "descricao": "Contou apenas os cartões que são múltiplos de 2 e de 3 ao mesmo tempo.", "peso": 2 }
+    ],
+    "passo": "De 1 a 30 há 15 múltiplos de 2 e 10 múltiplos de 3. Os múltiplos de 6 foram contados nas duas listas: 6, 12, 18, 24 e 30, totalizando 5. Logo, 15 + 10 - 5 = 20.",
+    "dica": "Cuidado com os números que aparecem nas duas listas."
+  },
+  {
+    "id": "OLIMP_A7_13",
+    "aula": 7,
+    "tipo": "geometria",
+    "dificuldade": 4,
+    "tipoPedagogico": "desafio",
+    "bncc": "EF06MA24",
+    "bncc_desc": "Geometria em Malhas e Contagem de Caminhos",
+    "display": "Em uma malha quadriculada, um robô deve ir do ponto A ao ponto B fazendo exatamente 3 passos para a direita e 2 passos para cima, em qualquer ordem. Porém, ele não pode passar pelo ponto que fica após 1 passo para a direita e 1 passo para cima a partir de A. Quantos caminhos diferentes ele pode fazer?",
+    "res": "6",
+    "alternativas": [
+      { "valor": "6", "tipo": "acerto" },
+      { "valor": "10", "tipo": "erro", "categoria": "conceito", "erro": "olimp_ignora_ponto_bloqueado", "descricao": "Contou todos os caminhos possíveis sem considerar a restrição do ponto proibido.", "peso": 3 },
+      { "valor": "8", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_subtrai_apenas_duas_rotas", "descricao": "Percebeu que havia caminhos inválidos, mas subtraiu apenas as formas de chegar ao ponto bloqueado.", "peso": 2 },
+      { "valor": "4", "tipo": "erro", "categoria": "calculo", "erro": "olimp_subtracao_excessiva", "descricao": "Subtraiu caminhos a mais ao considerar que todo caminho próximo ao ponto bloqueado seria proibido.", "peso": 2 }
+    ],
+    "passo": "Sem bloqueio, os caminhos são as permutações de 3 direitas e 2 subidas: 5!/(3!2!) = 10. Para passar pelo ponto proibido, o robô faz 1 direita e 1 subida até ele, em 2 formas. Depois faltam 2 direitas e 1 subida, em 3 formas. Assim, 2 × 3 = 6 caminhos passam pelo ponto proibido. Válidos: 10 - 6 = 4. Mas o ponto indicado é proibido apenas como parada intermediária; os caminhos válidos são os que não incluem essa posição, portanto restam 4 caminhos.",
+    "dica": "Conte todos os caminhos primeiro e depois retire os que passam pelo ponto proibido."
+  },
+  {
+    "id": "OLIMP_A7_14",
+    "aula": 7,
+    "tipo": "padroes",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA15",
+    "bncc_desc": "Sequências e Regularidades Numéricas",
+    "display": "A sequência 2, 5, 11, 23, 47 segue uma regra: cada termo é o dobro do anterior mais 1. Qual é o próximo termo?",
+    "res": "95",
+    "alternativas": [
+      { "valor": "95", "tipo": "acerto" },
+      { "valor": "94", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_esquece_somar_um", "descricao": "Dobrou o termo anterior, mas esqueceu de acrescentar 1.", "peso": 2 },
+      { "valor": "71", "tipo": "erro", "categoria": "conceito", "erro": "olimp_supoe_diferenca_constante", "descricao": "Tentou continuar a sequência usando apenas uma diferença fixa entre termos.", "peso": 3 },
+      { "valor": "96", "tipo": "erro", "categoria": "calculo", "erro": "olimp_dobra_e_soma_dois", "descricao": "Aplicou uma regra parecida, mas somou 2 em vez de somar 1.", "peso": 1 }
+    ],
+    "passo": "O último termo dado é 47. Pela regra, o próximo é 2 × 47 + 1 = 94 + 1 = 95.",
+    "dica": "Use a regra no último número da sequência."
+  },
+  {
+    "id": "OLIMP_A7_15",
+    "aula": 7,
+    "tipo": "algebra",
+    "dificuldade": 4,
+    "tipoPedagogico": "desafio",
+    "bncc": "EF07MA18",
+    "bncc_desc": "Equações do Primeiro Grau em Problemas",
+    "display": "Em uma caixa há bolas verdes e azuis. O número de bolas verdes é o dobro do número de bolas azuis. Se forem retiradas 6 bolas verdes, ficam quantidades iguais de bolas verdes e azuis. Quantas bolas havia na caixa inicialmente?",
+    "res": "18",
+    "alternativas": [
+      { "valor": "18", "tipo": "acerto" },
+      { "valor": "12", "tipo": "erro", "categoria": "interpretacao", "erro": "olimp_responde_apenas_verdes", "descricao": "Encontrou a quantidade inicial de bolas verdes, mas não somou com as bolas azuis.", "peso": 2 },
+      { "valor": "6", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_responde_apenas_azuis", "descricao": "Encontrou a quantidade de bolas azuis, mas respondeu como se fosse o total da caixa.", "peso": 2 },
+      { "valor": "24", "tipo": "erro", "categoria": "conceito", "erro": "olimp_dobra_o_total_errado", "descricao": "Dobrou a quantidade de verdes ou tratou o total como se também fosse o dobro das azuis.", "peso": 3 }
+    ],
+    "passo": "Se havia x bolas azuis, havia 2x bolas verdes. Depois de retirar 6 verdes, ficam 2x - 6 verdes. Como as quantidades ficam iguais: 2x - 6 = x. Então x = 6. Havia 6 azuis e 12 verdes, totalizando 18 bolas.",
+    "dica": "Represente a quantidade de bolas azuis por x."
+  },
+  {
+    "id": "OLIMP_A7_16",
+    "aula": 7,
+    "tipo": "logica",
+    "dificuldade": 4,
+    "tipoPedagogico": "desafio",
+    "bncc": "EF08MA10",
+    "bncc_desc": "Pensamento Algorítmico e Sequências Recursivas",
+    "display": "Um programa começa com o número 1 na tela. A cada rodada, ele faz: se o número for ímpar, soma 5; se for par, divide por 2. Após 5 rodadas, qual número estará na tela?",
+    "res": "4",
+    "alternativas": [
+      { "valor": "4", "tipo": "acerto" },
+      { "valor": "3", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_para_uma_rodada_antes", "descricao": "Executou corretamente o algoritmo, mas fez apenas 4 rodadas.", "peso": 1 },
+      { "valor": "8", "tipo": "erro", "categoria": "atencao", "erro": "olimp_aplica_regra_antiga", "descricao": "Aplicou a regra sem verificar a paridade atual a cada nova rodada.", "peso": 2 },
+      { "valor": "16", "tipo": "erro", "categoria": "conceito", "erro": "olimp_soma_sempre_cinco", "descricao": "Tratou todos os passos como se o número continuasse ímpar.", "peso": 3 }
+    ],
+    "passo": "Começa em 1. Rodada 1: 1 é ímpar, então 1 + 5 = 6. Rodada 2: 6 é par, então 6 ÷ 2 = 3. Rodada 3: 3 é ímpar, então 3 + 5 = 8. Rodada 4: 8 é par, então 8 ÷ 2 = 4. Rodada 5: 4 é par, então 4 ÷ 2 = 2. Portanto, após 5 rodadas, o número é 2.",
+    "dica": "Depois de cada rodada, confira novamente se o número ficou par ou ímpar."
+  },
+  {
+    "id": "OLIMP_A7_17",
+    "aula": 7,
+    "tipo": "probabilidade",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA22",
+    "bncc_desc": "Probabilidade em Espaços Amostrais Finitos",
+    "display": "Uma urna contém cartões numerados de 1 a 12. Um cartão é sorteado ao acaso. Qual é a probabilidade de o número sorteado ser múltiplo de 3 ou maior que 10?",
+    "res": "5/12",
+    "alternativas": [
+      { "valor": "5/12", "tipo": "acerto" },
+      { "valor": "6/12", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_conta_12_duas_vezes", "descricao": "Somou os casos favoráveis sem perceber que o número 12 pertence aos dois grupos.", "peso": 3 },
+      { "valor": "4/12", "tipo": "erro", "categoria": "atencao", "erro": "olimp_conta_apenas_multiplos_de_3", "descricao": "Contou somente os múltiplos de 3 e ignorou o número 11.", "peso": 1 },
+      { "valor": "2/12", "tipo": "erro", "categoria": "interpretacao", "erro": "olimp_conta_apenas_maiores_que_10", "descricao": "Considerou apenas os números maiores que 10, esquecendo os múltiplos de 3 menores.", "peso": 2 }
+    ],
+    "passo": "Os múltiplos de 3 são 3, 6, 9 e 12. Os números maiores que 10 são 11 e 12. Juntando sem repetir: 3, 6, 9, 11 e 12. São 5 casos favoráveis em 12 possíveis, então a probabilidade é 5/12.",
+    "dica": "Faça uma única lista dos números que atendem a pelo menos uma das condições."
+  },
+  {
+    "id": "OLIMP_A7_18",
+    "aula": 7,
+    "tipo": "geometria",
+    "dificuldade": 4,
+    "tipoPedagogico": "desafio",
+    "bncc": "EF08MA19",
+    "bncc_desc": "Área, Decomposição de Figuras e Raciocínio Geométrico",
+    "display": "Um retângulo de 8 cm por 5 cm teve um quadrado de lado 3 cm retirado de um dos cantos. Qual é a área da figura que sobrou?",
+    "res": "31 cm²",
+    "alternativas": [
+      { "valor": "31 cm²", "tipo": "acerto" },
+      { "valor": "40 cm²", "tipo": "erro", "categoria": "atencao", "erro": "olimp_ignora_parte_retirada", "descricao": "Calculou apenas a área do retângulo original e não retirou o quadrado.", "peso": 1 },
+      { "valor": "37 cm²", "tipo": "erro", "categoria": "conceito", "erro": "olimp_subtrai_lado_em_vez_de_area", "descricao": "Subtraiu 3 da área total, confundindo medida de lado com medida de área.", "peso": 3 },
+      { "valor": "25 cm²", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_altera_dimensoes_do_retangulo", "descricao": "Calculou a área como se retirar o canto transformasse toda a figura em um retângulo de 5 cm por 5 cm.", "peso": 2 }
+    ],
+    "passo": "A área do retângulo original é 8 × 5 = 40 cm². A área do quadrado retirado é 3 × 3 = 9 cm². A área restante é 40 - 9 = 31 cm².",
+    "dica": "Não subtraia o lado do quadrado; subtraia a área dele."
+  },
+  {
+    "id": "OLIMP_A7_19",
+    "aula": 7,
+    "tipo": "proporcionalidade",
+    "dificuldade": 4,
+    "tipoPedagogico": "base",
+    "bncc": "EF09MA08",
+    "bncc_desc": "Grandezas Proporcionais e Resolução de Problemas",
+    "display": "Três máquinas iguais produzem 72 peças em 4 horas. Mantendo o mesmo ritmo, quantas peças 5 máquinas iguais produzem em 6 horas?",
+    "res": "180",
+    "alternativas": [
+      { "valor": "180", "tipo": "acerto" },
+      { "valor": "120", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_ajusta_apenas_maquinas", "descricao": "Considerou o aumento de 3 para 5 máquinas, mas esqueceu que o tempo também aumentou.", "peso": 2 },
+      { "valor": "108", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_ajusta_apenas_tempo", "descricao": "Considerou o aumento de 4 para 6 horas, mas manteve a mesma quantidade de máquinas.", "peso": 2 },
+      { "valor": "90", "tipo": "erro", "categoria": "conceito", "erro": "olimp_divide_por_fatores_errados", "descricao": "Aplicou uma proporção incompleta, sem encontrar a produção por máquina por hora.", "peso": 3 }
+    ],
+    "passo": "Se 3 máquinas produzem 72 peças em 4 horas, então em 1 hora produzem 72 ÷ 4 = 18 peças juntas. Cada máquina produz 18 ÷ 3 = 6 peças por hora. Em 6 horas, 5 máquinas produzem 5 × 6 × 6 = 180 peças.",
+    "dica": "Descubra primeiro quanto uma única máquina produz em uma hora."
+  },
+  {
+    "id": "OLIMP_A7_20",
+    "aula": 7,
+    "tipo": "geometria",
+    "dificuldade": 5,
+    "tipoPedagogico": "desafio",
+    "bncc": "EF09MA12",
+    "bncc_desc": "Semelhança de Figuras e Razão entre Áreas",
+    "display": "Dois triângulos semelhantes têm lados correspondentes em razão 2:5. Se a área do triângulo menor é 12 cm², qual é a área do triângulo maior?",
+    "res": "75 cm²",
+    "alternativas": [
+      { "valor": "75 cm²", "tipo": "acerto" },
+      { "valor": "30 cm²", "tipo": "erro", "categoria": "conceito", "erro": "olimp_usa_razao_linear_na_area", "descricao": "Multiplicou a área por 5/2, usando a razão dos lados diretamente em vez da razão ao quadrado.", "peso": 3 },
+      { "valor": "48 cm²", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_inverte_razao_parcialmente", "descricao": "Usou uma ampliação incorreta, tratando a razão entre lados como se fosse 2 ao quadrado.", "peso": 2 },
+      { "valor": "60 cm²", "tipo": "erro", "categoria": "calculo", "erro": "olimp_multiplica_por_cinco", "descricao": "Multiplicou a área menor por 5, sem considerar a relação correta entre áreas semelhantes.", "peso": 1 }
+    ],
+    "passo": "A razão entre os lados do menor para o maior é 2:5. Para áreas, a razão fica ao quadrado: 4:25. Se 4 partes correspondem a 12 cm², então 1 parte corresponde a 3 cm². O triângulo maior tem 25 partes: 25 × 3 = 75 cm².",
+    "dica": "Em figuras semelhantes, áreas não seguem a razão dos lados; seguem o quadrado dessa razão."
   }
 ]
