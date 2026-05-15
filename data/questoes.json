@@ -2833,5 +2833,248 @@
     ],
     "passo": "O ângulo raso é uma linha reta, equivalente a meia volta.",
     "dica": "Pense no horizonte."
+  },
+  {
+    "id": "FIN_154", "aula": 1, "tipo": "aritmetica", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF06MA03", "bncc_desc": "Divisão",
+    "display": "Se você dividir 150 por 5, qual o resultado?", "res": "30",
+    "alternativas": [
+      { "valor": "30", "tipo": "acerto" },
+      { "valor": "25", "tipo": "erro", "categoria": "calculo", "erro": "div_erro_tabuada", "descricao": "Errou a divisão básica.", "peso": 1 },
+      { "valor": "50", "tipo": "erro", "categoria": "procedimento", "erro": "div_inverte", "descricao": "Dividiu como se fosse por 3.", "peso": 2 },
+      { "valor": "300", "tipo": "erro", "categoria": "atencao", "erro": "div_zero_extra", "descricao": "Adicionou um zero indevido.", "peso": 1 }
+    ],
+    "passo": "15 dividido por 5 é 3. Com o zero, temos 30.", "dica": "Pense em 15 laranjas para 5 pessoas."
+  },
+  {
+    "id": "FIN_155", "aula": 2, "tipo": "aritmetica", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF06MA08", "bncc_desc": "Decimais",
+    "display": "Qual o dobro de 0,75?", "res": "1,5",
+    "alternativas": [
+      { "valor": "1,5", "tipo": "acerto" },
+      { "valor": "1,40", "tipo": "erro", "categoria": "calculo", "erro": "dec_dobro_errado", "descricao": "Errou a soma decimal.", "peso": 1 },
+      { "valor": "0,150", "tipo": "erro", "categoria": "procedimento", "erro": "dec_posicao_virgula", "descricao": "Errou a posição da vírgula.", "peso": 3 },
+      { "valor": "7,5", "tipo": "erro", "categoria": "atencao", "erro": "dec_multiplica_dez", "descricao": "Multiplicou por 10 em vez de 2.", "peso": 2 }
+    ],
+    "passo": "0,75 + 0,75 = 1,50.", "dica": "Pense em dois preços de R$ 0,75."
+  },
+  {
+    "id": "FIN_156", "aula": 3, "tipo": "geometria", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF07MA29", "bncc_desc": "Medidas",
+    "display": "Quantos mililitros (ml) tem 1 litro?", "res": "1.000",
+    "alternativas": [
+      { "valor": "1.000", "tipo": "acerto" },
+      { "valor": "100", "tipo": "erro", "categoria": "conceito", "erro": "med_centi", "descricao": "Confundiu com centilitros.", "peso": 2 },
+      { "valor": "10", "tipo": "erro", "categoria": "atencao", "erro": "med_deca", "descricao": "Confundiu com decilitros.", "peso": 3 },
+      { "valor": "1.000.000", "tipo": "erro", "categoria": "procedimento", "erro": "med_excesso", "descricao": "Exagerou na conversão.", "peso": 2 }
+    ],
+    "passo": "O prefixo 'mili' indica a milésima parte do litro.", "dica": "É a mesma relação de metro para milímetro."
+  },
+  {
+    "id": "FIN_157", "aula": 4, "tipo": "aritmetica", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF07MA18", "bncc_desc": "Equações",
+    "display": "Na equação x - 7 = 10, qual o valor de x?", "res": "17",
+    "alternativas": [
+      { "valor": "17", "tipo": "acerto" },
+      { "valor": "3", "tipo": "erro", "categoria": "procedimento", "erro": "equa_subtrai", "descricao": "Subtraiu o 7 em vez de somar.", "peso": 3 },
+      { "valor": "70", "tipo": "erro", "categoria": "interpretacao", "erro": "equa_mult", "descricao": "Multiplicou os números.", "peso": 2 },
+      { "valor": "-17", "tipo": "erro", "categoria": "conceito", "erro": "equa_sinal", "descricao": "Errou o sinal do resultado.", "peso": 2 }
+    ],
+    "passo": "x = 10 + 7 = 17.", "dica": "O número que pula o 'igual' troca de sinal."
+  },
+  {
+    "id": "FIN_158", "aula": 5, "tipo": "aritmetica", "dificuldade": 1, "tipoPedagogico": "base", "bncc": "EF08MA25", "bncc_desc": "Média",
+    "display": "A média entre 5, 5 e 5 é:", "res": "5",
+    "alternativas": [
+      { "valor": "5", "tipo": "acerto" },
+      { "valor": "15", "tipo": "erro", "categoria": "procedimento", "erro": "med_soma_apenas", "descricao": "Apenas somou os valores.", "peso": 3 },
+      { "valor": "1", "tipo": "erro", "categoria": "calculo", "erro": "med_div_errada", "descricao": "Dividiu 15 por 15.", "peso": 2 },
+      { "valor": "0", "tipo": "erro", "categoria": "atencao", "erro": "med_nulo", "descricao": "Indicou valor nulo.", "peso": 1 }
+    ],
+    "passo": "(5+5+5) / 3 = 5.", "dica": "Se todos os números são iguais, a média é o próprio número."
+  },
+  {
+    "id": "FIN_159", "aula": 6, "tipo": "geometria", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF09MA14", "bncc_desc": "Pitágoras",
+    "display": "No teorema de Pitágoras, o que diz a regra?", "res": "a² = b² + c²",
+    "alternativas": [
+      { "valor": "a² = b² + c²", "tipo": "acerto" },
+      { "valor": "a = b + c", "tipo": "erro", "categoria": "conceito", "erro": "pit_linear", "descricao": "Esqueceu de elevar ao quadrado.", "peso": 3 },
+      { "valor": "a² = b² - c²", "tipo": "erro", "categoria": "procedimento", "erro": "pit_sinal", "descricao": "Trocou a soma pela subtração.", "peso": 2 },
+      { "valor": "a = b² + c²", "tipo": "erro", "categoria": "atencao", "erro": "pit_quad_falta", "descricao": "Esqueceu o quadrado na hipotenusa.", "peso": 2 }
+    ],
+    "passo": "O quadrado da hipotenusa é a soma dos quadrados dos catetos.", "dica": "Lembre-se: 'Soma dos Quadrados'."
+  },
+  {
+    "id": "FIN_160", "aula": 1, "tipo": "aritmetica", "dificuldade": 1, "tipoPedagogico": "base", "bncc": "EF06MA01", "bncc_desc": "Numeração",
+    "display": "Quantas dezenas tem o número 100?", "res": "10",
+    "alternativas": [
+      { "valor": "10", "tipo": "acerto" },
+      { "valor": "1", "tipo": "erro", "categoria": "conceito", "erro": "num_centena", "descricao": "Confundiu dezena com centena.", "peso": 2 },
+      { "valor": "100", "tipo": "erro", "categoria": "atencao", "erro": "num_unidade", "descricao": "Confundiu dezena com unidade.", "peso": 1 },
+      { "valor": "0", "tipo": "erro", "categoria": "atencao", "erro": "num_zero", "descricao": "Achou que não havia dezenas.", "peso": 2 }
+    ],
+    "passo": "10 vezes 10 é 100.", "dica": "Pense em notas de 10 reais para formar 100."
+  },
+  {
+    "id": "FIN_161", "aula": 2, "tipo": "aritmetica", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF06MA07", "bncc_desc": "Frações",
+    "display": "O que acontece se multiplicarmos o numerador por 0?", "res": "A fração vale 0",
+    "alternativas": [
+      { "valor": "A fração vale 0", "tipo": "acerto" },
+      { "valor": "Ela continua igual", "tipo": "erro", "categoria": "conceito", "erro": "frac_zero_neutro", "descricao": "Achou que zero não alterava a fração.", "peso": 3 },
+      { "valor": "Ela fica infinita", "tipo": "erro", "categoria": "conceito", "erro": "frac_infinito", "descricao": "Confundiu divisão por zero com numerador zero.", "peso": 2 },
+      { "valor": "O denominador zera", "tipo": "erro", "categoria": "procedimento", "erro": "frac_ambos_zeram", "descricao": "Achou que o zero 'descia' para baixo.", "peso": 2 }
+    ],
+    "passo": "Zero dividido por qualquer número é zero.", "dica": "Se você tem zero fatias de pizza, você tem zero pizza."
+  },
+  {
+    "id": "FIN_162", "aula": 3, "tipo": "geometria", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF06MA24", "bncc_desc": "Área",
+    "display": "Um terreno quadrado tem 10m de lado. Sua área é:", "res": "100 m²",
+    "alternativas": [
+      { "valor": "100 m²", "tipo": "acerto" },
+      { "valor": "40 m²", "tipo": "erro", "categoria": "conceito", "erro": "area_perimetro", "descricao": "Calculou o perímetro (10x4) em vez da área.", "peso": 3 },
+      { "valor": "20 m²", "tipo": "erro", "categoria": "procedimento", "erro": "area_dobro", "descricao": "Dobrou o lado em vez de elevar ao quadrado.", "peso": 2 },
+      { "valor": "10 m²", "tipo": "erro", "categoria": "atencao", "erro": "area_repete", "descricao": "Apenas repetiu o valor do lado.", "peso": 1 }
+    ],
+    "passo": "Área do quadrado = lado x lado (10 x 10).", "dica": "Lado ao quadrado!"
+  },
+  {
+    "id": "FIN_163", "aula": 4, "tipo": "aritmetica", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF07MA18", "bncc_desc": "Equações",
+    "display": "Qual o valor de x em 5x = 50?", "res": "10",
+    "alternativas": [
+      { "valor": "10", "tipo": "acerto" },
+      { "valor": "45", "tipo": "erro", "categoria": "procedimento", "erro": "equa_subtrai_coef", "descricao": "Subtraiu o 5 do 50.", "peso": 2 },
+      { "valor": "250", "tipo": "erro", "categoria": "interpretacao", "erro": "equa_mult_coef", "descricao": "Multiplicou o 5 pelo 50.", "peso": 3 },
+      { "valor": "5", "tipo": "erro", "categoria": "calculo", "erro": "equa_div_errada", "descricao": "Errou a divisão de 50 por 5.", "peso": 1 }
+    ],
+    "passo": "x = 50 / 5 = 10.", "dica": "Quem está multiplicando, passa dividindo."
+  },
+  {
+    "id": "FIN_164", "aula": 5, "tipo": "aritmetica", "dificuldade": 1, "tipoPedagogico": "base", "bncc": "EF06MA32", "bncc_desc": "Gráficos",
+    "display": "Em um gráfico de pizza, a fatia maior representa:", "res": "O dado com maior frequência.",
+    "alternativas": [
+      { "valor": "O dado com maior frequência.", "tipo": "acerto" },
+      { "valor": "O dado mais importante.", "tipo": "erro", "categoria": "interpretacao", "erro": "graf_subjetivo", "descricao": "Confundiu frequência com importância subjetiva.", "peso": 1 },
+      { "valor": "O dado que foi coletado primeiro.", "tipo": "erro", "categoria": "conceito", "erro": "graf_ordem", "descricao": "Achou que o tamanho dependia da ordem de entrada.", "peso": 2 },
+      { "valor": "A média dos dados.", "tipo": "erro", "categoria": "atencao", "erro": "graf_media", "descricao": "Confundiu representação com cálculo médio.", "peso": 2 }
+    ],
+    "passo": "A área da fatia é proporcional ao valor que ela representa.", "dica": "Fatia maior = número maior."
+  },
+  {
+    "id": "FIN_165", "aula": 6, "tipo": "geometria", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF07MA24", "bncc_desc": "Triângulos",
+    "display": "Um triângulo equilátero tem todos os ângulos internos de:", "res": "60°",
+    "alternativas": [
+      { "valor": "60°", "tipo": "acerto" },
+      { "valor": "90°", "tipo": "erro", "categoria": "conceito", "erro": "ang_tri_reto", "descricao": "Confundiu com triângulo retângulo.", "peso": 3 },
+      { "valor": "180°", "tipo": "erro", "categoria": "procedimento", "erro": "ang_tri_total", "descricao": "Indicou a soma total, não cada ângulo.", "peso": 2 },
+      { "valor": "45°", "tipo": "erro", "categoria": "calculo", "erro": "ang_tri_isosc", "descricao": "Confundiu com triângulo isósceles retângulo.", "peso": 2 }
+    ],
+    "passo": "180 dividido por 3 é igual a 60.", "dica": "Lados iguais = ângulos iguais."
+  },
+  {
+    "id": "FIN_166", "aula": 1, "tipo": "aritmetica", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF06MA04", "bncc_desc": "Primos",
+    "display": "Qual é o único número primo que é par?", "res": "2",
+    "alternativas": [
+      { "valor": "2", "tipo": "acerto" },
+      { "valor": "4", "tipo": "erro", "categoria": "conceito", "erro": "primo_par_errado", "descricao": "Indicou um número par composto.", "peso": 2 },
+      { "valor": "0", "tipo": "erro", "categoria": "conceito", "erro": "primo_nulo", "descricao": "Indicou zero como primo.", "peso": 3 },
+      { "valor": "Nenhum", "tipo": "erro", "categoria": "atencao", "erro": "primo_inexistente", "descricao": "Achou que não existiam primos pares.", "peso": 2 }
+    ],
+    "passo": "O 2 só divide por 1 e por ele mesmo.", "dica": "É o menor número primo."
+  },
+  {
+    "id": "FIN_167", "aula": 2, "tipo": "aritmetica", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF07MA10", "bncc_desc": "Frações",
+    "display": "Meia pizza mais meia pizza é igual a:", "res": "1 pizza inteira",
+    "alternativas": [
+      { "valor": "1 pizza inteira", "tipo": "acerto" },
+      { "valor": "2/4 de pizza", "tipo": "erro", "categoria": "calculo", "erro": "frac_soma_den", "descricao": "Somou os denominadores indevidamente.", "peso": 3 },
+      { "valor": "1/4 de pizza", "tipo": "erro", "categoria": "procedimento", "erro": "frac_mult", "descricao": "Multiplicou as frações em vez de somar.", "peso": 2 },
+      { "valor": "Duas pizzas", "tipo": "erro", "categoria": "atencao", "erro": "frac_atencao", "descricao": "Confundiu a parte com o todo.", "peso": 1 }
+    ],
+    "passo": "1/2 + 1/2 = 2/2 = 1.", "dica": "Juntar duas metades forma o todo."
+  },
+  {
+    "id": "FIN_168", "aula": 3, "tipo": "geometria", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF06MA22", "bncc_desc": "Ângulos",
+    "display": "O ângulo de uma volta completa mede:", "res": "360°",
+    "alternativas": [
+      { "valor": "360°", "tipo": "acerto" },
+      { "valor": "180°", "tipo": "erro", "categoria": "conceito", "erro": "ang_meia_volta", "descricao": "Confundiu com meia volta.", "peso": 2 },
+      { "valor": "90°", "tipo": "erro", "categoria": "atencao", "erro": "ang_quarto", "descricao": "Confundiu com um quarto de volta.", "peso": 3 },
+      { "valor": "100°", "tipo": "erro", "categoria": "atencao", "erro": "ang_decimal", "descricao": "Achou que a volta era base 100.", "peso": 2 }
+    ],
+    "passo": "Uma volta inteira no círculo tem 360 graus.", "dica": "Pense nos ponteiros do relógio voltando ao início."
+  },
+  {
+    "id": "FIN_169", "aula": 4, "tipo": "aritmetica", "dificuldade": 3, "tipoPedagogico": "base", "bncc": "EF07MA15", "bncc_desc": "Equações",
+    "display": "Se 2x + 1 = 9, qual o valor de x?", "res": "4",
+    "alternativas": [
+      { "valor": "4", "tipo": "acerto" },
+      { "valor": "5", "tipo": "erro", "categoria": "procedimento", "erro": "equa_soma_antes", "descricao": "Somou o 1 ao 9 antes de dividir.", "peso": 2 },
+      { "valor": "8", "tipo": "erro", "categoria": "atencao", "erro": "equa_esquece_div", "descricao": "Subtraiu mas esqueceu de dividir por 2.", "peso": 2 },
+      { "valor": "10", "tipo": "erro", "categoria": "calculo", "erro": "equa_erro_arit", "descricao": "Errou a conta básica de menos.", "peso": 1 }
+    ],
+    "passo": "2x = 9 - 1 -> 2x = 8 -> x = 4.", "dica": "Primeiro subtrai o 1, depois divide por 2."
+  },
+  {
+    "id": "FIN_170", "aula": 5, "tipo": "aritmetica", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF08MA25", "bncc_desc": "Estatística",
+    "display": "Em um conjunto de dados, o valor central é a:", "res": "Mediana",
+    "alternativas": [
+      { "valor": "Mediana", "tipo": "acerto" },
+      { "valor": "Média", "tipo": "erro", "categoria": "conceito", "erro": "est_conf_media", "descricao": "Confundiu com o valor médio aritmético.", "peso": 2 },
+      { "valor": "Moda", "tipo": "erro", "categoria": "conceito", "erro": "est_conf_moda", "descricao": "Confundiu com o valor mais frequente.", "peso": 2 },
+      { "valor": "Amplitude", "tipo": "erro", "categoria": "atencao", "erro": "est_conf_amp", "descricao": "Confundiu com a diferença entre extremos.", "peso": 3 }
+    ],
+    "passo": "A mediana divide o conjunto ordenado em duas partes iguais.", "dica": "Pense no canteiro central de uma estrada (medianiz)."
+  },
+  {
+    "id": "FIN_171", "aula": 6, "tipo": "geometria", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF09MA15", "bncc_desc": "Círculo",
+    "display": "O valor aproximado de Pi (π) é:", "res": "3,14",
+    "alternativas": [
+      { "valor": "3,14", "tipo": "acerto" },
+      { "valor": "2,14", "tipo": "erro", "categoria": "atencao", "erro": "pi_erro_inteiro", "descricao": "Errou o valor da parte inteira.", "peso": 2 },
+      { "valor": "3,41", "tipo": "erro", "categoria": "procedimento", "erro": "pi_inversao", "descricao": "Inverteu os decimais.", "peso": 1 },
+      { "valor": "4,13", "tipo": "erro", "categoria": "calculo", "erro": "pi_erro_total", "descricao": "Errou completamente a constante.", "peso": 3 }
+    ],
+    "passo": "Pi representa a razão entre a circunferência e o diâmetro.", "dica": "Três vírgula quatorze..."
+  },
+  {
+    "id": "FIN_172", "aula": 1, "tipo": "aritmetica", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF06MA04", "bncc_desc": "Múltiplos",
+    "display": "Qual é o primeiro múltiplo comum de 4 e 6 (MMC)?", "res": "12",
+    "alternativas": [
+      { "valor": "12", "tipo": "acerto" },
+      { "valor": "24", "tipo": "erro", "categoria": "procedimento", "erro": "mmc_mult_direto", "descricao": "Multiplicou os números mas não achou o mínimo.", "peso": 2 },
+      { "valor": "10", "tipo": "erro", "categoria": "calculo", "erro": "mmc_soma", "descricao": "Somou os números.", "peso": 3 },
+      { "valor": "2", "tipo": "erro", "categoria": "conceito", "erro": "mmc_divisor", "descricao": "Achou o Máximo Divisor Comum (MDC).", "peso": 3 }
+    ],
+    "passo": "Múltiplos de 4: 4, 8, 12... Múltiplos de 6: 6, 12... O primeiro comum é 12.", "dica": "Não é apenas multiplicar 4 por 6."
+  },
+  {
+    "id": "FIN_173", "aula": 3, "tipo": "geometria", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF06MA25", "bncc_desc": "Volume",
+    "display": "Volume é uma medida de quantas dimensões?", "res": "3",
+    "alternativas": [
+      { "valor": "3", "tipo": "acerto" },
+      { "valor": "2", "tipo": "erro", "categoria": "conceito", "erro": "dim_area", "descricao": "Confundiu com área (2D).", "peso": 2 },
+      { "valor": "1", "tipo": "erro", "categoria": "atencao", "erro": "dim_comprimento", "descricao": "Confundiu com comprimento (1D).", "peso": 3 },
+      { "valor": "4", "tipo": "erro", "categoria": "conceito", "erro": "dim_tempo", "descricao": "Incluiu o tempo como dimensão física.", "peso": 2 }
+    ],
+    "passo": "Volume envolve largura, altura e profundidade.", "dica": "Pense em um objeto que você pode segurar."
+  },
+  {
+    "id": "FIN_174", "aula": 4, "tipo": "aritmetica", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF07MA04", "bncc_desc": "Inteiros",
+    "display": "Quanto é 10 menos 15?", "res": "-5",
+    "alternativas": [
+      { "valor": "-5", "tipo": "acerto" },
+      { "valor": "5", "tipo": "erro", "categoria": "conceito", "erro": "int_sinal_falta", "descricao": "Esqueceu do sinal negativo.", "peso": 3 },
+      { "valor": "0", "tipo": "erro", "categoria": "atencao", "erro": "int_zero", "descricao": "Achou que não sobrava nada.", "peso": 2 },
+      { "valor": "-10", "tipo": "erro", "categoria": "calculo", "erro": "int_erro_sub", "descricao": "Errou a conta básica.", "peso": 1 }
+    ],
+    "passo": "Se você tem 10 e deve 15, você fica devendo 5.", "dica": "Sinal do maior prevalece."
+  },
+  {
+    "id": "FIN_175", "aula": 6, "tipo": "geometria", "dificuldade": 3, "tipoPedagogico": "base", "bncc": "EF09MA14", "bncc_desc": "Final",
+    "display": "Em um triângulo retângulo, se a hipotenusa é 5 e um cateto é 3, o outro cateto é:", "res": "4",
+    "alternativas": [
+      { "valor": "4", "tipo": "acerto" },
+      { "valor": "2", "tipo": "erro", "categoria": "calculo", "erro": "pit_sub_linear", "descricao": "Subtraiu 5 - 3.", "peso": 3 },
+      { "valor": "8", "tipo": "erro", "categoria": "procedimento", "erro": "pit_soma_linear", "descricao": "Somou 5 + 3.", "peso": 2 },
+      { "valor": "16", "tipo": "erro", "categoria": "atencao", "erro": "pit_esquece_raiz", "descricao": "Esqueceu de tirar a raiz quadrada de 16.", "peso": 2 }
+    ],
+    "passo": "5² = 3² + x² -> 25 = 9 + x² -> x² = 16 -> x = 4.", "dica": "É o famoso triângulo 3-4-5."
   }
+]
 ]
