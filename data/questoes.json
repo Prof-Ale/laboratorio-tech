@@ -5165,5 +5165,195 @@
     ],
     "passo": "A propriedade geométrica dita que a medida de um ângulo inscrito em uma circunferência equivale à metade da medida do arco correspondente. Logo: 120° ÷ 2 = 60°.",
     "dica": "O ângulo inscrito fica na 'casca' do círculo e abre as pernas até o arco. Ele sempre mede exatamente a metade do valor do arco que ele abraça!"
+  },
+    {
+    "id": "OLIMP_A7_41",
+    "aula": 7,
+    "tipo": "logica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA04",
+    "bncc_desc": "Relações Numéricas e Dedução Lógica",
+    "display": "Ana, Bruno e Clara receberam os cartões 1, 2 e 3, um para cada pessoa. Sobre a distribuição, sabe-se que exatamente duas das frases abaixo são verdadeiras: Ana não recebeu o cartão 3; Ana recebeu o cartão 1; Bruno recebeu o cartão 2. Qual cartão Bruno recebeu?",
+    "res": "3",
+    "alternativas": [
+      { "valor": "3", "tipo": "acerto" },
+      { "valor": "2", "tipo": "erro", "categoria": "atencao", "erro": "olimp_aceita_tres_frases_verdadeiras", "descricao": "Escolheu uma distribuição em que as três frases ficam verdadeiras, ignorando a condição de exatamente duas.", "peso": 2 },
+      { "valor": "1", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_nao_cruza_frases_sobre_ana", "descricao": "Não percebeu que, se Ana recebeu o cartão 1, Bruno não poderia ter recebido o mesmo cartão.", "peso": 2 },
+      { "valor": "Não é possível determinar", "tipo": "erro", "categoria": "conceito", "erro": "olimp_nao_usa_exatamente_duas", "descricao": "Tratou as informações como insuficientes sem usar a restrição de que exatamente duas frases são verdadeiras.", "peso": 3 }
+    ],
+    "passo": "Se Ana recebeu o cartão 1, então as duas primeiras frases são verdadeiras. Para haver exatamente duas frases verdadeiras, a terceira deve ser falsa, então Bruno não recebeu o cartão 2. Como o cartão 1 já está com Ana, Bruno só pode ter recebido o cartão 3.",
+    "dica": "Observe que a segunda frase, se for verdadeira, automaticamente torna a primeira verdadeira também."
+  },
+  {
+    "id": "OLIMP_A7_42",
+    "aula": 7,
+    "tipo": "combinatoria",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA14",
+    "bncc_desc": "Contagem e Princípio Multiplicativo com Restrições",
+    "display": "Um crachá deve ter exatamente uma vogal escolhida entre A, E e I e exatamente um algarismo par escolhido entre 2, 4 e 6. A vogal e o algarismo podem aparecer em qualquer ordem, mas o crachá não pode começar com 6. Quantos crachás diferentes podem ser feitos?",
+    "res": "15",
+    "alternativas": [
+      { "valor": "15", "tipo": "acerto" },
+      { "valor": "18", "tipo": "erro", "categoria": "conceito", "erro": "olimp_ignora_restricao_inicio", "descricao": "Contou todos os crachás possíveis sem excluir os que começam com 6.", "peso": 3 },
+      { "valor": "9", "tipo": "erro", "categoria": "interpretacao", "erro": "olimp_considera_apenas_vogal_primeiro", "descricao": "Contou somente os crachás que começam com vogal, esquecendo os que começam com 2 ou 4.", "peso": 2 },
+      { "valor": "12", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_retira_algarismo_seis_totalmente", "descricao": "Eliminou o algarismo 6 de todas as posições, embora ele só seja proibido no início.", "peso": 2 }
+    ],
+    "passo": "Se o crachá começa com vogal, há 3 escolhas para a vogal e 3 escolhas para o algarismo: 9 crachás. Se começa com algarismo, ele só pode ser 2 ou 4, e depois há 3 vogais possíveis: 2 × 3 = 6 crachás. Total: 9 + 6 = 15.",
+    "dica": "Separe os crachás que começam com vogal dos que começam com algarismo."
+  },
+  {
+    "id": "OLIMP_A7_43",
+    "aula": 7,
+    "tipo": "padroes",
+    "dificuldade": 4,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA15",
+    "bncc_desc": "Sequências Recursivas e Regularidades",
+    "display": "Em uma sequência, cada termo é obtido somando ao termo anterior a quantidade de letras do nome desse termo escrito em português, sem espaços nem acentos. Começando em 8, temos 8, 12, 16, ... Qual é o próximo termo?",
+    "res": "25",
+    "alternativas": [
+      { "valor": "25", "tipo": "acerto" },
+      { "valor": "20", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_repete_incremento_anterior", "descricao": "Repetiu a soma de 4 usada em 'oito', sem aplicar a regra ao termo 16.", "peso": 2 },
+      { "valor": "22", "tipo": "erro", "categoria": "calculo", "erro": "olimp_conta_letras_incompleto", "descricao": "Contou incorretamente as letras de 'dezesseis', usando 6 em vez de 9.", "peso": 1 },
+      { "valor": "24", "tipo": "erro", "categoria": "conceito", "erro": "olimp_soma_algarismos", "descricao": "Trocou a regra de contar letras pela soma dos algarismos do termo anterior.", "peso": 3 }
+    ],
+    "passo": "O termo anterior é 16. Escrito em português, 16 é 'dezesseis', que tem 9 letras. Portanto, o próximo termo é 16 + 9 = 25.",
+    "dica": "A regra depende da escrita do número anterior por extenso."
+  },
+  {
+    "id": "OLIMP_A7_44",
+    "aula": 7,
+    "tipo": "geometria",
+    "dificuldade": 4,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA25",
+    "bncc_desc": "Figuras em Malhas e Contagem Geométrica",
+    "display": "Em um tabuleiro 4 × 4, foram pintadas todas as casas das duas diagonais. Quantas casas foram pintadas ao todo?",
+    "res": "8",
+    "alternativas": [
+      { "valor": "8", "tipo": "acerto" },
+      { "valor": "7", "tipo": "erro", "categoria": "conceito", "erro": "olimp_supoe_casa_central_unica", "descricao": "Subtraiu uma casa central como se as diagonais se cruzassem em uma única casa, o que não ocorre em um tabuleiro 4 × 4.", "peso": 3 },
+      { "valor": "16", "tipo": "erro", "categoria": "interpretacao", "erro": "olimp_pinta_tabuleiro_inteiro", "descricao": "Confundiu pintar as diagonais com pintar todas as casas do tabuleiro.", "peso": 2 },
+      { "valor": "6", "tipo": "erro", "categoria": "atencao", "erro": "olimp_esquece_cantos_de_uma_diagonal", "descricao": "Contou parte das diagonais, mas deixou de incluir algumas casas das extremidades.", "peso": 1 }
+    ],
+    "passo": "Em um tabuleiro 4 × 4, cada diagonal possui 4 casas. Como o número de linhas e colunas é par, as diagonais não compartilham uma mesma casa central. Assim, o total pintado é 4 + 4 = 8 casas.",
+    "dica": "Verifique se as duas diagonais têm alguma casa em comum."
+  },
+  {
+    "id": "OLIMP_A7_45",
+    "aula": 7,
+    "tipo": "algebra",
+    "dificuldade": 4,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA08",
+    "bncc_desc": "Sistemas Implícitos e Relações Algébricas",
+    "display": "Em uma papelaria, 2 cadernos e 3 lápis custam 19 reais. Na mesma papelaria, 2 cadernos e 1 lápis custam 13 reais. Quanto custa um lápis?",
+    "res": "3 reais",
+    "alternativas": [
+      { "valor": "3 reais", "tipo": "acerto" },
+      { "valor": "6 reais", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_nao_divide_diferenca", "descricao": "Percebeu que a diferença de preço é 6 reais, mas esqueceu que essa diferença corresponde a 2 lápis.", "peso": 2 },
+      { "valor": "5 reais", "tipo": "erro", "categoria": "calculo", "erro": "olimp_subtracao_incorreta", "descricao": "Cometeu erro ao calcular a diferença entre 19 e 13 ou ao dividi-la.", "peso": 1 },
+      { "valor": "13 reais", "tipo": "erro", "categoria": "conceito", "erro": "olimp_confunde_conjunto_com_item", "descricao": "Usou o preço de 2 cadernos e 1 lápis como se fosse o preço de um único lápis.", "peso": 3 }
+    ],
+    "passo": "As duas compras têm a mesma quantidade de cadernos. A diferença está nos lápis: 3 lápis contra 1 lápis. A diferença de preço é 19 - 13 = 6 reais, que corresponde a 2 lápis. Portanto, cada lápis custa 6 ÷ 2 = 3 reais.",
+    "dica": "Compare as duas compras e veja o que mudou entre elas."
+  },
+  {
+    "id": "OLIMP_A7_46",
+    "aula": 7,
+    "tipo": "logica",
+    "dificuldade": 4,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA10",
+    "bncc_desc": "Pensamento Algorítmico e Transformações Simbólicas",
+    "display": "Um sistema começa com a letra A. A cada comando, toda letra A vira AB e toda letra B vira A. Após 3 comandos, quantas letras A aparecem na sequência?",
+    "res": "3",
+    "alternativas": [
+      { "valor": "3", "tipo": "acerto" },
+      { "valor": "2", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_para_um_comando_antes", "descricao": "Aplicou corretamente as transformações, mas contou as letras A após apenas 2 comandos.", "peso": 1 },
+      { "valor": "4", "tipo": "erro", "categoria": "calculo", "erro": "olimp_conta_letras_b_como_a", "descricao": "Gerou uma sequência próxima da correta, mas contou uma letra B como se fosse A.", "peso": 2 },
+      { "valor": "5", "tipo": "erro", "categoria": "conceito", "erro": "olimp_conta_total_de_letras", "descricao": "Respondeu o total de letras da sequência final em vez da quantidade de letras A.", "peso": 3 }
+    ],
+    "passo": "Começando com A: após 1 comando, temos AB. Após 2 comandos, A vira AB e B vira A, formando ABA. Após 3 comandos, ABA vira AB A AB, isto é, ABAAB. Nessa sequência há 3 letras A.",
+    "dica": "Transforme todas as letras ao mesmo tempo em cada comando."
+  },
+  {
+    "id": "OLIMP_A7_47",
+    "aula": 7,
+    "tipo": "aritmetica",
+    "dificuldade": 5,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA06",
+    "bncc_desc": "Criptomatemática e Divisibilidade",
+    "display": "No número de dois algarismos AB, A e B são algarismos diferentes. Sabe-se que AB + BA = 99, que A > B e que AB é divisível por 4. Qual é o número AB?",
+    "res": "72",
+    "alternativas": [
+      { "valor": "72", "tipo": "acerto" },
+      { "valor": "27", "tipo": "erro", "categoria": "atencao", "erro": "olimp_inverte_algarismos", "descricao": "Encontrou os algarismos corretos, mas escreveu BA em vez de AB, contrariando a condição A > B.", "peso": 1 },
+      { "valor": "54", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_verifica_soma_sem_divisibilidade", "descricao": "Escolheu um número cujos algarismos somam 9, mas não conferiu a divisibilidade por 4.", "peso": 2 },
+      { "valor": "81", "tipo": "erro", "categoria": "conceito", "erro": "olimp_usa_apenas_soma_dos_algarismos", "descricao": "Usou apenas a relação AB + BA = 99, sem aplicar as demais restrições.", "peso": 3 }
+    ],
+    "passo": "Como AB + BA = 99, temos 11 × (A + B) = 99, então A + B = 9. Com A > B, as possibilidades são 90, 81, 72, 63 e 54. Testando divisibilidade por 4, apenas 72 é divisível por 4.",
+    "dica": "A soma AB + BA transforma a soma dos algarismos em um múltiplo de 11."
+  },
+  {
+    "id": "OLIMP_A7_48",
+    "aula": 7,
+    "tipo": "probabilidade",
+    "dificuldade": 5,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA22",
+    "bncc_desc": "Probabilidade com Contagem de Casos Favoráveis",
+    "display": "Em uma caixa há 3 cartões verdes e 2 cartões roxos. Dois cartões são retirados ao acaso, sem reposição. Qual é a probabilidade de os dois cartões terem cores diferentes?",
+    "res": "3/5",
+    "alternativas": [
+      { "valor": "3/5", "tipo": "acerto" },
+      { "valor": "1/2", "tipo": "erro", "categoria": "conceito", "erro": "olimp_supoe_cores_equiprovaveis", "descricao": "Assumiu que cores iguais e diferentes teriam a mesma chance, sem contar os casos possíveis.", "peso": 3 },
+      { "valor": "6/25", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_trata_retiradas_com_reposicao", "descricao": "Calculou como se o primeiro cartão voltasse para a caixa antes da segunda retirada.", "peso": 2 },
+      { "valor": "2/5", "tipo": "erro", "categoria": "interpretacao", "erro": "olimp_conta_cores_iguais", "descricao": "Contou a probabilidade de sair a mesma cor em vez de cores diferentes.", "peso": 2 }
+    ],
+    "passo": "O total de pares possíveis de cartões é C(5,2) = 10. Para sair cores diferentes, escolhemos 1 dos 3 verdes e 1 dos 2 roxos, totalizando 3 × 2 = 6 pares favoráveis. Assim, a probabilidade é 6/10 = 3/5.",
+    "dica": "Conte pares de cartões, não apenas cores."
+  },
+  {
+    "id": "OLIMP_A7_49",
+    "aula": 7,
+    "tipo": "combinatoria",
+    "dificuldade": 5,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA10",
+    "bncc_desc": "Pensamento Algorítmico e Contagem com Restrições",
+    "display": "Uma escada tem 7 degraus. Sofia pode subir 1 ou 2 degraus por movimento, mas não pode fazer dois movimentos de 2 degraus seguidos. De quantas maneiras diferentes ela pode chegar ao topo?",
+    "res": "13",
+    "alternativas": [
+      { "valor": "13", "tipo": "acerto" },
+      { "valor": "21", "tipo": "erro", "categoria": "conceito", "erro": "olimp_ignora_restricao_dois_seguidos", "descricao": "Contou todas as maneiras de subir com movimentos de 1 ou 2 degraus, sem respeitar a proibição de dois movimentos de 2 seguidos.", "peso": 3 },
+      { "valor": "12", "tipo": "erro", "categoria": "atencao", "erro": "olimp_esquece_caso_todos_de_um", "descricao": "Listou os casos com movimentos de 2 degraus, mas esqueceu a possibilidade de subir todos os degraus de 1 em 1.", "peso": 1 },
+      { "valor": "10", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_conta_apenas_quantidades_de_dois", "descricao": "Separou os casos pela quantidade de movimentos de 2 degraus, mas não contou corretamente suas posições possíveis.", "peso": 2 }
+    ],
+    "passo": "Se não há movimento de 2 degraus, há 1 maneira. Com um movimento de 2 degraus, a sequência tem 6 movimentos e o movimento de 2 pode ocupar 6 posições. Com dois movimentos de 2 degraus, a sequência tem 5 movimentos, e os dois movimentos de 2 não podem ser vizinhos; há 6 formas de posicioná-los. Três movimentos de 2 exigiriam que fossem separados por movimentos de 1, mas a soma ultrapassaria ou não caberia sem vizinhança. Total: 1 + 6 + 6 = 13.",
+    "dica": "Separe os casos pela quantidade de movimentos de 2 degraus."
+  },
+  {
+    "id": "OLIMP_A7_50",
+    "aula": 7,
+    "tipo": "estrategia",
+    "dificuldade": 5,
+    "tipoPedagogico": "base",
+    "bncc": "EF09MA04",
+    "bncc_desc": "Divisibilidade, Padrões e Raciocínio Olímpico",
+    "display": "Há 10 lâmpadas apagadas, numeradas de 1 a 10. Na rodada 1, alternam-se todas as lâmpadas. Na rodada 2, alternam-se as lâmpadas de número múltiplo de 2. Na rodada 3, alternam-se as múltiplas de 3, e assim por diante até a rodada 10. Ao final, quantas lâmpadas ficam acesas?",
+    "res": "3",
+    "alternativas": [
+      { "valor": "3", "tipo": "acerto" },
+      { "valor": "5", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_conta_multiplos_de_dois", "descricao": "Focou nas lâmpadas pares, sem perceber que cada lâmpada alterna conforme a quantidade de divisores que possui.", "peso": 2 },
+      { "valor": "10", "tipo": "erro", "categoria": "conceito", "erro": "olimp_considera_apenas_primeira_rodada", "descricao": "Considerou que todas permaneceriam acesas após a primeira rodada, ignorando as alternâncias seguintes.", "peso": 3 },
+      { "valor": "4", "tipo": "erro", "categoria": "calculo", "erro": "olimp_inclui_quadrado_maior_que_dez", "descricao": "Identificou a relação com quadrados perfeitos, mas incluiu indevidamente um número fora do intervalo de 1 a 10.", "peso": 1 }
+    ],
+    "passo": "Uma lâmpada muda de estado uma vez para cada divisor de seu número. Ela fica acesa se for alternada um número ímpar de vezes. Isso ocorre apenas com números que têm quantidade ímpar de divisores, isto é, quadrados perfeitos. De 1 a 10, os quadrados perfeitos são 1, 4 e 9. Portanto, 3 lâmpadas ficam acesas.",
+    "dica": "Pense em quantas vezes cada lâmpada é alternada, não em cada rodada separadamente."
   }
 ]
