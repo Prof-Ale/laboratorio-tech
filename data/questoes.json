@@ -5355,5 +5355,100 @@
     ],
     "passo": "Uma lâmpada muda de estado uma vez para cada divisor de seu número. Ela fica acesa se for alternada um número ímpar de vezes. Isso ocorre apenas com números que têm quantidade ímpar de divisores, isto é, quadrados perfeitos. De 1 a 10, os quadrados perfeitos são 1, 4 e 9. Portanto, 3 lâmpadas ficam acesas.",
     "dica": "Pense em quantas vezes cada lâmpada é alternada, não em cada rodada separadamente."
+  },
+    {
+    "id": "A2_EXP_11",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA11",
+    "bncc_desc": "Operações com Decimais",
+    "display": "Um sistema de irrigação inteligente libera exatamente 12,5 litros de água por minuto. Ele foi programado para regar uma horta automatizada até atingir o limite estrito de 150 litros, mas uma queda de energia interrompeu o processo após 8 minutos de funcionamento. Quantos litros ainda faltam para completar a rega?",
+    "res": "50",
+    "alternativas": [
+      { "valor": "50", "tipo": "acerto" },
+      { "valor": "100", "tipo": "erro", "categoria": "atencao", "erro": "irrig_indicou_realizado", "descricao": "Calculou corretamente o volume de água já liberado, mas esqueceu de subtrair para achar o volume faltante.", "peso": 1 },
+      { "valor": "62", "tipo": "erro", "categoria": "calculo", "erro": "irrig_erro_multiplicacao", "descricao": "Cometeu um erro aritmético na multiplicação de 12,5 por 8.", "peso": 1 },
+      { "valor": "37,5", "tipo": "erro", "categoria": "procedimento", "erro": "irrig_subtracao_direta", "descricao": "Subtraiu o tempo (8) diretamente do volume total (150) ou errou a proporção linear.", "peso": 2 }
+    ],
+    "passo": "Volume já liberado: 12,5 litros x 8 minutos = 100 litros. Volume que ainda falta para atingir a meta: 150 litros - 100 litros = 50 litros.",
+    "dica": "Descubra primeiro quanta água o sistema liberou enquanto funcionava multiplicando o tempo pela vazão por minuto."
+  },
+  {
+    "id": "A2_EXP_12",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF06MA09",
+    "bncc_desc": "Operações com Frações",
+    "display": "Para forjar uma ferramenta de titânio em um simulador de manufatura, são necessários 5 blocos de metal puro. O jogador possui 2 blocos inteiros e mais 7 fragmentos menores, sabendo que cada fragmento equivale a exatamente 1/4 de bloco inteiro. Que fração de bloco de metal ainda falta para completar a forja?",
+    "res": "5/4",
+    "alternativas": [
+      { "valor": "5/4", "tipo": "acerto" },
+      { "valor": "3/4", "tipo": "erro", "categoria": "procedimento", "erro": "forja_esqueceu_inteiros", "descricao": "Subtraiu os fragmentos (7/4) do total de blocos (5) esquecendo de considerar os 2 blocos inteiros que já possuía.", "peso": 2 },
+      { "valor": "15/4", "tipo": "erro", "categoria": "atencao", "erro": "forja_somou_acumulado", "descricao": "Calculou corretamente o estoque total do jogador (15/4) mas não realizou a subtração em relação ao necessário.", "peso": 1 },
+      { "valor": "9/4", "tipo": "erro", "categoria": "conceito", "erro": "forja_soma_direta_invalida", "descricao": "Somou os valores numéricos de forma inadequada sem extrair o mínimo denominador comum dos blocos.", "peso": 3 }
+    ],
+    "passo": "Metal que o jogador possui: 2 inteiros + 7/4 = 8/4 + 7/4 = 15/4 de bloco. Quantidade total necessária expressa em quartos: 5 = 20/4. Quantidade faltante: 20/4 - 15/4 = 5/4.",
+    "dica": "Transforme os blocos inteiros e a meta total em frações com denominador 4. Isso vai facilitar a comparação de estoque!"
+  },
+  {
+    "id": "A2_EXP_13",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA02",
+    "bncc_desc": "Proporcionalidade Direta",
+    "display": "Um servidor de streaming distribui um bônus de 1.000 moedas digitais entre 3 moderadores de suporte técnico de forma diretamente proporcional ao número de chamados complexos resolvidos por cada um: 2, 3 e 5 chamados. Quantas moedas recebeu o moderador que resolveu a maior quantidade de chamados?",
+    "res": "500",
+    "alternativas": [
+      { "valor": "500", "tipo": "acerto" },
+      { "valor": "200", "tipo": "erro", "categoria": "atencao", "erro": "prop_encontrou_menor", "descricao": "Calculou a cota do moderador que resolveu a menor quantidade de chamados.", "peso": 1 },
+      { "valor": "300", "tipo": "erro", "categoria": "procedimento", "erro": "prop_encontrou_medio", "descricao": "Calculou a cota intermediária em vez do valor máximo solicitado no enunciado.", "peso": 2 },
+      { "valor": "250", "tipo": "erro", "categoria": "conceito", "erro": "prop_divisao_igualitaria", "descricao": "Dividiu o valor total de moedas igualmente por 4 ou errou a lógica de divisão em partes proporcionais.", "peso": 3 }
+    ],
+    "passo": "Total de partes proporcionais: 2 + 3 + 5 = 10 partes. Valor de cada parte: 1.000 ÷ 10 = 100 moedas. O moderador com mais chamados tem 5 partes: 5 x 100 = 500 moedas.",
+    "dica": "Some todos os chamados para descobrir em quantas partes iguais o prêmio total deve ser fatiado. Depois, multiplique o valor de uma parte por 5!"
+  },
+  {
+    "id": "A2_EXP_14",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "recomposicao",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Potenciação e Multiplicação",
+    "display": "Um vírus de computador simulado em um laboratório de segurança digital se duplica (multiplica por 2) a cada 10 minutos de forma contínua. Se o sistema foi infectado inicialmente por uma única unidade desse vírus, quantas unidades estarão ativas após exatamente 1 hora?",
+    "res": "64",
+    "alternativas": [
+      { "valor": "64", "tipo": "acerto" },
+      { "valor": "12", "tipo": "erro", "categoria": "conceito", "erro": "virus_multiplicacao_linear", "descricao": "Multiplicou o número de ciclos (6) por 2, tratando o crescimento geométrico como se fosse linear.", "peso": 3 },
+      { "valor": "32", "tipo": "erro", "categoria": "atencao", "erro": "virus_esqueceu_ciclo", "descricao": "Calculou apenas 5 ciclos de duplicação (2 elevado a 5) em vez de computar os 6 ciclos completos da hora.", "peso": 1 },
+      { "valor": "60", "tipo": "erro", "categoria": "interpretacao", "erro": "virus_copiou_tempo", "descricao": "Confundiu a quantidade de elementos biológicos/digitais com o tempo total em minutos.", "peso": 2 }
+    ],
+    "passo": "1 hora possui 60 minutos. Número de ciclos de duplicação: 60 ÷ 10 = 6 ciclos. Cálculo do crescimento por potência: 2 elevado a 6 = 2 x 2 x 2 x 2 x 2 x 2 = 64 unidades.",
+    "dica": "Descubra quantas vezes o vírus vai dobrar de tamanho em uma hora. O cálculo usa potências de base 2!"
+  },
+  {
+    "id": "A2_EXP_15",
+    "aula": 2,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF07MA02",
+    "bncc_desc": "Porcentagens Sucessivas",
+    "display": "A licença de uso de um software corporativo custa R$ 200,00 por mês. No mês de lançamento, a plataforma oferece um desconto promocional de 15% para novos usuários e, caso o contratante seja estudante, concede mais 10% de desconto calculados sobre o novo valor já reduzido. Qual o valor final da licença para um estudante?",
+    "res": "153",
+    "alternativas": [
+      { "valor": "153", "tipo": "acerto" },
+      { "valor": "150", "tipo": "erro", "categoria": "conceito", "erro": "porcent_soma_direta", "descricao": "Somou as taxas de porcentagem diretamente (15% + 10% = 25%) aplicando o desconto acumulado sobre o valor bruto.", "peso": 3 },
+      { "valor": "170", "tipo": "erro", "categoria": "atencao", "erro": "porcent_parou_primeiro_desc", "descricao": "Aplicou apenas o primeiro desconto promocional de 15% e esqueceu de computar o desconto de estudante.", "peso": 1 },
+      { "valor": "165", "tipo": "erro", "categoria": "calculo", "erro": "porcent_erro_subtracao", "descricao": "Errou a operação de extração de valores percentuais ou falhou na subtração aritmética fina das parcelas.", "peso": 1 }
+    ],
+    "passo": "Primeiro desconto (15% de 200): 200 - 30 = R$ 170. Segundo desconto (10% sobre o novo valor de 170): 170 - 17 = R$ 153,00.",
+    "dica": "Não junte as porcentagens! Calcule o primeiro desconto de 15%, descubra o preço intermediário e aplique os 10% apenas em cima desse novo preço."
   }
 ]
