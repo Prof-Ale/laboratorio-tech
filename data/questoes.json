@@ -2815,11 +2815,23 @@
     ],
     "passo": "A mediana é o valor que está exatamente no meio da lista ordenada.", "dica": "Coloque em ordem e pegue o centro."
   },
-  {
-    "id": "RES_175_10", "aula": 6, "tipo": "geometria", "dificuldade": 1, "tipoPedagogico": "base", "bncc": "EF08MA15", "bncc_desc": "Ângulos",
-    "display": "Um ângulo de 180 graus é chamado de:", "res": "Raso",
+ {
+    "id": "RES_175_10",
+    "aula": 6,
+    "tipo": "geometria",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA15",
+    "bncc_desc": "Ângulos",
+    "display": "Um ângulo de 180 graus é chamado de:",
+    "res": "Raso",
     "alternativas": [
       { "valor": "Raso", "tipo": "acerto" },
-      { "valor": "Reto", "tipo": "erro", "categoria": "conceito", "erro": "ang_reto"
-      }
+      { "valor": "Reto", "tipo": "erro", "categoria": "conceito", "erro": "ang_reto_180", "descricao": "Confundiu com o ângulo de 90 graus.", "peso": 2 },
+      { "valor": "Completo", "tipo": "erro", "categoria": "conceito", "erro": "ang_completo_180", "descricao": "Confundiu com o ângulo de 360 graus.", "peso": 2 },
+      { "valor": "Agudo", "tipo": "erro", "categoria": "conceito", "erro": "ang_agudo_180", "descricao": "Confundiu com ângulo menor que 90.", "peso": 2 }
+    ],
+    "passo": "O ângulo raso é uma linha reta, equivalente a meia volta.",
+    "dica": "Pense no horizonte."
+  }
 ]
