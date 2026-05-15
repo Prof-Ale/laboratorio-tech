@@ -4595,5 +4595,195 @@
     ],
     "passo": "Tempo total: 10 minutos = 600 segundos. Número de ciclos de 20 segundos: 600 ÷ 20 = 30 ciclos. Consumo em milímetros: 30 x 50 mm = 1.500 mm. Convertendo para metros (1m = 1.000mm): 1.500 ÷ 1.000 = 1,5 metros.",
     "dica": "Descubra primeiro quantos segundos existem em 10 minutos. Depois, veja quantos grupos de 20 segundos cabem nesse tempo para calcular os milímetros totais e transformá-los em metros!"
+  },
+   {
+    "id": "A4_EXP_01",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA18",
+    "bncc_desc": "Equações Lineares",
+    "display": "Um enigma criptográfico diz que o triplo de uma chave de segurança secreta x, somado a 12, é igual ao sêxtuplo dessa mesma chave menos 18. Qual é o valor numérico da chave x?",
+    "res": "10",
+    "alternativas": [
+      { "valor": "10", "tipo": "acerto" },
+      { "valor": "2", "tipo": "erro", "categoria": "procedimento", "erro": "equa_subtraiu_valores", "descricao": "Subtraiu os valores numéricos constantes de forma direta em vez de transpô-los somando.", "peso": 2 },
+      { "valor": "6", "tipo": "erro", "categoria": "calculo", "erro": "equa_soma_coeficientes", "descricao": "Errou a operação aritmética ao agrupar as incógnitas de cada lado do sinal de igual.", "peso": 1 },
+      { "valor": "30", "tipo": "erro", "categoria": "atencao", "erro": "equa_esqueceu_divisao_final", "descricao": "Encontrou o valor acumulado da transposição mas esqueceu de dividir pelo coeficiente de x.", "peso": 1 }
+    ],
+    "passo": "Montando a equação: 3x + 12 = 6x - 18. Isolando x: 12 + 18 = 6x - 3x -> 30 = 3x -> x = 30 ÷ 3 -> x = 10.",
+    "dica": "Escreva o problema como uma igualdade. Lembre-se de passar as letras para um lado e os números puros para o outro mudando os sinais!"
+  },
+  {
+    "id": "A4_EXP_02",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA15",
+    "bncc_desc": "Regularidades e Padrões",
+    "display": "Em um videogame educacional, o número de pontos de experiência necessários para avançar para a fase n é dado pela expressão n² + 5n. Quantos pontos são necessários especificamente para entrar na fase 5?",
+    "res": "50",
+    "alternativas": [
+      { "valor": "50", "tipo": "acerto" },
+      { "valor": "30", "tipo": "erro", "categoria": "conceito", "erro": "alg_multiplicou_expoente", "descricao": "Multiplicou a base pelo expoente calculando n x 2 em vez de elevar ao quadrado.", "peso": 3 },
+      { "valor": "25", "tipo": "erro", "categoria": "atencao", "erro": "alg_esqueceu_termo", "descricao": "Calculou apenas a primeira parte da expressão (n²) e ignorou a adição do termo 5n.", "peso": 1 },
+      { "valor": "35", "tipo": "erro", "categoria": "procedimento", "erro": "alg_substituicao_parcial", "descricao": "Substituiu o valor de n apenas na potência e somou o número 5 de forma estática no final.", "peso": 2 }
+    ],
+    "passo": "Substituindo n por 5 na expressão: (5²) + 5 x 5 = 25 + 25 = 50 pontos de experiência.",
+    "dica": "Troque a letra n pelo número 5 em todos os lugares da fórmula. Lembre-se de resolver a potência antes da soma!"
+  },
+  {
+    "id": "A4_EXP_03",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF08MA06",
+    "bncc_desc": "Sistemas de Equações",
+    "display": "Em um servidor, a quantidade de arquivos do tipo A somada ao dobro de arquivos do tipo B é igual a 18. Sabendo que a quantidade de arquivos do tipo A é igual a quatro vezes a quantidade de arquivos do tipo B, quantos arquivos do tipo B existem?",
+    "res": "3",
+    "alternativas": [
+      { "valor": "3", "tipo": "acerto" },
+      { "valor": "12", "tipo": "erro", "categoria": "atencao", "erro": "sist_encontrou_incognita_errada", "descricao": "Encontrou corretamente a quantidade de arquivos do tipo A, mas trocou pela resposta solicitada de B.", "peso": 1 },
+      { "valor": "6", "tipo": "erro", "categoria": "procedimento", "erro": "sist_divisao_direta_total", "descricao": "Dividiu o total de 18 por 3 sem montar as substituições proporcionais do sistema lógico.", "peso": 2 },
+      { "valor": "2", "tipo": "erro", "categoria": "calculo", "erro": "sist_erro_divisao_coeficiente", "descricao": "Montou a estrutura de substituição mas errou a divisão aritmética final dos coeficientes.", "peso": 1 }
+    ],
+    "passo": "Equações: A + 2B = 18 e A = 4B. Substituindo A na primeira: 4B + 2B = 18 -> 6B = 18 -> B = 18 ÷ 6 -> B = 3.",
+    "dica": "Como o tipo A vale 4 vezes o tipo B, troque o A por '4B' na primeira frase. Assim você terá uma conta apenas com a letra B!"
+  },
+  {
+    "id": "A4_EXP_04",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA14",
+    "bncc_desc": "Fórmulas e Equivalências",
+    "display": "O poder de processamento P de um chip de computador segue a fórmula P = 4c - 8, onde c representa o número de núcleos ativos. Se o painel indica que o poder de processamento P está exatamente em 32 unidades, quantos núcleos c estão ativos?",
+    "res": "10",
+    "alternativas": [
+      { "valor": "10", "tipo": "acerto" },
+      { "valor": "6", "tipo": "erro", "categoria": "procedimento", "erro": "form_subtraiu_transposicao", "descricao": "Subtraiu 8 de 32 ao mudar de lado, invertendo incorretamente a regra da operação oposta.", "peso": 2 },
+      { "valor": "32", "tipo": "erro", "categoria": "atencao", "erro": "form_copiou_status", "descricao": "Apenas repetiu o valor de processamento fornecido sem isolar a variável pedida.", "peso": 1 },
+      { "valor": "8", "tipo": "erro", "categoria": "calculo", "erro": "form_divisao_truncada", "descricao": "Errou a divisão de 40 por 4 ou realizou uma subtração descuidada durante o isolamento.", "peso": 1 }
+    ],
+    "passo": "Substituindo P: 32 = 4c - 8. Passando o -8 somando: 32 + 8 = 4c -> 40 = 4c -> c = 40 ÷ 4 -> c = 10 núcleos.",
+    "dica": "Coloque o 32 no lugar da letra P. Para descobrir o valor de c, desfaça as operações tirando primeiro o -8."
+  },
+  {
+    "id": "A4_EXP_05",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "recomposicao",
+    "bncc": "EF07MA18",
+    "bncc_desc": "Modelagem de Problemas",
+    "display": "A idade de uma inteligência artificial em meses é representada por y. Um programador nota que, daqui a 6 meses, o dobro da idade que ela terá será igual a 36 meses. Qual é a idade atual y dessa inteligência artificial?",
+    "res": "12",
+    "alternativas": [
+      { "valor": "12", "tipo": "acerto" },
+      { "valor": "15", "tipo": "erro", "categoria": "interpretacao", "erro": "model_distributiva_ausente", "descricao": "Aplicou o dobro apenas na variável y (2y + 6 = 36), esquecendo de aplicar o dobro no avanço do tempo.", "peso": 2 },
+      { "valor": "18", "tipo": "erro", "categoria": "atencao", "erro": "model_divisao_crua", "descricao": "Apenas dividiu 36 por 2 e parou a resolução sem subtrair os meses futuros.", "peso": 1 },
+      { "valor": "24", "tipo": "erro", "categoria": "conceito", "erro": "model_operacao_direta_enunciado", "descricao": "Subtraiu 6 de 36 de forma direta, ignorando o multiplicador do dobro do problema.", "peso": 3 }
+    ],
+    "passo": "Montagem: 2 x (y + 6) = 36. Dividindo por 2: y + 6 = 18. Isolando y: y = 18 - 6 -> y = 12 meses.",
+    "dica": "A idade futura é (y + 6). O dobro disso tudo é igual a 36. Tente descobrir que número antes de ser dobrado vale 36!"
+  },
+  {
+    "id": "A4_EXP_06",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF08MA06",
+    "bncc_desc": "Expressões Algébricas",
+    "display": "Considere a expressão de controle de fluxo 3(x + 4) - 2(x - 1). Se o valor de entrada da variável x for alterado para 5, qual será o resultado numérico final dessa expressão?",
+    "res": "19",
+    "alternativas": [
+      { "valor": "19", "tipo": "acerto" },
+      { "valor": "11", "tipo": "erro", "categoria": "procedimento", "erro": "expr_sinal_distributiva", "descricao": "Errou a regra de sinais ao multiplicar -2 por -1, tratando o resultado como -2 em vez de +2.", "peso": 2 },
+      { "valor": "29", "tipo": "erro", "categoria": "calculo", "erro": "expr_soma_blocos", "descricao": "Somou os dois blocos de parênteses em vez de subtrair o segundo bloco conforme o sinal central.", "peso": 1 },
+      { "valor": "15", "tipo": "erro", "categoria": "interpretacao", "erro": "expr_ignora_parenteses", "descricao": "Multiplicou os coeficientes apenas pela variável x, ignorando a propriedade distributiva nos números.", "peso": 2 }
+    ],
+    "passo": "Substituindo x=5: Primeiro os parênteses: 3 x (5 + 4) - 2 x (5 - 1) -> 3 x 9 - 2 x 4. Multiplicações: 27 - 8 = 19.",
+    "dica": "Substitua a letra x pelo número 5. Resolva primeiro as contas de mais e menos que estão dentro dos parênteses!"
+  },
+  {
+    "id": "A4_EXP_07",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF07MA15",
+    "bncc_desc": "Problemas de Lógica Algébrica",
+    "display": "A soma de três códigos identificadores numéricos consecutivos e inteiros de um banco de dados é igual a 45. Qual é o valor numérico do MAIOR desses três códigos?",
+    "res": "16",
+    "alternativas": [
+      { "valor": "16", "tipo": "acerto" },
+      { "valor": "15", "tipo": "erro", "categoria": "atencao", "erro": "consec_encontrou_medio", "descricao": "Encontrou o código do meio (a média aritmética), mas não avançou para o maior deles.", "peso": 1 },
+      { "valor": "14", "tipo": "erro", "categoria": "procedimento", "erro": "consec_encontrou_menor", "descricao": "Identificou o primeiro número menor da sequência, esquecendo a pergunta do enunciado.", "peso": 2 },
+      { "valor": "42", "tipo": "erro", "categoria": "calculo", "erro": "consec_subtraiu_sem_dividir", "descricao": "Subtraiu os incrementos numéricos da equação mas esqueceu de efetuar a divisão por 3.", "peso": 1 }
+    ],
+    "passo": "Modelando os consecutivos: x, x+1, x+2. Soma: x + x + 1 + x + 2 = 45 -> 3x + 3 = 45 -> 3x = 42 -> x = 14. O maior é x + 2 = 14 + 2 = 16.",
+    "dica": "Chame os números de x, x+1 e x+2. Junte todos os x e os números puramente para descobrir quem é o menor da fila!"
+  },
+  {
+    "id": "A4_EXP_08",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA18",
+    "bncc_desc": "Equações Contextualizadas",
+    "display": "Um serviço de nuvem cobra uma taxa de manutenção fixa de R$ 10,00 mais R$ 2,50 por hora de processamento utilizada. Se a fatura final de um estudante marcou exatamente R$ 35,00, quantas horas de processamento ele utilizou?",
+    "res": "10",
+    "alternativas": [
+      { "valor": "10", "tipo": "acerto" },
+      { "valor": "14", "tipo": "erro", "categoria": "procedimento", "erro": "taxa_divisao_direta_total", "descricao": "Dividiu o valor total da fatura (35) pela taxa horária (2,5), esquecendo de descontar a taxa fixa inicial.", "peso": 2 },
+      { "valor": "25", "tipo": "erro", "categoria": "atencao", "erro": "taxa_parou_na_subtracao", "descricao": "Calculou corretamente o valor gasto em horas (R$ 25), mas não dividiu para achar o tempo em horas.", "peso": 1 },
+      { "valor": "5", "tipo": "erro", "categoria": "calculo", "erro": "taxa_erro_divisao_decimal", "descricao": "Subtraiu a taxa fixa mas errou a operação de divisão envolvendo o número decimal 2,5.", "peso": 1 }
+    ],
+    "passo": "Estrutura: 10 + 2,5h = 35. Isolando as horas: 2,5h = 35 - 10 -> 2,5h = 25 -> h = 25 ÷ 2,5 -> h = 10 horas.",
+    "dica": "Retire os R$ 10,00 fixos do valor total pago. O dinheiro que sobrar foi usado apenas para pagar as horas de R$ 2,50 cada!"
+  },
+  {
+    "id": "A4_EXP_09",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA18",
+    "bncc_desc": "Inequações Implícitas",
+    "display": "Um elevador de carga do laboratório suporta uma carga máxima segura de 500 kg. Ele já contém uma máquina fixa de 80 kg. Sabendo que cada caixa de insumos pesa exatamente 30 kg, qual é o número máximo de caixas que ainda podem ser carregadas de uma só vez?",
+    "res": "14",
+    "alternativas": [
+      { "valor": "14", "tipo": "acerto" },
+      { "valor": "16", "tipo": "erro", "categoria": "procedimento", "erro": "carga_divisao_teto_bruto", "descricao": "Dividiu a capacidade máxima total (500 kg) pelo peso das caixas, ignorando o peso da máquina fixa.", "peso": 2 },
+      { "valor": "420", "tipo": "erro", "categoria": "atencao", "erro": "carga_parou_na_sobra_peso", "descricao": "Encontrou a quantidade de quilos que ainda estavam livres no elevador, mas não calculou as caixas.", "peso": 1 },
+      { "valor": "12", "tipo": "erro", "categoria": "calculo", "erro": "carga_erro_subtracao_base", "descricao": "Realizou a subtração de 500 - 80 de forma incorreta afetando o resultado da divisão subsequente.", "peso": 1 }
+    ],
+    "passo": "Modelagem: 80 + 30x ≤ 500. Subtraindo o peso fixo: 30x ≤ 500 - 80 -> 30x ≤ 420. Dividindo: x ≤ 420 ÷ 30 -> x ≤ 14 caixas.",
+    "dica": "Veja quantos quilos o elevador ainda aguenta descontando o peso da máquina que já está dentro. Depois veja quantas caixas de 30 kg cabem nesse espaço!"
+  },
+  {
+    "id": "A4_EXP_10",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "recomposicao",
+    "bncc": "EF09MA06",
+    "bncc_desc": "Conceito de Funções",
+    "display": "A relação matemática entre a entrada de dados (e) e a saída de sinal (s) de um módulo digital é dada pela função s = 2e² - 3. Se a entrada registrada for exatamente e = 4, qual será o valor da saída s?",
+    "res": "29",
+    "alternativas": [
+      { "valor": "29", "tipo": "acerto" },
+      { "valor": "61", "tipo": "erro", "categoria": "conceito", "erro": "func_multiplicou_antes_potencia", "descricao": "Multiplicou a entrada pelo coeficiente 2 antes de efetuar a operação de elevar ao quadrado.", "peso": 3 },
+      { "valor": "13", "tipo": "erro", "categoria": "procedimento", "erro": "func_dobrou_expoente_linear", "descricao": "Calculou a potência e² fazendo 4 x 2 em vez de multiplicar o número por ele mesmo (4 x 4).", "peso": 2 },
+      { "valor": "5", "tipo": "erro", "categoria": "atencao", "erro": "func_esqueceu_potencia", "descricao": "Esqueceu completamente de elevar a entrada ao quadrado, calculando apenas 2 x 4 - 3.", "peso": 1 }
+    ],
+    "passo": "Substituindo e=4: s = 2 x (4²) - 3. Calculando a potência primeiro: s = 2 x 16 - 3. Multiplicação e subtração: s = 32 - 3 = 29.",
+    "dica": "Substitua a letra e pelo número 4. Lembre-se de elevar o 4 ao quadrado antes de multiplicar pelo número 2 que está na frente!"
   }
-] 
+]
