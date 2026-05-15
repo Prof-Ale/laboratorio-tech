@@ -3455,5 +3455,195 @@
     ],
     "passo": "1º gole: sobra 1/2. 2º gole: ele bebe metade de 1/2, que é 1/4. O que resta no copo é 1/2 - 1/4 = 1/4.",
     "dica": "Metade da metade é o mesmo que dividir o total em quatro partes."
+  },
+  {
+    "id": "A1_EXP_01",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA02",
+    "bncc_desc": "Padrões Lógicos",
+    "display": "Descubra o próximo número da sequência lógica: 2, 5, 11, 23, 47, ...",
+    "res": "95",
+    "alternativas": [
+      { "valor": "95", "tipo": "acerto" },
+      { "valor": "94", "tipo": "erro", "categoria": "procedimento", "erro": "padrao_apenas_dobrou", "descricao": "Apenas dobrou o número anterior esquecendo de somar 1.", "peso": 2 },
+      { "valor": "71", "tipo": "erro", "categoria": "atencao", "erro": "padrao_soma_linear", "descricao": "Adicionou 24 (o incremento anterior) em vez de aplicar a regra multiplicativa.", "peso": 1 },
+      { "valor": "59", "tipo": "erro", "categoria": "calculo", "erro": "padrao_soma_errada", "descricao": "Errou a operação aritmética de adição ao tentar avançar na sequência.", "peso": 1 }
+    ],
+    "passo": "A regra é multiplicar por 2 e somar 1. Portanto, 47 x 2 = 94. 94 + 1 = 95.",
+    "dica": "Olhe a diferença entre os números: ela sempre dobra a cada passo!"
+  },
+  {
+    "id": "A1_EXP_02",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA14",
+    "bncc_desc": "Análise de Possibilidades",
+    "display": "Em um torneio de xadrez com 4 participantes, cada um joga uma única vez contra todos os outros. Quantas partidas serão jogadas no total?",
+    "res": "6",
+    "alternativas": [
+      { "valor": "6", "tipo": "acerto" },
+      { "valor": "12", "tipo": "erro", "categoria": "conceito", "erro": "contagem_duplicada", "descricao": "Esqueceu que a partida entre jogador A e B é a mesma de B e A, duplicando o total.", "peso": 3 },
+      { "valor": "4", "tipo": "erro", "categoria": "atencao", "erro": "contagem_literal", "descricao": "Apenas repetiu o número de participantes fornecido no problema.", "peso": 1 },
+      { "valor": "16", "tipo": "erro", "categoria": "interpretacao", "erro": "contagem_quadrada", "descricao": "Multiplicou 4 por 4, assumindo que os jogadores jogam contra si mesmos.", "peso": 2 }
+    ],
+    "passo": "O primeiro joga com 3, o segundo com mais 2 e o terceiro com mais 1. Total: 3 + 2 + 1 = 6 partidas.",
+    "dica": "Tente desenhar 4 pontos e ligar todos eles com linhas. Conte quantas linhas você desenhou."
+  },
+  {
+    "id": "A1_EXP_03",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Pensamento Algorítmico",
+    "display": "Siga as instruções: Pense em um número. Multiplique por 2. Some 10. Divida o resultado por 2. Subtraia o número inicial. Qual o resultado final?",
+    "res": "5",
+    "alternativas": [
+      { "valor": "5", "tipo": "acerto" },
+      { "valor": "10", "tipo": "erro", "categoria": "procedimento", "erro": "algo_esqueceu_divisao", "descricao": "Esqueceu de realizar a divisão por 2 no meio do processo algorítmico.", "peso": 2 },
+      { "valor": "0", "tipo": "erro", "categoria": "conceito", "erro": "algo_anulacao_total", "descricao": "Achou que todas as operações se anulavam perfeitamente no final.", "peso": 3 },
+      { "valor": "2", "tipo": "erro", "categoria": "atencao", "erro": "algo_foco_multiplicador", "descricao": "Fixou a atenção no primeiro multiplicador da instrução.", "peso": 1 }
+    ],
+    "passo": "Fórmula: ((2x + 10) / 2) - x -> (x + 5) - x = 5. O resultado será sempre 5.",
+    "dica": "Tente fazer o teste escolhendo o número 1 ou o número 2 e siga os passos."
+  },
+  {
+    "id": "A1_EXP_04",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA01",
+    "bncc_desc": "Relações Numéricas",
+    "display": "Quantos números de dois algarismos existem em que a soma desses dois algarismos é igual a 5?",
+    "res": "5",
+    "alternativas": [
+      { "valor": "5", "tipo": "acerto" },
+      { "valor": "6", "tipo": "erro", "categoria": "interpretacao", "erro": "num_incluiu_zero_esquerda", "descricao": "Incluiu o número 05, que possui apenas um algarismo significativo.", "peso": 2 },
+      { "valor": "4", "tipo": "erro", "categoria": "atencao", "erro": "num_esqueceu_dezena", "descricao": "Esqueceu de contar o número 50 como uma possibilidade válida.", "peso": 1 },
+      { "valor": "3", "tipo": "erro", "categoria": "calculo", "erro": "num_erro_combinacao", "descricao": "Errou a contagem das combinações numéricas básicas.", "peso": 1 }
+    ],
+    "passo": "Os números válidos de dois algarismos são: 14, 23, 32, 41 e 50. Totalizando 5.",
+    "dica": "Lembre-se de que números como 05 não são considerados números de dois algarismos."
+  },
+  {
+    "id": "A1_EXP_05",
+    "aula": 1,
+    "tipo": "geometria",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF06MA17",
+    "bncc_desc": "Geometria Lógica",
+    "display": "Uma mesa retangular de madeira possui 4 cantos (vértices). Se um marceneiro serrar um desses cantos em linha reta de lado a lado, quantos cantos a mesa passará a ter?",
+    "res": "5",
+    "alternativas": [
+      { "valor": "5", "tipo": "acerto" },
+      { "valor": "3", "tipo": "erro", "categoria": "interpretacao", "erro": "geo_subtracao_literal", "descricao": "Fez a lógica de que remover um canto deixa a figura com um canto a menos.", "peso": 2 },
+      { "valor": "4", "tipo": "erro", "categoria": "atencao", "erro": "geo_estacionario", "descricao": "Achou que a alteração geométrica não modificou a quantidade de vértices.", "peso": 1 },
+      { "valor": "6", "tipo": "erro", "categoria": "calculo", "erro": "geo_soma_excedente", "descricao": "Contou incorretamente os novos vértices gerados pelo corte.", "peso": 1 }
+    ],
+    "passo": "Ao cortar 1 canto, você elimina 1 vértice, mas o corte reto cria 2 novos cantos no lugar dele. 4 - 1 + 2 = 5 cantos.",
+    "dica": "Imagine o corte: o canto pontudo some e vira uma linha reta com duas novas quinas!"
+  },
+  {
+    "id": "A1_EXP_06",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "recomposicao",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Problemas Contextualizados",
+    "display": "Carlos tem o dobro da idade de Júlia. Júlia tem 3 anos a mais que Pedro. Sabendo que Pedro tem 7 anos, qual é a idade de Carlos?",
+    "res": "20",
+    "alternativas": [
+      { "valor": "20", "tipo": "acerto" },
+      { "valor": "14", "tipo": "erro", "categoria": "procedimento", "erro": "prob_pulo_etapa", "descricao": "Dobrou a idade de Pedro diretamente, ignorando a existência de Júlia.", "peso": 2 },
+      { "valor": "10", "tipo": "erro", "categoria": "atencao", "erro": "prob_parada_intermediaria", "descricao": "Encontrou a idade de Júlia e parou a resolução ali.", "peso": 1 },
+      { "valor": "17", "tipo": "erro", "categoria": "calculo", "erro": "prob_operacao_errada", "descricao": "Somou os valores de forma incorreta ou trocou a multiplicação.", "peso": 1 }
+    ],
+    "passo": "Pedro tem 7. Júlia tem 7 + 3 = 10 anos. Carlos tem o dobro de Júlia, logo 10 x 2 = 20 anos.",
+    "dica": "Resolva de trás para frente: descubra primeiro a idade de Júlia usando a do Pedro."
+  },
+  {
+    "id": "A1_EXP_07",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF06MA02",
+    "bncc_desc": "Dedução Lógica",
+    "display": "Se três gatos comem três ratos em exatamente três minutos, quantos minutos um único gato levará para comer um único rato?",
+    "res": "3",
+    "alternativas": [
+      { "valor": "3", "tipo": "acerto" },
+      { "valor": "1", "tipo": "erro", "categoria": "interpretacao", "erro": "deducao_divisao_direta", "descricao": "Dividiu o tempo pelo número de gatos, achando que o tempo se fragmenta.", "peso": 3 },
+      { "valor": "9", "tipo": "erro", "categoria": "procedimento", "erro": "deducao_multiplicacao", "descricao": "Multiplicou o tempo pela quantidade de animais.", "peso": 2 },
+      { "valor": "0", "tipo": "erro", "categoria": "atencao", "erro": "deducao_nula", "descricao": "Assumiu que o tempo seria anulado na proporção unitária.", "peso": 1 }
+    ],
+    "passo": "Os três gatos estão agindo ao mesmo tempo. Cada gato leva 3 minutos para terminar o seu próprio rato.",
+    "dica": "Pense em três pessoas comendo três maçãs juntas: quanto tempo cada uma leva?"
+  },
+  {
+    "id": "A1_EXP_08",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA01",
+    "bncc_desc": "Contagem e Escrita",
+    "display": "Uma senha de sistema é formada por 3 algarismos ímpares e totalmente diferentes entre si. Qual é o menor número possível que essa senha pode ter?",
+    "res": "135",
+    "alternativas": [
+      { "valor": "135", "tipo": "acerto" },
+      { "valor": "111", "tipo": "erro", "categoria": "conceito", "erro": "senha_repetiu_algarismo", "descricao": "Ignorou a regra de que os algarismos precisavam ser diferentes.", "peso": 3 },
+      { "valor": "123", "tipo": "erro", "categoria": "atencao", "erro": "senha_incluiu_par", "descricao": "Colocou o algarismo 2, que é um número par.", "peso": 2 },
+      { "valor": "351", "tipo": "erro", "categoria": "procedimento", "erro": "senha_fora_de_ordem", "descricao": "Usou algarismos ímpares corretos, mas não os organizou para formar o menor valor.", "peso": 2 }
+    ],
+    "passo": "Os menores algarismos ímpares são 1, 3 e 5. Para formar o menor número, ordenamos do menor para o maior: 135.",
+    "dica": "Escolha os três menores números ímpares e coloque-os em ordem crescente."
+  },
+  {
+    "id": "A1_EXP_09",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Dedução e Sistemas",
+    "display": "No pátio do colégio há bicicletas (2 rodas) e carros (4 rodas). No total, há 10 veículos e 32 rodas. Quantos carros estão no pátio?",
+    "res": "6",
+    "alternativas": [
+      { "valor": "6", "tipo": "acerto" },
+      { "valor": "4", "tipo": "erro", "categoria": "atencao", "erro": "sist_contou_bicicletas", "descricao": "Encontrou o número de bicicletas em vez do número de carros solicitado.", "peso": 1 },
+      { "valor": "5", "tipo": "erro", "categoria": "interpretacao", "erro": "sist_divisao_meio", "descricao": "Dividiu a quantidade de veículos por dois sem calcular o impacto das rodas.", "peso": 2 },
+      { "valor": "8", "tipo": "erro", "categoria": "calculo", "erro": "sist_erro_aritmetico", "descricao": "Errou as subtrações ou multiplicações da validação do sistema.", "peso": 1 }
+    ],
+    "passo": "Se todos fossem bicicletas: 10 x 2 = 20 rodas. Sobram 12 rodas (32-20). Como cada carro tem 2 rodas a mais, 12 / 2 = 6 carros.",
+    "dica": "Finja que todos os veículos são bicicletas. Quantas rodas faltariam para chegar em 32?"
+  },
+  {
+    "id": "A1_EXP_10",
+    "aula": 1,
+    "tipo": "aritmetica",
+    "dificuldade": 2,
+    "tipoPedagogico": "recomposicao",
+    "bncc": "EF06MA03",
+    "bncc_desc": "Relações Numéricas",
+    "display": "Se hoje é sexta-feira, que dia da semana será daqui a exatamente 50 dias?",
+    "res": "Sábado",
+    "alternativas": [
+      { "valor": "Sábado", "tipo": "acerto" },
+      { "valor": "Sexta-feira", "tipo": "erro", "categoria": "conceito", "erro": "tempo_ciclo_fechado", "descricao": "Achou que o dia se repetiria ignorando o resto da divisão por 7.", "peso": 2 },
+      { "valor": "Domingo", "tipo": "erro", "categoria": "calculo", "erro": "tempo_resto_errado", "descricao": "Calculou o resto da divisão de 50 por 7 incorretamente como 2.", "peso": 1 },
+      { "valor": "Quinta-feira", "tipo": "erro", "categoria": "procedimento", "erro": "tempo_contagem_reversa", "descricao": "Contou os dias para trás em vez de avançar no calendário.", "peso": 2 }
+    ],
+    "passo": "Uma semana tem 7 dias. 50 dividido por 7 dá 7 semanas completas e resta 1 dia. Sexta-feira + 1 dia = Sábado.",
+    "dica": "Pense no múltiplo de 7 mais próximo de 50. O dia da semana se repete nele. Depois, conte o que sobrou."
   }
 ]
