@@ -4215,5 +4215,195 @@
 ],
 "passo": "Soma das partes ocupadas: 1/3 + 2/5 = 5/15 + 6/15 = 11/15. O total do mural é 15/15. Parte em branco: 15/15 - 11/15 = 4/15.",
 "dica": "Para somar frações com denominadores diferentes, você precisa achar o MMC deles antes de descobrir o total ocupado!"
-}
-]
+},
+ {
+    "id": "OLIMP_A7_31",
+    "aula": 7,
+    "tipo": "logica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA04",
+    "bncc_desc": "Relações Numéricas e Dedução Lógica",
+    "display": "Um número secreto está entre 1 e 10. Sobre ele, três frases foram escritas: é múltiplo de 3; é maior que 5; é divisor de 24. Sabe-se que exatamente duas dessas frases são verdadeiras. Qual é o menor número possível?",
+    "res": "3",
+    "alternativas": [
+      { "valor": "3", "tipo": "acerto" },
+      { "valor": "6", "tipo": "erro", "categoria": "atencao", "erro": "olimp_escolhe_tres_frases_verdadeiras", "descricao": "Escolheu um número para o qual as três frases são verdadeiras, ignorando a condição de exatamente duas.", "peso": 2 },
+      { "valor": "8", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_nao_busca_menor_possivel", "descricao": "Encontrou um número que satisfaz duas frases, mas não verificou se havia um menor.", "peso": 1 },
+      { "valor": "9", "tipo": "erro", "categoria": "conceito", "erro": "olimp_confunde_divisor_com_multiplo", "descricao": "Tratou ser divisor de 24 como se fosse ser múltiplo de 24 ou ignorou essa relação.", "peso": 3 }
+    ],
+    "passo": "Testando os menores valores, 1 e 2 satisfazem apenas a frase de serem divisores de 24. O número 3 é múltiplo de 3 e divisor de 24, mas não é maior que 5. Assim, exatamente duas frases são verdadeiras para 3, e ele é o menor possível.",
+    "dica": "Comece testando os números menores e conte quantas frases são verdadeiras para cada um."
+  },
+  {
+    "id": "OLIMP_A7_32",
+    "aula": 7,
+    "tipo": "combinatoria",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA34",
+    "bncc_desc": "Experimentos Aleatórios e Contagem de Possibilidades",
+    "display": "Lia quer montar uma pulseira com 3 contas em sequência. Ela tem contas vermelhas, azuis e amarelas. A primeira e a última conta devem ter cores diferentes. Quantas pulseiras diferentes ela pode montar?",
+    "res": "18",
+    "alternativas": [
+      { "valor": "18", "tipo": "acerto" },
+      { "valor": "27", "tipo": "erro", "categoria": "conceito", "erro": "olimp_ignora_restricao_extremos", "descricao": "Contou todas as sequências possíveis sem considerar que a primeira e a última cores devem ser diferentes.", "peso": 3 },
+      { "valor": "12", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_restringe_conta_do_meio", "descricao": "Impôs indevidamente que a conta do meio também deveria ter cor diferente das outras.", "peso": 2 },
+      { "valor": "6", "tipo": "erro", "categoria": "interpretacao", "erro": "olimp_trata_ordem_como_irrelevante", "descricao": "Contou apenas escolhas de cores, sem considerar que a ordem das contas na pulseira importa.", "peso": 2 }
+    ],
+    "passo": "A primeira conta pode ser escolhida de 3 formas. A conta do meio também pode ser qualquer uma das 3 cores. A última conta deve ser diferente da primeira, então há 2 opções. Logo, 3 × 3 × 2 = 18 pulseiras.",
+    "dica": "A restrição envolve apenas as pontas; a conta do meio continua livre."
+  },
+  {
+    "id": "OLIMP_A7_33",
+    "aula": 7,
+    "tipo": "padroes",
+    "dificuldade": 4,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA15",
+    "bncc_desc": "Sequências Recursivas e Regularidades",
+    "display": "Em uma sequência, cada termo é obtido somando ao termo anterior a quantidade de letras do nome do número anterior escrito em português. Começando em 8, temos 8, 12, 16, ... Qual é o próximo termo?",
+    "res": "25",
+    "alternativas": [
+      { "valor": "25", "tipo": "acerto" },
+      { "valor": "20", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_repete_incremento_anterior", "descricao": "Repetiu a soma de 4, sem aplicar novamente a regra ao termo 16.", "peso": 2 },
+      { "valor": "22", "tipo": "erro", "categoria": "calculo", "erro": "olimp_conta_letras_incompleto", "descricao": "Contou incorretamente as letras de 'dezesseis', usando 6 em vez de 9.", "peso": 1 },
+      { "valor": "24", "tipo": "erro", "categoria": "conceito", "erro": "olimp_soma_valor_dos_algarismos", "descricao": "Trocou a regra de contar letras pela soma dos algarismos do número anterior.", "peso": 3 }
+    ],
+    "passo": "O termo anterior é 16. Em português, 16 é 'dezesseis', que tem 9 letras. Portanto, o próximo termo é 16 + 9 = 25.",
+    "dica": "A regra usa o nome do número anterior, não os algarismos dele."
+  },
+  {
+    "id": "OLIMP_A7_34",
+    "aula": 7,
+    "tipo": "geometria",
+    "dificuldade": 4,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA25",
+    "bncc_desc": "Construção de Figuras e Raciocínio Espacial",
+    "display": "Um desenho é formado por 5 quadradinhos iguais em fila, todos encostados lado a lado. Cada quadradinho tem lado 1 cm. Qual é o perímetro da figura formada?",
+    "res": "12 cm",
+    "alternativas": [
+      { "valor": "12 cm", "tipo": "acerto" },
+      { "valor": "20 cm", "tipo": "erro", "categoria": "conceito", "erro": "olimp_soma_perimetros_individuais", "descricao": "Somou os perímetros dos 5 quadradinhos sem retirar os lados que ficam colados internamente.", "peso": 3 },
+      { "valor": "10 cm", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_conta_apenas_lados_horizontais", "descricao": "Contou o comprimento de cima e de baixo, mas esqueceu os dois lados verticais das extremidades.", "peso": 2 },
+      { "valor": "14 cm", "tipo": "erro", "categoria": "calculo", "erro": "olimp_erra_lados_compartilhados", "descricao": "Percebeu que há lados internos, mas retirou uma quantidade incorreta deles.", "peso": 2 }
+    ],
+    "passo": "Cinco quadradinhos em fila formam um retângulo de 5 cm por 1 cm. O perímetro é 2 × (5 + 1) = 12 cm.",
+    "dica": "Depois de juntar os quadradinhos, pense no contorno externo da figura inteira."
+  },
+  {
+    "id": "OLIMP_A7_35",
+    "aula": 7,
+    "tipo": "algebra",
+    "dificuldade": 4,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA06",
+    "bncc_desc": "Valor Numérico de Expressões e Operadores",
+    "display": "Para dois números a e b, defina a operação a # b = a² - b. Qual é o valor de (3 # 2) # 4?",
+    "res": "45",
+    "alternativas": [
+      { "valor": "45", "tipo": "acerto" },
+      { "valor": "5", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_calcula_apenas_primeira_operacao", "descricao": "Calculou 3 # 2 corretamente, mas não aplicou a segunda operação indicada.", "peso": 1 },
+      { "valor": "23", "tipo": "erro", "categoria": "interpretacao", "erro": "olimp_respeita_parenteses_parcialmente", "descricao": "Usou o resultado da primeira operação, mas substituiu incorretamente na segunda etapa.", "peso": 2 },
+      { "valor": "3", "tipo": "erro", "categoria": "conceito", "erro": "olimp_trata_operador_como_subtracao_comum", "descricao": "Ignorou a definição do operador # e fez apenas subtrações comuns.", "peso": 3 }
+    ],
+    "passo": "Primeiro, 3 # 2 = 3² - 2 = 9 - 2 = 7. Depois, 7 # 4 = 7² - 4 = 49 - 4 = 45.",
+    "dica": "Após calcular o que está entre parênteses, use esse resultado como o novo primeiro número da operação."
+  },
+  {
+    "id": "OLIMP_A7_36",
+    "aula": 7,
+    "tipo": "logica",
+    "dificuldade": 4,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA10",
+    "bncc_desc": "Pensamento Algorítmico e Análise de Condições",
+    "display": "Um robô lê um número. Se ele for múltiplo de 4, divide por 4; caso contrário, soma 3. Começando com 10 e repetindo o processo 4 vezes, qual número aparece ao final?",
+    "res": "1",
+    "alternativas": [
+      { "valor": "1", "tipo": "acerto" },
+      { "valor": "16", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_para_antes_da_divisao", "descricao": "Executou algumas etapas, mas parou quando chegou a um múltiplo de 4 antes de aplicar a regra seguinte.", "peso": 2 },
+      { "valor": "19", "tipo": "erro", "categoria": "conceito", "erro": "olimp_soma_tres_sempre", "descricao": "Aplicou sempre a ação de somar 3, sem testar a condição de múltiplo de 4 a cada etapa.", "peso": 3 },
+      { "valor": "4", "tipo": "erro", "categoria": "calculo", "erro": "olimp_divisao_incorreta_por_quatro", "descricao": "Identificou corretamente uma etapa de divisão, mas calculou ou continuou a sequência de forma incorreta.", "peso": 1 }
+    ],
+    "passo": "Começando em 10: na 1ª vez, 10 não é múltiplo de 4, então vira 13. Na 2ª, 13 vira 16. Na 3ª, 16 é múltiplo de 4, então vira 4. Na 4ª, 4 é múltiplo de 4, então vira 1. Portanto, o resultado correto após 4 repetições é 1.",
+    "dica": "Depois de cada transformação, teste novamente se o novo número é múltiplo de 4."
+  },
+  {
+    "id": "OLIMP_A7_37",
+    "aula": 7,
+    "tipo": "aritmetica",
+    "dificuldade": 5,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA06",
+    "bncc_desc": "Criptomatemática e Divisibilidade",
+    "display": "Na soma A + B = 13, as letras A e B representam algarismos diferentes de 0 a 9. O número de dois algarismos AB é divisível por 5. Qual é o valor de A?",
+    "res": "8",
+    "alternativas": [
+      { "valor": "8", "tipo": "acerto" },
+      { "valor": "3", "tipo": "erro", "categoria": "interpretacao", "erro": "olimp_responde_b_em_vez_de_a", "descricao": "Encontrou o algarismo B corretamente, mas respondeu o valor da letra errada.", "peso": 1 },
+      { "valor": "5", "tipo": "erro", "categoria": "conceito", "erro": "olimp_confunde_divisivel_por_cinco", "descricao": "Assumiu que o algarismo das dezenas deveria ser 5, quando a divisibilidade por 5 depende da unidade.", "peso": 3 },
+      { "valor": "9", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_ignora_soma_dos_algarismos", "descricao": "Escolheu um número terminando em 5 ou 0, mas não respeitou a soma A + B = 13.", "peso": 2 }
+    ],
+    "passo": "Para AB ser divisível por 5, o algarismo B deve ser 0 ou 5. Como A + B = 13, B não pode ser 0, pois A teria que ser 13. Então B = 5 e A = 8.",
+    "dica": "Em um número divisível por 5, observe primeiro o algarismo das unidades."
+  },
+  {
+    "id": "OLIMP_A7_38",
+    "aula": 7,
+    "tipo": "probabilidade",
+    "dificuldade": 5,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA22",
+    "bncc_desc": "Probabilidade com Restrições e Casos Favoráveis",
+    "display": "Em uma sacola há cartões com os números 1, 2, 3, 4 e 5. Dois cartões são retirados sem reposição. Qual é a probabilidade de a soma dos números retirados ser par?",
+    "res": "2/5",
+    "alternativas": [
+      { "valor": "2/5", "tipo": "acerto" },
+      { "valor": "1/2", "tipo": "erro", "categoria": "conceito", "erro": "olimp_supoe_paridade_equiprovavel", "descricao": "Assumiu que soma par e soma ímpar teriam automaticamente a mesma chance, sem contar os casos.", "peso": 3 },
+      { "valor": "4/10", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_nao_simplifica_fracao", "descricao": "Contou corretamente os casos favoráveis e possíveis, mas deixou a fração sem simplificar.", "peso": 1 },
+      { "valor": "3/5", "tipo": "erro", "categoria": "interpretacao", "erro": "olimp_conta_soma_impar", "descricao": "Contou os casos em que a soma é ímpar em vez dos casos em que a soma é par.", "peso": 2 }
+    ],
+    "passo": "A soma é par quando os dois números têm a mesma paridade. Entre 1, 2, 3, 4 e 5 há três ímpares e dois pares. Pares de ímpares: C(3,2) = 3. Pares de pares: C(2,2) = 1. Casos favoráveis: 4. Total de pares de cartões: C(5,2) = 10. Logo, a probabilidade é 4/10 = 2/5.",
+    "dica": "Uma soma é par quando os dois números escolhidos têm a mesma paridade."
+  },
+  {
+    "id": "OLIMP_A7_39",
+    "aula": 7,
+    "tipo": "geometria",
+    "dificuldade": 5,
+    "tipoPedagogico": "base",
+    "bncc": "EF09MA13",
+    "bncc_desc": "Relações Métricas e Semelhança em Figuras Planas",
+    "display": "Um retângulo de 6 cm por 4 cm foi ampliado de modo que seu lado maior passou a medir 9 cm, mantendo a forma. Qual passou a ser a medida do lado menor?",
+    "res": "6 cm",
+    "alternativas": [
+      { "valor": "6 cm", "tipo": "acerto" },
+      { "valor": "7 cm", "tipo": "erro", "categoria": "conceito", "erro": "olimp_soma_mesmo_aumento", "descricao": "Somou 3 cm ao lado menor, tratando ampliação proporcional como aumento aditivo.", "peso": 3 },
+      { "valor": "5 cm", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_usa_razao_incompleta", "descricao": "Percebeu que havia ampliação, mas aplicou a razão de forma incompleta ao lado menor.", "peso": 2 },
+      { "valor": "8 cm", "tipo": "erro", "categoria": "calculo", "erro": "olimp_dobra_lado_menor", "descricao": "Calculou o novo lado menor como se a figura tivesse sido duplicada.", "peso": 1 }
+    ],
+    "passo": "O lado maior passou de 6 cm para 9 cm. A razão de ampliação é 9 ÷ 6 = 1,5. O lado menor também deve ser multiplicado por 1,5: 4 × 1,5 = 6 cm.",
+    "dica": "Em uma ampliação que mantém a forma, todos os comprimentos são multiplicados pela mesma razão."
+  },
+  {
+    "id": "OLIMP_A7_40",
+    "aula": 7,
+    "tipo": "estrategia",
+    "dificuldade": 5,
+    "tipoPedagogico": "base",
+    "bncc": "EF09MA05",
+    "bncc_desc": "Estratégia Matemática e Análise de Casos",
+    "display": "Em uma mesa há 14 palitos. Dois jogadores alternam turnos; em cada turno, o jogador deve retirar 1, 2 ou 3 palitos. Vence quem retirar o último palito. Se Marina começa e ambos jogam da melhor forma possível, quantos palitos ela deve retirar no primeiro turno para garantir a vitória?",
+    "res": "2",
+    "alternativas": [
+      { "valor": "2", "tipo": "acerto" },
+      { "valor": "1", "tipo": "erro", "categoria": "procedimento", "erro": "olimp_deixa_posicao_favoravel_ao_oponente", "descricao": "Retira uma quantidade que deixa 13 palitos, permitindo ao adversário controlar os grupos de 4.", "peso": 2 },
+      { "valor": "3", "tipo": "erro", "categoria": "atencao", "erro": "olimp_busca_retirar_maximo", "descricao": "Escolhe retirar o máximo possível sem analisar a estratégia vencedora.", "peso": 1 },
+      { "valor": "Não há estratégia vencedora", "tipo": "erro", "categoria": "conceito", "erro": "olimp_nao_identifica_multiplos_de_quatro", "descricao": "Não percebeu que deixar múltiplos de 4 ao adversário cria uma estratégia de controle.", "peso": 3 }
+    ],
+    "passo": "Neste jogo, posições com múltiplos de 4 palitos são ruins para quem vai jogar, pois o adversário pode sempre completar 4 palitos retirados no par de jogadas. Como 14 deixa resto 2 na divisão por 4, Marina deve retirar 2 palitos para deixar 12 ao outro jogador. Depois, se o adversário retirar 1, Marina retira 3; se ele retirar 2, ela retira 2; se ele retirar 3, ela retira 1.",
+    "dica": "Procure deixar ao adversário uma quantidade de palitos que seja múltipla de 4."
+  }
+]  
