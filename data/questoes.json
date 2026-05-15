@@ -4405,5 +4405,195 @@
     ],
     "passo": "Neste jogo, posições com múltiplos de 4 palitos são ruins para quem vai jogar, pois o adversário pode sempre completar 4 palitos retirados no par de jogadas. Como 14 deixa resto 2 na divisão por 4, Marina deve retirar 2 palitos para deixar 12 ao outro jogador. Depois, se o adversário retirar 1, Marina retira 3; se ele retirar 2, ela retira 2; se ele retirar 3, ela retira 1.",
     "dica": "Procure deixar ao adversário uma quantidade de palitos que seja múltipla de 4."
+  },
+   {
+    "id": "A3_EXP_01",
+    "aula": 3,
+    "tipo": "geometria",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA24",
+    "bncc_desc": "Unidades de Tempo",
+    "display": "Um script de automação de testes roda em ciclos contínuos a cada 45 minutos. Se a primeira execução do dia aconteceu exatamente às 08:15, a que horas ocorrerá a quinta execução desse script?",
+    "res": "11:15",
+    "alternativas": [
+      { "valor": "11:15", "tipo": "acerto" },
+      { "valor": "12:00", "tipo": "erro", "categoria": "procedimento", "erro": "tempo_contou_cinco_intervalos", "descricao": "Calculou cinco intervalos de 45 minutos em vez de quatro intervalos para chegar à quinta execução.", "peso": 2 },
+      { "valor": "10:30", "tipo": "erro", "categoria": "atencao", "erro": "tempo_parou_na_quarta", "descricao": "Calculou corretamente o horário da quarta execução, esquecendo de avançar para a quinta.", "peso": 1 },
+      { "valor": "11:55", "tipo": "erro", "categoria": "calculo", "erro": "tempo_soma_minutos", "descricao": "Errou a conversão de minutos para horas durante o processo de soma dos ciclos.", "peso": 1 }
+    ],
+    "passo": "Para chegar à 5ª execução, ocorrem 4 intervalos de 45 minutos. 4 x 45 = 180 minutos. Como 180 minutos equivalem a exatamente 3 horas inteiras: 08:15 + 3h = 11:15.",
+    "dica": "Pense em quantos intervalos de tempo existem entre a primeira e a quinta execução. Converta esses minutos totais em horas cheias!"
+  },
+  {
+    "id": "A3_EXP_02",
+    "aula": 3,
+    "tipo": "geometria",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF07MA29",
+    "bncc_desc": "Escalas e Comprimentos",
+    "display": "O mapa digital de telemetria de um drone utiliza uma escala de 1:250. Se uma linha reta de fiação de fibra óptica mede exatamente 8 cm na tela do mapa, qual é o comprimento real dessa fiação em metros?",
+    "res": "20",
+    "alternativas": [
+      { "valor": "20", "tipo": "acerto" },
+      { "valor": "2.000", "tipo": "erro", "categoria": "atencao", "erro": "escala_esqueceu_conversao", "descricao": "Calculou o tamanho real em centímetros de forma correta, mas não realizou a conversão final para metros.", "peso": 1 },
+      { "valor": "2", "tipo": "erro", "categoria": "conceito", "erro": "escala_divisao_unidades", "descricao": "Dividiu 2000 por 1000 achando incorretamente que a conversão de centímetros para metros exigia essa divisão.", "peso": 3 },
+      { "valor": "31,25", "tipo": "erro", "categoria": "procedimento", "erro": "escala_divisao_escala", "descricao": "Dividiu a escala pelo tamanho medido na tela em vez de multiplicar os valores.", "peso": 2 }
+    ],
+    "passo": "Multiplicamos a medida do mapa pela escala: 8 cm x 250 = 2.000 cm. Como 1 metro possui 100 centímetros, convertemos dividindo por 100: 2.000 ÷ 100 = 20 metros.",
+    "dica": "Primeiro multiplique o tamanho da tela pelo valor da escala para achar o tamanho real em centímetros. Depois, lembre-se de quantos centímetros tem um metro!"
+  },
+  {
+    "id": "A3_EXP_03",
+    "aula": 3,
+    "tipo": "geometria",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF08MA19",
+    "bncc_desc": "Área de Figuras Planas",
+    "display": "Uma placa de circuito solar retangular medindo 6m por 4m teve um quadrado de 2m de lado recortado de um de seus cantos para a instalação de uma antena de rádio. Qual é a área restante da placa?",
+    "res": "20 m²",
+    "alternativas": [
+      { "valor": "20 m²", "tipo": "acerto" },
+      { "valor": "22 m²", "tipo": "erro", "categoria": "conceito", "erro": "area_subtraiu_lado", "descricao": "Subtraiu o comprimento do lado do quadrado (2m) diretamente da área total do retângulo.", "peso": 3 },
+      { "valor": "24 m²", "tipo": "erro", "categoria": "atencao", "erro": "area_esquecimento_corte", "descricao": "Calculou apenas a área total do retângulo original, ignorando o pedaço quadrado removido.", "peso": 1 },
+      { "valor": "16 m²", "tipo": "erro", "categoria": "calculo", "erro": "area_perimetro_quadrado", "descricao": "Subtraiu o perímetro do quadrado (8m) em vez de subtrair a sua área.", "peso": 1 }
+    ],
+    "passo": "Área do retângulo original: 6m x 4m = 24 m². Área do quadrado removido: 2m x 2m = 4 m². Área restante da placa: 24 m² - 4 m² = 20 m².",
+    "dica": "Calcule a área total como se a placa estivesse inteira e depois retire a área do pedaço quadrado que foi recortado."
+  },
+  {
+    "id": "A3_EXP_04",
+    "aula": 3,
+    "tipo": "geometria",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF09MA18",
+    "bncc_desc": "Volume e Capacidade",
+    "display": "Um tanque de resfriamento líquido de servidores tem formato de bloco retangular com 2m de comprimento, 0,5m de largura e 1,5m de altura. Quantos litros de líquido ele comporta quando cheio?",
+    "res": "1.500",
+    "alternativas": [
+      { "valor": "1.500", "tipo": "acerto" },
+      { "valor": "1,5", "tipo": "erro", "categoria": "atencao", "erro": "volume_esquecimento_litros", "descricao": "Encontrou o volume correto em metros cúbicos, mas não converteu a unidade para litros.", "peso": 1 },
+      { "valor": "150", "tipo": "erro", "categoria": "conceito", "erro": "volume_proporcao_cem", "descricao": "Multiplicou metros cúbicos por 100 achando erroneamente que essa era a relação com o litro.", "peso": 3 },
+      { "valor": "4.000", "tipo": "erro", "categoria": "procedimento", "erro": "volume_soma_dimensoes", "descricao": "Somou as dimensões do bloco em vez de multiplicá-las para calcular o volume tridimensional.", "peso": 2 }
+    ],
+    "passo": "Volume do bloco: 2m x 0,5m x 1,5m = 1,5 m³. Sabendo que 1 metro cúbico equivale a exatamente 1.000 litros: 1,5 x 1.000 = 1.500 litros.",
+    "dica": "O volume é a multiplicação das três medidas. Depois, multiplique o resultado por 1.000, pois cada metro cúbico cabe muita água!"
+  },
+  {
+    "id": "A3_EXP_05",
+    "aula": 3,
+    "tipo": "geometria",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF09MA19",
+    "bncc_desc": "Grandezas de Massa e Volume",
+    "display": "Um cubo sólido feito de uma nova liga metálica possui 3 cm de aresta e uma massa total de 216 gramas. Qual é a densidade dessa liga metálica expressa em g/cm³?",
+    "res": "8",
+    "alternativas": [
+      { "valor": "8", "tipo": "acerto" },
+      { "valor": "72", "tipo": "erro", "categoria": "procedimento", "erro": "densidade_dividiu_por_aresta", "descricao": "Dividiu a massa diretamente pelo valor da aresta do cubo (3 cm) em vez do volume.", "peso": 2 },
+      { "valor": "24", "tipo": "erro", "categoria": "conceito", "erro": "densidade_dividiu_por_face", "descricao": "Calculou a área de uma face (9 cm²) ou usou a soma das arestas para fazer a divisão da massa.", "peso": 3 },
+      { "valor": "6", "tipo": "erro", "categoria": "calculo", "erro": "densidade_erro_divisao", "descricao": "Calculou o volume corretamente (27 cm³) mas errou a operação de divisão de 216 por 27.", "peso": 1 }
+    ],
+    "passo": "Primeiro encontramos o volume do cubo: 3 cm x 3 cm x 3 cm = 27 cm³. A densidade é dada pela divisão da massa pelo volume: 216 g ÷ 27 cm³ = 8 g/cm³.",
+    "dica": "A densidade é a massa dividida pelo volume total do objeto. Você precisa descobrir o volume do cubo multiplicando a aresta por ela mesma três vezes."
+  },
+  {
+    "id": "A3_EXP_06",
+    "aula": 3,
+    "tipo": "geometria",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF07MA32",
+    "bncc_desc": "Perímetro da Circunferência",
+    "display": "A roda de um pequeno robô móvel tem um raio de exatamente 7 cm. Utilizando o valor aproximado de Pi igual a 3, quantas voltas completas essa roda deve dar para percorrer uma distância em linha reta de 840 cm?",
+    "res": "20",
+    "alternativas": [
+      { "valor": "20", "tipo": "acerto" },
+      { "valor": "40", "tipo": "erro", "categoria": "procedimento", "erro": "roda_esqueceu_multiplicar_dois", "descricao": "Calculou o perímetro usando a fórmula Pi x raio, esquecendo de multiplicar por 2.", "peso": 2 },
+      { "valor": "120", "tipo": "erro", "categoria": "conceito", "erro": "roda_dividiu_por_raio", "descricao": "Dividiu a distância total diretamente pelo valor do raio, ignorando o formato circular da roda.", "peso": 3 },
+      { "valor": "10", "tipo": "erro", "categoria": "calculo", "erro": "roda_erro_divisao_final", "descricao": "Encontrou o comprimento da circunferência correto (42 cm) mas errou a divisão final.", "peso": 1 }
+    ],
+    "passo": "Comprimento de uma volta da roda (perímetro): 2 x Pi x raio = 2 x 3 x 7 cm = 42 cm. Número de voltas necessárias: 840 cm ÷ 42 cm = 20 voltas.",
+    "dica": "Descubra primeiro quantos centímetros o robô anda com uma única volta completa da roda usando a fórmula do perímetro da circunferência."
+  },
+  {
+    "id": "A3_EXP_07",
+    "aula": 3,
+    "tipo": "geometria",
+    "dificuldade": 2,
+    "tipoPedagogico": "base",
+    "bncc": "EF06MA25",
+    "bncc_desc": "Ângulos em Relógios",
+    "display": "Os ponteiros de um relógio analógico de monitoramento marcam exatamente 03:00. Qual é a medida do menor ângulo formado entre o ponteiro das horas e o ponteiro dos minutos?",
+    "res": "90°",
+    "alternativas": [
+      { "valor": "90°", "tipo": "acerto" },
+      { "valor": "45°", "tipo": "erro", "categoria": "interpretacao", "erro": "angulo_divisao_errada_mostrador", "descricao": "Dividiu o quadrante ao meio sem analisar o deslocamento numérico real do ponteiro.", "peso": 2 },
+      { "valor": "120°", "tipo": "erro", "categoria": "calculo", "erro": "angulo_soma_excedente", "descricao": "Adicionou uma hora a mais na contagem dos blocos angulares do mostrador circular.", "peso": 1 },
+      { "valor": "270°", "tipo": "erro", "categoria": "atencao", "erro": "angulo_pegou_o_maior", "descricao": "Mediu o maior ângulo externo formado pelos ponteiros em vez do menor ângulo solicitado.", "peso": 1 }
+    ],
+    "passo": "O relógio completo tem 360° dividido em 12 horas, logo cada hora corresponde a 30° (360 ÷ 12). Às 03:00, o ponteiro está no 3 e o outro no 12, totalizando 3 horas de distância: 3 x 30° = 90°.",
+    "dica": "O mostrador do relógio é um círculo de 360° dividido em 12 partes iguais. Descubra quanto vale cada hora e multiplique pela distância dos ponteiros!"
+  },
+  {
+    "id": "A3_EXP_08",
+    "aula": 3,
+    "tipo": "aritmetica",
+    "dificuldade": 1,
+    "tipoPedagogico": "recomposicao",
+    "bncc": "EF06MA24",
+    "bncc_desc": "Grandezas Computacionais",
+    "display": "O sistema de telemetria de uma estação científica transmite pacotes de dados na velocidade de 250 kilobytes por segundo (KB/s). Considerando a conversão simplificada de 1 megabyte (MB) = 1.000 kilobytes (KB), quantos MB serão transmitidos em exatamente 1 minuto?",
+    "res": "15",
+    "alternativas": [
+      { "valor": "15", "tipo": "acerto" },
+      { "valor": "250", "tipo": "erro", "categoria": "atencao", "erro": "dados_copiou_enunciado", "descricao": "Apenas repetiu a taxa de transmissão por segundo como se fosse a resposta para um minuto inteiro.", "peso": 1 },
+      { "erro": "dados_esqueceu_conversao_mb", "valor": "15.000", "categoria": "procedimento", "descricao": "Calculou a transmissão total em kilobytes de forma correta, mas não fez a divisão para converter em megabytes.", "peso": 2 },
+      { "valor": "4", "tipo": "erro", "categoria": "conceito", "erro": "dados_divisao_inversa", "descricao": "Dividiu 1.000 por 250 ignorando a passagem do tempo em segundos do ciclo.", "peso": 3 }
+    ],
+    "passo": "1 minuto possui 60 segundos. Total transmitido em KB: 250 KB x 60 = 15.000 KB. Convertendo para MB (dividindo por 1.000): 15.000 ÷ 1.000 = 15 MB.",
+    "dica": "Lembre-se de que o dado fornecido é por segundo. Um minuto tem 60 segundos! Descubra o total em KB e depois divida por 1.000."
+  },
+  {
+    "id": "A3_EXP_09",
+    "aula": 3,
+    "tipo": "geometria",
+    "dificuldade": 3,
+    "tipoPedagogico": "investigacao",
+    "bncc": "EF08MA21",
+    "bncc_desc": "Proporcionalidade de Áreas",
+    "display": "Se um designer de software decidir duplicar (multiplicar por 2) tanto o comprimento quanto a largura de um cartão retangular de interface do usuário, a nova área do cartão será multiplicada por quantas vezes em relação à original?",
+    "res": "4",
+    "alternativas": [
+      { "valor": "4", "tipo": "acerto" },
+      { "valor": "2", "tipo": "erro", "categoria": "conceito", "erro": "proporcao_linear_area", "descricao": "Achou que a área cresce na mesma proporção simples dos lados da figura bidimensional.", "peso": 3 },
+      { "valor": "8", "tipo": "erro", "categoria": "procedimento", "erro": "proporcao_escala_cubica", "descricao": "Aplicou uma proporção cúbica (multiplicou por 2 três vezes) como se estivesse calculando volume.", "peso": 2 },
+      { "valor": "6", "tipo": "erro", "categoria": "calculo", "erro": "proporcao_erro_soma_fatores", "descricao": "Somou os fatores de multiplicação (2 + 2 + 2) de forma descuidada sem aplicar a regra do produto.", "peso": 1 }
+    ],
+    "passo": "A área original é dada por C x L. A nova área será (2 x C) x (2 x L) = 4 x (C x L). Portanto, a área aumenta 4 vezes (2 elevado ao quadrado).",
+    "dica": "Pense no desenho: se você dobra a largura e dobra a altura de um retângulo, quantos retângulos iguais ao original cabem dentro da nova figura?"
+  },
+  {
+    "id": "A3_EXP_10",
+    "aula": 3,
+    "tipo": "geometria",
+    "dificuldade": 2,
+    "tipoPedagogico": "recomposicao",
+    "bncc": "EF07MA29",
+    "bncc_desc": "Problemas de Vazão e Comprimento",
+    "display": "O bico extrusor de uma impressora 3D consome exatamente 50 mm de filamento plástico a cada 20 segundos de funcionamento. Quantos metros de filamento serão consumidos se a máquina imprimir continuamente por 10 minutos?",
+    "res": "1,5",
+    "alternativas": [
+      { "valor": "1,5", "tipo": "acerto" },
+      { "valor": "1.500", "tipo": "erro", "categoria": "atencao", "erro": "vazao_esqueceu_metros", "descricao": "Calculou o consumo total em milímetros de forma correta, mas esqueceu de converter para metros.", "peso": 1 },
+      { "valor": "15", "tipo": "erro", "categoria": "calculo", "erro": "vazao_divisao_escala_dez", "descricao": "Errou a conversão de escala dividindo por 100 em vez de dividir por 1.000 durante o ajuste métrico.", "peso": 1 },
+      { "valor": "2,5", "tipo": "erro", "categoria": "procedimento", "erro": "vazao_multiplicou_direto_minutos", "descricao": "Multiplicou o consumo inicial (50 mm) diretamente pelo tempo em minutos (10), ignorando os ciclos de segundos.", "peso": 2 }
+    ],
+    "passo": "Tempo total: 10 minutos = 600 segundos. Número de ciclos de 20 segundos: 600 ÷ 20 = 30 ciclos. Consumo em milímetros: 30 x 50 mm = 1.500 mm. Convertendo para metros (1m = 1.000mm): 1.500 ÷ 1.000 = 1,5 metros.",
+    "dica": "Descubra primeiro quantos segundos existem em 10 minutos. Depois, veja quantos grupos de 20 segundos cabem nesse tempo para calcular os milímetros totais e transformá-los em metros!"
   }
-]  
+] 
