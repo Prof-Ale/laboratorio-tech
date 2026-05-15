@@ -2563,5 +2563,62 @@
     ],
     "passo": "Seno é sempre o lado que está 'na frente' (oposto) dividido pelo lado maior (hipotenusa).",
     "dica": "Lembre-se da música: 'Soh-Cah-Toa'. SOH significa Seno = Oposto / Hipotenusa!"
+  },
+  {
+    "id": "B4T1Q20",
+    "aula": 4,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA06",
+    "bncc_desc": "Sistemas de Equações - Introdução",
+    "display": "Se x + y = 10 e x - y = 2, quais são os valores de x e y?",
+    "res": "x=6, y=4",
+    "alternativas": [
+      { "valor": "x=6, y=4", "tipo": "acerto" },
+      { "valor": "x=5, y=5", "tipo": "erro", "categoria": "procedimento", "erro": "sistema_ignora_diferenca", "descricao": "Considerou a soma mas não a diferença entre as variáveis.", "peso": 2 },
+      { "valor": "x=8, y=2", "tipo": "erro", "categoria": "calculo", "erro": "sistema_erro_aritmetico", "descricao": "Os valores não satisfazem a primeira equação.", "peso": 1 },
+      { "valor": "x=7, y=3", "tipo": "erro", "categoria": "procedimento", "erro": "sistema_chute_proximo", "descricao": "Tentou valores próximos sem aplicar o método da substituição ou adição.", "peso": 2 }
+    ],
+    "passo": "Somando as duas equações: (x+y) + (x-y) = 10 + 2 -> 2x = 12 -> x = 6. Se x=6, então 6+y=10, logo y=4.",
+    "dica": "Tente somar as duas frases: o 'y' positivo cancela o 'y' negativo e você descobre o 'x' rapidinho!"
+  },
+  {
+    "id": "B5T1Q30",
+    "aula": 5,
+    "tipo": "aritmetica",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF08MA22",
+    "bncc_desc": "Média Ponderada",
+    "display": "Um aluno tirou 6 (peso 2) e 9 (peso 3). Qual a sua média final?",
+    "res": "7,8",
+    "alternativas": [
+      { "valor": "7,8", "tipo": "acerto" },
+      { "valor": "7,5", "tipo": "erro", "categoria": "conceito", "erro": "media_ignora_peso", "descricao": "Calculou a média simples (6+9)/2 ignorando os pesos.", "peso": 3 },
+      { "valor": "7,2", "tipo": "erro", "categoria": "calculo", "erro": "media_erro_multiplicacao_peso", "descricao": "Errou a conta de 6x2 ou 9x3.", "peso": 1 },
+      { "valor": "15", "tipo": "erro", "categoria": "procedimento", "erro": "media_esquece_divisao_pesos", "descricao": "Somou os produtos mas não dividiu pela soma dos pesos.", "peso": 3 }
+    ],
+    "passo": "1º: Multiplica nota pelo peso (6x2=12, 9x3=27). 2º: Soma tudo (12+27=39). 3º: Divide pela soma dos pesos (39÷5 = 7,8).",
+    "dica": "Na média com peso, a nota que tem o peso maior 'puxa' o resultado para perto dela!"
+  },
+  {
+    "id": "B6T1Q40",
+    "aula": 6,
+    "tipo": "geometria",
+    "dificuldade": 3,
+    "tipoPedagogico": "base",
+    "bncc": "EF09MA14",
+    "bncc_desc": "Relações Trigonométricas",
+    "display": "Em um triângulo retângulo, o seno de um ângulo é a razão entre:",
+    "res": "Cateto Oposto / Hipotenusa",
+    "alternativas": [
+      { "valor": "Cateto Oposto / Hipotenusa", "tipo": "acerto" },
+      { "valor": "Cateto Adjacente / Hipotenusa", "tipo": "erro", "categoria": "conceito", "erro": "trig_confunde_sen_cos", "descricao": "Confundiu a definição de Seno com a de Cosseno.", "peso": 3 },
+      { "valor": "Cateto Oposto / Cateto Adjacente", "tipo": "erro", "categoria": "conceito", "erro": "trig_confunde_sen_tan", "descricao": "Confundiu Seno com Tangente.", "peso": 3 },
+      { "valor": "Hipotenusa / Cateto Oposto", "tipo": "erro", "categoria": "procedimento", "erro": "trig_inverte_razao", "descricao": "Inverteu a fração da razão trigonométrica.", "peso": 2 }
+    ],
+    "passo": "Seno é sempre o lado que está 'na frente' (oposto) dividido pelo lado maior (hipotenusa).",
+    "dica": "Lembre-se da música: 'Soh-Cah-Toa'. SOH significa Seno = Oposto / Hipotenusa!"
   }
 ]
