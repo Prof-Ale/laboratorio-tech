@@ -2715,5 +2715,110 @@
     ],
     "passo": "(20 + 22 + 24) = 66. 66 ÷ 3 = 22.",
     "dica": "A média de três valores seguidos e constantes é sempre o valor do meio!"
-  }
+  },
+  {
+    "id": "RES_175_01", "aula": 1, "tipo": "aritmetica", "dificuldade": 1, "tipoPedagogico": "base", "bncc": "EF06MA01", "bncc_desc": "Sistema Decimal",
+    "display": "No número 4.582, qual algarismo representa a centena?", "res": "5",
+    "alternativas": [
+      { "valor": "5", "tipo": "acerto" },
+      { "valor": "4", "tipo": "erro", "categoria": "conceito", "erro": "posicao_milhar", "descricao": "Confundiu centena com unidade de milhar.", "peso": 2 },
+      { "valor": "8", "tipo": "erro", "categoria": "atencao", "erro": "posicao_dezena", "descricao": "Confundiu centena com dezena.", "peso": 1 },
+      { "valor": "2", "tipo": "erro", "categoria": "atencao", "erro": "posicao_unidade", "descricao": "Confundiu centena com unidade.", "peso": 1 }
+    ],
+    "passo": "As ordens são: Unidade (2), Dezena (8), Centena (5).", "dica": "A centena é a terceira casa da direita para a esquerda."
+  },
+  {
+    "id": "RES_175_02", "aula": 1, "tipo": "aritmetica", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF06MA03", "bncc_desc": "Operações",
+    "display": "Se você multiplicar 12 por 0, o resultado é:", "res": "0",
+    "alternativas": [
+      { "valor": "0", "tipo": "acerto" },
+      { "valor": "12", "tipo": "erro", "categoria": "conceito", "erro": "mult_zero_neutro", "descricao": "Achou que zero era elemento neutro da multiplicação.", "peso": 3 },
+      { "valor": "1", "tipo": "erro", "categoria": "conceito", "erro": "mult_zero_um", "descricao": "Confundiu com regra de potência.", "peso": 2 },
+      { "valor": "120", "tipo": "erro", "categoria": "procedimento", "erro": "mult_zero_soma", "descricao": "Apenas acrescentou o zero ao número.", "peso": 2 }
+    ],
+    "passo": "Qualquer número multiplicado por zero é sempre zero.", "dica": "Zero na multiplicação é o 'elemento anulador'."
+  },
+  {
+    "id": "RES_175_03", "aula": 2, "tipo": "aritmetica", "dificuldade": 1, "tipoPedagogico": "base", "bncc": "EF06MA07", "bncc_desc": "Frações",
+    "display": "Como se lê a fração 1/2?", "res": "Um meio",
+    "alternativas": [
+      { "valor": "Um meio", "tipo": "acerto" },
+      { "valor": "Um dois", "tipo": "erro", "categoria": "leitura", "erro": "leitura_direta", "descricao": "Lê os números sem nomenclatura de fração.", "peso": 1 },
+      { "valor": "Um segundo", "tipo": "erro", "categoria": "leitura", "erro": "leitura_ordinal", "descricao": "Usou numeração ordinal incorreta.", "peso": 2 },
+      { "valor": "Dois por um", "tipo": "erro", "categoria": "leitura", "erro": "leitura_invertida", "descricao": "Inverteu a ordem de leitura.", "peso": 2 }
+    ],
+    "passo": "O denominador 2 representa 'meio' ou 'metade'.", "dica": "Pense em meia maçã."
+  },
+  {
+    "id": "RES_175_04", "aula": 2, "tipo": "aritmetica", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF06MA08", "bncc_desc": "Decimais",
+    "display": "Qual é maior: 0,5 ou 0,05?", "res": "0,5",
+    "alternativas": [
+      { "valor": "0,5", "tipo": "acerto" },
+      { "valor": "0,05", "tipo": "erro", "categoria": "conceito", "erro": "dec_comparacao_tamanho", "descricao": "Achou que quanto mais algarismos, maior o número.", "peso": 3 },
+      { "valor": "São iguais", "tipo": "erro", "categoria": "conceito", "erro": "dec_ignora_zero", "descricao": "Ignorou o zero posicional.", "peso": 3 },
+      { "valor": "Não se pode comparar", "tipo": "erro", "categoria": "atencao", "erro": "dec_erro_logico", "descricao": "Negou a propriedade de ordenação.", "peso": 2 }
+    ],
+    "passo": "0,5 é o mesmo que 0,50 (50 centésimos), que é maior que 5 centésimos.", "dica": "Pense em dinheiro: 50 centavos é mais que 5 centavos."
+  },
+  {
+    "id": "RES_175_05", "aula": 3, "tipo": "geometria", "dificuldade": 1, "tipoPedagogico": "base", "bncc": "EF06MA17", "bncc_desc": "Polígonos",
+    "display": "Um triângulo tem quantos vértices?", "res": "3",
+    "alternativas": [
+      { "valor": "3", "tipo": "acerto" },
+      { "valor": "2", "tipo": "erro", "categoria": "conceito", "erro": "vert_insuficiente", "descricao": "Indicou menos vértices do que o necessário para fechar a figura.", "peso": 2 },
+      { "valor": "4", "tipo": "erro", "categoria": "atencao", "erro": "vert_quadrilatero", "descricao": "Confundiu com um quadrado.", "peso": 1 },
+      { "valor": "1", "tipo": "erro", "categoria": "atencao", "erro": "vert_ponto", "descricao": "Confundiu polígono com ponto.", "peso": 3 }
+    ],
+    "passo": "O triângulo tem 3 lados, 3 ângulos e 3 vértices.", "dica": "Tri-ângulo: o nome já diz 'três'."
+  },
+  {
+    "id": "RES_175_06", "aula": 3, "tipo": "aritmetica", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF06MA15", "bncc_desc": "Unidades de Tempo",
+    "display": "Quantos minutos existem em 2 horas e meia?", "res": "150",
+    "alternativas": [
+      { "valor": "150", "tipo": "acerto" },
+      { "valor": "120", "tipo": "erro", "categoria": "procedimento", "erro": "tempo_esquece_meia", "descricao": "Calculou apenas as horas inteiras.", "peso": 2 },
+      { "valor": "250", "tipo": "erro", "categoria": "conceito", "erro": "tempo_decimal", "descricao": "Tratou o tempo como sistema decimal (100 min por hora).", "peso": 3 },
+      { "valor": "130", "tipo": "erro", "categoria": "calculo", "erro": "tempo_soma_errada", "descricao": "Somou 10 minutos para a 'meia hora'.", "peso": 2 }
+    ],
+    "passo": "2h = 120 min. Meia hora = 30 min. 120 + 30 = 150.", "dica": "Cada hora tem 60 minutos."
+  },
+  {
+    "id": "RES_175_07", "aula": 4, "tipo": "aritmetica", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF07MA18", "bncc_desc": "Equação",
+    "display": "Se x + 10 = 30, quanto vale x?", "res": "20",
+    "alternativas": [
+      { "valor": "20", "tipo": "acerto" },
+      { "valor": "40", "tipo": "erro", "categoria": "procedimento", "erro": "equa_soma_em_vez_subtrair", "descricao": "Somou o 10 ao 30.", "peso": 2 },
+      { "valor": "10", "tipo": "erro", "categoria": "calculo", "erro": "equa_subtrai_errado", "descricao": "Errou a conta básica de menos.", "peso": 1 },
+      { "valor": "300", "tipo": "erro", "categoria": "procedimento", "erro": "equa_multiplica", "descricao": "Multiplicou os valores.", "peso": 3 }
+    ],
+    "passo": "x = 30 - 10 = 20.", "dica": "O oposto da adição é a subtração."
+  },
+  {
+    "id": "RES_175_08", "aula": 4, "tipo": "aritmetica", "dificuldade": 3, "tipoPedagogico": "base", "bncc": "EF07MA16", "bncc_desc": "Números Inteiros",
+    "display": "Quanto é (-5) + (-3)?", "res": "-8",
+    "alternativas": [
+      { "valor": "-8", "tipo": "acerto" },
+      { "valor": "-2", "tipo": "erro", "categoria": "conceito", "erro": "int_subtrai_sinais_iguais", "descricao": "Subtraiu os valores apesar de terem o mesmo sinal.", "peso": 3 },
+      { "valor": "8", "tipo": "erro", "categoria": "procedimento", "erro": "int_esquece_sinal", "descricao": "Somou os valores mas esqueceu o sinal negativo.", "peso": 2 },
+      { "valor": "+15", "tipo": "erro", "categoria": "conceito", "erro": "int_regra_multiplicacao", "descricao": "Usou regra de sinais de multiplicação em uma soma.", "peso": 3 }
+    ],
+    "passo": "Dívida de 5 com dívida de 3 resulta em dívida de 8.", "dica": "Sinais iguais na soma? Conserve o sinal e some os números."
+  },
+  {
+    "id": "RES_175_09", "aula": 5, "tipo": "aritmetica", "dificuldade": 2, "tipoPedagogico": "base", "bncc": "EF08MA22", "bncc_desc": "Mediana",
+    "display": "Qual a mediana do conjunto {2, 5, 8}?", "res": "5",
+    "alternativas": [
+      { "valor": "5", "tipo": "acerto" },
+      { "valor": "2", "tipo": "erro", "categoria": "atencao", "erro": "mediana_inicial", "descricao": "Pegou o primeiro valor.", "peso": 1 },
+      { "valor": "8", "tipo": "erro", "categoria": "atencao", "erro": "mediana_final", "descricao": "Pegou o último valor.", "peso": 1 },
+      { "valor": "15", "tipo": "erro", "categoria": "procedimento", "erro": "mediana_soma", "descricao": "Somou os valores em vez de achar o central.", "peso": 3 }
+    ],
+    "passo": "A mediana é o valor que está exatamente no meio da lista ordenada.", "dica": "Coloque em ordem e pegue o centro."
+  },
+  {
+    "id": "RES_175_10", "aula": 6, "tipo": "geometria", "dificuldade": 1, "tipoPedagogico": "base", "bncc": "EF08MA15", "bncc_desc": "Ângulos",
+    "display": "Um ângulo de 180 graus é chamado de:", "res": "Raso",
+    "alternativas": [
+      { "valor": "Raso", "tipo": "acerto" },
+      { "valor": "Reto", "tipo": "erro", "categoria": "conceito", "erro": "ang_reto
 ]
