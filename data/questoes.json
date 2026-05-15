@@ -4785,5 +4785,195 @@
     ],
     "passo": "Substituindo e=4: s = 2 x (4²) - 3. Calculando a potência primeiro: s = 2 x 16 - 3. Multiplicação e subtração: s = 32 - 3 = 29.",
     "dica": "Substitua a letra e pelo número 4. Lembre-se de elevar o 4 ao quadrado antes de multiplicar pelo número 2 que está na frente!"
-  }
+  },
+{
+"id": "A5_EXP_01",
+"aula": 5,
+"tipo": "aritmetica",
+"dificuldade": 2,
+"tipoPedagogico": "base",
+"bncc": "EF08MA22",
+"bncc_desc": "Trabalhando a Média de Forma Inversa",
+"display": "A meta semanal de um sensor fitness é uma média de 6.000 passos por dia. De segunda a sábado, o usuário registrou um acumulado diário cuja média foi de 5.800 passos. Quantos passos ele deve dar no domingo para atingir exatamente a média semanal estipulada?",
+"res": "7.200",
+"alternativas": [
+{ "valor": "7.200", "tipo": "acerto" },
+{ "valor": "6.200", "tipo": "erro", "categoria": "atencao", "erro": "media_compensacao_direta", "descricao": "Achou que precisava apenas compensar os 200 passos faltantes na média diária somando-os à meta estipulada.", "peso": 1 },
+{ "valor": "6.000", "tipo": "erro", "categoria": "procedimento", "erro": "media_estatica", "descricao": "Apenas indicou a meta diária estipulada originalmente, ignorando a defasagem acumulada nos dias anteriores.", "peso": 2 },
+{ "valor": "7.000", "tipo": "erro", "categoria": "calculo", "erro": "media_erro_subtrair", "descricao": "Errou a operação aritmética de subtração ao calcular a diferença entre os passos totais e os já realizados.", "peso": 1 }
+],
+"passo": "Passos totais em 7 dias: 7 x 6.000 = 42.000 passos. Passos dados em 6 dias: 6 x 5.800 = 34.800 passos. No domingo ele precisa de: 42.000 - 34.800 = 7.200 passos.",
+"dica": "Descubra primeiro o total de passos que ele precisa acumular na semana inteira e retire o total de passos que ele já deu de segunda a sábado!"
+},
+{
+"id": "A5_EXP_02",
+"aula": 5,
+"tipo": "aritmetica",
+"dificuldade": 1,
+"tipoPedagogico": "base",
+"bncc": "EF06MA31",
+"bncc_desc": "Moda em Dados Qualitativos",
+"display": "O log de erros de um aplicativo registrou os seguintes tipos de chamados de usuários em uma hora: [UI, Bug, Bug, Sugestão, UI, Bug, Performance, UI, Bug]. Qual é a 'moda' estatística desses chamados de feedback?",
+"res": "Bug",
+"alternativas": [
+{ "valor": "Bug", "tipo": "acerto" },
+{ "valor": "UI", "tipo": "erro", "categoria": "conceito", "erro": "moda_elemento_submediano", "descricao": "Confundiu com o segundo elemento mais frequente ou com a posição central alfabética.", "peso": 3 },
+{ "valor": "9", "tipo": "erro", "categoria": "interpretacao", "erro": "moda_contagem_total", "descricao": "Contou a quantidade total de elementos presentes na lista em vez de identificar a categoria modal.", "peso": 2 },
+{ "valor": "Performance", "tipo": "erro", "categoria": "atencao", "erro": "moda_elemento_isolado", "descricao": "Selecionou o item com menor frequência de ocorrência na lista por falta de atenção.", "peso": 1 }
+],
+"passo": "Contagem das ocorrências: Bug = 4, UI = 3, Sugestão = 1, Performance = 1. A moda é a categoria de maior frequência absoluta: Bug.",
+"dica": "A moda representa o dado que aparece o maior número de vezes na lista coletada. Faça a contagem de cada um!"
+},
+{
+"id": "A5_EXP_03",
+"aula": 5,
+"tipo": "aritmetica",
+"dificuldade": 2,
+"tipoPedagogico": "base",
+"bncc": "EF08MA22",
+"bncc_desc": "Mediana com Elementos Pares",
+"display": "Um programador realizou seis testes de latência (ping) em uma conexão de rede e obteve os valores: 20ms, 45ms, 15ms, 30ms, 25ms e 50ms. Qual é a mediana de latência encontrada nessa amostragem?",
+"res": "27,5ms",
+"alternativas": [
+{ "valor": "27,5ms", "tipo": "acerto" },
+{ "valor": "25ms", "tipo": "erro", "categoria": "procedimento", "erro": "mediana_lista_bruta", "descricao": "Não ordenou a lista de forma crescente ou escolheu um dos valores centrais sem efetuar a média.", "peso": 2 },
+{ "valor": "30,8ms", "tipo": "erro", "categoria": "conceito", "erro": "mediana_confundiu_media", "descricao": "Calculou a média aritmética de todos os valores do conjunto em vez de encontrar a mediana posicional.", "peso": 3 },
+{ "valor": "37,5ms", "tipo": "erro", "categoria": "calculo", "erro": "mediana_erro_divisao_central", "descricao": "Identificou os termos centrais corretos após o ordenamento, mas errou a média aritmética entre eles.", "peso": 1 }
+],
+"passo": "Ordenando a lista de forma crescente: 15ms, 20ms, 25ms, 30ms, 45ms, 50ms. Como a quantidade é par, tiramos a média dos dois termos centrais (25 e 30): (25 + 30) ÷ 2 = 27,5ms.",
+"dica": "Primeiro, coloque todos os valores em ordem do menor para o maior. Depois, encontre os dois números do meio e calcule o ponto central entre eles."
+},
+{
+"id": "A5_EXP_04",
+"aula": 5,
+"tipo": "aritmetica",
+"dificuldade": 2,
+"tipoPedagogico": "base",
+"bncc": "EF08MA25",
+"bncc_desc": "Amplitude Estatística",
+"display": "A telemetria térmica de uma CPU registrou uma temperatura mínima de 38°C durante a madrugada e um pico máximo de 74°C durante a renderização de um modelo gráfico. Qual é a amplitude térmica registrada?",
+"res": "36°C",
+"alternativas": [
+{ "valor": "36°C", "tipo": "acerto" },
+{ "valor": "74°C", "tipo": "erro", "categoria": "atencao", "erro": "amplitude_valor_maximo", "descricao": "Indicou apenas o valor máximo registrado no conjunto de dados, ignorando a definição de amplitude.", "peso": 1 },
+{ "valor": "56°C", "tipo": "erro", "categoria": "conceito", "erro": "amplitude_ponto_medio", "descricao": "Calculou a média simples ou ponto médio entre os extremos em vez da diferença entre eles.", "peso": 3 },
+{ "valor": "34°C", "tipo": "erro", "categoria": "calculo", "erro": "amplitude_erro_subtrair", "descricao": "Errou a operação aritmética de subtração ao tentar calcular 74 menos 38.", "peso": 1 }
+],
+"passo": "A amplitude é a diferença entre o maior valor registrado e o menor valor registrado no conjunto de dados: 74°C - 38°C = 36°C.",
+"dica": "A amplitude mede a distância total entre os dois extremos. Subtraia a menor temperatura medida da maior temperatura medida."
+},
+{
+"id": "A5_EXP_05",
+"aula": 5,
+"tipo": "aritmetica",
+"dificuldade": 2,
+"tipoPedagogico": "base",
+"bncc": "EF08MA26",
+"bncc_desc": "Cálculo de Probabilidade Simples",
+"display": "No sistema de recompensas de um game de lógica, um baú digital contém 5 scripts de expansão comuns, 3 intermediários e 2 lendários. Se um jogador abrir um baú aleatoriamente, qual é a probabilidade percentual dele obter um script lendário?",
+"res": "20%",
+"alternativas": [
+{ "valor": "20%", "tipo": "acerto" },
+{ "valor": "2%", "tipo": "erro", "categoria": "interpretacao", "erro": "prob_valor_absoluto", "descricao": "Usou a quantidade absoluta de itens lendários diretamente como porcentagem sem relacionar com o espaço amostral.", "peso": 2 },
+{ "valor": "50%", "tipo": "erro", "categoria": "conceito", "erro": "prob_equiprovabilidade_errada", "descricao": "Dividiu a probabilidade de forma igualitária assumindo apenas as opções simples de 'ganhar ou não ganhar'.", "peso": 3 },
+{ "valor": "25%", "tipo": "erro", "categoria": "procedimento", "erro": "prob_divisao_categorias", "descricao": "Dividiu o número de itens lendários pela quantidade de itens de outra categoria específica por engano.", "peso": 2 }
+],
+"passo": "Espaço amostral total: 5 + 3 + 2 = 10 itens. Evento favorável (lendários): 2 itens. Probabilidade: 2 ÷ 10 = 0,20. Convertendo para porcentagem: 20%.",
+"dica": "Primeiro, some todos os scripts que existem dentro do baú para descobrir o total. Depois monte a fração colocando a quantidade de lendários sobre o total."
+},
+{
+"id": "A5_EXP_06",
+"aula": 5,
+"tipo": "aritmetica",
+"dificuldade": 2,
+"tipoPedagogico": "base",
+"bncc": "EF07MA37",
+"bncc_desc": "Interpretação de Gráficos Comparativos",
+"display": "Um relatório gráfico indica que no Mês 1 um app teve 400 acessos no Android e 200 no iOS. No Mês 2, o aplicativo registrou 300 acessos no Android e 500 no iOS. Qual foi a média mensal de downloads especificamente na plataforma iOS nesses dois meses?",
+"res": "350",
+"alternativas": [
+{ "valor": "350", "tipo": "acerto" },
+{ "valor": "350", "tipo": "erro", "categoria": "atencao", "erro": "graf_eixo_errado_android", "descricao": "Calculou a média mensal da plataforma Android por distração na leitura das colunas do enunciado.", "peso": 1 },
+{ "valor": "700", "tipo": "erro", "categoria": "procedimento", "erro": "graf_soma_sem_dividir", "descricao": "Realizou a soma total dos acessos da plataforma solicitada, mas esqueceu de dividir pela quantidade de meses.", "peso": 2 },
+{ "valor": "400", "tipo": "erro", "categoria": "calculo", "erro": "graf_erro_aritmetico_media", "descricao": "Misturou os dados das duas plataformas ou errou a divisão final da soma aritmética.", "peso": 1 }
+],
+"passo": "Dados do iOS: Mês 1 = 200 e Mês 2 = 500. Soma dos acessos iOS: 200 + 500 = 700. Média mensal (dividido por 2 meses): 700 ÷ 2 = 350 downloads.",
+"dica": "Foque sua atenção apenas nos números descritos para o iOS. Some os valores dos dois meses e divida o resultado por 2."
+},
+{
+"id": "A5_EXP_07",
+"aula": 5,
+"tipo": "aritmetica",
+"dificuldade": 3,
+"tipoPedagogico": "investigacao",
+"bncc": "EF09MA20",
+"bncc_desc": "Probabilidade de Eventos Independentes",
+"display": "Para um pacote de dados cruzar uma rede, ele deve passar por duas barreiras de segurança independentes. A chance de falha (bloqueio) na primeira barreira é de 10% e na segunda é de 20%. Qual é a probabilidade do pacote falhar nas duas barreiras consecutivamente?",
+"res": "2%",
+"alternativas": [
+{ "valor": "2%", "tipo": "acerto" },
+{ "valor": "30%", "tipo": "erro", "categoria": "conceito", "erro": "prob_soma_independente", "descricao": "Somou as probabilidades das duas taxas de falha diretamente, o que é um erro conceitual grave.", "peso": 3 },
+{ "valor": "15%", "tipo": "erro", "categoria": "interpretacao", "erro": "prob_media_simples", "descricao": "Calculou a média aritmética simples entre as duas porcentagens de risco das barreiras.", "peso": 2 },
+{ "valor": "20%", "tipo": "erro", "categoria": "calculo", "erro": "prob_erro_decimal", "descricao": "Errou a multiplicação decimal ou assumiu o valor correspondente à barreira de maior risco.", "peso": 1 }
+],
+"passo": "Eventos independentes exigem a multiplicação das chances: 10% x 20% = (10/100) x (20/100) = 200 / 10000 = 2 / 100 = 2%.",
+"dica": "A probabilidade de dois eventos independentes acontecerem juntos é calculada multiplicando a chance de um pela chance do outro. Converta para números decimais antes de multiplicar!"
+},
+{
+"id": "A5_EXP_08",
+"aula": 5,
+"tipo": "aritmetica",
+"dificuldade": 2,
+"tipoPedagogico": "base",
+"bncc": "EF08MA22",
+"bncc_desc": "Média Ponderada Prática",
+"display": "A nota final de uma oficina de robótica é calculada por uma média ponderada: os Quizzes semanais possuem peso 2 e o Projeto Final possui peso 3. Se um estudante obteve nota 5 nos Quizzes e nota 10 no Projeto Final, qual foi a sua média final?",
+"res": "8",
+"alternativas": [
+{ "valor": "8", "tipo": "acerto" },
+{ "valor": "7,5", "tipo": "erro", "categoria": "conceito", "erro": "ponderada_ignorou_pesos", "descricao": "Calculou a média aritmética simples das duas notas isoladas, ignorando os pesos estipulados.", "peso": 3 },
+{ "valor": "40", "tipo": "erro", "categoria": "procedimento", "erro": "ponderada_sem_divisao", "descricao": "Efetou a soma dos produtos das notas pelos seus respectivos pesos, mas esqueceu de dividir pela soma dos pesos.", "peso": 2 },
+{ "valor": "7", "tipo": "erro", "categoria": "calculo", "erro": "ponderada_erro_aritmetico", "descricao": "Errou as multiplicações parciais ou falhou na divisão final de 40 por 5.", "peso": 1 }
+],
+"passo": "Multiplicação pelas notas e pesos: (5 x 2) + (10 x 3) = 10 + 30 = 40. Divisão pela soma dos pesos (2 + 3 = 5): 40 ÷ 5 = 8.",
+"dica": "Multiplique cada nota pelo seu peso correspondente e some os resultados. Depois, divida o valor encontrado pela soma total dos dois pesos."
+},
+{
+"id": "A5_EXP_09",
+"aula": 5,
+"tipo": "aritmetica",
+"dificuldade": 1,
+"tipoPedagogico": "base",
+"bncc": "EF07MA36",
+"bncc_desc": "Conceito de Amostra e População",
+"display": "Uma startup deseja testar uma nova interface de usuário em seu sistema. O software possui 10.000 usuários ativos ao todo, mas os desenvolvedores enviaram o formulário e coletaram dados de apenas 500 usuários selecionados de forma aleatória. Em estatística, o grupo menor de 500 usuários representa:",
+"res": "A amostra da pesquisa.",
+"alternativas": [
+{ "valor": "A amostra da pesquisa.", "tipo": "acerto" },
+{ "valor": "A população da pesquisa.", "tipo": "erro", "categoria": "conceito", "erro": "conceito_confundiu_populacao", "descricao": "Confundiu o grupo representativo reduzido com a totalidade do universo de usuários (população).", "peso": 3 },
+{ "valor": "A frequência absoluta.", "tipo": "erro", "categoria": "interpretacao", "erro": "conceito_confundiu_frequencia", "descricao": "Confundiu o conjunto de indivíduos estudados com o conceito numérico bruto de contagem de ocorrências.", "peso": 2 },
+{ "valor": "A variável qualitativa.", "tipo": "erro", "categoria": "atencao", "erro": "conceito_confundiu_variavel", "descricao": "Classificou erroneamente o grupo de participantes como um tipo de atributo ou característica do objeto estudado.", "peso": 1 }
+],
+"passo": "O grupo total de usuários (10.000) é a população. O subconjunto representativo menor escolhido para a coleta de dados (500) é chamado tecnicamente de amostra.",
+"dica": "Pense no significado das palavras: quando um laboratório colhe um pouquinho do seu sangue para analisar, ele tirou uma..."
+},
+{
+"id": "A5_EXP_10",
+"aula": 5,
+"tipo": "aritmetica",
+"dificuldade": 2,
+"tipoPedagogico": "recomposicao",
+"bncc": "EF06MA32",
+"bncc_desc": "Frequência Relativa para Absoluta",
+"display": "Um gráfico de setores (pizza) exibe a distribuição do uso de armazenamento de um servidor estável de 2.000 gigabytes (GB). O setor correspondente aos arquivos de banco de dados ocupa exatamente 35% do gráfico. Quantos GB estão ocupados pelo banco de dados?",
+"res": "700 GB",
+"alternativas": [
+{ "valor": "700 GB", "tipo": "acerto" },
+{ "valor": "35 GB", "tipo": "erro", "categoria": "atencao", "erro": "setor_copiou_porcentagem", "descricao": "Confundiu o valor da porcentagem relativa diretamente com a unidade de medida absoluta em gigabytes.", "peso": 1 },
+{ "valor": "1.300 GB", "tipo": "erro", "categoria": "procedimento", "erro": "setor_calculou_restante", "descricao": "Calculou o espaço livre restante que sobra no servidor em vez do espaço ocupado pedido no enunciado.", "peso": 2 },
+{ "valor": "650 GB", "tipo": "erro", "categoria": "calculo", "erro": "setor_erro_multiplicacao", "descricao": "Cometeu um erro de cálculo na operação aritmética ao tentar multiplicar 0,35 por 2.000.", "peso": 1 }
+],
+"passo": "Para extrair o valor absoluto, calculamos a porcentagem sobre o total do servidor: 35% de 2.000 = 0,35 x 2.000 = 700 GB.",
+"dica": "Você precisa calcular quanto vale 35% de 2.000. Uma maneira fácil é descobrir quanto vale 10% ou 1% primeiro e depois multiplicar!"
+}
 ]
